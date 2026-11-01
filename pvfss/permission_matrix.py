@@ -61,6 +61,19 @@ MATRIX = {
 	"Supplier": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc"}),
 	# ---- Module 1: CRM (screens §21: Inquiry row)
 	"Opportunity": {PBU: "rwc", PBM: "rwc", DIR: "r", POU: "r", POM: "r", QU: "r", QM: "r", RO: "r"},
+	# ---- Module 5: Purchasing (screens §21: Supplier PO row)
+	"Purchase Order": {
+		POU: "rwcs",
+		POM: "rwcsxa",
+		PBU: "rwc",
+		DIR: "rw",
+		QU: "r",
+		QM: "r",
+		LOG: "r",
+		FU: "r",
+		FM: "r",
+		RO: "r",
+	},
 	# ---- Module 4: Quotation and Customer PO (screens §21: Quotation, Customer PO rows)
 	"Quotation": {
 		PBU: "rwcs",

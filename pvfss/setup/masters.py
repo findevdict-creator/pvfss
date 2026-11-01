@@ -249,9 +249,12 @@ def seed_generic_item():
 
 # --------------------------------------------------------------------------- company
 def setup_wizard_complete(args=None):
+	from pvfss.setup.install import apply_operating_defaults
+
 	company = (args or {}).get("company_name") or frappe.defaults.get_global_default("company")
 	if company and frappe.db.exists("Company", company):
 		setup_company(company)
+	apply_operating_defaults()  # the wizard resets Buying Settings
 
 
 def setup_company(company):

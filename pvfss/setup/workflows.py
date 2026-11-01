@@ -15,6 +15,9 @@ POU = "Post-Bidding User"
 POM = "Post-Bidding Manager"
 
 STATE_STYLES = {
+	"Deviation Approval": "Warning",
+	"Value Approval": "Warning",
+	"Director Approval": "Warning",
 	"Draft": "",
 	"Pending Approval": "Warning",
 	"Under Review": "Warning",
@@ -56,6 +59,73 @@ WORKFLOWS = {
 			("Approved", "Submit", "Submitted", PBU, None),
 			("Approved", "Submit", "Submitted", PBM, None),
 			("Submitted", "Cancel", "Cancelled", PBM, None),
+		],
+	},
+	# PUR-05, PUR-06, PUR-07, PUR-10 / G3: Supplier PO approvals
+	"PVFSS Supplier PO": {
+		"document_type": "Purchase Order",
+		"states": [
+			("Draft", 0, POU),
+			("Draft", 0, POM),
+			("Draft", 0, PBU),
+			("Deviation Approval", 0, POM),
+			("Value Approval", 0, POM),
+			("Value Approval", 0, DIR),
+			("Director Approval", 0, DIR),
+			("Approved", 0, POU),
+			("Approved", 0, POM),
+			("Submitted", 1, POU),
+			("Submitted", 1, POM),
+			("Cancelled", 2, POM),
+		],
+		"transitions": [
+			*[
+				(
+					"Draft",
+					"Send for Approval",
+					nxt,
+					role,
+					cond,
+				)
+				for role in (POU, POM, PBU)
+				for nxt, cond in (
+					("Deviation Approval", "doc.pvfss_deviation_count"),
+					(
+						"Director Approval",
+						'not doc.pvfss_deviation_count and doc.pvfss_approval_route == "Director Approval"',
+					),
+					(
+						"Value Approval",
+						'not doc.pvfss_deviation_count and doc.pvfss_approval_route != "Director Approval"',
+					),
+				)
+			],
+			(
+				"Deviation Approval",
+				"Approve Deviations",
+				"Director Approval",
+				POM,
+				'doc.pvfss_approval_route == "Director Approval"',
+			),
+			(
+				"Deviation Approval",
+				"Approve Deviations",
+				"Value Approval",
+				POM,
+				'doc.pvfss_approval_route != "Director Approval"',
+			),
+			("Deviation Approval", "Reject", "Draft", POM, None),
+			("Value Approval", "Approve", "Approved", POM, 'doc.pvfss_approval_route != "Director Approval"'),
+			("Value Approval", "Approve", "Approved", DIR, None),
+			("Value Approval", "Reject", "Draft", POM, None),
+			("Value Approval", "Reject", "Draft", DIR, None),
+			("Director Approval", "Approve", "Approved", DIR, None),
+			("Director Approval", "Reject", "Draft", DIR, None),
+			("Approved", "Return to Draft", "Draft", POU, None),
+			("Approved", "Return to Draft", "Draft", POM, None),
+			("Approved", "Submit", "Submitted", POU, None),
+			("Approved", "Submit", "Submitted", POM, None),
+			("Submitted", "Cancel", "Cancelled", POM, None),
 		],
 	},
 	# SQ-09: Customer PO review against the quotation

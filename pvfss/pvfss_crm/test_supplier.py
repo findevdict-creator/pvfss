@@ -55,7 +55,7 @@ def make_po(supplier, submit=False):
 	)
 	po.insert()
 	if submit:
-		po.submit()
+		po = f.submit_purchase_order(po)
 	return po
 
 
