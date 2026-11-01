@@ -141,3 +141,12 @@ def make_client_project(code="_PVFSS-CP-001", **kw):
 
 def delivery_date(days=30):
 	return add_days(nowdate(), days)
+
+
+def render_print(doc, print_format):
+	"""Print format HTML without the printview page shell, which needs built assets (CI has none)."""
+	from frappe.www.printview import get_rendered_template
+
+	return get_rendered_template(
+		doc, print_format=frappe.get_doc("Print Format", print_format), no_letterhead=1
+	)

@@ -24,6 +24,8 @@ website_context = {
 doctype_js = {
 	"Opportunity": "public/js/doctype/opportunity.js",
 	"Supplier": "public/js/doctype/supplier.js",
+	"Request for Quotation": "public/js/doctype/request_for_quotation.js",
+	"Supplier Quotation": "public/js/doctype/supplier_quotation.js",
 }
 doctype_list_js = {
 	"Opportunity": "public/js/doctype/opportunity_list.js",
@@ -48,7 +50,13 @@ doc_events = {
 		"validate": "pvfss.overrides.opportunity.validate",
 		"after_insert": "pvfss.overrides.opportunity.after_insert",
 	},
-	"Supplier Quotation": {"on_submit": "pvfss.overrides.opportunity.on_supplier_quotation_submit"},
+	"Supplier Quotation": {
+		"before_validate": "pvfss.overrides.supplier_quotation.before_validate",
+		"validate": "pvfss.overrides.supplier_quotation.validate",
+		"before_submit": "pvfss.overrides.supplier_quotation.before_submit",
+		"on_submit": "pvfss.overrides.supplier_quotation.on_submit",
+		"on_cancel": "pvfss.overrides.supplier_quotation.on_cancel",
+	},
 	"Quotation": {
 		"on_submit": "pvfss.overrides.opportunity.on_quotation_submit",
 		"on_update_after_submit": "pvfss.overrides.opportunity.on_quotation_update_after_submit",
@@ -56,7 +64,11 @@ doc_events = {
 	"Sales Order": {"on_submit": "pvfss.overrides.opportunity.on_sales_order_submit"},
 	# Module 2: Supplier management (SUP-01 to SUP-07)
 	"Supplier": {"validate": "pvfss.overrides.supplier.validate"},
-	"Request for Quotation": {"validate": "pvfss.overrides.request_for_quotation.validate"},
+	"Request for Quotation": {
+		"validate": "pvfss.overrides.request_for_quotation.validate",
+		"on_submit": "pvfss.overrides.request_for_quotation.on_submit",
+		"onload": "pvfss.overrides.request_for_quotation.onload",
+	},
 	"Purchase Order": {"validate": "pvfss.overrides.purchase_order.validate"},
 }
 

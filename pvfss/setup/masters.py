@@ -95,6 +95,31 @@ def seed_global():
 	seed_uoms()
 	seed_lost_reasons()
 	seed_payment_terms()
+	seed_email_templates()
+
+
+EMAIL_TEMPLATES = {
+	# SCR-RFQ-04 / GEN-62: RFQ email (one per supplier, RFQ PDF attached by ERPNext)
+	"PVFSS RFQ": {
+		"subject": "RFQ {{ doc.name }} - due {{ frappe.utils.formatdate(doc.pvfss_supplier_due_date) }}",
+		"response": (
+			"<p>Dear {{ supplier_name or 'Supplier' }},</p>"
+			"<p>Please find attached our Request for Quotation {{ doc.name }}. Kindly send your best "
+			"offer by {{ frappe.utils.formatdate(doc.pvfss_supplier_due_date) }}, stating per line the "
+			"unit price and currency, lead time, availability (ready stock or manufacture), origin, "
+			"manufacturer, technical compliance and any deviations, offer validity, payment terms "
+			"and Incoterm.</p><p>Regards,<br>{{ doc.company }}</p>"
+		),
+	},
+}
+
+
+def seed_email_templates():
+	for name, values in EMAIL_TEMPLATES.items():
+		if not frappe.db.exists("Email Template", name):
+			frappe.get_doc({"doctype": "Email Template", "name": name, **values}).insert(
+				ignore_permissions=True
+			)
 
 
 def _root_item_group():
