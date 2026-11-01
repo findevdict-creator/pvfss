@@ -46,6 +46,10 @@ MATRIX = {
 	"Item": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc", QU: "rwc", QM: "rwc"}),
 	# Address and Contact are left alone: ERPNext ships its own Custom DocPerm rows for them on
 	# install (role "All" reads), and duplicating those here would drift on every fresh site.
+	"Supplier Group": everyone(),
+	"Country": everyone(),
+	# ---- Module 2: Supplier management (screens §21: Supplier, AVL, Supplier Evaluation row)
+	"Supplier": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc"}),
 	# ---- Module 1: CRM (screens §21: Inquiry row)
 	"Opportunity": {PBU: "rwc", PBM: "rwc", DIR: "r", POU: "r", POM: "r", QU: "r", QM: "r", RO: "r"},
 }

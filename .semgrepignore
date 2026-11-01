@@ -1,0 +1,17 @@
+# custom_docperm.json is exported from the role matrix. When a DocType's permissions are
+# customised, Frappe copies every standard row into Custom DocPerm, including the framework's
+# own "All" read row on Country (and later Request for Quotation). Those rows are ERPNext
+# defaults, not grants made by this app, so the relaxed-permissions rule is noise here.
+pvfss/fixtures/custom_docperm.json
+:include .gitignore
+
+# Semgrep's own defaults, which a .semgrepignore file replaces
+.git/
+node_modules/
+build/
+dist/
+vendor/
+.venv/
+*.min.js
+test/
+tests/

@@ -1,0 +1,56 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "product_category",
+  "material_types",
+  "brands",
+  "approved"
+ ],
+ "fields": [
+  {
+   "fieldname": "product_category",
+   "fieldtype": "Link",
+   "label": "Product Category",
+   "options": "Item Group",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "material_types",
+   "fieldtype": "Data",
+   "label": "Material Types Supplied",
+   "in_list_view": 1,
+   "description": "Comma separated: CS, SS, Alloy, Other"
+  },
+  {
+   "fieldname": "brands",
+   "fieldtype": "Small Text",
+   "label": "Brands / Mills Represented",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "approved",
+   "fieldtype": "Check",
+   "label": "Approved",
+   "default": "1",
+   "in_list_view": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS CRM",
+ "name": "Supplier Product Category",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
