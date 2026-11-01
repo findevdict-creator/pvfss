@@ -22,7 +22,7 @@ LINE_FIELDS = (
 
 # ----------------------------------------------------------------------------- SQ-01
 @frappe.whitelist()
-def make_quotation(costing_sheet):
+def make_quotation(costing_sheet: str):
 	"""Create a draft Quotation from a submitted Costing Sheet; blocked by G1 (RFQ-12)."""
 	cs = frappe.get_doc("Costing Sheet", costing_sheet)
 	cs.check_permission("read")
@@ -143,7 +143,7 @@ def calculate_icv(doc):
 
 # ----------------------------------------------------------------------------- SQ-04
 @frappe.whitelist()
-def make_revision(quotation):
+def make_revision(quotation: str):
 	"""Cancel the submitted quotation and return its amendment (QTN-...-1, -2) as a draft."""
 	doc = frappe.get_doc("Quotation", quotation)
 	doc.check_permission("cancel")

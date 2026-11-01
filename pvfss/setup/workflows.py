@@ -141,5 +141,5 @@ def apply():
 			],
 		)
 		doc.save()
-	frappe.db.commit()
+	frappe.db.commit()  # nosemgrep: frappe-manual-commit (setup step run from install / setup wizard hooks; later steps need it persisted)
 	print("PVFSS workflows applied")
