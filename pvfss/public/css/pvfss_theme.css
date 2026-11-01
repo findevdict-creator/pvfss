@@ -1,0 +1,190 @@
+/*
+ * PVFSS ERP desk theme (GEN-08, screens §2.1-2.3, plan §6).
+ * Level 1 theming only: CSS custom properties, no overrides of Frappe components.
+ * Variable names verified against Frappe v16.54.0 desk.bundle.css (see docs/theme-mapping.md).
+ */
+
+/* Layer 1: PVFSS brand tokens (light) */
+:root {
+	--pvfss-primary: #0b4f8a;
+	--pvfss-primary-hover: #083b68;
+	--pvfss-primary-soft: #e8f1fa;
+	--pvfss-on-primary: #ffffff;
+	--pvfss-accent: #c8661a;
+	--pvfss-accent-soft: #fdf1e6;
+	--pvfss-sidebar: #0b2540;
+	--pvfss-sidebar-text: #e6edf5;
+	--pvfss-sidebar-muted: #9fb2c6;
+	--pvfss-sidebar-hover: #12355a;
+	--pvfss-bg-page: #f5f7fa;
+	--pvfss-bg-surface: #ffffff;
+	--pvfss-bg-subtle: #f0f3f7;
+	--pvfss-text: #1f2933;
+	--pvfss-text-muted: #56636f;
+	--pvfss-border: #dde2e8;
+	--pvfss-border-strong: #b8c2cc;
+	--pvfss-ok: #1b7a43;
+	--pvfss-ok-bg: #e6f4ec;
+	--pvfss-warn: #8f5400;
+	--pvfss-warn-bg: #fff3e0;
+	--pvfss-bad: #c2262a;
+	--pvfss-bad-bg: #fdecec;
+	--pvfss-info: #1560b8;
+	--pvfss-info-bg: #e8f1fb;
+	--pvfss-neutral: #56636f;
+	--pvfss-neutral-bg: #eef1f4;
+	--pvfss-hold: #6a3fb5;
+	--pvfss-hold-bg: #f1eafb;
+	--pvfss-font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+	--pvfss-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+	--pvfss-radius-sm: 6px;
+	--pvfss-radius: 8px;
+	--pvfss-radius-lg: 12px;
+}
+
+/* Layer 1: PVFSS brand tokens (dark) */
+[data-theme="dark"] {
+	--pvfss-primary: #5aa6ea;
+	--pvfss-primary-hover: #7bb8ef;
+	--pvfss-primary-soft: #16314b;
+	--pvfss-on-primary: #0b1a2a;
+	--pvfss-accent: #f29a4a;
+	--pvfss-accent-soft: #3a2a1a;
+	--pvfss-sidebar: #0b1118;
+	--pvfss-sidebar-text: #dce4ed;
+	--pvfss-sidebar-muted: #8c9aa8;
+	--pvfss-sidebar-hover: #17212d;
+	--pvfss-bg-page: #12161c;
+	--pvfss-bg-surface: #1a2029;
+	--pvfss-bg-subtle: #222a35;
+	--pvfss-text: #e4e8ee;
+	--pvfss-text-muted: #a3aeba;
+	--pvfss-border: #2a323d;
+	--pvfss-border-strong: #3a4552;
+	--pvfss-ok: #4cc882;
+	--pvfss-ok-bg: #16301f;
+	--pvfss-warn: #f0a63a;
+	--pvfss-warn-bg: #3a2c14;
+	--pvfss-bad: #f06a68;
+	--pvfss-bad-bg: #3b1a1a;
+	--pvfss-info: #6db8f7;
+	--pvfss-info-bg: #15283d;
+	--pvfss-neutral: #a3aeba;
+	--pvfss-neutral-bg: #262e38;
+	--pvfss-hold: #b9a2e0;
+	--pvfss-hold-bg: #2a2140;
+}
+
+/* Layer 2: map PVFSS tokens onto Frappe v16 variables */
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+	--primary: var(--pvfss-primary);
+	--primary-color: var(--pvfss-primary);
+	--btn-primary: var(--pvfss-primary);
+	--bg-color: var(--pvfss-bg-page);
+	--fg-color: var(--pvfss-bg-surface);
+	--card-bg: var(--pvfss-bg-surface);
+	--navbar-bg: var(--pvfss-bg-surface);
+	--control-bg: var(--pvfss-bg-subtle);
+	--text-color: var(--pvfss-text);
+	--heading-color: var(--pvfss-text);
+	--text-muted: var(--pvfss-text-muted);
+	--text-light: var(--pvfss-text-muted);
+	--border-color: var(--pvfss-border);
+	--dark-border-color: var(--pvfss-border-strong);
+	--font-stack: var(--pvfss-font);
+	--border-radius: var(--pvfss-radius-sm);
+	--border-radius-md: var(--pvfss-radius);
+	--border-radius-lg: var(--pvfss-radius-lg);
+	--desk-sidebar-bg: var(--pvfss-sidebar);
+
+	/* Status pills (screens §2.3): gray, blue, orange, green, red, purple */
+	--bg-green: var(--pvfss-ok-bg);
+	--text-on-green: var(--pvfss-ok);
+	--bg-orange: var(--pvfss-warn-bg);
+	--text-on-orange: var(--pvfss-warn);
+	--bg-red: var(--pvfss-bad-bg);
+	--text-on-red: var(--pvfss-bad);
+	--bg-blue: var(--pvfss-info-bg);
+	--text-on-blue: var(--pvfss-info);
+	--bg-gray: var(--pvfss-neutral-bg);
+	--text-on-gray: var(--pvfss-neutral);
+	--bg-purple: var(--pvfss-hold-bg);
+	--text-on-purple: var(--pvfss-hold);
+}
+
+/* v16 "espresso" buttons: brand the default (gray) solid button only; red/other themes untouched. */
+.es-button:not([data-theme]) {
+	--bt-solid-bg: var(--pvfss-primary);
+	--bt-solid-bg-hover: var(--pvfss-primary-hover);
+	--bt-solid-bg-active: var(--pvfss-primary-hover);
+	--bt-solid-fg: var(--pvfss-on-primary, #ffffff);
+}
+
+/*
+ * The one scoped override (plan §6.4): the dark navy sidebar. v16 draws sidebar text with
+ * the --ink-gray-* scale, so the scale is re-pointed inside the sidebar only. No component
+ * styles are replaced.
+ */
+.body-sidebar {
+	--ink-gray-9: var(--pvfss-sidebar-text);
+	--ink-gray-8: var(--pvfss-sidebar-text);
+	--ink-gray-7: var(--pvfss-sidebar-text);
+	--ink-gray-6: var(--pvfss-sidebar-muted);
+	--ink-gray-5: var(--pvfss-sidebar-muted);
+	--ink-gray-4: var(--pvfss-sidebar-muted);
+	--surface-gray-2: var(--pvfss-sidebar-hover);
+	--surface-gray-3: var(--pvfss-sidebar-hover);
+	--sidebar-select-color: var(--pvfss-sidebar-hover);
+	--outline-gray-1: transparent;
+}
+
+/* Layer 3: PVFSS-only classes used by custom pages and gate dialogs */
+.pvfss-mono {
+	font-family: var(--pvfss-mono);
+	font-size: 12.5px;
+}
+
+.pvfss-gate-failures {
+	margin: 0;
+	padding-left: 18px;
+}
+
+.pvfss-gate-failures li {
+	margin: 4px 0;
+}
+
+.pvfss-banner {
+	border-radius: var(--pvfss-radius);
+	padding: 10px 14px;
+	margin-bottom: 12px;
+	border-left: 4px solid currentColor;
+}
+
+.pvfss-banner.ok {
+	color: var(--pvfss-ok);
+	background: var(--pvfss-ok-bg);
+}
+
+.pvfss-banner.warn {
+	color: var(--pvfss-warn);
+	background: var(--pvfss-warn-bg);
+}
+
+.pvfss-banner.bad {
+	color: var(--pvfss-bad);
+	background: var(--pvfss-bad-bg);
+}
+
+.pvfss-banner.info {
+	color: var(--pvfss-info);
+	background: var(--pvfss-info-bg);
+}
+
+/* Phone width (screens §2.9): 15px base font on the listed mobile screens */
+@media (max-width: 414px) {
+	body {
+		font-size: 15px;
+	}
+}

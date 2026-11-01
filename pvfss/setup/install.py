@@ -7,18 +7,20 @@ Everything here is idempotent: it only fills values that are still empty, so re-
 import frappe
 from frappe.utils import cint
 
-from pvfss.setup import defaults, masters
+from pvfss.setup import branding, defaults, masters
 
 
 def after_install():
 	apply_settings_defaults()
 	apply_security_defaults()
 	masters.seed_global()
+	branding.apply()
 
 
 def after_migrate():
 	apply_settings_defaults()
 	masters.seed_global()
+	branding.apply()
 
 
 def before_tests():

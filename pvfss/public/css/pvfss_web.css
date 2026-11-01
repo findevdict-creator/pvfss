@@ -1,0 +1,60 @@
+/* PVFSS login and web pages (SCR-GEN-01, SCR-GEN-02). Brand tokens only, no template override. */
+
+:root {
+	--pvfss-primary: #0b4f8a;
+	--pvfss-primary-hover: #083b68;
+	--pvfss-sidebar: #0b2540;
+	--pvfss-text: #1f2933;
+	--pvfss-text-muted: #56636f;
+	--primary: var(--pvfss-primary);
+	--primary-color: var(--pvfss-primary);
+	--btn-primary: var(--pvfss-primary);
+	--font-stack: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* v16 "espresso" buttons: brand the default (gray) solid button only; red/other themes untouched. */
+.es-button:not([data-theme]) {
+	--bt-solid-bg: var(--pvfss-primary);
+	--bt-solid-bg-hover: var(--pvfss-primary-hover);
+	--bt-solid-bg-active: var(--pvfss-primary-hover);
+	--bt-solid-fg: #ffffff;
+}
+
+body[data-path="login"],
+body[data-path="update-password"] {
+	background: linear-gradient(135deg, var(--pvfss-sidebar) 0%, var(--pvfss-primary) 100%);
+	min-height: 100vh;
+}
+
+body[data-path="login"] .page-card,
+body[data-path="login"] .login-content,
+body[data-path="update-password"] .page-card {
+	border-radius: 12px;
+	box-shadow: 0 12px 40px rgba(11, 37, 64, 0.35);
+}
+
+body[data-path="login"] .page-card-head h4 {
+	color: var(--pvfss-text);
+	font-weight: 600;
+}
+
+body[data-path="login"] .btn-primary {
+	background-color: var(--pvfss-primary);
+	border-color: var(--pvfss-primary);
+}
+
+body[data-path="login"] .btn-primary:hover {
+	background-color: var(--pvfss-primary-hover);
+}
+
+/* No sign-up and no social login (accounts are created by Quantum-Electro only, GEN-20) */
+body[data-path="login"] .sign-up-message,
+body[data-path="login"] .social-logins {
+	display: none;
+}
+
+body[data-path="login"] .web-footer,
+body[data-path="login"] footer {
+	background: transparent;
+	color: rgba(255, 255, 255, 0.75);
+}
