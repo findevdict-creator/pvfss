@@ -1,0 +1,280 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:project_code",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "End-client project an inquiry belongs to (MD-02).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_details",
+  "project_code",
+  "title",
+  "end_client",
+  "end_client_customer",
+  "column_break_1",
+  "main_contractor",
+  "contract_model",
+  "icv_weightage_pct",
+  "disabled",
+  "section_notes",
+  "notes",
+  "tab_avl",
+  "avl_required",
+  "tab_mtc",
+  "mtc_age_overrides"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_details",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "project_code",
+   "fieldtype": "Data",
+   "label": "Project Code",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1
+  },
+  {
+   "fieldname": "end_client",
+   "fieldtype": "Data",
+   "label": "End Client",
+   "in_list_view": 1,
+   "description": "Typically an ADNOC entity. Pick the customer below when the end client is also a customer."
+  },
+  {
+   "fieldname": "end_client_customer",
+   "fieldtype": "Link",
+   "label": "End Client (Customer)",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "main_contractor",
+   "fieldtype": "Link",
+   "label": "Main Contractor",
+   "options": "Customer",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "contract_model",
+   "fieldtype": "Select",
+   "label": "Contract Model",
+   "options": "EPC\nEPCM\nDirect",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "icv_weightage_pct",
+   "fieldtype": "Percent",
+   "label": "ICV Weightage %",
+   "non_negative": 1,
+   "description": "Default for tenders on this project (ICV-20)."
+  },
+  {
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled",
+   "default": "0"
+  },
+  {
+   "fieldname": "section_notes",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "tab_avl",
+   "fieldtype": "Tab Break",
+   "label": "Approved Vendor List"
+  },
+  {
+   "fieldname": "avl_required",
+   "fieldtype": "Check",
+   "label": "AVL Required",
+   "default": "0",
+   "in_standard_filter": 1,
+   "description": "Suppliers must be on this project's Approved Vendor List (SUP-03)."
+  },
+  {
+   "fieldname": "tab_mtc",
+   "fieldtype": "Tab Break",
+   "label": "MTC Age Overrides"
+  },
+  {
+   "fieldname": "mtc_age_overrides",
+   "fieldtype": "Table",
+   "label": "MTC Age Overrides",
+   "options": "Client Project MTC Override",
+   "description": "Overrides the company MTC Age Rule for this client project (SMR-20)."
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS",
+ "name": "Client Project",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Pre-Bidding User",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Pre-Bidding Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "Logistics User",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "Finance User",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "HSE User",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "HSE Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "ICV User",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "export": 1,
+   "report": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "title,main_contractor,end_client",
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

@@ -16,6 +16,7 @@ app_include_js = "pvfss.bundle.js"
 # ------------
 after_install = "pvfss.setup.install.after_install"
 after_migrate = "pvfss.setup.install.after_migrate"
+setup_wizard_complete = "pvfss.setup.masters.setup_wizard_complete"  # company defaults (GEN-10 to 12, MD-20)
 
 # Document events (GEN-04)
 # ------------------------
@@ -23,6 +24,7 @@ after_migrate = "pvfss.setup.install.after_migrate"
 # Each module branch adds its own entries here.
 doc_events = {
 	"User": {"before_validate": "pvfss.overrides.user.before_validate"},  # NFR-04 password length
+	"Item": {"validate": "pvfss.overrides.item.validate"},  # MD-12 / SCR-MD-05
 }
 
 # Scheduled tasks (GEN-61)

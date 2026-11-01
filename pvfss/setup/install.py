@@ -7,21 +7,27 @@ Everything here is idempotent: it only fills values that are still empty, so re-
 import frappe
 from frappe.utils import cint
 
-from pvfss.setup import defaults
+from pvfss.setup import defaults, masters
 
 
 def after_install():
 	apply_settings_defaults()
 	apply_security_defaults()
+	masters.seed_global()
 
 
 def after_migrate():
 	apply_settings_defaults()
+	masters.seed_global()
 
 
 def before_tests():
-	"""Make sure a fresh test site has the PVFSS defaults even if install hooks were skipped."""
+	"""Prepare a fresh test site: setup wizard (company), PVFSS defaults and masters."""
+	from pvfss.tests.factories import ensure_test_company
+
 	apply_settings_defaults()
+	ensure_test_company()
+	frappe.db.commit()
 
 
 # --------------------------------------------------------------------------- PVFSS Settings
