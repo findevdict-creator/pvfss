@@ -224,7 +224,7 @@ class ProjectHandover(Document):
 
 
 @frappe.whitelist()
-def make_handover(sales_order):
+def make_handover(sales_order: str):
 	frappe.has_permission("Project Handover", "create", throw=True)
 	existing = frappe.db.get_value("Project Handover", {"sales_order": sales_order, "docstatus": ["<", 2]})
 	if existing:
