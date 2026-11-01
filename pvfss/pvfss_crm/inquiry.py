@@ -117,7 +117,14 @@ def refresh_outcome(doc):
 
 # ----------------------------------------------------------------------------- manual close
 @frappe.whitelist()
-def mark_closed(inquiry, stage, lost_reasons=None, detail=None, competitor_name=None, competitor_price=None):
+def mark_closed(
+	inquiry: str,
+	stage: str,
+	lost_reasons: str | list | None = None,
+	detail: str | None = None,
+	competitor_name: str | None = None,
+	competitor_price: float | str | None = None,
+):
 	"""SCR-CRM-05: mark an inquiry No Bid or Cancelled."""
 	if stage not in MANUAL:
 		frappe.throw(_("Only No Bid or Cancelled can be set by hand."))

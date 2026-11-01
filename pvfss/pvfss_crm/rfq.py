@@ -15,7 +15,7 @@ OPEN_FOR_RFQ = (inq.NEW, inq.RFQ_SENT, inq.QUOTES_RECEIVED, inq.UNDER_EVALUATION
 
 # ----------------------------------------------------------------------------- RFQ-01
 @frappe.whitelist()
-def make_rfq(inquiry):
+def make_rfq(inquiry: str):
 	"""Map the inquiry lines (with GEN-50 fields) to a new draft RFQ linked to the inquiry."""
 	from erpnext.crm.doctype.opportunity.opportunity import make_request_for_quotation
 
@@ -66,7 +66,12 @@ def client_project_of(inquiry):
 
 # ----------------------------------------------------------------------------- RFQ-02
 @frappe.whitelist()
-def suggest_suppliers(categories, client_project=None, only_approved=0, only_avl=0):
+def suggest_suppliers(
+	categories: str | list,
+	client_project: str | None = None,
+	only_approved: int | str = 0,
+	only_avl: int | str = 0,
+):
 	"""Suppliers whose Product Categories cover the RFQ lines (SCR-RFQ-03)."""
 	if isinstance(categories, str):
 		categories = json.loads(categories)
@@ -177,7 +182,7 @@ SUPPLIER_COLUMNS = [
 
 
 @frappe.whitelist()
-def download_supplier_excel(rfq):
+def download_supplier_excel(rfq: str):
 	"""RFQ lines as an Excel the supplier can price (the RFQ-06 import reads it back)."""
 	doc = frappe.get_doc("Request for Quotation", rfq)
 	doc.check_permission("read")

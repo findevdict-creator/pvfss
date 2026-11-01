@@ -189,5 +189,5 @@ def apply():
 			validate_fields_for_doctype=False,
 		)
 		frappe.db.set_value("Property Setter", ps.name, "module", MODULE)
-	frappe.db.commit()
+	frappe.db.commit()  # nosemgrep: frappe-manual-commit (developer command run from bench execute, outside a request)
 	print("06-rfq customisations applied")

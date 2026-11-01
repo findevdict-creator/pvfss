@@ -140,7 +140,7 @@ def parse(file_url, existing_refs=()):
 
 
 @frappe.whitelist()
-def preview(inquiry, file_url, replace=0):
+def preview(inquiry: str, file_url: str, replace: int | str = 0):
 	doc = frappe.get_doc("Opportunity", inquiry)
 	doc.check_permission("write")
 	existing = () if frappe.utils.cint(replace) else [r.pvfss_customer_line_ref for r in doc.items]
@@ -149,7 +149,7 @@ def preview(inquiry, file_url, replace=0):
 
 
 @frappe.whitelist()
-def import_lines(inquiry, file_url, replace=0):
+def import_lines(inquiry: str, file_url: str, replace: int | str = 0):
 	"""Append (or replace with) the OK rows. Returns the number of lines imported."""
 	doc = frappe.get_doc("Opportunity", inquiry)
 	doc.check_permission("write")

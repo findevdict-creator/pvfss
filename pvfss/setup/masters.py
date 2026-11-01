@@ -248,10 +248,10 @@ def seed_generic_item():
 
 
 # --------------------------------------------------------------------------- company
-def setup_wizard_complete(args=None):
+def setup_wizard_complete(wizard_args=None):
 	from pvfss.setup.install import apply_operating_defaults
 
-	company = (args or {}).get("company_name") or frappe.defaults.get_global_default("company")
+	company = (wizard_args or {}).get("company_name") or frappe.defaults.get_global_default("company")
 	if company and frappe.db.exists("Company", company):
 		setup_company(company)
 	apply_operating_defaults()  # the wizard resets Buying Settings
@@ -263,7 +263,7 @@ def setup_company(company):
 	setup_currencies()
 	setup_warehouses(company)
 	setup_tax_templates(company)
-	frappe.db.commit()
+	frappe.db.commit()  # nosemgrep: frappe-manual-commit (setup step run from install / setup wizard hooks; later steps need it persisted)
 
 
 def setup_currencies():
