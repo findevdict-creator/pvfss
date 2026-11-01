@@ -30,6 +30,7 @@ doctype_js = {
 	"Sales Order": "public/js/doctype/sales_order.js",
 	"Purchase Order": "public/js/doctype/purchase_order.js",
 	"Project": "public/js/doctype/project.js",
+	"Batch": "public/js/doctype/batch.js",
 }
 doctype_list_js = {
 	"Opportunity": "public/js/doctype/opportunity_list.js",
@@ -92,6 +93,21 @@ doc_events = {
 		"before_submit": "pvfss.overrides.purchase_order.before_submit",
 		"on_cancel": "pvfss.overrides.purchase_order.on_cancel",
 		"after_insert": "pvfss.pvfss_purchasing.project.auto_change",  # PUR-09 / PRJ-30
+	},
+	# Module 9: Heat number traceability (TRC-01 to TRC-04, G6)
+	"Batch": {
+		"before_insert": "pvfss.overrides.batch.before_insert",
+		"validate": "pvfss.overrides.batch.validate",
+	},
+	"Purchase Receipt": {
+		"before_submit": "pvfss.overrides.purchase_receipt.before_submit",
+		"on_submit": "pvfss.overrides.purchase_receipt.on_submit",
+		"on_cancel": "pvfss.overrides.purchase_receipt.on_cancel",
+	},
+	"Delivery Note": {
+		"before_submit": "pvfss.overrides.delivery_note.before_submit",
+		"on_submit": "pvfss.overrides.delivery_note.on_submit",
+		"on_cancel": "pvfss.overrides.delivery_note.on_cancel",
 	},
 	# Module 6: Project (PRJ-01 to PRJ-40)
 	"Project": {"validate": "pvfss.overrides.project.validate"},

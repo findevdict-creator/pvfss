@@ -111,7 +111,8 @@ ICV_EXPIRY_ALERT_DAYS = [90, 30]  # ICV-11
 OPERATING_SETTINGS = {
 	"Buying Settings": {"po_required": "Yes", "pr_required": "Yes"},
 	"Accounts Settings": {"over_billing_allowance": 0},
-	"Stock Settings": {"over_delivery_receipt_allowance": 0},
+	# TRC-01 / TRC-02: heat traceability runs on batches
+	"Stock Settings": {"over_delivery_receipt_allowance": 0, "enable_serial_and_batch_no_for_item": 1},
 }
 
 SETTINGS_TABLES = {

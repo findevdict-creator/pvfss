@@ -1,0 +1,53 @@
+{# PR-11 Traceability Report (TRC-11, SCR-TRC-04) #}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+	body { font-family: Inter, Arial, sans-serif; font-size: 10px; color: #1f2933; }
+	h1 { font-size: 16px; margin: 0 0 4px; color: #0b4f8a; }
+	table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+	th, td { border: 1px solid #cfd8e3; padding: 3px 5px; text-align: left; vertical-align: top; }
+	th { background: #e8f1fa; }
+	.muted { color: #6b7785; }
+	.mono { font-family: monospace; }
+</style>
+</head>
+<body>
+	{% include "pvfss/templates/print/letter_head.html" ignore missing %}
+	<h1>{{ _("Traceability Report") }}</h1>
+	<div class="muted">
+		{{ _("Search") }}: <b>{{ r.search_type }} {{ r.key }}</b> ({{ _(r.direction|title) }})
+		· {{ _("Generated") }} {{ frappe.utils.format_datetime(now) }} {{ _("by") }} {{ user }}
+	</div>
+	<div class="muted">{{ _("{0} heats, {1} lots, {2} deliveries").format(r.heats, r.lots, r.deliveries) }}</div>
+
+	<table>
+		<thead><tr>
+			<th>{{ _("Heat") }}</th><th>{{ _("Lot") }}</th><th>{{ _("MTC no") }}</th><th>{{ _("MTC date") }}</th>
+			<th>{{ _("Delivery Note") }}</th><th>{{ _("Customer") }}</th><th>{{ _("Customer PO") }}</th>
+			<th>{{ _("Invoice") }}</th><th>{{ _("Qty") }}</th>
+		</tr></thead>
+		<tbody>
+		{% for row in r.table %}
+			<tr>
+				<td class="mono">{{ row.heat or "" }}</td><td class="mono">{{ row.lot or "" }}</td>
+				<td>{{ row.mtc or "" }}</td><td>{{ frappe.utils.formatdate(row.mtc_date) if row.mtc_date else "" }}</td>
+				<td class="mono">{{ row.delivery or "" }}</td><td>{{ row.customer or "" }}</td>
+				<td>{{ row.customer_po or "" }}</td><td class="mono">{{ row.invoice or "" }}</td>
+				<td>{{ row.qty if row.qty is not none else "" }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+	{% for col in r.columns if col.stage in ("NCR", "Inspection") and col.nodes %}
+	<h3>{{ _(col.stage) }}</h3>
+	<table><tbody>
+		{% for n in col.nodes %}<tr><td class="mono">{{ n.name }}</td><td>{{ n.status or "" }}</td></tr>{% endfor %}
+	</tbody></table>
+	{% endfor %}
+
+	{% if r.missing %}<p class="muted">{{ r.missing|join("; ") }}</p>{% endif %}
+</body>
+</html>

@@ -213,3 +213,10 @@
 	background: var(--pvfss-bad-bg);
 	color: var(--pvfss-bad);
 }
+
+/* Heat Trace (SCR-TRC-03) */
+.pvfss-trace-chain { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+.pvfss-trace-col { min-width: 180px; flex: 0 0 auto; }
+.pvfss-trace-stage { font-weight: 600; font-size: 12px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+.pvfss-trace-node { border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 8px; margin-bottom: 6px; background: var(--card-bg); }
+.pvfss-trace-missing { border: 1px dashed var(--red-500, #e03636); color: var(--red-500, #e03636); font-size: 12px; }
