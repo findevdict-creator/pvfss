@@ -61,5 +61,26 @@
   "modified": "2026-11-02 01:05:03.130255",
   "name": "Approve Deviations",
   "workflow_action_name": "Approve Deviations"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-11-02 01:27:04.854208",
+  "name": "Accept",
+  "workflow_action_name": "Accept"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-11-02 01:27:04.864104",
+  "name": "Implement",
+  "workflow_action_name": "Implement"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-11-02 01:27:04.866905",
+  "name": "Submit Handover",
+  "workflow_action_name": "Submit Handover"
  }
 ]

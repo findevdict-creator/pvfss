@@ -111,4 +111,19 @@ MATRIX = {
 		DIR: "r",
 		RO: "r",
 	},
+	# ---- Module 6: Project (screens §21: Project row; PRJ-05 verified by Quality, PRJ-40 waive by Director)
+	"Project": {
+		POU: "rwc",
+		POM: "rwc",
+		DIR: "rw",
+		PBU: "r",
+		PBM: "r",
+		QU: "rw",
+		QM: "rw",
+		LOG: "r",
+		FU: "r",
+		FM: "rw",
+		RO: "r",
+	},
+	"Project Type": everyone(),
 }

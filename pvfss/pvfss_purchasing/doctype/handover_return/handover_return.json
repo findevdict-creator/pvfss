@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "returned_on",
+  "returned_by",
+  "reason",
+  "resolved"
+ ],
+ "fields": [
+  {
+   "fieldname": "returned_on",
+   "fieldtype": "Datetime",
+   "label": "Returned On",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "returned_by",
+   "fieldtype": "Link",
+   "label": "Returned By",
+   "options": "User",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "resolved",
+   "fieldtype": "Check",
+   "label": "Resolved",
+   "read_only": 1,
+   "in_list_view": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Purchasing",
+ "name": "Handover Return",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,285 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Change register entry (PRJ-30).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "project",
+  "change_type",
+  "raised_by",
+  "raised_on",
+  "column_break_h",
+  "customer_reference",
+  "supplier_reference",
+  "auto_created",
+  "source",
+  "section_desc",
+  "description",
+  "affected_documents",
+  "section_impact",
+  "cost_impact",
+  "margin_impact",
+  "column_break_i",
+  "margin_impact_pct",
+  "schedule_impact_days",
+  "section_approval",
+  "approved_by",
+  "approval_date",
+  "implementation_note",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PCH-.YY.-.#####",
+   "default": "PCH-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "change_type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Scope\nQuantity\nDate\nPrice\nSpecification\nOther",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "raised_by",
+   "fieldtype": "Select",
+   "label": "Raised By",
+   "options": "Customer\nSupplier\nPVFSS",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "raised_on",
+   "fieldtype": "Date",
+   "label": "Raised On",
+   "default": "Today"
+  },
+  {
+   "fieldname": "column_break_h",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer_reference",
+   "fieldtype": "Data",
+   "label": "Customer Reference"
+  },
+  {
+   "fieldname": "supplier_reference",
+   "fieldtype": "Data",
+   "label": "Supplier Reference"
+  },
+  {
+   "fieldname": "auto_created",
+   "fieldtype": "Check",
+   "label": "Auto-created",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Data",
+   "label": "Source",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_desc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "fieldname": "affected_documents",
+   "fieldtype": "Table",
+   "label": "Affected Documents",
+   "options": "Project Change Document"
+  },
+  {
+   "fieldname": "section_impact",
+   "fieldtype": "Section Break",
+   "label": "Impact"
+  },
+  {
+   "fieldname": "cost_impact",
+   "fieldtype": "Currency",
+   "label": "Cost Impact AED",
+   "options": "AED",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "margin_impact",
+   "fieldtype": "Currency",
+   "label": "Margin Impact AED",
+   "options": "AED"
+  },
+  {
+   "fieldname": "column_break_i",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "margin_impact_pct",
+   "fieldtype": "Percent",
+   "label": "Margin Impact %"
+  },
+  {
+   "fieldname": "schedule_impact_days",
+   "fieldtype": "Int",
+   "label": "Schedule Impact (days)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "section_approval",
+   "fieldtype": "Section Break",
+   "label": "Approval"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "approval_date",
+   "fieldtype": "Date",
+   "label": "Approval Date",
+   "read_only": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "implementation_note",
+   "fieldtype": "Small Text",
+   "label": "Implementation Note",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Project Change",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Purchasing",
+ "name": "Project Change",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "submit": 1
+  },
+  {
+   "role": "Pre-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "project,change_type,raised_by",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "description",
+ "track_changes": 1
+}

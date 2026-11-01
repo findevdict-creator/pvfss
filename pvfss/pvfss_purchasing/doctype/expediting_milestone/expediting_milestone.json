@@ -1,0 +1,99 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "milestone",
+  "committed_date",
+  "forecast_date",
+  "actual_date",
+  "status",
+  "remarks",
+  "last_contact_date",
+  "sequence",
+  "alerted_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "milestone",
+   "fieldtype": "Data",
+   "label": "Milestone",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "committed_date",
+   "fieldtype": "Date",
+   "label": "Committed",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "forecast_date",
+   "fieldtype": "Date",
+   "label": "Forecast",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "actual_date",
+   "fieldtype": "Date",
+   "label": "Actual",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nOn track\nAt risk\nLate\nDone",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "last_contact_date",
+   "fieldtype": "Date",
+   "label": "Last Contact",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence",
+   "hidden": 1
+  },
+  {
+   "fieldname": "alerted_on",
+   "fieldtype": "Date",
+   "label": "Alerted On",
+   "read_only": 1,
+   "hidden": 1,
+   "no_copy": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Purchasing",
+ "name": "Expediting Milestone",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

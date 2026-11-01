@@ -1,0 +1,247 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Expediting milestones of one Supplier PO (PRJ-20, PRJ-21).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "purchase_order",
+  "supplier",
+  "project",
+  "supply_route",
+  "column_break_h",
+  "expeditor",
+  "supplier_contact",
+  "status",
+  "next_milestone",
+  "next_committed_date",
+  "next_forecast_date",
+  "last_contact_date",
+  "section_milestones",
+  "milestones",
+  "section_contacts",
+  "contacts"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "EXP-.YY.-.#####",
+   "default": "EXP-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Supplier PO",
+   "options": "Purchase Order",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "fetch_from": "purchase_order.supplier",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "supply_route",
+   "fieldtype": "Select",
+   "label": "Supply Route",
+   "options": "Manufacturing\nReady stock (SMR)\nMixed",
+   "default": "Manufacturing",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_h",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expeditor",
+   "fieldtype": "Link",
+   "label": "Expeditor",
+   "options": "User",
+   "default": "__user"
+  },
+  {
+   "fieldname": "supplier_contact",
+   "fieldtype": "Data",
+   "label": "Supplier Contact"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "On track\nAt risk\nLate\nComplete",
+   "default": "On track",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "next_milestone",
+   "fieldtype": "Data",
+   "label": "Next Milestone",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "next_committed_date",
+   "fieldtype": "Date",
+   "label": "Committed",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "next_forecast_date",
+   "fieldtype": "Date",
+   "label": "Forecast",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "last_contact_date",
+   "fieldtype": "Date",
+   "label": "Last Contact",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_milestones",
+   "fieldtype": "Section Break",
+   "label": "Milestones"
+  },
+  {
+   "fieldname": "milestones",
+   "fieldtype": "Table",
+   "label": "Milestones",
+   "options": "Expediting Milestone"
+  },
+  {
+   "fieldname": "section_contacts",
+   "fieldtype": "Section Break",
+   "label": "Contact Log",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "contacts",
+   "fieldtype": "Table",
+   "label": "Contact Log",
+   "options": "Expediting Contact"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Purchasing",
+ "name": "Expediting Log",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Logistics User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "purchase_order,supplier,project",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "supplier",
+ "track_changes": 1
+}

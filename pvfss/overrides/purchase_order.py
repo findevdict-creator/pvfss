@@ -51,3 +51,13 @@ def return_to_draft_on_change(doc):
 def before_submit(doc, method=None):
 	g3.refresh(doc)
 	g3.check(doc).throw_if_failed()
+
+
+def on_cancel(doc, method=None):
+	"""Runs after ERPNext sets its own list. Cancelling for amendment (PUR-09) keeps the handover snapshot, expediting log and change register."""
+	doc.ignore_linked_doctypes = [
+		*(getattr(doc, "ignore_linked_doctypes", None) or ()),
+		"Project Handover",
+		"Expediting Log",
+		"Project Change",
+	]
