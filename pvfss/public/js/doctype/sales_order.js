@@ -80,3 +80,21 @@ pvfss.purchasing.create_dialog = function (frm) {
 		d.show();
 	});
 };
+
+// ---------------------------------------------------------------------------- 09-project (PRJ-01)
+frappe.ui.form.on("Sales Order", {
+	refresh(frm) {
+		if (frm.doc.docstatus === 1 && frappe.model.can_create("Project Handover")) {
+			frm.add_custom_button(
+				__("Project Handover"),
+				() =>
+					frappe
+						.xcall("pvfss.pvfss_purchasing.doctype.project_handover.project_handover.make_handover", {
+							sales_order: frm.doc.name,
+						})
+						.then((name) => frappe.set_route("Form", "Project Handover", name)),
+				__("Create")
+			);
+		}
+	},
+});

@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "purchase_order",
+  "supplier",
+  "supply_route",
+  "committed_ready_date",
+  "forecast_ready_date",
+  "transit_days",
+  "at_risk"
+ ],
+ "fields": [
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Supplier PO",
+   "options": "Purchase Order",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "supply_route",
+   "fieldtype": "Select",
+   "label": "Supply Route",
+   "options": "Manufacturing\nReady stock (SMR)\nMixed",
+   "default": "Manufacturing",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "committed_ready_date",
+   "fieldtype": "Date",
+   "label": "Committed Ready",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "forecast_ready_date",
+   "fieldtype": "Date",
+   "label": "Forecast Ready",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "transit_days",
+   "fieldtype": "Int",
+   "label": "Transit Days",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "at_risk",
+   "fieldtype": "Check",
+   "label": "At Risk",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Purchasing",
+ "name": "Project Supply Route",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

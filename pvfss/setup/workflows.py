@@ -24,6 +24,12 @@ STATE_STYLES = {
 	"Approved": "Primary",
 	"Submitted": "Success",
 	"Cancelled": "Inverse",
+	"Pending Acceptance": "Warning",
+	"Returned": "Danger",
+	"Accepted": "Success",
+	"Open": "Warning",
+	"Rejected": "Danger",
+	"Implemented": "Success",
 }
 
 WORKFLOWS = {
@@ -155,6 +161,48 @@ WORKFLOWS = {
 			("Approved", "Submit", "Submitted", POU, None),
 			("Approved", "Submit", "Submitted", POM, None),
 			("Submitted", "Cancel", "Cancelled", POM, None),
+		],
+	},
+	# PRJ-01 to PRJ-04 / G4: Pre-Bidding hands over, the Post-Bidding Manager accepts or returns
+	"PVFSS Project Handover": {
+		"document_type": "Project Handover",
+		"states": [
+			("Draft", 0, PBU),
+			("Draft", 0, PBM),
+			("Pending Acceptance", 0, POM),
+			("Returned", 0, PBU),
+			("Returned", 0, PBM),
+			("Accepted", 1, POM),
+			("Cancelled", 2, POM),
+		],
+		"transitions": [
+			("Draft", "Submit Handover", "Pending Acceptance", PBM, None),
+			("Pending Acceptance", "Accept", "Accepted", POM, None),
+			("Pending Acceptance", "Return", "Returned", POM, None),
+			("Returned", "Submit Handover", "Pending Acceptance", PBM, None),
+			("Accepted", "Cancel", "Cancelled", POM, None),
+		],
+	},
+	# PRJ-30: change register; a change that reduces margin needs the Director
+	"PVFSS Project Change": {
+		"document_type": "Project Change",
+		"states": [
+			("Open", 0, POU),
+			("Open", 0, POM),
+			("Approved", 1, POM),
+			("Approved", 1, DIR),
+			("Rejected", 1, POM),
+			("Rejected", 1, DIR),
+			("Implemented", 1, POU),
+			("Implemented", 1, POM),
+		],
+		"transitions": [
+			("Open", "Approve", "Approved", POM, "(doc.margin_impact or 0) >= 0"),
+			("Open", "Approve", "Approved", DIR, None),
+			("Open", "Reject", "Rejected", POM, None),
+			("Open", "Reject", "Rejected", DIR, None),
+			("Approved", "Implement", "Implemented", POU, None),
+			("Approved", "Implement", "Implemented", POM, None),
 		],
 	},
 }

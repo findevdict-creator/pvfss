@@ -1,0 +1,391 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Pre-Bidding to Post-Bidding handover of a Customer PO (PRJ-01 to PRJ-04).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "sales_order",
+  "customer",
+  "customer_name",
+  "po_no",
+  "po_date",
+  "column_break_h",
+  "inquiry",
+  "inquiry_date",
+  "contractor_ref",
+  "client_project",
+  "delivery_date",
+  "section_owners",
+  "pre_bidding_owner",
+  "column_break_o1",
+  "post_bidding_owner",
+  "column_break_o2",
+  "quality_lead",
+  "section_terms",
+  "commercial_terms",
+  "delivery_requirements",
+  "column_break_t",
+  "inspection_requirements",
+  "section_pos",
+  "supplier_pos",
+  "tab_items",
+  "mandatory_progress",
+  "outstanding_count",
+  "items",
+  "tab_returns",
+  "return_reason",
+  "returns",
+  "project",
+  "submitted_on",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "HO-.YY.-.#####",
+   "default": "HO-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Customer PO",
+   "options": "Sales Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Contractor",
+   "options": "Customer",
+   "fetch_from": "sales_order.customer",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Contractor Name",
+   "fetch_from": "sales_order.customer_name",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "po_no",
+   "fieldtype": "Data",
+   "label": "Customer PO No",
+   "fetch_from": "sales_order.po_no",
+   "read_only": 1
+  },
+  {
+   "fieldname": "po_date",
+   "fieldtype": "Date",
+   "label": "Customer PO Date",
+   "fetch_from": "sales_order.po_date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_h",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inquiry",
+   "fieldtype": "Link",
+   "label": "Inquiry",
+   "options": "Opportunity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "inquiry_date",
+   "fieldtype": "Date",
+   "label": "Inquiry Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "contractor_ref",
+   "fieldtype": "Data",
+   "label": "Contractor Ref",
+   "read_only": 1
+  },
+  {
+   "fieldname": "client_project",
+   "fieldtype": "Link",
+   "label": "Client Project",
+   "options": "Client Project",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Customer Delivery Date",
+   "fetch_from": "sales_order.delivery_date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_owners",
+   "fieldtype": "Section Break",
+   "label": "Responsible Persons"
+  },
+  {
+   "fieldname": "pre_bidding_owner",
+   "fieldtype": "Link",
+   "label": "Pre-Bidding Owner",
+   "options": "User",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_o1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "post_bidding_owner",
+   "fieldtype": "Link",
+   "label": "Post-Bidding Owner",
+   "options": "User",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_o2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quality_lead",
+   "fieldtype": "Link",
+   "label": "Quality Lead",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_terms",
+   "fieldtype": "Section Break",
+   "label": "Terms and Requirements",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "commercial_terms",
+   "fieldtype": "Small Text",
+   "label": "Commercial and Payment Terms",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivery_requirements",
+   "fieldtype": "Small Text",
+   "label": "Delivery Requirements"
+  },
+  {
+   "fieldname": "column_break_t",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspection_requirements",
+   "fieldtype": "Text",
+   "label": "Inspection / Quality Requirements"
+  },
+  {
+   "fieldname": "section_pos",
+   "fieldtype": "Section Break",
+   "label": "Supplier POs"
+  },
+  {
+   "fieldname": "supplier_pos",
+   "fieldtype": "Table",
+   "label": "Supplier POs",
+   "options": "Handover Supplier PO"
+  },
+  {
+   "fieldname": "tab_items",
+   "fieldtype": "Tab Break",
+   "label": "Handover Items"
+  },
+  {
+   "fieldname": "mandatory_progress",
+   "fieldtype": "Data",
+   "label": "Mandatory Items Received",
+   "read_only": 1
+  },
+  {
+   "fieldname": "outstanding_count",
+   "fieldtype": "Int",
+   "label": "Outstanding Mandatory Items",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Handover Items",
+   "options": "Handover Item"
+  },
+  {
+   "fieldname": "tab_returns",
+   "fieldtype": "Tab Break",
+   "label": "Return History"
+  },
+  {
+   "fieldname": "return_reason",
+   "fieldtype": "Small Text",
+   "label": "Return Reason",
+   "description": "Required to return the handover (PRJ-03).",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "returns",
+   "fieldtype": "Table",
+   "label": "Returns",
+   "options": "Handover Return",
+   "read_only": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "read_only": 1,
+   "no_copy": 1,
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "submitted_on",
+   "fieldtype": "Datetime",
+   "label": "Submitted On",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Project Handover",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Purchasing",
+ "name": "Project Handover",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Pre-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Pre-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "sales_order,customer,client_project",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer_name",
+ "track_changes": 1
+}

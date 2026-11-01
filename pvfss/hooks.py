@@ -29,6 +29,7 @@ doctype_js = {
 	"Quotation": "public/js/doctype/quotation.js",
 	"Sales Order": "public/js/doctype/sales_order.js",
 	"Purchase Order": "public/js/doctype/purchase_order.js",
+	"Project": "public/js/doctype/project.js",
 }
 doctype_list_js = {
 	"Opportunity": "public/js/doctype/opportunity_list.js",
@@ -76,6 +77,7 @@ doc_events = {
 		"validate": "pvfss.overrides.sales_order.validate",
 		"before_submit": "pvfss.overrides.sales_order.before_submit",
 		"on_submit": "pvfss.overrides.sales_order.on_submit",
+		"after_insert": "pvfss.pvfss_purchasing.project.auto_change",  # PRJ-30
 	},
 	# Module 2: Supplier management (SUP-01 to SUP-07)
 	"Supplier": {"validate": "pvfss.overrides.supplier.validate"},
@@ -88,7 +90,11 @@ doc_events = {
 	"Purchase Order": {
 		"validate": "pvfss.overrides.purchase_order.validate",
 		"before_submit": "pvfss.overrides.purchase_order.before_submit",
+		"on_cancel": "pvfss.overrides.purchase_order.on_cancel",
+		"after_insert": "pvfss.pvfss_purchasing.project.auto_change",  # PUR-09 / PRJ-30
 	},
+	# Module 6: Project (PRJ-01 to PRJ-40)
+	"Project": {"validate": "pvfss.overrides.project.validate"},
 }
 
 # Scheduled tasks (GEN-61)
