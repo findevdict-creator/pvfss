@@ -55,5 +55,5 @@ def apply(doctypes=None):
 				update_permission_property(
 					doctype, role, 0, ptype, 1 if ptype in wanted else 0, validate=False
 				)
-	frappe.db.commit()
+	frappe.db.commit()  # nosemgrep: frappe-manual-commit (setup step run from install / setup wizard hooks; later steps need it persisted)
 	frappe.clear_cache()
