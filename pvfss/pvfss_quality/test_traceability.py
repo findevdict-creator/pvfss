@@ -135,7 +135,9 @@ class TestTraceability(IntegrationTestCase):
 	def test_trc03_receipt_links_batch_to_po_and_totals(self):
 		heat, batch, po, _pr = self.stocked_heat()
 		self.assertEqual(frappe.db.get_value("Batch", batch, "pvfss_supplier_po"), po.name)
-		row = frappe.db.get_value("Heat Number", heat, ["batch_count", "qty_received", "balance_qty"], as_dict=True)
+		row = frappe.db.get_value(
+			"Heat Number", heat, ["batch_count", "qty_received", "balance_qty"], as_dict=True
+		)
 		self.assertEqual((row.batch_count, flt(row.qty_received), flt(row.balance_qty)), (1, 10, 10))
 
 	# ------------------------------------------------------------------ TRC-04
@@ -168,7 +170,10 @@ class TestTraceability(IntegrationTestCase):
 		self.assertIn(dn.name, nodes["Delivery Note"])
 		self.assertIn(f.make_customer().name, nodes["Customer"])
 		self.assertIn(si.name, nodes["Sales Invoice"])
-		self.assertEqual({n["facts"]["Balance"] for n in next(c for c in r["columns"] if c["stage"] == "Stock")["nodes"]}, {6})
+		self.assertEqual(
+			{n["facts"]["Balance"] for n in next(c for c in r["columns"] if c["stage"] == "Stock")["nodes"]},
+			{6},
+		)
 		self.assertEqual([(t["lot"], t["delivery"], t["qty"]) for t in r["table"]], [(batch, dn.name, 4)])
 
 	def test_trc10_backward_trace_from_invoice(self):
@@ -221,7 +226,9 @@ class TestTraceability(IntegrationTestCase):
 		heat, _batch, po, _pr = self.stocked_heat()
 		_cols, rows = heat_number_register.execute({"supplier_po": po.name})
 		self.assertEqual([r["heat"] for r in rows], [heat])
-		self.assertEqual((rows[0]["qty_received"], rows[0]["balance"], rows[0]["mtc_no"]), (10, 10, "MTC-001"))
+		self.assertEqual(
+			(rows[0]["qty_received"], rows[0]["balance"], rows[0]["mtc_no"]), (10, 10, "MTC-001")
+		)
 
 	# ------------------------------------------------------------------ TRC-13
 	def test_trc13_heat_index_on_batch(self):

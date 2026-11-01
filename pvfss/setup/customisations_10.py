@@ -1,6 +1,6 @@
 """Developer helper for step 10-traceability: Batch heat fields (TRC-02), mill abbreviation (TRC-01).
 
-    bench --site pvfss.localhost execute pvfss.setup.customisations_10.apply
+bench --site pvfss.localhost execute pvfss.setup.customisations_10.apply
 """
 
 import frappe
@@ -76,5 +76,5 @@ def apply():
 		for f in rows:
 			f.setdefault("module", MODULE)
 	create_custom_fields(fields, update=True)
-	frappe.db.commit()
+	frappe.db.commit()  # nosemgrep: frappe-manual-commit (developer command run from bench execute, outside a request)
 	print("10-traceability customisations applied")

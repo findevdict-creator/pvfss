@@ -43,7 +43,9 @@ class HeatNumber(Document):
 		)
 		if existing:
 			frappe.throw(
-				_("Heat {0} already exists for {1} as {2}.").format(self.heat_no, self.manufacturer, existing),
+				_("Heat {0} already exists for {1} as {2}.").format(
+					self.heat_no, self.manufacturer, existing
+				),
 				title=_("Duplicate heat"),
 			)
 

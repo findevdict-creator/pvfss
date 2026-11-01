@@ -16,8 +16,20 @@ def execute(filters=None):
 
 def columns():
 	return [
-		{"fieldname": "heat", "label": _("Heat"), "fieldtype": "Link", "options": "Heat Number", "width": 160},
-		{"fieldname": "manufacturer", "label": _("Manufacturer"), "fieldtype": "Link", "options": "Manufacturer", "width": 140},
+		{
+			"fieldname": "heat",
+			"label": _("Heat"),
+			"fieldtype": "Link",
+			"options": "Heat Number",
+			"width": 160,
+		},
+		{
+			"fieldname": "manufacturer",
+			"label": _("Manufacturer"),
+			"fieldtype": "Link",
+			"options": "Manufacturer",
+			"width": 140,
+		},
 		{"fieldname": "item_code", "label": _("Item"), "fieldtype": "Link", "options": "Item", "width": 150},
 		{"fieldname": "grade", "label": _("Grade"), "fieldtype": "Data", "width": 90},
 		{"fieldname": "status", "label": _("Status"), "fieldtype": "Data", "width": 80},
@@ -51,8 +63,16 @@ def data(filters):
 		"Heat Number",
 		filters=conditions,
 		fields=[
-			"name", "manufacturer", "item_code", "grade", "status", "primary_mtc", "mtc_date",
-			"qty_received", "qty_shipped", "balance_qty",
+			"name",
+			"manufacturer",
+			"item_code",
+			"grade",
+			"status",
+			"primary_mtc",
+			"mtc_date",
+			"qty_received",
+			"qty_shipped",
+			"balance_qty",
 		],
 		order_by="name",
 	)

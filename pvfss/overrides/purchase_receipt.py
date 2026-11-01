@@ -26,4 +26,6 @@ def link_batches_to_po(doc):
 			continue
 		for batch, _qty in traceability.row_batches(row):
 			if not frappe.db.get_value("Batch", batch, "pvfss_supplier_po"):
-				frappe.db.set_value("Batch", batch, "pvfss_supplier_po", row.purchase_order, update_modified=False)
+				frappe.db.set_value(
+					"Batch", batch, "pvfss_supplier_po", row.purchase_order, update_modified=False
+				)

@@ -26,5 +26,7 @@ def validate(doc, method=None):
 		doc.pvfss_heat_status = frappe.db.get_value("Heat Number", doc.pvfss_heat_number, "status")
 		before = doc.get_doc_before_save()
 		if before and before.get("pvfss_heat_number") and before.pvfss_heat_number != doc.pvfss_heat_number:
-			if frappe.db.exists("Serial and Batch Entry", {"batch_no": doc.name, "is_cancelled": 0, "docstatus": 1}):
+			if frappe.db.exists(
+				"Serial and Batch Entry", {"batch_no": doc.name, "is_cancelled": 0, "docstatus": 1}
+			):
 				frappe.throw(_("The heat number of a batch with stock transactions cannot change."))

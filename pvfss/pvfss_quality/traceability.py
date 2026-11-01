@@ -88,7 +88,9 @@ def check_receipt(doc, result):
 		missing = [b for b, _q in batches if not (info.get(b) and info[b].pvfss_heat_number)]
 		if missing:
 			result.fail(
-				_("Line {0} ({1}): batch {2} has no heat number.").format(ref, row.item_code, ", ".join(missing)),
+				_("Line {0} ({1}): batch {2} has no heat number.").format(
+					ref, row.item_code, ", ".join(missing)
+				),
 				rule="TRC-03",
 			)
 
@@ -102,7 +104,9 @@ def blocked_heats(batches):
 	return {
 		r.name: r.status
 		for r in frappe.get_all(
-			"Heat Number", filters={"name": ["in", list(heats)], "status": ["in", BLOCKED]}, fields=["name", "status"]
+			"Heat Number",
+			filters={"name": ["in", list(heats)], "status": ["in", BLOCKED]},
+			fields=["name", "status"],
 		)
 	}
 
@@ -200,23 +204,33 @@ def _batches_for(search_type, key):
 		return [key], []
 	if search_type == "MTC No":
 		heats = frappe.get_all("Heat Number", filters={"primary_mtc": key}, pluck="name")
-		return frappe.get_all("Batch", filters={"pvfss_heat_number": ["in", heats or [""]]}, pluck="name"), heats
+		return frappe.get_all(
+			"Batch", filters={"pvfss_heat_number": ["in", heats or [""]]}, pluck="name"
+		), heats
 	if search_type == "Supplier PO":
 		batches = set(frappe.get_all("Batch", filters={"pvfss_supplier_po": key}, pluck="name"))
 		receipts = frappe.get_all(
-			"Purchase Receipt Item", filters={"purchase_order": key, "docstatus": 1}, pluck="parent", distinct=True
+			"Purchase Receipt Item",
+			filters={"purchase_order": key, "docstatus": 1},
+			pluck="parent",
+			distinct=True,
 		)
 		batches |= set(_voucher_batches("Purchase Receipt", receipts))
 		return list(batches), []
 	if search_type == "Customer PO":
 		dns = frappe.get_all(
-			"Delivery Note Item", filters={"against_sales_order": key, "docstatus": 1}, pluck="parent", distinct=True
+			"Delivery Note Item",
+			filters={"against_sales_order": key, "docstatus": 1},
+			pluck="parent",
+			distinct=True,
 		)
 		return _voucher_batches("Delivery Note", dns), []
 	if search_type == "Delivery Note":
 		return _voucher_batches("Delivery Note", [key]), []
 	if search_type == "Sales Invoice":
-		dns = frappe.get_all("Sales Invoice Item", filters={"parent": key}, pluck="delivery_note", distinct=True)
+		dns = frappe.get_all(
+			"Sales Invoice Item", filters={"parent": key}, pluck="delivery_note", distinct=True
+		)
 		batches = _voucher_batches("Delivery Note", [d for d in dns if d])
 		batches += _voucher_batches("Sales Invoice", [key])  # invoice that updates stock
 		return batches, []
@@ -239,7 +253,7 @@ def _node(stage, doctype, name, status=None, facts=None, **kw):
 
 
 @frappe.whitelist()
-def trace(search_type, key, direction=None):
+def trace(search_type: str, key: str, direction: str | None = None):
 	"""TRC-10: nodes per stage plus a flat table (one row per heat x lot x delivery)."""
 	frappe.has_permission("Heat Number", "read", throw=True)
 	started = frappe.utils.now_datetime()
@@ -258,16 +272,50 @@ def trace(search_type, key, direction=None):
 		for h in frappe.get_all(
 			"Heat Number",
 			filters={"name": ["in", heats or [""]]},
-			fields=["name", "heat_no", "manufacturer", "item_code", "grade", "primary_mtc", "mtc_date", "status"],
+			fields=[
+				"name",
+				"heat_no",
+				"manufacturer",
+				"item_code",
+				"grade",
+				"primary_mtc",
+				"mtc_date",
+				"status",
+			],
 		)
 	}
 	for h in heat_rows.values():
-		add(_node("Heat", "Heat Number", h.name, h.status, {"Mill": h.manufacturer, "Item": h.item_code, "Grade": h.grade}))
+		add(
+			_node(
+				"Heat",
+				"Heat Number",
+				h.name,
+				h.status,
+				{"Mill": h.manufacturer, "Item": h.item_code, "Grade": h.grade},
+			)
+		)
 		if h.primary_mtc:
-			add(_node("MTC", "Heat Number", h.name, None, {"MTC": h.primary_mtc, "Date": h.mtc_date}, label=h.primary_mtc))
+			add(
+				_node(
+					"MTC",
+					"Heat Number",
+					h.name,
+					None,
+					{"MTC": h.primary_mtc, "Date": h.mtc_date},
+					label=h.primary_mtc,
+				)
+			)
 		add(_node("Supplier / mill", "Manufacturer", h.manufacturer))
 	for b in info.values():
-		add(_node("Lot", "Batch", b.name, None, {"Heat": b.pvfss_heat_number, "Lot": b.pvfss_lot_no, "Item": b.item}))
+		add(
+			_node(
+				"Lot",
+				"Batch",
+				b.name,
+				None,
+				{"Heat": b.pvfss_heat_number, "Lot": b.pvfss_lot_no, "Item": b.item},
+			)
+		)
 		if b.pvfss_supplier_po:
 			add(_node("Supplier PO", "Purchase Order", b.pvfss_supplier_po))
 
@@ -285,11 +333,32 @@ def trace(search_type, key, direction=None):
 
 	for (batch, warehouse), qty in stock.items():
 		if abs(qty) > 1e-9:
-			add(_node("Stock", "Warehouse", warehouse, None, {"Lot": batch, "Balance": qty}, key=f"{batch}:{warehouse}"))
+			add(
+				_node(
+					"Stock",
+					"Warehouse",
+					warehouse,
+					None,
+					{"Lot": batch, "Balance": qty},
+					key=f"{batch}:{warehouse}",
+				)
+			)
 	for pr, lots in receipts.items():
-		head = frappe.db.get_value("Purchase Receipt", pr, ["supplier", "posting_date", "status"], as_dict=True)
-		add(_node("Receipt", "Purchase Receipt", pr, head.status, {"Supplier": head.supplier, "Date": head.posting_date}))
-		for po in frappe.get_all("Purchase Receipt Item", filters={"parent": pr}, pluck="purchase_order", distinct=True):
+		head = frappe.db.get_value(
+			"Purchase Receipt", pr, ["supplier", "posting_date", "status"], as_dict=True
+		)
+		add(
+			_node(
+				"Receipt",
+				"Purchase Receipt",
+				pr,
+				head.status,
+				{"Supplier": head.supplier, "Date": head.posting_date},
+			)
+		)
+		for po in frappe.get_all(
+			"Purchase Receipt Item", filters={"parent": pr}, pluck="purchase_order", distinct=True
+		):
 			if po:
 				add(_node("Supplier PO", "Purchase Order", po))
 				supplier = frappe.db.get_value("Purchase Order", po, "supplier")
@@ -298,23 +367,54 @@ def trace(search_type, key, direction=None):
 	table = []
 	for (vtype, vno), lots in deliveries.items():
 		if vtype == "Delivery Note":
-			head = frappe.db.get_value("Delivery Note", vno, ["customer", "posting_date", "status"], as_dict=True)
-			add(_node("Delivery Note", "Delivery Note", vno, head.status, {"Customer": head.customer, "Date": head.posting_date}))
+			head = frappe.db.get_value(
+				"Delivery Note", vno, ["customer", "posting_date", "status"], as_dict=True
+			)
+			add(
+				_node(
+					"Delivery Note",
+					"Delivery Note",
+					vno,
+					head.status,
+					{"Customer": head.customer, "Date": head.posting_date},
+				)
+			)
 			add(_node("Customer", "Customer", head.customer))
-			sos = frappe.get_all("Delivery Note Item", filters={"parent": vno}, pluck="against_sales_order", distinct=True)
+			sos = frappe.get_all(
+				"Delivery Note Item", filters={"parent": vno}, pluck="against_sales_order", distinct=True
+			)
 			invoices = frappe.get_all(
-				"Sales Invoice Item", filters={"delivery_note": vno, "docstatus": 1}, pluck="parent", distinct=True
+				"Sales Invoice Item",
+				filters={"delivery_note": vno, "docstatus": 1},
+				pluck="parent",
+				distinct=True,
 			)
 		else:
-			head = frappe.db.get_value("Sales Invoice", vno, ["customer", "posting_date", "status"], as_dict=True)
-			sos = frappe.get_all("Sales Invoice Item", filters={"parent": vno}, pluck="sales_order", distinct=True)
+			head = frappe.db.get_value(
+				"Sales Invoice", vno, ["customer", "posting_date", "status"], as_dict=True
+			)
+			sos = frappe.get_all(
+				"Sales Invoice Item", filters={"parent": vno}, pluck="sales_order", distinct=True
+			)
 			invoices = [vno]
 			add(_node("Customer", "Customer", head.customer))
 		for so in sos:
 			if so:
-				add(_node("Customer PO", "Sales Order", so, None, {"PO No": frappe.db.get_value("Sales Order", so, "po_no")}))
+				add(
+					_node(
+						"Customer PO",
+						"Sales Order",
+						so,
+						None,
+						{"PO No": frappe.db.get_value("Sales Order", so, "po_no")},
+					)
+				)
 		for si in invoices:
-			add(_node("Sales Invoice", "Sales Invoice", si, frappe.db.get_value("Sales Invoice", si, "status")))
+			add(
+				_node(
+					"Sales Invoice", "Sales Invoice", si, frappe.db.get_value("Sales Invoice", si, "status")
+				)
+			)
 		for lot, qty in lots.items():
 			b = info.get(lot) or frappe._dict()
 			h = heat_rows.get(b.get("pvfss_heat_number")) or frappe._dict()
@@ -335,7 +435,14 @@ def trace(search_type, key, direction=None):
 	for lot, b in info.items():
 		if lot not in delivered_lots:
 			h = heat_rows.get(b.pvfss_heat_number) or frappe._dict()
-			table.append({"heat": b.pvfss_heat_number, "lot": lot, "mtc": h.get("primary_mtc"), "mtc_date": h.get("mtc_date")})
+			table.append(
+				{
+					"heat": b.pvfss_heat_number,
+					"lot": lot,
+					"mtc": h.get("primary_mtc"),
+					"mtc_date": h.get("mtc_date"),
+				}
+			)
 
 	for path in STAGES:
 		for node in frappe.get_attr(path)(heats, list(info)) or []:
@@ -360,7 +467,18 @@ def trace(search_type, key, direction=None):
 	}
 
 
-FORWARD = ["Heat", "MTC", "Lot", "Stock", "Receipt", "IRN", "Delivery Note", "Customer", "Customer PO", "Sales Invoice"]
+FORWARD = [
+	"Heat",
+	"MTC",
+	"Lot",
+	"Stock",
+	"Receipt",
+	"IRN",
+	"Delivery Note",
+	"Customer",
+	"Customer PO",
+	"Sales Invoice",
+]
 BACKWARD = [
 	"Sales Invoice",
 	"Delivery Note",
@@ -388,7 +506,7 @@ def report_html(result):
 
 
 @frappe.whitelist()
-def download_report(search_type, key, direction=None):
+def download_report(search_type: str, key: str, direction: str | None = None):
 	from frappe.utils.pdf import get_pdf
 
 	result = trace(search_type, key, direction)
@@ -420,7 +538,9 @@ def build_zip(result, pdf=None):
 	heat_of = {}
 	for c in result["columns"]:
 		for n in c["nodes"]:
-			heat = (n.get("facts") or {}).get("Heat") or (n["name"] if n["doctype"] == "Heat Number" else None)
+			heat = (n.get("facts") or {}).get("Heat") or (
+				n["name"] if n["doctype"] == "Heat Number" else None
+			)
 			if heat:
 				heat_of[(n["doctype"], n["name"])] = heat
 	with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
@@ -439,7 +559,7 @@ def build_zip(result, pdf=None):
 
 
 @frappe.whitelist()
-def download_certificate_pack(search_type, key, direction=None):
+def download_certificate_pack(search_type: str, key: str, direction: str | None = None):
 	from frappe.utils.pdf import get_pdf
 
 	result = trace(search_type, key, direction)
