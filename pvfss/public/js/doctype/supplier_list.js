@@ -13,6 +13,10 @@ frappe.listview_settings["Supplier"] = {
 	get_indicator(doc) {
 		if (doc.disabled) return [__("Disabled"), "gray", "disabled,=,1"];
 		const status = doc.pvfss_approval_status || "Prospect";
-		return [__(status), PVFSS_SUPPLIER_COLOURS[status] || "gray", `pvfss_approval_status,=,${status}`];
+		return [
+			__(status),
+			PVFSS_SUPPLIER_COLOURS[status] || "gray",
+			`pvfss_approval_status,=,${status}`,
+		];
 	},
 };
