@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "criterion",
+  "weight_pct",
+  "score",
+  "comment"
+ ],
+ "fields": [
+  {
+   "fieldname": "criterion",
+   "fieldtype": "Data",
+   "label": "Criterion",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 4
+  },
+  {
+   "fieldname": "weight_pct",
+   "fieldtype": "Percent",
+   "label": "Weight %",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "score",
+   "fieldtype": "Int",
+   "label": "Score (1-5)",
+   "in_list_view": 1,
+   "columns": 1,
+   "non_negative": 1
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Small Text",
+   "label": "Comment",
+   "in_list_view": 1,
+   "columns": 4
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS CRM",
+ "name": "Supplier Evaluation Score",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

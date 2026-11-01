@@ -1,0 +1,323 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Supplier performance evaluation (SUP-05).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "supplier",
+  "supplier_name",
+  "evaluation_basis",
+  "period_from",
+  "period_to",
+  "purchase_order",
+  "column_break_1",
+  "evaluator",
+  "evaluation_date",
+  "section_scores",
+  "scores",
+  "section_result",
+  "weighted_total",
+  "band",
+  "recommended_action",
+  "column_break_2",
+  "overall_comments",
+  "section_reference",
+  "po_count",
+  "on_time_pct",
+  "column_break_3",
+  "ncr_count",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "SEV-.YY.-.#####",
+   "default": "SEV-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "label": "Supplier Name",
+   "fetch_from": "supplier.supplier_name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "evaluation_basis",
+   "fieldtype": "Select",
+   "label": "Evaluation Basis",
+   "options": "Period\nPurchase Order",
+   "default": "Period",
+   "reqd": 1
+  },
+  {
+   "fieldname": "period_from",
+   "fieldtype": "Date",
+   "label": "Period From",
+   "depends_on": "eval:doc.evaluation_basis=='Period'",
+   "mandatory_depends_on": "eval:doc.evaluation_basis=='Period'"
+  },
+  {
+   "fieldname": "period_to",
+   "fieldtype": "Date",
+   "label": "Period To",
+   "depends_on": "eval:doc.evaluation_basis=='Period'",
+   "mandatory_depends_on": "eval:doc.evaluation_basis=='Period'"
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "options": "Purchase Order",
+   "depends_on": "eval:doc.evaluation_basis=='Purchase Order'",
+   "mandatory_depends_on": "eval:doc.evaluation_basis=='Purchase Order'",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "evaluator",
+   "fieldtype": "Link",
+   "label": "Evaluator",
+   "options": "User",
+   "reqd": 1,
+   "default": "__user",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "evaluation_date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "reqd": 1,
+   "default": "Today"
+  },
+  {
+   "fieldname": "section_scores",
+   "fieldtype": "Section Break",
+   "label": "Scores"
+  },
+  {
+   "fieldname": "scores",
+   "fieldtype": "Table",
+   "label": "Scores",
+   "options": "Supplier Evaluation Score",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_result",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "weighted_total",
+   "fieldtype": "Float",
+   "label": "Weighted Total (1-5)",
+   "read_only": 1,
+   "precision": "2",
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "band",
+   "fieldtype": "Select",
+   "label": "Band",
+   "options": "\nGood\nSatisfactory\nWeak\nPoor",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "recommended_action",
+   "fieldtype": "Select",
+   "label": "Recommended Action",
+   "options": "None\nWatch\nConditional\nSuspend",
+   "default": "None"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "overall_comments",
+   "fieldtype": "Small Text",
+   "label": "Overall Comments"
+  },
+  {
+   "fieldname": "section_reference",
+   "fieldtype": "Section Break",
+   "label": "Reference Data",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "po_count",
+   "fieldtype": "Int",
+   "label": "Purchase Orders",
+   "read_only": 1
+  },
+  {
+   "fieldname": "on_time_pct",
+   "fieldtype": "Percent",
+   "label": "On-time Receipts %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ncr_count",
+   "fieldtype": "Int",
+   "label": "NCRs Raised",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Supplier Evaluation",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS CRM",
+ "name": "Supplier Evaluation",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Pre-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Pre-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "supplier,purchase_order,evaluator",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "supplier",
+ "track_changes": 1
+}

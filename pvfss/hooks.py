@@ -23,9 +23,11 @@ website_context = {
 # Client scripts for standard DocTypes (shipped as files, not Client Script fixtures)
 doctype_js = {
 	"Opportunity": "public/js/doctype/opportunity.js",
+	"Supplier": "public/js/doctype/supplier.js",
 }
 doctype_list_js = {
 	"Opportunity": "public/js/doctype/opportunity_list.js",
+	"Supplier": "public/js/doctype/supplier_list.js",
 }
 
 # Installation
@@ -52,6 +54,10 @@ doc_events = {
 		"on_update_after_submit": "pvfss.overrides.opportunity.on_quotation_update_after_submit",
 	},
 	"Sales Order": {"on_submit": "pvfss.overrides.opportunity.on_sales_order_submit"},
+	# Module 2: Supplier management (SUP-01 to SUP-07)
+	"Supplier": {"validate": "pvfss.overrides.supplier.validate"},
+	"Request for Quotation": {"validate": "pvfss.overrides.request_for_quotation.validate"},
+	"Purchase Order": {"validate": "pvfss.overrides.purchase_order.validate"},
 }
 
 # Scheduled tasks (GEN-61)

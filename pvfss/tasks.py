@@ -8,6 +8,7 @@ import frappe
 
 DAILY = [
 	"pvfss.pvfss_crm.alerts.inquiry_due_date",  # CRM-12
+	"pvfss.pvfss_crm.supplier_alerts.document_expiry",  # SUP-04
 ]
 
 HOURLY = [
