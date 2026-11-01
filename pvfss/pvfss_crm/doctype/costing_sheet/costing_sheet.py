@@ -213,7 +213,7 @@ class CostingSheet(Document):
 
 
 @frappe.whitelist()
-def make_or_refresh(inquiry):
+def make_or_refresh(inquiry: str):
 	"""Open the inquiry's Costing Sheet: refresh a draft, return a submitted one, or create one."""
 	frappe.has_permission("Costing Sheet", "create", throw=True)
 	existing = frappe.db.get_value(

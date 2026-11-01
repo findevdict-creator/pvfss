@@ -67,7 +67,7 @@ def _refresh_counts(quotations):
 
 
 @frappe.whitelist()
-def select_line(sq_item):
+def select_line(sq_item: str):
 	"""Select one supplier line for its inquiry line, unselecting any other supplier's line."""
 	row = frappe.db.get_value(
 		"Supplier Quotation Item",
@@ -98,7 +98,7 @@ def select_line(sq_item):
 
 
 @frappe.whitelist()
-def unselect_line(sq_item):
+def unselect_line(sq_item: str):
 	parent = frappe.db.get_value("Supplier Quotation Item", sq_item, "parent")
 	_check_write(parent)
 	_set_selected(sq_item, 0)
@@ -106,7 +106,7 @@ def unselect_line(sq_item):
 
 
 @frappe.whitelist()
-def select_lowest(inquiry, preview=1):
+def select_lowest(inquiry: str, preview: int | str = 1):
 	"""Select the lowest compliant line for every inquiry line. With ``preview`` only report."""
 	frappe.has_permission("Opportunity", "read", inquiry, throw=True)
 	best = lowest_compliant(quotation_lines(inquiry))
@@ -127,7 +127,7 @@ def select_lowest(inquiry, preview=1):
 
 
 @frappe.whitelist()
-def clear_selection(inquiry):
+def clear_selection(inquiry: str):
 	frappe.has_permission("Opportunity", "read", inquiry, throw=True)
 	touched = []
 	for line in quotation_lines(inquiry):
