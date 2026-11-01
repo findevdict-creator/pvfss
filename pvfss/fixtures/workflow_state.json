@@ -3,7 +3,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "remove",
-  "modified": "2026-11-02 03:26:06.937838",
+  "modified": "2026-11-02 03:45:36.593789",
   "name": "Rejected",
   "style": "Danger",
   "workflow_state_name": "Rejected"
@@ -12,7 +12,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.840238",
+  "modified": "2026-11-02 03:45:36.572831",
   "name": "Cancelled",
   "style": "Inverse",
   "workflow_state_name": "Cancelled"
@@ -21,7 +21,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.842334",
+  "modified": "2026-11-02 03:45:36.583460",
   "name": "Draft",
   "style": "",
   "workflow_state_name": "Draft"
@@ -30,7 +30,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.935276",
+  "modified": "2026-11-02 03:45:36.590185",
   "name": "Pending Approval",
   "style": "Warning",
   "workflow_state_name": "Pending Approval"
@@ -39,7 +39,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.939064",
+  "modified": "2026-11-02 03:45:36.595872",
   "name": "Submitted",
   "style": "Success",
   "workflow_state_name": "Submitted"
@@ -48,7 +48,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.939645",
+  "modified": "2026-11-02 03:45:36.599544",
   "name": "Under Review",
   "style": "Warning",
   "workflow_state_name": "Under Review"
@@ -57,7 +57,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "ok-sign",
-  "modified": "2026-11-02 03:26:06.839487",
+  "modified": "2026-11-02 03:45:36.571523",
   "name": "Approved",
   "style": "Primary",
   "workflow_state_name": "Approved"
@@ -66,7 +66,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.840951",
+  "modified": "2026-11-02 03:45:36.581512",
   "name": "Deviation Approval",
   "style": "Warning",
   "workflow_state_name": "Deviation Approval"
@@ -75,7 +75,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.841612",
+  "modified": "2026-11-02 03:45:36.582571",
   "name": "Director Approval",
   "style": "Warning",
   "workflow_state_name": "Director Approval"
@@ -84,7 +84,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.940181",
+  "modified": "2026-11-02 03:45:36.600781",
   "name": "Value Approval",
   "style": "Warning",
   "workflow_state_name": "Value Approval"
@@ -93,7 +93,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.838373",
+  "modified": "2026-11-02 03:45:36.467495",
   "name": "Accepted",
   "style": "Success",
   "workflow_state_name": "Accepted"
@@ -102,7 +102,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.842962",
+  "modified": "2026-11-02 03:45:36.584123",
   "name": "Implemented",
   "style": "Success",
   "workflow_state_name": "Implemented"
@@ -111,7 +111,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.843902",
+  "modified": "2026-11-02 03:45:36.587552",
   "name": "Open",
   "style": "Warning",
   "workflow_state_name": "Open"
@@ -120,7 +120,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.934557",
+  "modified": "2026-11-02 03:45:36.589407",
   "name": "Pending Acceptance",
   "style": "Warning",
   "workflow_state_name": "Pending Acceptance"
@@ -129,7 +129,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.938463",
+  "modified": "2026-11-02 03:45:36.594854",
   "name": "Returned",
   "style": "Danger",
   "workflow_state_name": "Returned"
@@ -138,7 +138,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.933462",
+  "modified": "2026-11-02 03:45:36.588451",
   "name": "Partially accepted",
   "style": "Warning",
   "workflow_state_name": "Partially accepted"
@@ -147,9 +147,72 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 03:26:06.937092",
+  "modified": "2026-11-02 03:45:36.592960",
   "name": "Received",
   "style": "Info",
   "workflow_state_name": "Received"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 03:45:36.568721",
+  "name": "Accepted with re-test",
+  "style": "Info",
+  "workflow_state_name": "Accepted with re-test"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 03:45:36.577548",
+  "name": "Closed",
+  "style": "Success",
+  "workflow_state_name": "Closed"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 03:45:36.579980",
+  "name": "Customer Approval",
+  "style": "Warning",
+  "workflow_state_name": "Customer Approval"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 03:45:36.586461",
+  "name": "Issued",
+  "style": "Success",
+  "workflow_state_name": "Issued"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 03:45:36.592061",
+  "name": "Pending Quality Manager",
+  "style": "Warning",
+  "workflow_state_name": "Pending Quality Manager"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 03:45:36.598265",
+  "name": "Supplier action",
+  "style": "Warning",
+  "workflow_state_name": "Supplier action"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 03:45:36.603342",
+  "name": "Verification",
+  "style": "Warning",
+  "workflow_state_name": "Verification"
  }
 ]

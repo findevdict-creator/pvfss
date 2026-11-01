@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "line_ref",
+  "item_code",
+  "heat_number",
+  "qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "line_ref",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "PO Line"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "options": "Item",
+   "in_list_view": 1,
+   "columns": 3,
+   "label": "Item"
+  },
+  {
+   "fieldname": "heat_number",
+   "fieldtype": "Link",
+   "options": "Heat Number",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Heat Number"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Qty Offered"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "RFI Material",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

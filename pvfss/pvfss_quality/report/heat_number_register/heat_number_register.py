@@ -6,7 +6,9 @@ from frappe import _
 from frappe.utils import flt, getdate, month_diff, nowdate
 
 # Hooks for later modules: fn(heats) -> {heat: {column: value}} (MTC status, released qty, open NCRs)
-EXTRA_COLUMNS = []
+EXTRA_COLUMNS = [
+	"pvfss.pvfss_quality.quality.register_columns",  # 12-quality: MTC status, released qty, open NCRs
+]
 
 
 def execute(filters=None):

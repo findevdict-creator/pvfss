@@ -23,6 +23,26 @@
   "items",
   "tab_heats",
   "heats",
+  "tab_chemical",
+  "chemical",
+  "tab_mechanical",
+  "mechanical",
+  "tab_review",
+  "chk_grade",
+  "chk_heats",
+  "chk_results",
+  "chk_cert_type",
+  "chk_stamp",
+  "review_cb",
+  "age_check",
+  "age_over",
+  "review_remarks",
+  "reviewer",
+  "review_date",
+  "retest_report",
+  "tab_authenticity",
+  "verifications",
+  "authenticity",
   "amended_from"
  ],
  "fields": [
@@ -136,6 +156,126 @@
    "options": "MTC Heat",
    "reqd": 1,
    "label": "Heats"
+  },
+  {
+   "fieldname": "tab_chemical",
+   "fieldtype": "Tab Break",
+   "label": "Chemical"
+  },
+  {
+   "fieldname": "chemical",
+   "fieldtype": "Table",
+   "options": "MTC Chemical",
+   "label": "Chemical Results"
+  },
+  {
+   "fieldname": "tab_mechanical",
+   "fieldtype": "Tab Break",
+   "label": "Mechanical"
+  },
+  {
+   "fieldname": "mechanical",
+   "fieldtype": "Table",
+   "options": "MTC Mechanical",
+   "label": "Mechanical Results"
+  },
+  {
+   "fieldname": "tab_review",
+   "fieldtype": "Tab Break",
+   "label": "Review"
+  },
+  {
+   "fieldname": "chk_grade",
+   "fieldtype": "Select",
+   "options": "\nYes\nNo\nN/A",
+   "label": "Grade and standard match PO spec"
+  },
+  {
+   "fieldname": "chk_heats",
+   "fieldtype": "Select",
+   "options": "\nYes\nNo\nN/A",
+   "label": "Heat numbers match tally"
+  },
+  {
+   "fieldname": "chk_results",
+   "fieldtype": "Select",
+   "options": "\nYes\nNo\nN/A",
+   "label": "Results within spec"
+  },
+  {
+   "fieldname": "chk_cert_type",
+   "fieldtype": "Select",
+   "options": "\nYes\nNo\nN/A",
+   "label": "Certificate type meets PO requirement"
+  },
+  {
+   "fieldname": "chk_stamp",
+   "fieldtype": "Select",
+   "options": "\nYes\nNo\nN/A",
+   "label": "Stamp / signature present"
+  },
+  {
+   "fieldname": "review_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "age_check",
+   "fieldtype": "Small Text",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Age within limit"
+  },
+  {
+   "fieldname": "age_over",
+   "fieldtype": "Check",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Over Age"
+  },
+  {
+   "fieldname": "review_remarks",
+   "fieldtype": "Small Text",
+   "label": "Review Remarks"
+  },
+  {
+   "fieldname": "reviewer",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Reviewer"
+  },
+  {
+   "fieldname": "review_date",
+   "fieldtype": "Date",
+   "no_copy": 1,
+   "label": "Review Date"
+  },
+  {
+   "fieldname": "retest_report",
+   "fieldtype": "Link",
+   "options": "Inspection Report",
+   "description": "Required for Accepted with re-test.",
+   "label": "Re-test Inspection Report"
+  },
+  {
+   "fieldname": "tab_authenticity",
+   "fieldtype": "Tab Break",
+   "label": "Authenticity"
+  },
+  {
+   "fieldname": "verifications",
+   "fieldtype": "Table",
+   "options": "MTC Verification",
+   "label": "Authenticity Verification"
+  },
+  {
+   "fieldname": "authenticity",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "in_list_view": 1,
+   "no_copy": 1,
+   "label": "Authenticity"
   },
   {
    "fieldname": "amended_from",

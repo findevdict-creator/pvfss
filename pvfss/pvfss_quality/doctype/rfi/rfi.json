@@ -1,0 +1,282 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Request for Inspection (QA-10 to QA-12).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "title",
+  "supplier_po",
+  "supplier",
+  "project",
+  "itp",
+  "status",
+  "cb1",
+  "raised_by_supplier_date",
+  "proposed_date",
+  "scheduled_date",
+  "location",
+  "points_label",
+  "sb_points",
+  "points",
+  "sb_material",
+  "material",
+  "sb_parties",
+  "parties_required",
+  "parties",
+  "sb_status",
+  "reschedules",
+  "cancellation_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "RFI-.YY.-.#####",
+   "default": "RFI-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Title"
+  },
+  {
+   "fieldname": "supplier_po",
+   "fieldtype": "Link",
+   "options": "Purchase Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier PO"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "options": "Supplier",
+   "fetch_from": "supplier_po.supplier",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "options": "Project",
+   "fetch_from": "supplier_po.project",
+   "read_only": 1,
+   "label": "Project"
+  },
+  {
+   "fieldname": "itp",
+   "fieldtype": "Link",
+   "options": "ITP",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "label": "ITP"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "options": "Raised\nScheduled\nRescheduled\nInspected\nClosed\nCancelled",
+   "default": "Raised",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "raised_by_supplier_date",
+   "fieldtype": "Date",
+   "label": "Raised by Supplier"
+  },
+  {
+   "fieldname": "proposed_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Proposed Inspection Date"
+  },
+  {
+   "fieldname": "scheduled_date",
+   "fieldtype": "Date",
+   "read_only": 1,
+   "in_list_view": 1,
+   "no_copy": 1,
+   "label": "Scheduled Date"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Location"
+  },
+  {
+   "fieldname": "points_label",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "in_list_view": 1,
+   "label": "ITP Points"
+  },
+  {
+   "fieldname": "sb_points",
+   "fieldtype": "Section Break",
+   "label": "ITP Points Covered"
+  },
+  {
+   "fieldname": "points",
+   "fieldtype": "Table",
+   "options": "RFI Point",
+   "reqd": 1,
+   "label": "Points"
+  },
+  {
+   "fieldname": "sb_material",
+   "fieldtype": "Section Break",
+   "label": "Offered Material"
+  },
+  {
+   "fieldname": "material",
+   "fieldtype": "Table",
+   "options": "RFI Material",
+   "label": "Material"
+  },
+  {
+   "fieldname": "sb_parties",
+   "fieldtype": "Section Break",
+   "label": "Parties and Inspectors"
+  },
+  {
+   "fieldname": "parties_required",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "label": "Parties Required"
+  },
+  {
+   "fieldname": "parties",
+   "fieldtype": "Table",
+   "options": "RFI Party",
+   "label": "Parties"
+  },
+  {
+   "fieldname": "sb_status",
+   "fieldtype": "Section Break",
+   "collapsible": 1,
+   "label": "Status History"
+  },
+  {
+   "fieldname": "reschedules",
+   "fieldtype": "Table",
+   "options": "RFI Reschedule",
+   "read_only": 1,
+   "label": "Reschedules"
+  },
+  {
+   "fieldname": "cancellation_reason",
+   "fieldtype": "Small Text",
+   "read_only": 1,
+   "label": "Cancellation Reason"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "RFI",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "supplier_po,supplier,itp,location",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

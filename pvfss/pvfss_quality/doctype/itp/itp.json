@@ -1,0 +1,251 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Inspection and Test Plan per Supplier PO (QA-03, QA-04).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "supplier_po",
+  "supplier",
+  "project",
+  "applies_to_lines",
+  "cb1",
+  "revision",
+  "template",
+  "customer_approval_required",
+  "customer_approval_ref",
+  "customer_approval_date",
+  "sb_points",
+  "points",
+  "sb_progress",
+  "points_closed",
+  "hold_points_open",
+  "next_hold_point",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "ITP-.YY.-.#####",
+   "default": "ITP-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "supplier_po",
+   "fieldtype": "Link",
+   "options": "Purchase Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier PO"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "options": "Supplier",
+   "fetch_from": "supplier_po.supplier",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "options": "Project",
+   "fetch_from": "supplier_po.project",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "label": "Project"
+  },
+  {
+   "fieldname": "applies_to_lines",
+   "fieldtype": "Data",
+   "description": "Line refs; blank = all lines.",
+   "label": "Applies to Lines"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "revision",
+   "fieldtype": "Int",
+   "default": "0",
+   "label": "Revision"
+  },
+  {
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "options": "ITP Template",
+   "label": "Template"
+  },
+  {
+   "fieldname": "customer_approval_required",
+   "fieldtype": "Check",
+   "label": "Customer Approval Required"
+  },
+  {
+   "fieldname": "customer_approval_ref",
+   "fieldtype": "Data",
+   "label": "Customer Approval Ref"
+  },
+  {
+   "fieldname": "customer_approval_date",
+   "fieldtype": "Date",
+   "label": "Customer Approval Date"
+  },
+  {
+   "fieldname": "sb_points",
+   "fieldtype": "Section Break",
+   "label": "ITP Points"
+  },
+  {
+   "fieldname": "points",
+   "fieldtype": "Table",
+   "options": "ITP Point",
+   "reqd": 1,
+   "label": "Points"
+  },
+  {
+   "fieldname": "sb_progress",
+   "fieldtype": "Section Break",
+   "label": "Progress"
+  },
+  {
+   "fieldname": "points_closed",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "in_list_view": 1,
+   "allow_on_submit": 1,
+   "no_copy": 1,
+   "label": "Points Closed"
+  },
+  {
+   "fieldname": "hold_points_open",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "in_list_view": 1,
+   "allow_on_submit": 1,
+   "no_copy": 1,
+   "label": "Hold Points Open"
+  },
+  {
+   "fieldname": "next_hold_point",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "allow_on_submit": 1,
+   "no_copy": 1,
+   "label": "Next Open Hold Point"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "options": "ITP",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "label": "Amended From"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "ITP",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "supplier_po,supplier,project",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "supplier_po",
+ "track_changes": 1
+}

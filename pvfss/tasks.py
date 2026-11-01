@@ -11,6 +11,7 @@ DAILY = [
 	"pvfss.pvfss_crm.supplier_alerts.document_expiry",  # SUP-04
 	"pvfss.pvfss_purchasing.project.delay_alerts",  # PRJ-21
 	"pvfss.utils.mtc_age.age_alerts",  # SMR-21
+	"pvfss.overrides.non_conformance.overdue_alerts",  # QA-31
 ]
 
 HOURLY = [

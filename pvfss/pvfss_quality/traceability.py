@@ -15,6 +15,7 @@ BLOCKED = ("On hold", "Rejected")
 # returning a list of node dicts {"stage", "doctype", "name", "status", "facts", "heat", "batch"}.
 STAGES = [
 	"pvfss.pvfss_quality.doctype.mtc.mtc.trace_nodes",  # 11-smr: MTC and Tally Sheet stages
+	"pvfss.pvfss_quality.quality.trace_nodes",  # 12-quality: inspection, NCR and IRN stages
 ]
 
 
@@ -160,8 +161,14 @@ def heat_summary(heat):
 		"received": received,
 		"shipped": shipped,
 		"balance": balance,
-		"open_ncrs": 0,  # 12-quality
+		"open_ncrs": len(open_ncr_names(heat)),
 	}
+
+
+def open_ncr_names(heat):
+	from pvfss.overrides.non_conformance import open_ncrs
+
+	return sorted({r.name for r in open_ncrs([heat]).get(heat, [])})
 
 
 def refresh_heat_totals(heats):
@@ -475,6 +482,8 @@ FORWARD = [
 	"Lot",
 	"Stock",
 	"Receipt",
+	"Inspection",
+	"NCR",
 	"IRN",
 	"Delivery Note",
 	"Customer",

@@ -126,6 +126,8 @@ MATRIX = {
 		RO: "r",
 	},
 	"Project Type": everyone(),
+	# ---- Module 8: Quality (screens §21: NCR on the standard Non Conformance)
+	"Non Conformance": {QU: "rwc", QM: "rwcd", POU: "rw", POM: "rw", DIR: "r", RO: "r"},
 	# ---- Module 9: Traceability (screens §21: Heat Number, Batch, Purchase Receipt rows)
 	"Manufacturer": everyone(**{QU: "rwc", QM: "rwc", PBU: "rwc", POU: "rwc", POM: "rwc"}),
 	"Batch": everyone(**{QU: "rwc", QM: "rwc", POU: "rwc", POM: "rwc", LOG: "rwc"}),

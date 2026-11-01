@@ -6,10 +6,7 @@ frappe.ui.form.on("Tally Sheet", {
 		if (frm.is_new() || frm.doc.docstatus !== 0) return;
 		frm.add_custom_button(__("Import from Excel"), () => tally_import_dialog(frm));
 		frm.add_custom_button(__("Download template"), () =>
-			window.open(
-				"/api/method/pvfss.pvfss_quality.tally_import.download_template",
-				"_blank"
-			)
+			window.open("/api/method/pvfss.pvfss_quality.tally_import.download_template", "_blank")
 		);
 	},
 });
@@ -56,20 +53,22 @@ function tally_import_dialog(frm) {
 							(row) =>
 								`<tr class="${row.status === "OK" ? "" : "text-danger"}"><td>${
 									row._row
-								}</td><td>${frappe.utils.escape_html(row.heat_no || "")}</td><td>${
-									frappe.utils.escape_html(row.lot_no || "")
-								}</td><td>${row.pieces ?? ""}</td><td>${row.total_length ?? ""}</td><td>${
+								}</td><td>${frappe.utils.escape_html(
+									row.heat_no || ""
+								)}</td><td>${frappe.utils.escape_html(row.lot_no || "")}</td><td>${
+									row.pieces ?? ""
+								}</td><td>${row.total_length ?? ""}</td><td>${
 									row.status
 								} ${frappe.utils.escape_html(row.message || "")}</td></tr>`
 						)
 						.join("");
 					d.fields_dict.preview.$wrapper.html(
 						`<p>${__("{0} rows OK, {1} with errors", [r.ok, r.errors])}</p>
-						<table class="table table-bordered table-sm"><thead><tr><th>#</th><th>${__(
-							"Heat"
-						)}</th><th>${__("Lot")}</th><th>${__("Pieces")}</th><th>${__(
-							"Length"
-						)}</th><th>${__("Status")}</th></tr></thead><tbody>${rows}</tbody></table>`
+						<table class="table table-bordered table-sm"><thead><tr><th>#</th><th>${__("Heat")}</th><th>${__(
+							"Lot"
+						)}</th><th>${__("Pieces")}</th><th>${__("Length")}</th><th>${__(
+							"Status"
+						)}</th></tr></thead><tbody>${rows}</tbody></table>`
 					);
 					d.set_primary_action(__("Import {0} rows", [r.ok]), () =>
 						frappe
