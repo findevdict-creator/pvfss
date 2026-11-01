@@ -1,0 +1,300 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "line_ref",
+  "item_code",
+  "specification",
+  "qty",
+  "uom",
+  "material_type",
+  "product_category",
+  "weight_per_unit",
+  "column_break_src",
+  "supplier",
+  "supplier_quotation",
+  "supplier_quotation_item",
+  "supplier_currency",
+  "supplier_rate",
+  "exchange_rate",
+  "lead_time_days",
+  "technical_status",
+  "section_costs",
+  "unit_cost",
+  "freight",
+  "inspection",
+  "documentation",
+  "column_break_costs",
+  "testing",
+  "finance_cost",
+  "contingency",
+  "section_price",
+  "landed_unit_cost",
+  "target_price",
+  "selling_price",
+  "column_break_price",
+  "line_margin",
+  "line_margin_pct",
+  "inspection_req",
+  "doc_req",
+  "currency"
+ ],
+ "fields": [
+  {
+   "fieldname": "line_ref",
+   "fieldtype": "Data",
+   "label": "Line Ref",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "specification",
+   "fieldtype": "Small Text",
+   "label": "Specification",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "label": "Qty",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "read_only": 1
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Data",
+   "label": "Material Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "product_category",
+   "fieldtype": "Link",
+   "label": "Product Category",
+   "options": "Item Group",
+   "read_only": 1
+  },
+  {
+   "fieldname": "weight_per_unit",
+   "fieldtype": "Float",
+   "label": "Weight per Unit (kg)",
+   "description": "Used by allocations By weight."
+  },
+  {
+   "fieldname": "column_break_src",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "supplier_quotation",
+   "fieldtype": "Link",
+   "label": "Supplier Quotation",
+   "options": "Supplier Quotation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "supplier_quotation_item",
+   "fieldtype": "Data",
+   "label": "Supplier Quotation Item",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "supplier_currency",
+   "fieldtype": "Link",
+   "label": "Supplier Currency",
+   "options": "Currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "supplier_rate",
+   "fieldtype": "Currency",
+   "label": "Supplier Unit Cost",
+   "options": "supplier_currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate",
+   "precision": "6"
+  },
+  {
+   "fieldname": "lead_time_days",
+   "fieldtype": "Int",
+   "label": "Lead Time (days)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "technical_status",
+   "fieldtype": "Data",
+   "label": "Technical Status",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "section_costs",
+   "fieldtype": "Section Break",
+   "label": "Costs per Unit (AED)"
+  },
+  {
+   "fieldname": "unit_cost",
+   "fieldtype": "Currency",
+   "label": "Unit Cost AED",
+   "options": "currency",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "freight",
+   "fieldtype": "Currency",
+   "label": "Freight",
+   "options": "currency"
+  },
+  {
+   "fieldname": "inspection",
+   "fieldtype": "Currency",
+   "label": "Inspection / TPI",
+   "options": "currency"
+  },
+  {
+   "fieldname": "documentation",
+   "fieldtype": "Currency",
+   "label": "Documentation",
+   "options": "currency"
+  },
+  {
+   "fieldname": "column_break_costs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "testing",
+   "fieldtype": "Currency",
+   "label": "Testing",
+   "options": "currency"
+  },
+  {
+   "fieldname": "finance_cost",
+   "fieldtype": "Currency",
+   "label": "Finance Cost",
+   "options": "currency"
+  },
+  {
+   "fieldname": "contingency",
+   "fieldtype": "Currency",
+   "label": "Contingency",
+   "options": "currency"
+  },
+  {
+   "fieldname": "section_price",
+   "fieldtype": "Section Break",
+   "label": "Price"
+  },
+  {
+   "fieldname": "landed_unit_cost",
+   "fieldtype": "Currency",
+   "label": "Landed Unit Cost",
+   "options": "currency",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "target_price",
+   "fieldtype": "Currency",
+   "label": "Target Price",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "selling_price",
+   "fieldtype": "Currency",
+   "label": "Selling Price",
+   "options": "currency",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Defaults to the target price."
+  },
+  {
+   "fieldname": "column_break_price",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "line_margin",
+   "fieldtype": "Currency",
+   "label": "Line Margin AED",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "line_margin_pct",
+   "fieldtype": "Percent",
+   "label": "Line Margin %",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "inspection_req",
+   "fieldtype": "Small Text",
+   "label": "Inspection Req",
+   "read_only": 1
+  },
+  {
+   "fieldname": "doc_req",
+   "fieldtype": "Small Text",
+   "label": "Doc Req",
+   "read_only": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "hidden": 1,
+   "default": "AED"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS CRM",
+ "name": "Costing Sheet Item",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

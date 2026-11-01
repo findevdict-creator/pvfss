@@ -1,0 +1,101 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "round_no",
+  "round_date",
+  "line_ref",
+  "previous_price",
+  "revised_price",
+  "previous_lead_time",
+  "revised_lead_time",
+  "notes",
+  "applied"
+ ],
+ "fields": [
+  {
+   "fieldname": "round_no",
+   "fieldtype": "Int",
+   "label": "Round",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "round_date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "default": "Today",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "line_ref",
+   "fieldtype": "Data",
+   "label": "Line Ref",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "previous_price",
+   "fieldtype": "Float",
+   "label": "Previous Price",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "revised_price",
+   "fieldtype": "Float",
+   "label": "Revised Price",
+   "in_list_view": 1,
+   "columns": 1,
+   "non_negative": 1
+  },
+  {
+   "fieldname": "previous_lead_time",
+   "fieldtype": "Int",
+   "label": "Previous Lead Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "revised_lead_time",
+   "fieldtype": "Int",
+   "label": "Revised Lead Time (days)",
+   "in_list_view": 1,
+   "columns": 1,
+   "non_negative": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes",
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "applied",
+   "fieldtype": "Check",
+   "label": "Applied",
+   "read_only": 1,
+   "hidden": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS CRM",
+ "name": "Negotiation Round",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

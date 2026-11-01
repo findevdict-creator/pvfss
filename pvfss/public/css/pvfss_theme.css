@@ -188,3 +188,28 @@
 		font-size: 15px;
 	}
 }
+
+/* ---- Competitive Statement (SCR-RFQ-08) and Costing Sheet (SCR-RFQ-10) */
+.pvfss-cs-lowest {
+	display: block;
+	background: var(--pvfss-ok-bg);
+	color: var(--pvfss-ok);
+	font-weight: 600;
+	padding: 0 4px;
+}
+.pvfss-cs-bestlead {
+	display: block;
+	outline: 1px solid var(--pvfss-info);
+	color: var(--pvfss-info);
+	padding: 0 4px;
+}
+.pvfss-cs-select {
+	cursor: pointer;
+	font-size: 1.1em;
+	color: var(--pvfss-primary);
+}
+.pvfss-row-danger .data-row,
+.pvfss-row-danger .static-area {
+	background: var(--pvfss-bad-bg);
+	color: var(--pvfss-bad);
+}

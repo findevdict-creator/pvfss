@@ -52,4 +52,17 @@ MATRIX = {
 	"Supplier": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc"}),
 	# ---- Module 1: CRM (screens §21: Inquiry row)
 	"Opportunity": {PBU: "rwc", PBM: "rwc", DIR: "r", POU: "r", POM: "r", QU: "r", QM: "r", RO: "r"},
+	# ---- Module 3: RFQ and bid comparison (screens §21: RFQ, Supplier Quotation rows)
+	"Incoterm": everyone(),
+	"Request for Quotation": {PBU: "rwcsxa", PBM: "rwcsxa", POU: "r", POM: "r", DIR: "r", RO: "r"},
+	"Supplier Quotation": {
+		PBU: "rwcsxa",
+		PBM: "rwcsxa",
+		POU: "r",
+		POM: "r",
+		QU: "r",
+		QM: "r",
+		DIR: "r",
+		RO: "r",
+	},
 }

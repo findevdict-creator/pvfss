@@ -27,6 +27,7 @@ frappe.ui.form.on("Opportunity", {
 		if (!["Won", "Lost", "No Bid", "Cancelled"].includes(frm.doc.pvfss_stage)) {
 			frm.add_custom_button(__("Mark No Bid / Cancel"), () => pvfss.crm.close_dialog(frm));
 		}
+		pvfss.crm.add_bid_buttons(frm, closed);
 		frm.add_custom_button(
 			__("Download template"),
 			() => window.open(`/api/method/${PVFSS_IMPORT}.download_template`),
@@ -157,4 +158,49 @@ pvfss.crm.close_dialog = function (frm) {
 		},
 	});
 	d.show();
+};
+
+// ---------------------------------------------------------------------------- 06-rfq (SCR-CRM-02 actions)
+pvfss.crm.add_bid_buttons = function (frm, closed) {
+	const stage = frm.doc.pvfss_stage || "New";
+	const open_for_rfq = ["New", "RFQ Sent", "Quotes Received", "Under Evaluation"].includes(stage);
+	if (!closed && open_for_rfq && (frm.doc.items || []).length) {
+		frm.add_custom_button(
+			__("RFQ"),
+			() =>
+				frappe
+					.xcall("pvfss.pvfss_crm.rfq.make_rfq", { inquiry: frm.doc.name })
+					.then((doc) => {
+						frappe.model.sync(doc);
+						frappe.set_route("Form", doc.doctype, doc.name);
+					}),
+			__("Create")
+		);
+	}
+	frappe.db
+		.count("Supplier Quotation", { filters: { opportunity: frm.doc.name, docstatus: ["<", 2] } })
+		.then((count) => {
+			if (!count) return;
+			frm.add_custom_button(
+				__("Competitive Statement"),
+				() => frappe.set_route("query-report", "Competitive Statement", { inquiry: frm.doc.name }),
+				__("View")
+			);
+			if (closed) return;
+			frm.add_custom_button(
+				__("Costing Sheet"),
+				() =>
+					frappe
+						.xcall("pvfss.pvfss_crm.doctype.costing_sheet.costing_sheet.make_or_refresh", {
+							inquiry: frm.doc.name,
+						})
+						.then((name) => frappe.set_route("Form", "Costing Sheet", name)),
+				__("Create")
+			);
+			frm.add_custom_button(
+				__("Technical Evaluation"),
+				() => frappe.new_doc("Technical Evaluation", { inquiry: frm.doc.name }),
+				__("Create")
+			);
+		});
 };
