@@ -143,6 +143,44 @@ def delivery_date(days=30):
 	return add_days(nowdate(), days)
 
 
+# --------------------------------------------------------------------------- workflows (07)
+def walk_workflow(doc, *actions):
+	"""Apply workflow actions in order (as the current user) and return the reloaded doc."""
+	from frappe.model.workflow import apply_workflow
+
+	for action in actions:
+		doc = apply_workflow(doc.as_dict(), action)
+	return frappe.get_doc(doc.doctype, doc.name)
+
+
+def submit_quotation(qtn):
+	"""Send for approval, approve and submit a draft Quotation (SQ-06)."""
+	return walk_workflow(qtn, "Send for Approval", "Approve", "Submit")
+
+
+def customer_po(so, po_no="CPO-TEST-001", review="OK"):
+	"""Fill the mandatory Customer PO fields (SQ-07) and tick the review checklist (SQ-08)."""
+	so.po_no = so.po_no or po_no
+	so.po_date = so.po_date or nowdate()
+	so.pvfss_customer_po_file = so.get("pvfss_customer_po_file") or "/files/customer-po.pdf"
+	so.pvfss_payment_method = so.get("pvfss_payment_method") or "TT"
+	if not so.get("pvfss_po_review"):
+		from pvfss.overrides.sales_order import prefill_review
+
+		prefill_review(so)
+	for row in so.pvfss_po_review:
+		row.result = row.result or review
+	return so
+
+
+def submit_sales_order(so):
+	"""Review and submit a saved Customer PO; differences go through POM approval (SQ-09)."""
+	so.reload()
+	if so.pvfss_difference_count:
+		return walk_workflow(so, "Submit for Review", "Approve", "Submit")
+	return walk_workflow(so, "Submit for Review", "Submit")
+
+
 def render_print(doc, print_format):
 	"""Print format HTML without the printview page shell, which needs built assets (CI has none)."""
 	from frappe.www.printview import get_rendered_template

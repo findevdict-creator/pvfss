@@ -42,6 +42,15 @@ MATRIX = {
 	"Price List": everyone(),
 	"Warehouse": everyone(),
 	"Opportunity Lost Reason": everyone(**{PBM: "rwc"}),
+	# accounting masters linked from every transaction (read so approvers can save them)
+	"Account": everyone(),
+	"Cost Center": everyone(),
+	"Tax Category": everyone(),
+	"Item Tax Template": everyone(),
+	"Sales Taxes and Charges Template": everyone(),
+	"Purchase Taxes and Charges Template": everyone(),
+	"Payment Terms Template": everyone(),
+	"Terms and Conditions": everyone(),
 	"Customer": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc", FU: "rw", FM: "rw"}),
 	"Item": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc", QU: "rwc", QM: "rwc"}),
 	# Address and Contact are left alone: ERPNext ships its own Custom DocPerm rows for them on
@@ -52,6 +61,30 @@ MATRIX = {
 	"Supplier": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc"}),
 	# ---- Module 1: CRM (screens §21: Inquiry row)
 	"Opportunity": {PBU: "rwc", PBM: "rwc", DIR: "r", POU: "r", POM: "r", QU: "r", QM: "r", RO: "r"},
+	# ---- Module 4: Quotation and Customer PO (screens §21: Quotation, Customer PO rows)
+	"Quotation": {
+		PBU: "rwcs",
+		PBM: "rwcsxa",
+		DIR: "rw",
+		POU: "r",
+		POM: "r",
+		FM: "r",
+		RO: "r",
+	},
+	"Sales Order": {
+		PBU: "rwc",
+		PBM: "rwc",
+		POU: "rwcs",
+		POM: "rwcsxa",
+		DIR: "r",
+		FU: "r",
+		FM: "rw",
+		LOG: "r",
+		QU: "r",
+		RO: "r",
+	},
+	"Competitor": everyone(**{PBU: "rwc", PBM: "rwc"}),
+	"Quotation Lost Reason": everyone(**{PBM: "rwc"}),
 	# ---- Module 3: RFQ and bid comparison (screens §21: RFQ, Supplier Quotation rows)
 	"Incoterm": everyone(),
 	"Request for Quotation": {PBU: "rwcsxa", PBM: "rwcsxa", POU: "r", POM: "r", DIR: "r", RO: "r"},

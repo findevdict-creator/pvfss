@@ -1,0 +1,56 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 00:50:52.757259",
+  "name": "Cancelled",
+  "style": "Inverse",
+  "workflow_state_name": "Cancelled"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 00:50:52.759660",
+  "name": "Draft",
+  "style": "",
+  "workflow_state_name": "Draft"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 00:50:52.761746",
+  "name": "Pending Approval",
+  "style": "Warning",
+  "workflow_state_name": "Pending Approval"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 00:50:52.763799",
+  "name": "Submitted",
+  "style": "Success",
+  "workflow_state_name": "Submitted"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 00:50:52.765805",
+  "name": "Under Review",
+  "style": "Warning",
+  "workflow_state_name": "Under Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "ok-sign",
+  "modified": "2026-11-02 00:50:52.656644",
+  "name": "Approved",
+  "style": "Primary",
+  "workflow_state_name": "Approved"
+ }
+]

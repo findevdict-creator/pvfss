@@ -181,15 +181,16 @@ class TestNamingAndLineFields(IntegrationTestCase):
 				"transaction_date": nowdate(),
 				"currency": "AED",
 				"selling_price_list": f.price_list(),
+				"valid_till": f.delivery_date(),
 				"items": [line],
 			}
 		).insert()
-		qtn.submit()
+		qtn = f.submit_quotation(qtn)
 
 		so = make_sales_order(qtn.name)
 		so.delivery_date = f.delivery_date()
-		so.insert()
-		so.submit()
+		f.customer_po(so).insert()
+		so = f.submit_sales_order(so)
 
 		dn = make_delivery_note(so.name)
 		si = make_sales_invoice(so.name)

@@ -47,9 +47,10 @@ def make_quotation(inquiry, submit=True):
 	qtn.selling_price_list = f.price_list()
 	for row in qtn.items:
 		row.rate = 100
+	qtn.valid_till = qtn.valid_till or f.delivery_date()
 	qtn.insert()
 	if submit:
-		qtn.submit()
+		qtn = f.submit_quotation(qtn)
 	return qtn
 
 
@@ -126,8 +127,8 @@ class TestInquiry(IntegrationTestCase):
 
 		so = make_sales_order(qtn.name)
 		so.delivery_date = f.delivery_date()
-		so.insert()
-		so.submit()
+		f.customer_po(so).insert()
+		f.submit_sales_order(so)
 		self.assertEqual(frappe.db.get_value("Opportunity", doc.name, "pvfss_stage"), inq.WON)
 
 	def test_CRM_07_lost_quotation_marks_inquiry_lost(self):

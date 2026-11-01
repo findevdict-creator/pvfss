@@ -29,6 +29,33 @@ frappe.ui.form.on("Costing Sheet", {
 			);
 			frm.add_custom_button(__("Apply allocations"), () => frm.save());
 		}
+		if (frm.doc.docstatus === 1 && !frm.doc.quotation) {
+			const btn = frm.add_custom_button(__("Create Quotation"), () =>
+				frappe
+					.xcall("pvfss.pvfss_crm.quotation.make_quotation", {
+						costing_sheet: frm.doc.name,
+					})
+					.then((doc) => {
+						frappe.model.sync(doc);
+						frappe.set_route("Form", doc.doctype, doc.name);
+					})
+			);
+			if (frm.doc.non_compliant_lines) {
+				btn.prop("disabled", true).attr(
+					"title",
+					__(
+						"Lines are not technically compliant. Re-select suppliers on the Competitive Statement."
+					)
+				);
+			}
+		}
+		if (frm.doc.quotation) {
+			frm.add_custom_button(
+				__("Quotation"),
+				() => frappe.set_route("Form", "Quotation", frm.doc.quotation),
+				__("View")
+			);
+		}
 		if (frm.doc.inquiry) {
 			frm.add_custom_button(
 				__("Competitive Statement"),
