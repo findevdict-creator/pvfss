@@ -26,6 +26,8 @@ doctype_js = {
 	"Supplier": "public/js/doctype/supplier.js",
 	"Request for Quotation": "public/js/doctype/request_for_quotation.js",
 	"Supplier Quotation": "public/js/doctype/supplier_quotation.js",
+	"Quotation": "public/js/doctype/quotation.js",
+	"Sales Order": "public/js/doctype/sales_order.js",
 }
 doctype_list_js = {
 	"Opportunity": "public/js/doctype/opportunity_list.js",
@@ -57,11 +59,23 @@ doc_events = {
 		"on_submit": "pvfss.overrides.supplier_quotation.on_submit",
 		"on_cancel": "pvfss.overrides.supplier_quotation.on_cancel",
 	},
+	# Module 4: Quotation and Customer PO (SQ-01 to SQ-10)
 	"Quotation": {
-		"on_submit": "pvfss.overrides.opportunity.on_quotation_submit",
-		"on_update_after_submit": "pvfss.overrides.opportunity.on_quotation_update_after_submit",
+		"onload": "pvfss.overrides.quotation.onload",
+		"validate": "pvfss.overrides.quotation.validate",
+		"after_insert": "pvfss.overrides.quotation.after_insert",
+		"before_submit": "pvfss.overrides.quotation.before_submit",
+		"on_submit": "pvfss.overrides.quotation.on_submit",
+		"on_update_after_submit": "pvfss.overrides.quotation.on_update_after_submit",
+		"before_cancel": "pvfss.overrides.quotation.before_cancel",
 	},
-	"Sales Order": {"on_submit": "pvfss.overrides.opportunity.on_sales_order_submit"},
+	"Sales Order": {
+		"onload": "pvfss.overrides.sales_order.onload",
+		"before_validate": "pvfss.overrides.sales_order.before_validate",
+		"validate": "pvfss.overrides.sales_order.validate",
+		"before_submit": "pvfss.overrides.sales_order.before_submit",
+		"on_submit": "pvfss.overrides.sales_order.on_submit",
+	},
 	# Module 2: Supplier management (SUP-01 to SUP-07)
 	"Supplier": {"validate": "pvfss.overrides.supplier.validate"},
 	"Request for Quotation": {
@@ -84,6 +98,7 @@ scheduler_events = {
 # -----------------
 # Everything customised through Desk is exported here and checked for drift in CI.
 from pvfss.permission_matrix import MATRIX
+from pvfss.setup import workflows
 
 # UI labels (CRM-01, DQ-08). Kept here so hooks need no Frappe import.
 TRANSLATIONS = {
@@ -117,6 +132,9 @@ fixtures = [
 	{"dt": "Property Setter", "filters": [["module", "like", "PVFSS%"]]},
 	{"dt": "Custom DocPerm", "filters": [["parent", "in", list(MATRIX)]]},
 	{"dt": "Translation", "filters": [["source_text", "in", list(TRANSLATIONS)], ["language", "=", "en"]]},
+	{"dt": "Workflow State", "filters": [["name", "in", workflows.state_names()]]},
+	{"dt": "Workflow Action Master", "filters": [["name", "in", workflows.action_names()]]},
+	{"dt": "Workflow", "filters": [["name", "in", list(workflows.WORKFLOWS)]]},
 ]
 
 # Tests
