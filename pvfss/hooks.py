@@ -20,6 +20,14 @@ website_context = {
 	"splash_image": "/assets/pvfss/images/logo.svg",
 }
 
+# Client scripts for standard DocTypes (shipped as files, not Client Script fixtures)
+doctype_js = {
+	"Opportunity": "public/js/doctype/opportunity.js",
+}
+doctype_list_js = {
+	"Opportunity": "public/js/doctype/opportunity_list.js",
+}
+
 # Installation
 # ------------
 after_install = "pvfss.setup.install.after_install"
@@ -33,6 +41,17 @@ setup_wizard_complete = "pvfss.setup.masters.setup_wizard_complete"  # company d
 doc_events = {
 	"User": {"before_validate": "pvfss.overrides.user.before_validate"},  # NFR-04 password length
 	"Item": {"validate": "pvfss.overrides.item.validate"},  # MD-12 / SCR-MD-05
+	# Module 1: CRM (CRM-01 to CRM-09)
+	"Opportunity": {
+		"validate": "pvfss.overrides.opportunity.validate",
+		"after_insert": "pvfss.overrides.opportunity.after_insert",
+	},
+	"Supplier Quotation": {"on_submit": "pvfss.overrides.opportunity.on_supplier_quotation_submit"},
+	"Quotation": {
+		"on_submit": "pvfss.overrides.opportunity.on_quotation_submit",
+		"on_update_after_submit": "pvfss.overrides.opportunity.on_quotation_update_after_submit",
+	},
+	"Sales Order": {"on_submit": "pvfss.overrides.opportunity.on_sales_order_submit"},
 }
 
 # Scheduled tasks (GEN-61)
@@ -46,6 +65,17 @@ scheduler_events = {
 # Fixtures (GEN-02)
 # -----------------
 # Everything customised through Desk is exported here and checked for drift in CI.
+from pvfss.permission_matrix import MATRIX
+
+# UI labels (CRM-01, DQ-08). Kept here so hooks need no Frappe import.
+TRANSLATIONS = {
+	"Opportunity": "Inquiry",
+	"Opportunities": "Inquiries",
+	"New Opportunity": "New Inquiry",
+	"Sales Order": "Customer PO",
+	"Purchase Order": "Supplier PO",
+}
+
 PVFSS_ROLES = [
 	"PVFSS Director",
 	"Pre-Bidding User",
@@ -67,6 +97,8 @@ fixtures = [
 	{"dt": "Role", "filters": [["name", "in", PVFSS_ROLES]]},
 	{"dt": "Custom Field", "filters": [["module", "like", "PVFSS%"]]},
 	{"dt": "Property Setter", "filters": [["module", "like", "PVFSS%"]]},
+	{"dt": "Custom DocPerm", "filters": [["parent", "in", list(MATRIX)]]},
+	{"dt": "Translation", "filters": [["source_text", "in", list(TRANSLATIONS)], ["language", "=", "en"]]},
 ]
 
 # Tests

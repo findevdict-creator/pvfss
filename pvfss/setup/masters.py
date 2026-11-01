@@ -156,11 +156,14 @@ def seed_uoms():
 
 
 def seed_lost_reasons():
+	"""MD-25: same values for inquiries and quotations."""
 	for reason in LOST_REASONS:
-		if not frappe.db.exists("Opportunity Lost Reason", reason):
-			frappe.get_doc({"doctype": "Opportunity Lost Reason", "lost_reason": reason}).insert(
-				ignore_permissions=True
-			)
+		for doctype, field in (
+			("Opportunity Lost Reason", "lost_reason"),
+			("Quotation Lost Reason", "order_lost_reason"),
+		):
+			if not frappe.db.exists(doctype, reason):
+				frappe.get_doc({"doctype": doctype, field: reason}).insert(ignore_permissions=True)
 
 
 def seed_payment_terms():
@@ -194,6 +197,31 @@ def seed_payment_terms():
 		).insert(ignore_permissions=True)
 
 
+GENERIC_ITEM = "GENERIC-LINE"
+
+
+def seed_generic_item():
+	"""Placeholder item for inquiry lines until a variant is chosen (CRM-03, CRM-04)."""
+	if not frappe.db.exists("Item Group", "Others"):
+		return
+	if not frappe.db.exists("Item", GENERIC_ITEM):
+		frappe.get_doc(
+			{
+				"doctype": "Item",
+				"item_code": GENERIC_ITEM,
+				"item_name": "Generic inquiry line",
+				"item_group": "Others",
+				"stock_uom": "Nos",
+				"is_stock_item": 0,
+				"is_sales_item": 1,
+				"is_purchase_item": 1,
+				"description": "Placeholder until the variant is chosen. The line specification holds the full text.",
+			}
+		).insert(ignore_permissions=True)
+	if not frappe.db.get_single_value("PVFSS Settings", "generic_inquiry_item"):
+		frappe.db.set_single_value("PVFSS Settings", "generic_inquiry_item", GENERIC_ITEM)
+
+
 # --------------------------------------------------------------------------- company
 def setup_wizard_complete(wizard_args=None):
 	company = (wizard_args or {}).get("company_name") or frappe.defaults.get_global_default("company")
@@ -203,6 +231,7 @@ def setup_wizard_complete(wizard_args=None):
 
 def setup_company(company):
 	seed_global()
+	seed_generic_item()
 	setup_currencies()
 	setup_warehouses(company)
 	setup_tax_templates(company)

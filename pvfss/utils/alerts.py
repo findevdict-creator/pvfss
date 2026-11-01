@@ -38,13 +38,17 @@ def send(recipients, subject, reference_doctype=None, reference_name=None, messa
 		body = frappe.render_template(  # nosemgrep: frappe-ssti
 			"pvfss/templates/emails/alert.html", {"subject": subject, "message": message, "link": link}
 		)
-		frappe.sendmail(
-			recipients=recipients,
-			subject=subject,
-			message=body,
-			reference_doctype=reference_doctype,
-			reference_name=reference_name,
-		)
+		try:
+			frappe.sendmail(
+				recipients=recipients,
+				subject=subject,
+				message=body,
+				reference_doctype=reference_doctype,
+				reference_name=reference_name,
+			)
+		except frappe.OutgoingEmailError:
+			# No outgoing email account yet (dev / staging before NFR-13): the bell alert still goes out.
+			frappe.log_error(title="PVFSS alert email not sent: no outgoing email account")
 	return recipients
 
 

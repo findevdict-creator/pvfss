@@ -47,3 +47,33 @@ pvfss.gate.refresh_panel = function (frm, method, html_fieldname) {
 		return result;
 	});
 };
+
+// ---------------------------------------------------------------------------- CRM (04-crm)
+frappe.provide("pvfss.crm");
+
+pvfss.crm.STAGES = [
+	"New",
+	"RFQ Sent",
+	"Quotes Received",
+	"Under Evaluation",
+	"Quoted",
+	"Won",
+	"Lost",
+	"No Bid",
+	"Cancelled",
+];
+
+// screens SCR-CRM-01 stage colours
+pvfss.crm.STAGE_COLOURS = {
+	New: "blue",
+	"RFQ Sent": "blue",
+	"Quotes Received": "blue",
+	"Under Evaluation": "orange",
+	Quoted: "orange",
+	Won: "green",
+	Lost: "red",
+	"No Bid": "gray",
+	Cancelled: "gray",
+};
+
+pvfss.crm.CLOSED = ["Won", "Lost", "No Bid", "Cancelled"];
