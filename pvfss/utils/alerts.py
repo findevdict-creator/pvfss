@@ -34,7 +34,8 @@ def send(recipients, subject, reference_doctype=None, reference_name=None, messa
 			if reference_doctype and reference_name
 			else None
 		)
-		body = frappe.render_template(
+		# The template is a file shipped with this app, never user input; values are escaped by Jinja.
+		body = frappe.render_template(  # nosemgrep: frappe-ssti
 			"pvfss/templates/emails/alert.html", {"subject": subject, "message": message, "link": link}
 		)
 		try:

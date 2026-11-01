@@ -392,7 +392,7 @@ EXTRA_FIGURES = []  # dotted paths: fn(po_name) -> dict merged into each PO row 
 
 
 @frappe.whitelist()
-def get_dashboard(project):
+def get_dashboard(project: str):
 	doc = frappe.get_doc("Project", project)
 	doc.check_permission("read")
 	pos = frappe.get_all(

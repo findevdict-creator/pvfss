@@ -171,5 +171,5 @@ def apply():
 		for f in rows:
 			f.setdefault("module", MODULE)
 	create_custom_fields(fields, update=True)
-	frappe.db.commit()
+	frappe.db.commit()  # nosemgrep: frappe-manual-commit (developer command run from bench execute, outside a request)
 	print("09-project customisations applied")
