@@ -281,5 +281,5 @@ def apply():
 			f.setdefault("module", MODULE)
 	create_custom_fields(all_fields, update=True)
 	property_setters()
-	frappe.db.commit()
+	frappe.db.commit()  # nosemgrep: frappe-manual-commit (developer command run from bench execute, outside a request)
 	print("02-masters customisations applied")

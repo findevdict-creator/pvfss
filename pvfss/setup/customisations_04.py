@@ -255,5 +255,5 @@ def apply():
 			frappe.get_doc(
 				{"doctype": "Translation", "language": "en", "source_text": source, "translated_text": target}
 			).insert(ignore_permissions=True)
-	frappe.db.commit()
+	frappe.db.commit()  # nosemgrep: frappe-manual-commit (developer command run from bench execute, outside a request)
 	print("04-crm customisations applied")
