@@ -2,7 +2,11 @@
 // SCR-TRC-03 Heat Trace: search, backward / forward chain, table view, PDF and certificate pack.
 
 frappe.pages["heat-trace"].on_page_load = function (wrapper) {
-	const page = frappe.ui.make_app_page({ parent: wrapper, title: __("Heat Trace"), single_column: true });
+	const page = frappe.ui.make_app_page({
+		parent: wrapper,
+		title: __("Heat Trace"),
+		single_column: true,
+	});
 	wrapper.heat_trace = new pvfss.HeatTrace(page);
 };
 
@@ -36,7 +40,9 @@ pvfss.HeatTrace = class HeatTrace {
 		this.$body = $(`<div class="pvfss-trace mt-3"></div>`).appendTo(page.main);
 		this.render_empty();
 		page.set_primary_action(__("Trace"), () => this.search());
-		page.add_menu_item(__("Export Traceability Report (PDF)"), () => this.download("download_report"));
+		page.add_menu_item(__("Export Traceability Report (PDF)"), () =>
+			this.download("download_report")
+		);
 		page.add_menu_item(__("Download certificate pack (ZIP)"), () =>
 			this.download("download_certificate_pack")
 		);
@@ -126,14 +132,18 @@ pvfss.HeatTrace = class HeatTrace {
 				(r) =>
 					`<button class="btn btn-xs btn-default mr-1 mb-1" data-type="${frappe.utils.escape_html(
 						r.search_type
-					)}" data-key="${frappe.utils.escape_html(r.key)}">${frappe.utils.escape_html(r.key)}</button>`
+					)}" data-key="${frappe.utils.escape_html(r.key)}">${frappe.utils.escape_html(
+						r.key
+					)}</button>`
 			)
 			.join("");
 		this.$body.html(`<div class="text-muted">
 			<p>${__(
 				"Trace by heat number, batch, MTC no, Supplier PO, Customer PO, Delivery Note or Sales Invoice."
 			)}</p>
-			<p>${__("Forward runs from a heat to every customer; backward runs from a delivery or invoice to the mill.")}</p>
+			<p>${__(
+				"Forward runs from a heat to every customer; backward runs from a delivery or invoice to the mill."
+			)}</p>
 			<div>${chips}</div></div>`);
 		this.$body.find("button[data-key]").on("click", (e) => {
 			const $b = $(e.currentTarget);
@@ -145,7 +155,11 @@ pvfss.HeatTrace = class HeatTrace {
 		const r = this.result;
 		const esc = frappe.utils.escape_html;
 		const header = `<div class="mb-3"><b>${esc(r.search_type)}: ${esc(r.key)}</b>
-			<span class="text-muted"> · ${__("{0} heats, {1} lots, {2} deliveries", [r.heats, r.lots, r.deliveries])}
+			<span class="text-muted"> · ${__("{0} heats, {1} lots, {2} deliveries", [
+				r.heats,
+				r.lots,
+				r.deliveries,
+			])}
 			· ${__("{0} s", [r.seconds.toFixed(2)])}</span></div>`;
 		if (this.view === "table") {
 			this.$body.html(header + this.table_html(r));
@@ -155,8 +169,12 @@ pvfss.HeatTrace = class HeatTrace {
 			.map((c) => {
 				const nodes = c.nodes.length
 					? c.nodes.map((n) => this.node_html(n)).join("")
-					: `<div class="pvfss-trace-node pvfss-trace-missing">${__("No {0} found", [__(c.stage)])}</div>`;
-				return `<div class="pvfss-trace-col"><div class="pvfss-trace-stage">${__(c.stage)}</div>${nodes}</div>`;
+					: `<div class="pvfss-trace-node pvfss-trace-missing">${__("No {0} found", [
+							__(c.stage),
+					  ])}</div>`;
+				return `<div class="pvfss-trace-col"><div class="pvfss-trace-stage">${__(
+					c.stage
+				)}</div>${nodes}</div>`;
 			})
 			.join("");
 		this.$body.html(`${header}<div class="pvfss-trace-chain">${columns}</div>`);
@@ -166,25 +184,64 @@ pvfss.HeatTrace = class HeatTrace {
 		const esc = frappe.utils.escape_html;
 		const facts = Object.entries(n.facts || {})
 			.filter(([, v]) => v !== null && v !== undefined && v !== "")
-			.map(([k, v]) => `<div class="small text-muted">${esc(__(k))}: ${esc(String(v))}</div>`)
+			.map(
+				([k, v]) => `<div class="small text-muted">${esc(__(k))}: ${esc(String(v))}</div>`
+			)
 			.join("");
 		const route = n.doctype === "Warehouse" ? "warehouse" : frappe.router.slug(n.doctype);
-		const pill = n.status ? `<span class="indicator-pill ${this.colour(n.status)}">${esc(__(n.status))}</span>` : "";
+		const pill = n.status
+			? `<span class="indicator-pill ${this.colour(n.status)}">${esc(__(n.status))}</span>`
+			: "";
 		return `<div class="pvfss-trace-node">
-			<a class="pvfss-mono" href="/app/${route}/${encodeURIComponent(n.name)}">${esc(n.label || n.name)}</a> ${pill}
+			<a class="pvfss-mono" href="/app/${route}/${encodeURIComponent(n.name)}">${esc(
+			n.label || n.name
+		)}</a> ${pill}
 			${facts}</div>`;
 	}
 
 	colour(status) {
-		return { Active: "green", "On hold": "orange", Rejected: "red", Completed: "green", Cancelled: "red" }[status] || "blue";
+		return (
+			{
+				Active: "green",
+				"On hold": "orange",
+				Rejected: "red",
+				Completed: "green",
+				Cancelled: "red",
+			}[status] || "blue"
+		);
 	}
 
 	table_html(r) {
 		const esc = frappe.utils.escape_html;
-		const cols = ["heat", "lot", "mtc", "mtc_date", "delivery", "customer", "customer_po", "invoice", "qty"];
-		const labels = [__("Heat"), __("Lot"), __("MTC"), __("MTC date"), __("Delivery Note"), __("Customer"), __("Customer PO"), __("Invoice"), __("Qty")];
+		const cols = [
+			"heat",
+			"lot",
+			"mtc",
+			"mtc_date",
+			"delivery",
+			"customer",
+			"customer_po",
+			"invoice",
+			"qty",
+		];
+		const labels = [
+			__("Heat"),
+			__("Lot"),
+			__("MTC"),
+			__("MTC date"),
+			__("Delivery Note"),
+			__("Customer"),
+			__("Customer PO"),
+			__("Invoice"),
+			__("Qty"),
+		];
 		const rows = r.table
-			.map((row) => `<tr>${cols.map((c) => `<td>${esc(row[c] == null ? "" : String(row[c]))}</td>`).join("")}</tr>`)
+			.map(
+				(row) =>
+					`<tr>${cols
+						.map((c) => `<td>${esc(row[c] == null ? "" : String(row[c]))}</td>`)
+						.join("")}</tr>`
+			)
 			.join("");
 		return `<table class="table table-bordered table-sm"><thead><tr>${labels
 			.map((l) => `<th>${l}</th>`)

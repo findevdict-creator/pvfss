@@ -4,7 +4,8 @@
 frappe.listview_settings["Heat Number"] = {
 	add_fields: ["status"],
 	get_indicator(doc) {
-		const colour = { Active: "green", "On hold": "orange", Rejected: "red" }[doc.status] || "gray";
+		const colour =
+			{ Active: "green", "On hold": "orange", Rejected: "red" }[doc.status] || "gray";
 		return [__(doc.status), colour, `status,=,${doc.status}`];
 	},
 	button: {

@@ -6,10 +6,10 @@ frappe.ui.form.on("Batch", {
 		const status = frm.doc.pvfss_heat_status;
 		if (status === "On hold" || status === "Rejected") {
 			frm.dashboard.set_headline_alert(
-				`<span class="indicator ${status === "Rejected" ? "red" : "orange"}">${__("Heat {0} is {1}", [
-					frm.doc.pvfss_heat_number,
-					__(status),
-				])}</span>`
+				`<span class="indicator ${status === "Rejected" ? "red" : "orange"}">${__(
+					"Heat {0} is {1}",
+					[frm.doc.pvfss_heat_number, __(status)]
+				)}</span>`
 			);
 		}
 		if (!frm.is_new()) {

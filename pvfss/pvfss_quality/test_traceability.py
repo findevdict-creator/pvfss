@@ -156,7 +156,7 @@ class TestTraceability(IntegrationTestCase):
 
 	# ------------------------------------------------------------------ TRC-10
 	def test_trc10_forward_trace_reaches_customer_and_invoice(self):
-		heat, batch, po, pr = self.stocked_heat()
+		heat, batch, _po, pr = self.stocked_heat()
 		dn = deliver(batch)
 		dn.submit()
 		si = make_sales_invoice(dn.name)
@@ -192,7 +192,7 @@ class TestTraceability(IntegrationTestCase):
 		self.assertEqual(r["table"][0]["mtc"], "MTC-001")
 
 	def test_trc10_search_by_supplier_po_and_mtc(self):
-		heat, batch, po, _pr = self.stocked_heat()
+		_heat, batch, po, _pr = self.stocked_heat()
 		self.assertEqual(traceability.trace("Supplier PO", po.name)["lots"], 1)
 		self.assertEqual(traceability.trace("MTC No", "MTC-001")["heats"], 1)
 		self.assertEqual(traceability.trace("Batch", batch)["heats"], 1)

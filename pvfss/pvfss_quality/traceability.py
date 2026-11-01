@@ -343,7 +343,7 @@ def trace(search_type: str, key: str, direction: str | None = None):
 					key=f"{batch}:{warehouse}",
 				)
 			)
-	for pr, lots in receipts.items():
+	for pr in receipts:
 		head = frappe.db.get_value(
 			"Purchase Receipt", pr, ["supplier", "posting_date", "status"], as_dict=True
 		)
@@ -499,7 +499,8 @@ BACKWARD = [
 
 # ----------------------------------------------------------------------------- TRC-11
 def report_html(result):
-	return frappe.render_template(
+	# The template is a file shipped with this app, never user input; values are escaped by Jinja.
+	return frappe.render_template(  # nosemgrep: frappe-ssti
 		"pvfss/templates/print/traceability_report.html",
 		{"r": result, "user": frappe.session.user, "now": frappe.utils.now_datetime()},
 	)
