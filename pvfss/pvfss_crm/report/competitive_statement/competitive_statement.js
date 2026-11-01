@@ -58,7 +58,10 @@ frappe.query_reports["Competitive Statement"] = {
 		report.page.add_inner_button(__("Select lowest compliant for all lines"), () => {
 			if (!inquiry()) return;
 			frappe
-				.xcall("pvfss.pvfss_crm.selection.select_lowest", { inquiry: inquiry(), preview: 1 })
+				.xcall("pvfss.pvfss_crm.selection.select_lowest", {
+					inquiry: inquiry(),
+					preview: 1,
+				})
 				.then((rows) => {
 					if (!rows.length) {
 						frappe.msgprint(__("No compliant submitted quotation lines."));
@@ -67,7 +70,9 @@ frappe.query_reports["Competitive Statement"] = {
 					const body = rows
 						.map(
 							(r) =>
-								`<tr><td>${frappe.utils.escape_html(r.line_ref)}</td><td>${frappe.utils.escape_html(
+								`<tr><td>${frappe.utils.escape_html(
+									r.line_ref
+								)}</td><td>${frappe.utils.escape_html(
 									r.supplier
 								)}</td><td>${format_currency(r.base_rate, "AED")}</td></tr>`
 						)
@@ -107,9 +112,7 @@ frappe.query_reports["Competitive Statement"] = {
 			e.preventDefault();
 			const item = $(this).attr("data-item");
 			const method = $(this).attr("data-on") === "1" ? "unselect_line" : "select_line";
-			frappe
-				.xcall(`pvfss.pvfss_crm.selection.${method}`, { sq_item: item })
-				.then(refresh);
+			frappe.xcall(`pvfss.pvfss_crm.selection.${method}`, { sq_item: item }).then(refresh);
 		});
 	},
 };
