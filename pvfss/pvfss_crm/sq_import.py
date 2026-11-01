@@ -112,7 +112,7 @@ def parse(doc, file_url):
 
 
 @frappe.whitelist()
-def preview(supplier_quotation, file_url):
+def preview(supplier_quotation: str, file_url: str):
 	doc = frappe.get_doc("Supplier Quotation", supplier_quotation)
 	doc.check_permission("write")
 	rows, unmatched = parse(doc, file_url)
@@ -125,7 +125,7 @@ def preview(supplier_quotation, file_url):
 
 
 @frappe.whitelist()
-def apply(supplier_quotation, file_url):
+def apply(supplier_quotation: str, file_url: str):
 	"""Write the OK rows onto the matching lines. Returns the number of lines updated."""
 	doc = frappe.get_doc("Supplier Quotation", supplier_quotation)
 	doc.check_permission("write")
