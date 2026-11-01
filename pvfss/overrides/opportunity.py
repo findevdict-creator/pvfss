@@ -157,20 +157,22 @@ def on_quotation_update_after_submit(doc, method=None):
 	"""Quotation marked Lost -> Inquiry Lost, carrying the lost reasons."""
 	if not doc.get("opportunity") or doc.status != "Lost":
 		return
-	inquiry = frappe.get_doc("Opportunity", doc.opportunity)
-	if inquiry.pvfss_stage in inq.CLOSED:
+	opportunity = frappe.get_doc("Opportunity", doc.opportunity)
+	if opportunity.pvfss_stage in inq.CLOSED:
 		return
-	if not inquiry.lost_reasons:
+	if not opportunity.lost_reasons:
 		reasons = [r.lost_reason for r in doc.get("lost_reasons") or []]
 		reasons = [r for r in reasons if frappe.db.exists("Opportunity Lost Reason", r)] or ["Other"]
-		inquiry.set("lost_reasons", [{"lost_reason": r} for r in reasons])
-	inquiry.order_lost_reason = (
-		inquiry.order_lost_reason or doc.get("order_lost_reason") or _("Quotation {0} lost").format(doc.name)
+		opportunity.set("lost_reasons", [{"lost_reason": r} for r in reasons])
+	opportunity.order_lost_reason = (
+		opportunity.order_lost_reason
+		or doc.get("order_lost_reason")
+		or _("Quotation {0} lost").format(doc.name)
 	)
-	inquiry.pvfss_stage = inq.LOST
-	inquiry.flags.pvfss_stage_change = True
-	inquiry.flags.ignore_permissions = True
-	inquiry.save()
+	opportunity.pvfss_stage = inq.LOST
+	opportunity.flags.pvfss_stage_change = True
+	opportunity.flags.ignore_permissions = True
+	opportunity.save()
 
 
 def on_sales_order_submit(doc, method=None):

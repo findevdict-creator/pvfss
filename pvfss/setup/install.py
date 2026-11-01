@@ -29,7 +29,7 @@ def before_tests():
 
 	apply_settings_defaults()
 	ensure_test_company()
-	frappe.db.commit()
+	frappe.db.commit()  # nosemgrep: frappe-manual-commit (install / before_tests hook: data must persist outside the request transaction)
 
 
 # --------------------------------------------------------------------------- PVFSS Settings

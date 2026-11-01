@@ -38,7 +38,7 @@ class ImportExceptionLog(Document):
 
 
 @frappe.whitelist()
-def mark_reviewed(names, remark=None):
+def mark_reviewed(names: str | list, remark: str | None = None):
 	"""List / form action "Mark reviewed"."""
 	if isinstance(names, str):
 		names = frappe.parse_json(names) if names.startswith("[") else [names]
