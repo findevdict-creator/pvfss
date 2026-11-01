@@ -126,4 +126,18 @@ MATRIX = {
 		RO: "r",
 	},
 	"Project Type": everyone(),
+	# ---- Module 9: Traceability (screens §21: Heat Number, Batch, Purchase Receipt rows)
+	"Manufacturer": everyone(**{QU: "rwc", QM: "rwc", PBU: "rwc", POU: "rwc", POM: "rwc"}),
+	"Batch": everyone(**{QU: "rwc", QM: "rwc", POU: "rwc", POM: "rwc", LOG: "rwc"}),
+	"Purchase Receipt": {
+		POU: "rwcs",
+		POM: "rwcsxa",
+		LOG: "rwcs",
+		QU: "rwcs",
+		QM: "rwcs",
+		FU: "r",
+		FM: "r",
+		DIR: "r",
+		RO: "r",
+	},
 }
