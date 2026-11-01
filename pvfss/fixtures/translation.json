@@ -1,0 +1,67 @@
+[
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "en",
+  "modified": "2026-11-02 00:15:07.847364",
+  "name": "afmfmbphb1",
+  "source_text": "Opportunity",
+  "translated_text": "Inquiry"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "en",
+  "modified": "2026-11-02 00:15:07.856922",
+  "name": "afm30jfg3i",
+  "source_text": "Opportunities",
+  "translated_text": "Inquiries"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "en",
+  "modified": "2026-11-02 00:15:07.859000",
+  "name": "afmlgfosv4",
+  "source_text": "New Opportunity",
+  "translated_text": "New Inquiry"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "en",
+  "modified": "2026-11-02 00:15:07.861174",
+  "name": "afme4e8u0n",
+  "source_text": "Sales Order",
+  "translated_text": "Customer PO"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "en",
+  "modified": "2026-11-02 00:15:07.863137",
+  "name": "afmgupqc1j",
+  "source_text": "Purchase Order",
+  "translated_text": "Supplier PO"
+ }
+]

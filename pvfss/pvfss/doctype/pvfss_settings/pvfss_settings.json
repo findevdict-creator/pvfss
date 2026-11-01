@@ -11,6 +11,7 @@
   "quotation_lead_time_buffer_days",
   "column_break_1",
   "default_quotation_validity_days",
+  "generic_inquiry_item",
   "tab_approvals",
   "spo_value_approval_threshold",
   "over_ordering_tolerance_pct",
@@ -89,6 +90,13 @@
    "non_negative": 1,
    "description": "SQ-01",
    "default": "30"
+  },
+  {
+   "fieldname": "generic_inquiry_item",
+   "fieldtype": "Link",
+   "label": "Generic Inquiry Line Item",
+   "options": "Item",
+   "description": "CRM-03/04. Placeholder item for imported inquiry lines until a variant is chosen."
   },
   {
    "fieldname": "tab_approvals",
@@ -392,7 +400,7 @@
  "index_web_pages_for_search": 0,
  "issingle": 1,
  "links": [],
- "modified": "2026-11-01 20:00:00.000000",
+ "modified": "2026-11-01 20:12:01.323084",
  "modified_by": "Administrator",
  "module": "PVFSS",
  "name": "PVFSS Settings",

@@ -7,7 +7,7 @@ One failing alert is logged and never stops the others.
 import frappe
 
 DAILY = [
-	# "pvfss.pvfss_crm.alerts.inquiry_due_date",  # CRM-12 (04-crm)
+	"pvfss.pvfss_crm.alerts.inquiry_due_date",  # CRM-12
 ]
 
 HOURLY = [
