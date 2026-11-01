@@ -91,6 +91,7 @@ WAREHOUSES = {
 # --------------------------------------------------------------------------- global
 def seed_global():
 	seed_item_groups()
+	seed_mtc_age_rules()
 	seed_item_attributes()
 	seed_uoms()
 	seed_lost_reasons()
@@ -120,6 +121,28 @@ def seed_email_templates():
 			frappe.get_doc({"doctype": "Email Template", "name": name, **values}).insert(
 				ignore_permissions=True
 			)
+
+
+# SMR-20 company defaults; other categories stay blank (no limit, warn) until PVFSS confirms (Q-01)
+MTC_AGE_RULES = [("Pipes", "CS", 24), ("Pipes", "SS", 36)]
+
+
+def seed_mtc_age_rules():
+	for category, material, months in MTC_AGE_RULES:
+		if not frappe.db.exists("Item Group", category):
+			continue
+		if frappe.db.exists("MTC Age Rule", {"product_category": category, "material_type": material}):
+			continue
+		frappe.get_doc(
+			{
+				"doctype": "MTC Age Rule",
+				"product_category": category,
+				"material_type": material,
+				"max_age_months": months,
+				"reference_basis": "Company default (requirements SMR-20)",
+				"active": 1,
+			}
+		).insert(ignore_permissions=True)
 
 
 def _root_item_group():

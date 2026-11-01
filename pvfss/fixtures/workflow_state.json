@@ -3,7 +3,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "remove",
-  "modified": "2026-11-02 01:27:04.839621",
+  "modified": "2026-11-02 03:26:06.937838",
   "name": "Rejected",
   "style": "Danger",
   "workflow_state_name": "Rejected"
@@ -12,7 +12,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.826876",
+  "modified": "2026-11-02 03:26:06.840238",
   "name": "Cancelled",
   "style": "Inverse",
   "workflow_state_name": "Cancelled"
@@ -21,7 +21,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.829545",
+  "modified": "2026-11-02 03:26:06.842334",
   "name": "Draft",
   "style": "",
   "workflow_state_name": "Draft"
@@ -30,7 +30,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.838929",
+  "modified": "2026-11-02 03:26:06.935276",
   "name": "Pending Approval",
   "style": "Warning",
   "workflow_state_name": "Pending Approval"
@@ -39,7 +39,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.842700",
+  "modified": "2026-11-02 03:26:06.939064",
   "name": "Submitted",
   "style": "Success",
   "workflow_state_name": "Submitted"
@@ -48,7 +48,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.843589",
+  "modified": "2026-11-02 03:26:06.939645",
   "name": "Under Review",
   "style": "Warning",
   "workflow_state_name": "Under Review"
@@ -57,7 +57,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": "ok-sign",
-  "modified": "2026-11-02 01:27:04.825521",
+  "modified": "2026-11-02 03:26:06.839487",
   "name": "Approved",
   "style": "Primary",
   "workflow_state_name": "Approved"
@@ -66,7 +66,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.827946",
+  "modified": "2026-11-02 03:26:06.840951",
   "name": "Deviation Approval",
   "style": "Warning",
   "workflow_state_name": "Deviation Approval"
@@ -75,7 +75,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.828837",
+  "modified": "2026-11-02 03:26:06.841612",
   "name": "Director Approval",
   "style": "Warning",
   "workflow_state_name": "Director Approval"
@@ -84,7 +84,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.844403",
+  "modified": "2026-11-02 03:26:06.940181",
   "name": "Value Approval",
   "style": "Warning",
   "workflow_state_name": "Value Approval"
@@ -93,7 +93,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.824098",
+  "modified": "2026-11-02 03:26:06.838373",
   "name": "Accepted",
   "style": "Success",
   "workflow_state_name": "Accepted"
@@ -102,7 +102,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.831744",
+  "modified": "2026-11-02 03:26:06.842962",
   "name": "Implemented",
   "style": "Success",
   "workflow_state_name": "Implemented"
@@ -111,7 +111,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.835198",
+  "modified": "2026-11-02 03:26:06.843902",
   "name": "Open",
   "style": "Warning",
   "workflow_state_name": "Open"
@@ -120,7 +120,7 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.838026",
+  "modified": "2026-11-02 03:26:06.934557",
   "name": "Pending Acceptance",
   "style": "Warning",
   "workflow_state_name": "Pending Acceptance"
@@ -129,9 +129,27 @@
   "docstatus": 0,
   "doctype": "Workflow State",
   "icon": null,
-  "modified": "2026-11-02 01:27:04.841732",
+  "modified": "2026-11-02 03:26:06.938463",
   "name": "Returned",
   "style": "Danger",
   "workflow_state_name": "Returned"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 03:26:06.933462",
+  "name": "Partially accepted",
+  "style": "Warning",
+  "workflow_state_name": "Partially accepted"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": null,
+  "modified": "2026-11-02 03:26:06.937092",
+  "name": "Received",
+  "style": "Info",
+  "workflow_state_name": "Received"
  }
 ]

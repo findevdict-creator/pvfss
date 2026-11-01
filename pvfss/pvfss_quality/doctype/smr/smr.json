@@ -1,0 +1,301 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Stock Material Requisition: ready-stock offer review (SMR-01 to SMR-30).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "supplier_po",
+  "supplier",
+  "supplier_name",
+  "project",
+  "cb1",
+  "stock_location",
+  "date_declared",
+  "review_date",
+  "reviewer",
+  "tally_sheet",
+  "annexure_progress",
+  "match_issues",
+  "mtc_summary",
+  "purchase_receipt",
+  "tab_lines",
+  "items",
+  "tab_annex",
+  "annexures",
+  "tab_match",
+  "matching",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "SMR-.YY.-.#####",
+   "default": "SMR-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "supplier_po",
+   "fieldtype": "Link",
+   "options": "Purchase Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "set_only_once": 1,
+   "label": "Supplier PO"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "options": "Supplier",
+   "fetch_from": "supplier_po.supplier",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier"
+  },
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "fetch_from": "supplier_po.supplier_name",
+   "read_only": 1,
+   "in_list_view": 1,
+   "label": "Supplier Name"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "options": "Project",
+   "fetch_from": "supplier_po.project",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "label": "Project"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "stock_location",
+   "fieldtype": "Link",
+   "options": "Warehouse",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Stock Location"
+  },
+  {
+   "fieldname": "date_declared",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "default": "Today",
+   "label": "Date Declared"
+  },
+  {
+   "fieldname": "review_date",
+   "fieldtype": "Date",
+   "description": "Reference date for MTC age (SMR-20).",
+   "label": "Review Date"
+  },
+  {
+   "fieldname": "reviewer",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Reviewer"
+  },
+  {
+   "fieldname": "tally_sheet",
+   "fieldtype": "Link",
+   "options": "Tally Sheet",
+   "label": "Tally Sheet"
+  },
+  {
+   "fieldname": "annexure_progress",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "in_list_view": 1,
+   "label": "Annexures"
+  },
+  {
+   "fieldname": "match_issues",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "in_list_view": 1,
+   "no_copy": 1,
+   "label": "Tally Match Issues"
+  },
+  {
+   "fieldname": "mtc_summary",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "MTCs"
+  },
+  {
+   "fieldname": "purchase_receipt",
+   "fieldtype": "Link",
+   "options": "Purchase Receipt",
+   "read_only": 1,
+   "no_copy": 1,
+   "allow_on_submit": 1,
+   "in_list_view": 1,
+   "label": "Purchase Receipt"
+  },
+  {
+   "fieldname": "tab_lines",
+   "fieldtype": "Tab Break",
+   "label": "Lines"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "options": "SMR Item",
+   "reqd": 1,
+   "label": "Lines"
+  },
+  {
+   "fieldname": "tab_annex",
+   "fieldtype": "Tab Break",
+   "label": "Annexures"
+  },
+  {
+   "fieldname": "annexures",
+   "fieldtype": "Table",
+   "options": "SMR Annexure",
+   "label": "Annexures"
+  },
+  {
+   "fieldname": "tab_match",
+   "fieldtype": "Tab Break",
+   "label": "Tally ↔ MTC Matching"
+  },
+  {
+   "fieldname": "matching",
+   "fieldtype": "Table",
+   "options": "SMR Match",
+   "label": "Matching"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "options": "SMR",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "label": "Amended From"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "SMR",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Logistics User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "supplier_po,supplier,project",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "supplier_name",
+ "track_changes": 1
+}

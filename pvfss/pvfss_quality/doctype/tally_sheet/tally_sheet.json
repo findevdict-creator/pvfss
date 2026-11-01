@@ -1,0 +1,229 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Supplier tally sheet: heats and lots per PO line (SMR-03).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "source_type",
+  "source_doctype",
+  "source_document",
+  "supplier_po",
+  "cb1",
+  "tally_template",
+  "source_file",
+  "heat_count",
+  "total_length",
+  "total_weight",
+  "match_summary",
+  "sb_lines",
+  "lines",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "TS-.YY.-.#####",
+   "default": "TS-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "source_type",
+   "fieldtype": "Select",
+   "options": "SMR\nPurchase Receipt\nInspection",
+   "reqd": 1,
+   "default": "SMR",
+   "in_list_view": 1,
+   "label": "Source Type"
+  },
+  {
+   "fieldname": "source_doctype",
+   "fieldtype": "Link",
+   "options": "DocType",
+   "hidden": 1,
+   "label": "Source DocType"
+  },
+  {
+   "fieldname": "source_document",
+   "fieldtype": "Dynamic Link",
+   "options": "source_doctype",
+   "in_list_view": 1,
+   "label": "Source Document"
+  },
+  {
+   "fieldname": "supplier_po",
+   "fieldtype": "Link",
+   "options": "Purchase Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier PO"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tally_template",
+   "fieldtype": "Link",
+   "options": "Tally Template",
+   "label": "Tally Template"
+  },
+  {
+   "fieldname": "source_file",
+   "fieldtype": "Attach",
+   "label": "Supplier Tally File"
+  },
+  {
+   "fieldname": "heat_count",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "in_list_view": 1,
+   "label": "Heats"
+  },
+  {
+   "fieldname": "total_length",
+   "fieldtype": "Float",
+   "read_only": 1,
+   "label": "Total Length"
+  },
+  {
+   "fieldname": "total_weight",
+   "fieldtype": "Float",
+   "read_only": 1,
+   "label": "Total Weight (kg)"
+  },
+  {
+   "fieldname": "match_summary",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "in_list_view": 1,
+   "no_copy": 1,
+   "label": "Match Result"
+  },
+  {
+   "fieldname": "sb_lines",
+   "fieldtype": "Section Break",
+   "label": "Lines"
+  },
+  {
+   "fieldname": "lines",
+   "fieldtype": "Table",
+   "options": "Tally Line",
+   "reqd": 1,
+   "label": "Lines"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "options": "Tally Sheet",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "label": "Amended From"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "Tally Sheet",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Logistics User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "supplier_po",
+ "track_changes": 1
+}

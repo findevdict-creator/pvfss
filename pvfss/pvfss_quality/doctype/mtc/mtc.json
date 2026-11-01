@@ -1,0 +1,258 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Material Test Certificate (QA-20, SMR-10).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "certificate_no",
+  "manufacturer",
+  "issue_date",
+  "certificate_type",
+  "cb1",
+  "product_standard",
+  "grade",
+  "material_type",
+  "supplier_po",
+  "attachment",
+  "review_result",
+  "sb_items",
+  "items",
+  "tab_heats",
+  "heats",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "MTC-.YY.-.#####",
+   "default": "MTC-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "certificate_no",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Certificate No"
+  },
+  {
+   "fieldname": "manufacturer",
+   "fieldtype": "Link",
+   "options": "Manufacturer",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Issuing Mill / Manufacturer"
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Issue Date"
+  },
+  {
+   "fieldname": "certificate_type",
+   "fieldtype": "Select",
+   "options": "EN 10204 2.1\nEN 10204 2.2\nEN 10204 3.1\nEN 10204 3.2",
+   "reqd": 1,
+   "label": "Certificate Type"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "product_standard",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "label": "Product Standard"
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Grade"
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Select",
+   "options": "CS\nSS\nAlloy\nOther",
+   "label": "Material Type"
+  },
+  {
+   "fieldname": "supplier_po",
+   "fieldtype": "Link",
+   "options": "Purchase Order",
+   "in_standard_filter": 1,
+   "label": "Supplier PO"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "reqd": 1,
+   "label": "Certificate (PDF)"
+  },
+  {
+   "fieldname": "review_result",
+   "fieldtype": "Select",
+   "options": "\nAccepted\nRejected\nAccepted with re-test",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1,
+   "allow_on_submit": 1,
+   "label": "Review Result"
+  },
+  {
+   "fieldname": "sb_items",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table MultiSelect",
+   "options": "MTC Item",
+   "label": "Items"
+  },
+  {
+   "fieldname": "tab_heats",
+   "fieldtype": "Tab Break",
+   "label": "Heats"
+  },
+  {
+   "fieldname": "heats",
+   "fieldtype": "Table",
+   "options": "MTC Heat",
+   "reqd": 1,
+   "label": "Heats"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "options": "MTC",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "label": "Amended From"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "MTC",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Logistics User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "certificate_no,manufacturer,grade,supplier_po",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "certificate_no",
+ "track_changes": 1
+}

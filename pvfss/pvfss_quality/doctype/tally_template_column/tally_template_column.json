@@ -1,0 +1,41 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "target_field",
+  "source_heading"
+ ],
+ "fields": [
+  {
+   "fieldname": "target_field",
+   "fieldtype": "Select",
+   "options": "po_line_ref\nitem_code\nheat_no\nlot_no\nsize\npieces\nlength_per_piece\ntotal_length\nweight\nmarking",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "PVFSS Field"
+  },
+  {
+   "fieldname": "source_heading",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Supplier Column Heading"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "Tally Template Column",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

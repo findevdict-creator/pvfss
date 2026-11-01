@@ -13,8 +13,13 @@ PBU = "Pre-Bidding User"
 PBM = "Pre-Bidding Manager"
 POU = "Post-Bidding User"
 POM = "Post-Bidding Manager"
+QU = "Quality User"
+QM = "Quality Manager"
+UNDER = "Under Review"
 
 STATE_STYLES = {
+	"Received": "Info",
+	"Partially accepted": "Warning",
 	"Deviation Approval": "Warning",
 	"Value Approval": "Warning",
 	"Director Approval": "Warning",
@@ -203,6 +208,40 @@ WORKFLOWS = {
 			("Open", "Reject", "Rejected", DIR, None),
 			("Approved", "Implement", "Implemented", POU, None),
 			("Approved", "Implement", "Implemented", POM, None),
+		],
+	},
+	# SMR-01 / SCR-SMR-02: ready-stock offer review
+	"PVFSS SMR": {
+		"document_type": "SMR",
+		"states": [
+			("Received", 0, QU),
+			("Received", 0, QM),
+			("Received", 0, POU),
+			("Under Review", 0, QU),
+			("Under Review", 0, QM),
+			("Accepted", 1, QU),
+			("Accepted", 1, QM),
+			("Partially accepted", 1, QU),
+			("Partially accepted", 1, QM),
+			("Rejected", 1, QU),
+			("Rejected", 1, QM),
+			("Cancelled", 2, QM),
+		],
+		"transitions": [
+			("Received", "Start Review", "Under Review", QU, None),
+			("Received", "Start Review", "Under Review", QM, None),
+			*[
+				(UNDER, action, state, role, None)
+				for action, state in (
+					("Accept", "Accepted"),
+					("Partially Accept", "Partially accepted"),
+					("Reject", "Rejected"),
+				)
+				for role in (QU, QM)
+			],
+			("Accepted", "Cancel", "Cancelled", QM, None),
+			("Partially accepted", "Cancel", "Cancelled", QM, None),
+			("Rejected", "Cancel", "Cancelled", QM, None),
 		],
 	},
 }

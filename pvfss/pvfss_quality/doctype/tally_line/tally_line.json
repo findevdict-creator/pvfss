@@ -1,0 +1,137 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "po_line_ref",
+  "item_code",
+  "heat_no",
+  "heat_number",
+  "lot_no",
+  "size",
+  "pieces",
+  "length_per_piece",
+  "total_length",
+  "weight",
+  "marking",
+  "qty",
+  "batch",
+  "match_result"
+ ],
+ "fields": [
+  {
+   "fieldname": "po_line_ref",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "PO Line"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "options": "Item",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Item"
+  },
+  {
+   "fieldname": "heat_no",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Heat No"
+  },
+  {
+   "fieldname": "heat_number",
+   "fieldtype": "Link",
+   "options": "Heat Number",
+   "read_only": 1,
+   "label": "Heat Number"
+  },
+  {
+   "fieldname": "lot_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Lot / Bundle"
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "label": "Size"
+  },
+  {
+   "fieldname": "pieces",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Pieces"
+  },
+  {
+   "fieldname": "length_per_piece",
+   "fieldtype": "Float",
+   "label": "Length per Piece"
+  },
+  {
+   "fieldname": "total_length",
+   "fieldtype": "Float",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Total Length"
+  },
+  {
+   "fieldname": "weight",
+   "fieldtype": "Float",
+   "label": "Weight (kg)"
+  },
+  {
+   "fieldname": "marking",
+   "fieldtype": "Small Text",
+   "label": "Marking"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Total length for metre items, pieces otherwise, unless entered.",
+   "label": "Qty (stock UOM)"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "options": "Batch",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Batch"
+  },
+  {
+   "fieldname": "match_result",
+   "fieldtype": "Select",
+   "options": "\nMatch\nHeat not on MTC\nGrade mismatch\nQty mismatch",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "no_copy": 1,
+   "label": "Match Result"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "Tally Line",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
