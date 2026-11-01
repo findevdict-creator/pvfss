@@ -181,6 +181,37 @@ def submit_sales_order(so):
 	return walk_workflow(so, "Submit for Review", "Submit")
 
 
+BACKWARD_ACTIONS = ("Reject", "Return", "Return to Draft", "Cancel")
+
+
+def approve_and_submit(doc, max_steps=8):
+	"""Walk any PVFSS workflow forward (first allowed forward action each step) until submitted."""
+	from frappe.model.workflow import get_transitions
+
+	for _step in range(max_steps):
+		doc = frappe.get_doc(doc.doctype, doc.name)
+		if doc.docstatus == 1:
+			return doc
+		forward = [t for t in get_transitions(doc) if t.action not in BACKWARD_ACTIONS]
+		if not forward:
+			raise frappe.ValidationError(f"No forward workflow action for {doc.doctype} {doc.name}")
+		doc = walk_workflow(doc, forward[0].action)
+	return doc
+
+
+def submit_purchase_order(po):
+	"""Justify every deviation, then approve and submit a draft Supplier PO (PUR-05, PUR-10)."""
+	po = frappe.get_doc("Purchase Order", po.name)
+	dirty = False
+	for row in po.get("pvfss_compliance") or []:
+		if row.result == "Deviation" and not row.justification:
+			row.justification = "Accepted in test"
+			dirty = True
+	if dirty:
+		po.save()
+	return approve_and_submit(po)
+
+
 def render_print(doc, print_format):
 	"""Print format HTML without the printview page shell, which needs built assets (CI has none)."""
 	from frappe.www.printview import get_rendered_template

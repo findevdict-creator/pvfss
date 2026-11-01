@@ -28,6 +28,7 @@ doctype_js = {
 	"Supplier Quotation": "public/js/doctype/supplier_quotation.js",
 	"Quotation": "public/js/doctype/quotation.js",
 	"Sales Order": "public/js/doctype/sales_order.js",
+	"Purchase Order": "public/js/doctype/purchase_order.js",
 }
 doctype_list_js = {
 	"Opportunity": "public/js/doctype/opportunity_list.js",
@@ -83,7 +84,11 @@ doc_events = {
 		"on_submit": "pvfss.overrides.request_for_quotation.on_submit",
 		"onload": "pvfss.overrides.request_for_quotation.onload",
 	},
-	"Purchase Order": {"validate": "pvfss.overrides.purchase_order.validate"},
+	# Module 5: Purchasing (PUR-01 to PUR-12, G3)
+	"Purchase Order": {
+		"validate": "pvfss.overrides.purchase_order.validate",
+		"before_submit": "pvfss.overrides.purchase_order.before_submit",
+	},
 }
 
 # Scheduled tasks (GEN-61)

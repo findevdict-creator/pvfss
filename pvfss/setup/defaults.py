@@ -106,6 +106,14 @@ CLOSURE_ITEMS = [
 LC_EXPIRY_ALERT_DAYS = [30, 15, 7]  # FIN-41
 ICV_EXPIRY_ALERT_DAYS = [90, 30]  # ICV-11
 
+# PUR-12 / FIN-20: Purchase Order and Receipt before Invoice, no over-billing or over-receipt
+# (the 3-way match). Applied on install only, so later changes on the site are kept.
+OPERATING_SETTINGS = {
+	"Buying Settings": {"po_required": "Yes", "pr_required": "Yes"},
+	"Accounts Settings": {"over_billing_allowance": 0},
+	"Stock Settings": {"over_delivery_receipt_allowance": 0},
+}
+
 SETTINGS_TABLES = {
 	"lc_expiry_alert_days": [{"days_before": d} for d in LC_EXPIRY_ALERT_DAYS],
 	"icv_expiry_alert_days": [{"days_before": d} for d in ICV_EXPIRY_ALERT_DAYS],

@@ -13,6 +13,7 @@ from pvfss.setup import branding, defaults, masters
 def after_install():
 	apply_settings_defaults()
 	apply_security_defaults()
+	apply_operating_defaults()
 	masters.seed_global()
 	branding.apply()
 
@@ -29,6 +30,7 @@ def before_tests():
 
 	apply_settings_defaults()
 	ensure_test_company()
+	apply_operating_defaults()  # after the setup wizard, which resets Buying Settings
 	frappe.db.commit()  # nosemgrep: frappe-manual-commit (install / before_tests hook: data must persist outside the request transaction)
 
 
@@ -54,6 +56,15 @@ def apply_settings_defaults():
 
 
 # --------------------------------------------------------------------------- Security (GEN-63, NFR-04)
+def apply_operating_defaults():
+	"""ERPNext settings PVFSS relies on (PUR-12, FIN-20)."""
+	for doctype, values in defaults.OPERATING_SETTINGS.items():
+		meta = frappe.get_meta(doctype)
+		for field, value in values.items():
+			if meta.has_field(field):
+				frappe.db.set_single_value(doctype, field, value)
+
+
 def apply_security_defaults():
 	"""2FA for all users, password policy and 8-hour session expiry.
 
