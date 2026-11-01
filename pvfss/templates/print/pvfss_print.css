@@ -1,0 +1,37 @@
+/* PVFSS print style (GEN-62). Same token values as the desk theme, as plain CSS for PDFs. */
+.print-format {
+	font-family: "Inter", Arial, sans-serif;
+	font-size: 9.5pt;
+	color: #1f2933;
+}
+.print-format h1,
+.print-format h2,
+.print-format h3 {
+	color: #0b4f8a;
+	font-weight: 700;
+}
+.print-format table.table {
+	border-collapse: collapse;
+}
+.print-format table.table > thead > tr > th {
+	background: #e8f1fa;
+	color: #0b4f8a;
+	font-weight: 600;
+	border-bottom: 2px solid #0b4f8a;
+	font-size: 8.5pt;
+	text-transform: none;
+}
+.print-format table.table > tbody > tr > td {
+	border-top: 1px solid #dde2e8;
+	font-size: 8.5pt;
+}
+.print-format .pvfss-mono {
+	font-family: "JetBrains Mono", monospace;
+}
+.print-format .text-muted {
+	color: #56636f !important;
+}
+.print-format .pvfss-total-row td {
+	font-weight: 700;
+	border-top: 2px solid #1f2933;
+}

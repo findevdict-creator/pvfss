@@ -10,7 +10,8 @@ SYSTEM_SETTINGS = {
 	"otp_issuer_name": "PVFSS ERP",
 	"enable_password_policy": 1,  # NFR-04
 	"minimum_password_score": "3",
-	"session_expiry": "08:00",  # 8-hour idle session expiry (NFR-04)
+	"session_expiry": "08:00",
+	"login_with_email_link": 0,  # password + 2FA only (SCR-GEN-01)  # 8-hour idle session expiry (NFR-04)
 }
 
 # Minimum password length (NFR-04). Checked on User save by pvfss.overrides.user.before_validate.

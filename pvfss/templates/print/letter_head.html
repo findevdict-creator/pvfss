@@ -1,0 +1,16 @@
+{%- set company = doc.company if doc and doc.get("company") else frappe.db.get_default("company") -%}
+{%- set c = frappe.get_cached_doc("Company", company) if company else None -%}
+<table class="pvfss-letterhead" style="width: 100%; border-bottom: 2px solid #0B4F8A; margin-bottom: 12px;">
+	<tr>
+		<td style="width: 40%; vertical-align: middle; padding-bottom: 8px;">
+			<img src="/assets/pvfss/images/logo.svg" alt="PVFSS" style="height: 40px;">
+		</td>
+		<td style="width: 60%; text-align: right; font-size: 9pt; color: #56636F; padding-bottom: 8px;">
+			<div style="font-size: 12pt; font-weight: 700; color: #1F2933;">{{ c.company_name if c else "PVFSS Solutions LLC" }}</div>
+			{%- if c and c.tax_id %}<div>TRN: {{ c.tax_id }}</div>{% endif -%}
+			{%- if c and c.phone_no %}<div>Tel: {{ c.phone_no }}</div>{% endif -%}
+			{%- if c and c.email %}<div>{{ c.email }}</div>{% endif -%}
+			{%- if c and c.website %}<div>{{ c.website }}</div>{% endif -%}
+		</td>
+	</tr>
+</table>

@@ -9,8 +9,16 @@ required_apps = ["frappe", "erpnext"]
 
 # Includes
 # --------
-# Shared client utilities (gate check panel, gate dialog). The theme stylesheet is added in 03-theme.
+# Theme (GEN-08, plan §6): CSS variables only, plus shared client utilities.
+app_include_css = "/assets/pvfss/css/pvfss_theme.css"
 app_include_js = "pvfss.bundle.js"
+web_include_css = "/assets/pvfss/css/pvfss_web.css"
+app_logo_url = "/assets/pvfss/images/logo.svg"
+
+website_context = {
+	"favicon": "/assets/pvfss/images/favicon.svg",
+	"splash_image": "/assets/pvfss/images/logo.svg",
+}
 
 # Installation
 # ------------
