@@ -21,7 +21,7 @@ GEN50 = (
 
 
 @frappe.whitelist()
-def get_plan(sales_order):
+def get_plan(sales_order: str):
 	"""One row per Customer PO line with the selected supplier line (RFQ-08) and what is left to order."""
 	so = frappe.get_doc("Sales Order", sales_order)
 	so.check_permission("read")
@@ -54,7 +54,7 @@ def get_plan(sales_order):
 
 
 @frappe.whitelist()
-def make_supplier_pos(sales_order, lines=None):
+def make_supplier_pos(sales_order: str, lines: str | list | None = None):
 	"""Create one draft Supplier PO per supplier. ``lines``: rows of get_plan (edited)."""
 	so = frappe.get_doc("Sales Order", sales_order)
 	frappe.has_permission("Purchase Order", "create", throw=True)
