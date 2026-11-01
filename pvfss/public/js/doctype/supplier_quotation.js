@@ -9,8 +9,16 @@ frappe.ui.form.on("Supplier Quotation", {
 			frm.dashboard.set_headline_alert(__("Validity date has passed"), "orange");
 		}
 		if (frm.doc.docstatus === 0 && !frm.is_new()) {
-			frm.add_custom_button(__("Import from Excel"), () => pvfss.sq.import_dialog(frm), __("Tools"));
-			frm.add_custom_button(__("Add Negotiation Round"), () => pvfss.sq.round_dialog(frm), __("Tools"));
+			frm.add_custom_button(
+				__("Import from Excel"),
+				() => pvfss.sq.import_dialog(frm),
+				__("Tools")
+			);
+			frm.add_custom_button(
+				__("Add Negotiation Round"),
+				() => pvfss.sq.round_dialog(frm),
+				__("Tools")
+			);
 		}
 		if (frm.doc.opportunity) {
 			frm.add_custom_button(
@@ -40,7 +48,12 @@ pvfss.sq.import_dialog = function (frm) {
 		title: __("Import from Excel"),
 		size: "extra-large",
 		fields: [
-			{ fieldname: "file", label: __("Supplier's priced Excel"), fieldtype: "Attach", reqd: 1 },
+			{
+				fieldname: "file",
+				label: __("Supplier's priced Excel"),
+				fieldtype: "Attach",
+				reqd: 1,
+			},
 			{ fieldname: "preview", fieldtype: "HTML" },
 		],
 		primary_action_label: __("Preview"),
@@ -49,7 +62,10 @@ pvfss.sq.import_dialog = function (frm) {
 			if (d.previewed) {
 				frappe.xcall(`${PVFSS_SQ_IMPORT}.apply`, args).then((n) => {
 					d.hide();
-					frappe.show_alert({ message: __("{0} lines updated", [n]), indicator: "green" });
+					frappe.show_alert({
+						message: __("{0} lines updated", [n]),
+						indicator: "green",
+					});
 					frm.reload_doc();
 				});
 				return;
@@ -68,9 +84,14 @@ pvfss.sq.import_dialog = function (frm) {
 					)
 					.join("");
 				const unquoted = r.unquoted_lines.length
-					? `<p class="text-muted">${__("Lines not in the file")}: ${esc(r.unquoted_lines.join(", "))}</p>`
+					? `<p class="text-muted">${__("Lines not in the file")}: ${esc(
+							r.unquoted_lines.join(", ")
+					  )}</p>`
 					: "";
-				d.fields_dict.preview.$wrapper.html(`<p>${__("{0} rows OK, {1} errors", [r.ok, r.errors])}</p>
+				d.fields_dict.preview.$wrapper.html(`<p>${__("{0} rows OK, {1} errors", [
+					r.ok,
+					r.errors,
+				])}</p>
 					${unquoted}<div style="max-height:400px;overflow:auto"><table class="table table-bordered table-sm">
 					<thead><tr><th>${__("Line ref")}</th><th>${__("Matched")}</th><th>${__("Rate")}</th>
 					<th>${__("Lead time")}</th><th>${__("Availability")}</th><th>${__("Manufacturer")}</th>
@@ -107,11 +128,39 @@ pvfss.sq.round_dialog = function (frm) {
 				in_place_edit: true,
 				data,
 				fields: [
-					{ fieldname: "line_ref", label: __("Line"), fieldtype: "Data", read_only: 1, in_list_view: 1 },
-					{ fieldname: "current_price", label: __("Current price"), fieldtype: "Float", read_only: 1, in_list_view: 1 },
-					{ fieldname: "revised_price", label: __("Revised price"), fieldtype: "Float", in_list_view: 1 },
-					{ fieldname: "current_lead", label: __("Current lead time"), fieldtype: "Int", read_only: 1, in_list_view: 1 },
-					{ fieldname: "revised_lead_time", label: __("Revised lead time"), fieldtype: "Int", in_list_view: 1 },
+					{
+						fieldname: "line_ref",
+						label: __("Line"),
+						fieldtype: "Data",
+						read_only: 1,
+						in_list_view: 1,
+					},
+					{
+						fieldname: "current_price",
+						label: __("Current price"),
+						fieldtype: "Float",
+						read_only: 1,
+						in_list_view: 1,
+					},
+					{
+						fieldname: "revised_price",
+						label: __("Revised price"),
+						fieldtype: "Float",
+						in_list_view: 1,
+					},
+					{
+						fieldname: "current_lead",
+						label: __("Current lead time"),
+						fieldtype: "Int",
+						read_only: 1,
+						in_list_view: 1,
+					},
+					{
+						fieldname: "revised_lead_time",
+						label: __("Revised lead time"),
+						fieldtype: "Int",
+						in_list_view: 1,
+					},
 				],
 			},
 		],

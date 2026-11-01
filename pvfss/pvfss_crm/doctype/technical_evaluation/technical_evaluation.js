@@ -11,7 +11,10 @@ frappe.ui.form.on("Technical Evaluation", {
 		if (frm.doc.inquiry) {
 			frm.add_custom_button(
 				__("Competitive Statement"),
-				() => frappe.set_route("query-report", "Competitive Statement", { inquiry: frm.doc.inquiry }),
+				() =>
+					frappe.set_route("query-report", "Competitive Statement", {
+						inquiry: frm.doc.inquiry,
+					}),
 				__("View")
 			);
 		}

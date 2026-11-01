@@ -8,12 +8,16 @@ frappe.ui.form.on("Costing Sheet", {
 			const ok = (frm.doc.margin_pct || 0) >= min;
 			frm.dashboard.clear_headline();
 			frm.dashboard.set_headline_alert(
-				`${__("Margin")} ${format_number(frm.doc.margin_pct || 0, null, 2)}% (${__("minimum")} ${min}%)`,
+				`${__("Margin")} ${format_number(frm.doc.margin_pct || 0, null, 2)}% (${__(
+					"minimum"
+				)} ${min}%)`,
 				ok ? "green" : "red"
 			);
 			if (frm.doc.non_compliant_lines) {
 				frm.dashboard.add_comment(
-					__("{0} line(s) are Not compliant on the Technical Evaluation.", [frm.doc.non_compliant_lines]),
+					__("{0} line(s) are Not compliant on the Technical Evaluation.", [
+						frm.doc.non_compliant_lines,
+					]),
 					"red",
 					true
 				);
@@ -28,7 +32,10 @@ frappe.ui.form.on("Costing Sheet", {
 		if (frm.doc.inquiry) {
 			frm.add_custom_button(
 				__("Competitive Statement"),
-				() => frappe.set_route("query-report", "Competitive Statement", { inquiry: frm.doc.inquiry }),
+				() =>
+					frappe.set_route("query-report", "Competitive Statement", {
+						inquiry: frm.doc.inquiry,
+					}),
 				__("View")
 			);
 		}
@@ -44,7 +51,9 @@ frappe.ui.form.on("Costing Sheet Item", {
 	form_render(frm, cdt, cdn) {
 		const row = locals[cdt][cdn];
 		if (row.technical_status === "Not compliant") {
-			frm.fields_dict.items.grid.grid_rows_by_docname[cdn]?.wrapper.addClass("pvfss-row-danger");
+			frm.fields_dict.items.grid.grid_rows_by_docname[cdn]?.wrapper.addClass(
+				"pvfss-row-danger"
+			);
 		}
 	},
 });

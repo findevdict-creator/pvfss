@@ -191,7 +191,9 @@ pvfss.crm.close_dialog = function (frm) {
 // ---------------------------------------------------------------------------- 06-rfq (SCR-CRM-02 actions)
 pvfss.crm.add_bid_buttons = function (frm, closed) {
 	const stage = frm.doc.pvfss_stage || "New";
-	const open_for_rfq = ["New", "RFQ Sent", "Quotes Received", "Under Evaluation"].includes(stage);
+	const open_for_rfq = ["New", "RFQ Sent", "Quotes Received", "Under Evaluation"].includes(
+		stage
+	);
 	if (!closed && open_for_rfq && (frm.doc.items || []).length) {
 		frm.add_custom_button(
 			__("RFQ"),
@@ -206,12 +208,17 @@ pvfss.crm.add_bid_buttons = function (frm, closed) {
 		);
 	}
 	frappe.db
-		.count("Supplier Quotation", { filters: { opportunity: frm.doc.name, docstatus: ["<", 2] } })
+		.count("Supplier Quotation", {
+			filters: { opportunity: frm.doc.name, docstatus: ["<", 2] },
+		})
 		.then((count) => {
 			if (!count) return;
 			frm.add_custom_button(
 				__("Competitive Statement"),
-				() => frappe.set_route("query-report", "Competitive Statement", { inquiry: frm.doc.name }),
+				() =>
+					frappe.set_route("query-report", "Competitive Statement", {
+						inquiry: frm.doc.name,
+					}),
 				__("View")
 			);
 			if (closed) return;
@@ -219,9 +226,12 @@ pvfss.crm.add_bid_buttons = function (frm, closed) {
 				__("Costing Sheet"),
 				() =>
 					frappe
-						.xcall("pvfss.pvfss_crm.doctype.costing_sheet.costing_sheet.make_or_refresh", {
-							inquiry: frm.doc.name,
-						})
+						.xcall(
+							"pvfss.pvfss_crm.doctype.costing_sheet.costing_sheet.make_or_refresh",
+							{
+								inquiry: frm.doc.name,
+							}
+						)
 						.then((name) => frappe.set_route("Form", "Costing Sheet", name)),
 				__("Create")
 			);
