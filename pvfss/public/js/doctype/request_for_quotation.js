@@ -35,7 +35,9 @@ frappe.provide("pvfss.rfq");
 pvfss.rfq.suggest_dialog = function (frm) {
 	const categories = [
 		...new Set(
-			(frm.doc.items || []).map((r) => r.pvfss_product_category || r.item_group).filter(Boolean)
+			(frm.doc.items || [])
+				.map((r) => r.pvfss_product_category || r.item_group)
+				.filter(Boolean)
 		),
 	];
 	const already = new Set((frm.doc.suppliers || []).map((r) => r.supplier));
@@ -92,15 +94,20 @@ pvfss.rfq.suggest_dialog = function (frm) {
 							.map((c) => `${esc(c.category)} ${c.covered ? "✓" : "✗"}`)
 							.join(", ");
 						const lock = s.blocked ? "🔒 " : "";
-						const avl = { "On AVL": "✓", "Not on AVL": "⚠", "Not required": "–" }[s.avl] || "";
+						const avl =
+							{ "On AVL": "✓", "Not on AVL": "⚠", "Not required": "–" }[s.avl] || "";
 						return `<tr class="${s.blocked ? "text-muted" : ""}">
 							<td><input type="checkbox" class="pvfss-pick" data-supplier="${esc(s.supplier)}"
 								${s.blocked || already.has(s.supplier) ? "disabled" : ""}></td>
 							<td>${lock}${esc(s.supplier_name || s.supplier)}</td>
 							<td>${cats}</td><td>${s.covered} / ${s.total}</td>
-							<td><span class="indicator-pill ${s.blocked ? "red" : s.approval_status === "Approved" ? "green" : "orange"}">${esc(
-								__(s.approval_status || "")
-							)}</span></td>
+							<td><span class="indicator-pill ${
+								s.blocked
+									? "red"
+									: s.approval_status === "Approved"
+									? "green"
+									: "orange"
+							}">${esc(__(s.approval_status || ""))}</span></td>
 							<td title="${esc(__(s.avl))}">${avl}</td>
 							<td>${s.last_quote ? frappe.datetime.str_to_user(s.last_quote) : ""}</td>
 							<td>${s.lowest_share || 0}%</td></tr>`;

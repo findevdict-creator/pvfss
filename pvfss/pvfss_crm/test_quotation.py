@@ -238,7 +238,7 @@ class TestQuotation(IntegrationTestCase):
 
 	def test_sq03_quotation_print_format(self):
 		_cs, qtn = self.quotation(deviation=True)
-		html = frappe.get_print("Quotation", qtn.name, print_format="PVFSS Quotation", doc=qtn)
+		html = f.render_print(qtn, "PVFSS Quotation")
 		self.assertIn(self.inquiry.pvfss_contractor_ref, html)
 		self.assertIn("Technical Deviations", html)
 		self.assertIn("Authorised Signatory", html)

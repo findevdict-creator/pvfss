@@ -7,7 +7,11 @@ frappe.ui.form.on("Quotation", {
 			const route = frm.doc.__onload?.pvfss_approval_route || "";
 			const low = frm.doc.pvfss_approver_role === "PVFSS Director";
 			frm.dashboard.set_headline_alert(
-				`${__("Margin")} ${format_number(frm.doc.pvfss_margin_pct || 0, null, 2)}% · ${frappe.utils.escape_html(route)}`,
+				`${__("Margin")} ${format_number(
+					frm.doc.pvfss_margin_pct || 0,
+					null,
+					2
+				)}% · ${frappe.utils.escape_html(route)}`,
 				low ? "orange" : "green"
 			);
 		}
@@ -17,7 +21,9 @@ frappe.ui.form.on("Quotation", {
 					__("Cancel {0} and create the next revision?", [frm.doc.name]),
 					() =>
 						frappe
-							.xcall("pvfss.pvfss_crm.quotation.make_revision", { quotation: frm.doc.name })
+							.xcall("pvfss.pvfss_crm.quotation.make_revision", {
+								quotation: frm.doc.name,
+							})
 							.then((name) => frappe.set_route("Form", "Quotation", name))
 				)
 			);

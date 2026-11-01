@@ -380,6 +380,6 @@ class TestRFQ(IntegrationTestCase):
 		rfq = make_rfq(self.inquiry.name, [self.s1], submit=False)
 		self.assertTrue(rfq.subject.startswith(f"RFQ {rfq.name} - {self.inquiry.pvfss_contractor_ref}"))
 		self.assertTrue(frappe.db.exists("Email Template", "PVFSS RFQ"))
-		html = frappe.get_print("Request for Quotation", rfq.name, print_format="PVFSS RFQ", doc=rfq)
+		html = f.render_print(rfq, "PVFSS RFQ")
 		self.assertIn("Spec line 1", html)
 		self.assertIn("Lead time", html)

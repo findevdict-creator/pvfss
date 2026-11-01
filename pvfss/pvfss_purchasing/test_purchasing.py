@@ -246,6 +246,6 @@ class TestPurchasing(IntegrationTestCase):
 
 	def test_pur08_supplier_po_print_format(self):
 		po = self.one_po()
-		html = frappe.get_print("Purchase Order", po.name, print_format="PVFSS Supplier PO", doc=po)
+		html = f.render_print(po, "PVFSS Supplier PO")
 		self.assertIn("Spec line 1", html)
 		self.assertIn("Supplier acceptance", html)
