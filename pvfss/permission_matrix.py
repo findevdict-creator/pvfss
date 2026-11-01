@@ -44,8 +44,8 @@ MATRIX = {
 	"Opportunity Lost Reason": everyone(**{PBM: "rwc"}),
 	"Customer": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc", FU: "rw", FM: "rw"}),
 	"Item": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc", QU: "rwc", QM: "rwc"}),
-	"Address": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc", FU: "rwc", FM: "rwc"}),
-	"Contact": everyone(**{PBU: "rwc", PBM: "rwc", POU: "rwc", POM: "rwc", FU: "rwc", FM: "rwc"}),
+	# Address and Contact are left alone: ERPNext ships its own Custom DocPerm rows for them on
+	# install (role "All" reads), and duplicating those here would drift on every fresh site.
 	# ---- Module 1: CRM (screens §21: Inquiry row)
 	"Opportunity": {PBU: "rwc", PBM: "rwc", DIR: "r", POU: "r", POM: "r", QU: "r", QM: "r", RO: "r"},
 }
