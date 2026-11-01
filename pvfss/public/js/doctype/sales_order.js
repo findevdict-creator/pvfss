@@ -156,9 +156,12 @@ frappe.ui.form.on("Sales Order", {
 				__("Project Handover"),
 				() =>
 					frappe
-						.xcall("pvfss.pvfss_purchasing.doctype.project_handover.project_handover.make_handover", {
-							sales_order: frm.doc.name,
-						})
+						.xcall(
+							"pvfss.pvfss_purchasing.doctype.project_handover.project_handover.make_handover",
+							{
+								sales_order: frm.doc.name,
+							}
+						)
 						.then((name) => frappe.set_route("Form", "Project Handover", name)),
 				__("Create")
 			);
