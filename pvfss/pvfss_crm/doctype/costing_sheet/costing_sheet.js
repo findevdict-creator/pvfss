@@ -32,7 +32,9 @@ frappe.ui.form.on("Costing Sheet", {
 		if (frm.doc.docstatus === 1 && !frm.doc.quotation) {
 			const btn = frm.add_custom_button(__("Create Quotation"), () =>
 				frappe
-					.xcall("pvfss.pvfss_crm.quotation.make_quotation", { costing_sheet: frm.doc.name })
+					.xcall("pvfss.pvfss_crm.quotation.make_quotation", {
+						costing_sheet: frm.doc.name,
+					})
 					.then((doc) => {
 						frappe.model.sync(doc);
 						frappe.set_route("Form", doc.doctype, doc.name);
@@ -41,7 +43,9 @@ frappe.ui.form.on("Costing Sheet", {
 			if (frm.doc.non_compliant_lines) {
 				btn.prop("disabled", true).attr(
 					"title",
-					__("Lines are not technically compliant. Re-select suppliers on the Competitive Statement.")
+					__(
+						"Lines are not technically compliant. Re-select suppliers on the Competitive Statement."
+					)
 				);
 			}
 		}
