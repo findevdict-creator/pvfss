@@ -1,0 +1,14 @@
+<div style="font-family: Inter, system-ui, sans-serif; font-size: 14px; color: #1F2933;">
+	<p style="font-size: 16px; font-weight: 600;">{{ subject }}</p>
+	{% if message and message != subject %}
+	<div>{{ message }}</div>
+	{% endif %}
+	{% if link %}
+	<p style="margin-top: 20px;">
+		<a href="{{ link }}"
+			style="background: #0B4F8A; color: #FFFFFF; padding: 8px 16px; border-radius: 6px; text-decoration: none;">
+			{{ _("Open in PVFSS ERP") }}
+		</a>
+	</p>
+	{% endif %}
+</div>

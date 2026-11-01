@@ -1,0 +1,429 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Every threshold, lead time and template read by PVFSS business rules and alerts (GEN-06, GEN-30).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_sales",
+  "min_target_margin_pct",
+  "quotation_lead_time_buffer_days",
+  "column_break_1",
+  "default_quotation_validity_days",
+  "tab_approvals",
+  "spo_value_approval_threshold",
+  "over_ordering_tolerance_pct",
+  "column_break_2",
+  "supplier_payment_approval_threshold",
+  "petty_cash_approval_threshold",
+  "tab_alerts",
+  "section_alerts_commercial",
+  "inquiry_due_alert_days",
+  "supplier_doc_expiry_alert_days",
+  "expediting_delay_alert_days",
+  "column_break_3",
+  "default_transit_buffer_days",
+  "submittal_overdue_days",
+  "section_alerts_quality",
+  "mtc_age_alert_days",
+  "ncr_response_days",
+  "column_break_4",
+  "pod_missing_days",
+  "hse_expiry_alert_days",
+  "section_alerts_finance",
+  "lc_expiry_alert_days",
+  "lc_presentation_alert_days",
+  "pdc_maturity_alert_days",
+  "retention_release_alert_days",
+  "column_break_5",
+  "icv_expiry_alert_days",
+  "tab_quality",
+  "mtc_age_reference_date",
+  "recheck_mtc_age_at_irn",
+  "column_break_6",
+  "qa02_mode",
+  "allow_dispatch_without_irn",
+  "tab_supplier_eval",
+  "supplier_evaluation_criteria",
+  "tab_templates",
+  "handover_item_template",
+  "po_review_template",
+  "dispatch_document_template",
+  "expediting_milestone_template",
+  "project_closure_template",
+  "tab_icv",
+  "default_icv_weightage_pct",
+  "tab_cash_flow",
+  "recurring_expenses"
+ ],
+ "fields": [
+  {
+   "fieldname": "tab_sales",
+   "fieldtype": "Tab Break",
+   "label": "Sales and margin"
+  },
+  {
+   "fieldname": "min_target_margin_pct",
+   "fieldtype": "Percent",
+   "label": "Minimum Target Margin %",
+   "default": "10",
+   "description": "SQ-06. Quotations below this margin route to a Director."
+  },
+  {
+   "fieldname": "quotation_lead_time_buffer_days",
+   "fieldtype": "Int",
+   "label": "Quotation Lead-time Buffer (days)",
+   "non_negative": 1,
+   "description": "SQ-01",
+   "default": "0"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_quotation_validity_days",
+   "fieldtype": "Int",
+   "label": "Default Quotation Validity (days)",
+   "non_negative": 1,
+   "description": "SQ-01",
+   "default": "30"
+  },
+  {
+   "fieldname": "tab_approvals",
+   "fieldtype": "Tab Break",
+   "label": "Approvals"
+  },
+  {
+   "fieldname": "spo_value_approval_threshold",
+   "fieldtype": "Currency",
+   "label": "Supplier PO Value Approval Threshold (AED)",
+   "options": "AED",
+   "description": "PUR-10. Supplier POs above this value need Director approval.",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "over_ordering_tolerance_pct",
+   "fieldtype": "Percent",
+   "label": "Over-ordering Tolerance %",
+   "default": "0",
+   "non_negative": 1,
+   "description": "PUR-07"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_payment_approval_threshold",
+   "fieldtype": "Currency",
+   "label": "Supplier Payment Approval Threshold (AED)",
+   "options": "AED",
+   "description": "FIN-31",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "petty_cash_approval_threshold",
+   "fieldtype": "Currency",
+   "label": "Petty Cash Voucher Approval Threshold (AED)",
+   "options": "AED",
+   "description": "FIN-65",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "tab_alerts",
+   "fieldtype": "Tab Break",
+   "label": "Alerts (days)"
+  },
+  {
+   "fieldname": "section_alerts_commercial",
+   "fieldtype": "Section Break",
+   "label": "Commercial and projects"
+  },
+  {
+   "fieldname": "inquiry_due_alert_days",
+   "fieldtype": "Int",
+   "label": "Inquiry Due-date Alert (days before)",
+   "non_negative": 1,
+   "description": "CRM-12",
+   "default": "2"
+  },
+  {
+   "fieldname": "supplier_doc_expiry_alert_days",
+   "fieldtype": "Int",
+   "label": "Supplier Document Expiry Alert (days before)",
+   "non_negative": 1,
+   "description": "SUP-04",
+   "default": "30"
+  },
+  {
+   "fieldname": "expediting_delay_alert_days",
+   "fieldtype": "Int",
+   "label": "Expediting Delay Alert (days before committed date)",
+   "non_negative": 1,
+   "description": "PRJ-21",
+   "default": "7"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_transit_buffer_days",
+   "fieldtype": "Int",
+   "label": "Default Transit Buffer (days)",
+   "non_negative": 1,
+   "description": "PUR-04, PRJ-21",
+   "default": "0"
+  },
+  {
+   "fieldname": "submittal_overdue_days",
+   "fieldtype": "Int",
+   "label": "Submittal Overdue Response (days)",
+   "non_negative": 1,
+   "description": "DMS-06",
+   "default": "14"
+  },
+  {
+   "fieldname": "section_alerts_quality",
+   "fieldtype": "Section Break",
+   "label": "Quality and logistics"
+  },
+  {
+   "fieldname": "mtc_age_alert_days",
+   "fieldtype": "Int",
+   "label": "MTC Age Alert (days before limit)",
+   "non_negative": 1,
+   "description": "SMR-21",
+   "default": "60"
+  },
+  {
+   "fieldname": "ncr_response_days",
+   "fieldtype": "Int",
+   "label": "NCR Response Default (days)",
+   "non_negative": 1,
+   "description": "QA-31",
+   "default": "7"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pod_missing_days",
+   "fieldtype": "Int",
+   "label": "POD Missing After ETA (days)",
+   "non_negative": 1,
+   "description": "DSP-10",
+   "default": "3"
+  },
+  {
+   "fieldname": "hse_expiry_alert_days",
+   "fieldtype": "Int",
+   "label": "HSE Training / Permit Expiry Alert (days before)",
+   "non_negative": 1,
+   "description": "HSE-31",
+   "default": "30"
+  },
+  {
+   "fieldname": "section_alerts_finance",
+   "fieldtype": "Section Break",
+   "label": "Finance and ICV"
+  },
+  {
+   "fieldname": "lc_expiry_alert_days",
+   "fieldtype": "Table",
+   "label": "LC Expiry Alerts (days before)",
+   "options": "PVFSS Alert Threshold",
+   "description": "FIN-41. One alert per row."
+  },
+  {
+   "fieldname": "lc_presentation_alert_days",
+   "fieldtype": "Int",
+   "label": "LC Presentation Deadline Alert (days before)",
+   "non_negative": 1,
+   "description": "FIN-41",
+   "default": "5"
+  },
+  {
+   "fieldname": "pdc_maturity_alert_days",
+   "fieldtype": "Int",
+   "label": "PDC Maturity Alert (days before)",
+   "non_negative": 1,
+   "description": "FIN-45",
+   "default": "3"
+  },
+  {
+   "fieldname": "retention_release_alert_days",
+   "fieldtype": "Int",
+   "label": "Retention Release Alert (days before)",
+   "non_negative": 1,
+   "description": "FIN-52",
+   "default": "30"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "icv_expiry_alert_days",
+   "fieldtype": "Table",
+   "label": "ICV Certificate Expiry Alerts (days before)",
+   "options": "PVFSS Alert Threshold",
+   "description": "ICV-11. One alert per row."
+  },
+  {
+   "fieldname": "tab_quality",
+   "fieldtype": "Tab Break",
+   "label": "Quality rules"
+  },
+  {
+   "fieldname": "mtc_age_reference_date",
+   "fieldtype": "Select",
+   "label": "MTC Age Reference Date",
+   "options": "SMR review date\nIRN date\nDispatch date",
+   "default": "SMR review date",
+   "description": "SMR-20 / Q-02"
+  },
+  {
+   "fieldname": "recheck_mtc_age_at_irn",
+   "fieldtype": "Check",
+   "label": "Re-check MTC Age at IRN",
+   "default": "1"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qa02_mode",
+   "fieldtype": "Select",
+   "label": "Submittal Gate Mode (QA-02)",
+   "options": "Block\nWarn",
+   "default": "Block",
+   "description": "QA-02: block or warn when Manufacturing start is marked before customer approval of submittals."
+  },
+  {
+   "fieldname": "allow_dispatch_without_irn",
+   "fieldtype": "Check",
+   "label": "Allow Dispatch Without IRN for Items Flagged \"IRN not applicable\"",
+   "default": "0",
+   "description": "DSP-02"
+  },
+  {
+   "fieldname": "tab_supplier_eval",
+   "fieldtype": "Tab Break",
+   "label": "Supplier evaluation"
+  },
+  {
+   "fieldname": "supplier_evaluation_criteria",
+   "fieldtype": "Table",
+   "label": "Evaluation Criteria Weights",
+   "options": "PVFSS Evaluation Criterion",
+   "description": "SUP-05. Weights must total 100%."
+  },
+  {
+   "fieldname": "tab_templates",
+   "fieldtype": "Tab Break",
+   "label": "Templates"
+  },
+  {
+   "fieldname": "handover_item_template",
+   "fieldtype": "Table",
+   "label": "Handover Item Template",
+   "options": "PVFSS Handover Template Item",
+   "description": "PRJ-02"
+  },
+  {
+   "fieldname": "po_review_template",
+   "fieldtype": "Table",
+   "label": "Customer PO Review Template",
+   "options": "PVFSS PO Review Template Item",
+   "description": "SQ-08"
+  },
+  {
+   "fieldname": "dispatch_document_template",
+   "fieldtype": "Table",
+   "label": "Dispatch Document Template",
+   "options": "PVFSS Dispatch Document Template",
+   "description": "DSP-03"
+  },
+  {
+   "fieldname": "expediting_milestone_template",
+   "fieldtype": "Table",
+   "label": "Expediting Milestone Template",
+   "options": "PVFSS Milestone Template",
+   "description": "PRJ-20"
+  },
+  {
+   "fieldname": "project_closure_template",
+   "fieldtype": "Table",
+   "label": "Project Closure Template",
+   "options": "PVFSS Closure Template Item",
+   "description": "PRJ-40"
+  },
+  {
+   "fieldname": "tab_icv",
+   "fieldtype": "Tab Break",
+   "label": "ICV and bidding"
+  },
+  {
+   "fieldname": "default_icv_weightage_pct",
+   "fieldtype": "Percent",
+   "label": "Default ICV Weightage % for Bid Simulation",
+   "default": "0",
+   "non_negative": 1,
+   "description": "ICV-20"
+  },
+  {
+   "fieldname": "tab_cash_flow",
+   "fieldtype": "Tab Break",
+   "label": "Cash flow"
+  },
+  {
+   "fieldname": "recurring_expenses",
+   "fieldtype": "Table",
+   "label": "Recurring Expense Forecast",
+   "options": "PVFSS Recurring Expense",
+   "description": "FIN-70"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS",
+ "name": "PVFSS Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 0,
+   "share": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "export": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "export": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
