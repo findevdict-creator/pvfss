@@ -179,3 +179,10 @@ def submit_sales_order(so):
 	if so.pvfss_difference_count:
 		return walk_workflow(so, "Submit for Review", "Approve", "Submit")
 	return walk_workflow(so, "Submit for Review", "Submit")
+
+
+def render_print(doc, print_format):
+	"""Print format HTML without the printview page shell, which needs built assets (CI has none)."""
+	from frappe.www.printview import get_rendered_template
+
+	return get_rendered_template(doc, print_format=frappe.get_doc("Print Format", print_format), no_letterhead=1)
