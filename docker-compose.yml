@@ -1,0 +1,42 @@
+# PVFSS ERP for local use: `docker compose up --build`, then open http://localhost:8000
+# Log in as Administrator with ADMIN_PASSWORD (default: admin).
+services:
+  mariadb:
+    image: mariadb:11.8
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-admin}
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    volumes:
+      - db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      retries: 30
+
+  redis:
+    image: redis:7-alpine
+
+  pvfss:
+    build: .
+    image: pvfss-erp:local
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    environment:
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin}
+      HTTP_PORT: ${HTTP_PORT:-8000}
+    ports:
+      - "${HTTP_PORT:-8000}:8000"
+      - "9000:9000"
+    volumes:
+      - sites:/home/frappe/frappe-bench/sites
+
+volumes:
+  db-data:
+  sites:
