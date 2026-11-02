@@ -80,7 +80,9 @@ function smr_headline(frm) {
 	if (frm.is_new()) return;
 	const chips = [];
 	chips.push(
-		`<span class="indicator blue">${__("Annexures {0}", [frm.doc.annexure_progress || "0/0"])}</span>`
+		`<span class="indicator blue">${__("Annexures {0}", [
+			frm.doc.annexure_progress || "0/0",
+		])}</span>`
 	);
 	const issues = frm.doc.match_issues || 0;
 	chips.push(
@@ -93,13 +95,14 @@ function smr_headline(frm) {
 		chips.push(`<span class="indicator red">${__("MTCs: {0} over age", [over])}</span>`);
 	}
 	frm.dashboard.set_headline_alert(chips.join("&nbsp;&nbsp;"));
-	frm.fields_dict.matching?.grid?.wrapper
-		.find(".grid-row")
-		.each(function () {
-			const name = $(this).attr("data-name");
-			const row = (frm.doc.matching || []).find((r) => r.name === name);
-			if (row) $(this).find('[data-fieldname="result"]').css("color", `var(--${SMR_RESULT_COLOURS[row.result] || "gray"}-600)`);
-		});
+	frm.fields_dict.matching?.grid?.wrapper.find(".grid-row").each(function () {
+		const name = $(this).attr("data-name");
+		const row = (frm.doc.matching || []).find((r) => r.name === name);
+		if (row)
+			$(this)
+				.find('[data-fieldname="result"]')
+				.css("color", `var(--${SMR_RESULT_COLOURS[row.result] || "gray"}-600)`);
+	});
 }
 
 function smr_waive(frm) {
@@ -110,7 +113,13 @@ function smr_waive(frm) {
 	}
 	frappe.prompt(
 		[
-			{ fieldname: "line_ref", label: __("PO Line"), fieldtype: "Select", options: lines, reqd: 1 },
+			{
+				fieldname: "line_ref",
+				label: __("PO Line"),
+				fieldtype: "Select",
+				options: lines,
+				reqd: 1,
+			},
 			{
 				fieldname: "customer_ref",
 				label: __("Customer Approval Ref"),
@@ -120,7 +129,10 @@ function smr_waive(frm) {
 		],
 		(values) =>
 			frappe
-				.xcall("pvfss.pvfss_quality.doctype.smr.smr.waive_age", { smr: frm.doc.name, ...values })
+				.xcall("pvfss.pvfss_quality.doctype.smr.smr.waive_age", {
+					smr: frm.doc.name,
+					...values,
+				})
 				.then(() => frm.reload_doc()),
 		__("Director waiver (SMR-20)"),
 		__("Waive")

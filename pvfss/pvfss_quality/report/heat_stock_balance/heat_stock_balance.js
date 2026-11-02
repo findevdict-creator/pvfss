@@ -1,6 +1,11 @@
 frappe.query_reports["Heat Stock Balance"] = {
 	filters: [
-		{ fieldname: "warehouse", label: __("Warehouse"), fieldtype: "Link", options: "Warehouse" },
+		{
+			fieldname: "warehouse",
+			label: __("Warehouse"),
+			fieldtype: "Link",
+			options: "Warehouse",
+		},
 		{ fieldname: "item_code", label: __("Item"), fieldtype: "Link", options: "Item" },
 		{
 			fieldname: "heat_number",
