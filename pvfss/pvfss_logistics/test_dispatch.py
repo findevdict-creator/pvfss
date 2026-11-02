@@ -94,7 +94,10 @@ class TestDispatch(IntegrationTestCase):
 		docs = {r.document: r for r in dn.pvfss_dispatch_documents}
 		self.assertIn("Delivery Note (signed)", docs)  # Road template
 		self.assertNotIn("Bill of Lading", docs)
-		self.assertEqual((docs["IRN / MPQT documentation"].status, docs["IRN / MPQT documentation"].remarks), ("Ready", irn))
+		self.assertEqual(
+			(docs["IRN / MPQT documentation"].status, docs["IRN / MPQT documentation"].remarks),
+			("Ready", irn),
+		)
 		self.assertEqual(docs["MTCs"].status, "Pending")
 		self.assertEqual(dn.pvfss_documents_ready, f"1/{len(docs)}")
 
@@ -115,7 +118,9 @@ class TestDispatch(IntegrationTestCase):
 		heat, batch, po = stocked_batch()
 		issue_irn(po, heat, batch, qty=10)
 		dn = deliver(batch, qty=4)
-		self.assertRaises(frappe.ValidationError, dispatch.record_pod, dn.name, nowdate(), "Site", "/files/pod.pdf")
+		self.assertRaises(
+			frappe.ValidationError, dispatch.record_pod, dn.name, nowdate(), "Site", "/files/pod.pdf"
+		)
 		dn.submit()
 		si = dispatch.record_pod(dn.name, nowdate(), "Site store keeper", "/files/pod.pdf", "All received")
 		self.assertTrue(si)
