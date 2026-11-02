@@ -12,6 +12,7 @@ DAILY = [
 	"pvfss.pvfss_purchasing.project.delay_alerts",  # PRJ-21
 	"pvfss.utils.mtc_age.age_alerts",  # SMR-21
 	"pvfss.overrides.non_conformance.overdue_alerts",  # QA-31
+	"pvfss.pvfss_logistics.dispatch.pod_alerts",  # DSP-10
 ]
 
 HOURLY = [

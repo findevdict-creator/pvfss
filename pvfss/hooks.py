@@ -32,6 +32,7 @@ doctype_js = {
 	"Project": "public/js/doctype/project.js",
 	"Batch": "public/js/doctype/batch.js",
 	"Non Conformance": "public/js/doctype/non_conformance.js",
+	"Delivery Note": "public/js/doctype/delivery_note.js",
 }
 doctype_list_js = {
 	"Opportunity": "public/js/doctype/opportunity_list.js",
@@ -105,9 +106,12 @@ doc_events = {
 		"on_submit": "pvfss.overrides.purchase_receipt.on_submit",
 		"on_cancel": "pvfss.overrides.purchase_receipt.on_cancel",
 	},
+	# Module 10: Dispatch (DSP-01 to DSP-10, G7) with TRC-04
 	"Delivery Note": {
+		"validate": "pvfss.overrides.delivery_note.validate",
 		"before_submit": "pvfss.overrides.delivery_note.before_submit",
 		"on_submit": "pvfss.overrides.delivery_note.on_submit",
+		"on_update_after_submit": "pvfss.overrides.delivery_note.on_update_after_submit",
 		"on_cancel": "pvfss.overrides.delivery_note.on_cancel",
 	},
 	# Module 6: Project (PRJ-01 to PRJ-40)

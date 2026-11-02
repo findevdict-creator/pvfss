@@ -10,6 +10,7 @@ from pvfss.gates.base import GateFailedError
 from pvfss.pvfss_quality import traceability
 from pvfss.pvfss_quality.report.heat_number_register import heat_number_register
 from pvfss.tests import factories as f
+from pvfss.utils import settings
 
 ITEM = "_PVFSS TRC Pipe"
 MILL = "_PVFSS Test Mill"
@@ -94,9 +95,16 @@ class TestTraceability(IntegrationTestCase):
 		super().setUpClass()
 		f.ensure_test_company()
 
+	def setUp(self):
+		# The dispatch IRN gate (DSP-02) is covered in test_dispatch; these tests ship without IRNs.
+		frappe.db.set_value("Item", item(), "pvfss_irn_required", 0)
+		frappe.db.set_single_value("PVFSS Settings", "allow_dispatch_without_irn", 1)
+		settings.clear_cache()
+
 	def tearDown(self):
 		frappe.set_user("Administrator")
 		frappe.db.rollback()
+		settings.clear_cache()
 
 	def stocked_heat(self):
 		heat = traceability.get_or_create_heat("7a1234", mill(), item(), grade="API 5L X52", mtc="MTC-001")

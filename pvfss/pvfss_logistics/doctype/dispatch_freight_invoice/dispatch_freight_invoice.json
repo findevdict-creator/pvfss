@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "purchase_invoice",
+  "supplier",
+  "amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "purchase_invoice",
+   "fieldtype": "Link",
+   "options": "Purchase Invoice",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3,
+   "label": "Purchase Invoice"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "options": "Supplier",
+   "fetch_from": "purchase_invoice.supplier",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 3,
+   "label": "Supplier"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "fetch_from": "purchase_invoice.base_net_total",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Amount"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Logistics",
+ "name": "Dispatch Freight Invoice",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
