@@ -96,6 +96,9 @@ def create_from_handover(handover):
 		frappe.db.set_value("Purchase Order", po.name, "project", project.name, update_modified=False)
 		ensure_expediting_log(po.name, project)
 	create_folders(project)
+	from pvfss.pvfss_dms.filing import file_existing
+
+	file_existing(project.name)  # DMS-02: attachments made before the project existed
 	return project
 
 

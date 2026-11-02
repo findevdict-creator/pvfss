@@ -219,3 +219,25 @@ frappe.ui.form.on("Sales Order", {
 		);
 	},
 });
+
+// DMS-01 / SCR-DMS-01: open the project's document folders
+frappe.ui.form.on("Sales Order", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		frm.add_custom_button(
+			__("Open project folder"),
+			() =>
+				frappe
+					.xcall("pvfss.pvfss_dms.filing.project_folder", {
+						doctype: frm.doctype,
+						name: frm.doc.name,
+					})
+					.then((folder) =>
+						folder
+							? frappe.set_route(["List", "File", ...folder.split("/")])
+							: frappe.msgprint(__("This document is not linked to a project yet."))
+					),
+			__("View")
+		);
+	},
+});
