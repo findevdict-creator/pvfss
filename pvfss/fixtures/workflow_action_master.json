@@ -159,5 +159,19 @@
   "modified": "2026-11-02 04:07:19.414610",
   "name": "Mark Documents Complete",
   "workflow_action_name": "Mark Documents Complete"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-11-02 04:43:49.431875",
+  "name": "Open Actions",
+  "workflow_action_name": "Open Actions"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-11-02 04:43:49.441985",
+  "name": "Start Investigation",
+  "workflow_action_name": "Start Investigation"
  }
 ]

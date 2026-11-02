@@ -1,0 +1,290 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Incident report, investigation, actions and closure (HSE-30).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "incident_type",
+  "incident_datetime",
+  "location",
+  "severity",
+  "cb1",
+  "reported_by",
+  "reported_on",
+  "lost_days",
+  "is_lti",
+  "sb_desc",
+  "description",
+  "immediate_action",
+  "photo",
+  "people",
+  "tab_investigation",
+  "what_happened",
+  "why_happened",
+  "five_whys",
+  "root_cause",
+  "investigator",
+  "investigation_date",
+  "tab_actions",
+  "capas",
+  "tab_closure",
+  "closed_by",
+  "closure_date",
+  "lessons_learned",
+  "investigation_alerted_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "HSE-INC-.YY.-.####",
+   "default": "HSE-INC-.YY.-.####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "incident_type",
+   "fieldtype": "Select",
+   "options": "Injury\nNear miss\nProperty damage\nEnvironmental\nDangerous occurrence",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Type"
+  },
+  {
+   "fieldname": "incident_datetime",
+   "fieldtype": "Datetime",
+   "reqd": 1,
+   "default": "Now",
+   "in_list_view": 1,
+   "label": "Date and Time"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Location"
+  },
+  {
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "options": "\nLow\nMedium\nHigh\nCritical",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Severity"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reported_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "default": "__user",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Reported by"
+  },
+  {
+   "fieldname": "reported_on",
+   "fieldtype": "Datetime",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Reported on"
+  },
+  {
+   "fieldname": "lost_days",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "non_negative": 1,
+   "label": "Lost Days"
+  },
+  {
+   "fieldname": "is_lti",
+   "fieldtype": "Check",
+   "read_only": 1,
+   "label": "Lost Time Injury"
+  },
+  {
+   "fieldname": "sb_desc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "reqd": 1,
+   "label": "What Happened"
+  },
+  {
+   "fieldname": "immediate_action",
+   "fieldtype": "Small Text",
+   "label": "Immediate Action Taken"
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "label": "Photo"
+  },
+  {
+   "fieldname": "people",
+   "fieldtype": "Table",
+   "options": "HSE Incident Person",
+   "label": "People Involved"
+  },
+  {
+   "fieldname": "tab_investigation",
+   "fieldtype": "Tab Break",
+   "label": "Investigation"
+  },
+  {
+   "fieldname": "what_happened",
+   "fieldtype": "Text",
+   "label": "What Happened (findings)"
+  },
+  {
+   "fieldname": "why_happened",
+   "fieldtype": "Text",
+   "label": "Why It Happened"
+  },
+  {
+   "fieldname": "five_whys",
+   "fieldtype": "Table",
+   "options": "HSE Why",
+   "label": "5-Why"
+  },
+  {
+   "fieldname": "root_cause",
+   "fieldtype": "Small Text",
+   "label": "Root Cause Summary"
+  },
+  {
+   "fieldname": "investigator",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Investigator"
+  },
+  {
+   "fieldname": "investigation_date",
+   "fieldtype": "Date",
+   "label": "Investigation Date"
+  },
+  {
+   "fieldname": "tab_actions",
+   "fieldtype": "Tab Break",
+   "label": "Actions"
+  },
+  {
+   "fieldname": "capas",
+   "fieldtype": "Table",
+   "options": "HSE CAPA Link",
+   "label": "CAPAs"
+  },
+  {
+   "fieldname": "tab_closure",
+   "fieldtype": "Tab Break",
+   "label": "Closure"
+  },
+  {
+   "fieldname": "closed_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Closed by"
+  },
+  {
+   "fieldname": "closure_date",
+   "fieldtype": "Date",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Closure Date"
+  },
+  {
+   "fieldname": "lessons_learned",
+   "fieldtype": "Small Text",
+   "label": "Lessons Learned"
+  },
+  {
+   "fieldname": "investigation_alerted_on",
+   "fieldtype": "Datetime",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Investigation Alert Sent"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS HSE",
+ "name": "HSE Incident",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "HSE User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "HSE Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Desk User",
+   "read": 1,
+   "print": 1,
+   "create": 1,
+   "if_owner": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "incident_type,location,severity",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "location",
+ "track_changes": 1
+}

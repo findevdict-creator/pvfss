@@ -1,0 +1,264 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Hazards and aspects with initial and residual risk (HSE-02).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "activity",
+  "hazard",
+  "aspect_type",
+  "who_at_risk",
+  "cb1",
+  "risk_owner",
+  "review_date",
+  "review_alerted_on",
+  "sb_initial",
+  "likelihood",
+  "severity",
+  "cb2",
+  "risk_score",
+  "rating",
+  "matrix_html",
+  "sb_controls",
+  "existing_controls",
+  "additional_controls",
+  "sb_residual",
+  "residual_likelihood",
+  "residual_severity",
+  "cb3",
+  "residual_score",
+  "residual_rating"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "HSE-RSK-.YY.-.####",
+   "default": "HSE-RSK-.YY.-.####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "activity",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Activity / Location"
+  },
+  {
+   "fieldname": "hazard",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Hazard / Aspect"
+  },
+  {
+   "fieldname": "aspect_type",
+   "fieldtype": "Select",
+   "options": "Safety\nHealth\nEnvironmental",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Aspect Type"
+  },
+  {
+   "fieldname": "who_at_risk",
+   "fieldtype": "Small Text",
+   "label": "Who is at Risk"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "risk_owner",
+   "fieldtype": "Link",
+   "options": "User",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "label": "Owner"
+  },
+  {
+   "fieldname": "review_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Review Date"
+  },
+  {
+   "fieldname": "review_alerted_on",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Review Alert Sent"
+  },
+  {
+   "fieldname": "sb_initial",
+   "fieldtype": "Section Break",
+   "label": "Initial risk"
+  },
+  {
+   "fieldname": "likelihood",
+   "fieldtype": "Select",
+   "options": "\n1\n2\n3\n4\n5",
+   "reqd": 1,
+   "label": "Likelihood (1-5)"
+  },
+  {
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "options": "\n1\n2\n3\n4\n5",
+   "reqd": 1,
+   "label": "Severity (1-5)"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "risk_score",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "label": "Risk Score"
+  },
+  {
+   "fieldname": "rating",
+   "fieldtype": "Select",
+   "options": "\nLow\nMedium\nHigh\nExtreme",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Rating"
+  },
+  {
+   "fieldname": "matrix_html",
+   "fieldtype": "HTML",
+   "label": "Matrix"
+  },
+  {
+   "fieldname": "sb_controls",
+   "fieldtype": "Section Break",
+   "label": "Controls"
+  },
+  {
+   "fieldname": "existing_controls",
+   "fieldtype": "Small Text",
+   "label": "Existing Controls"
+  },
+  {
+   "fieldname": "additional_controls",
+   "fieldtype": "Small Text",
+   "label": "Additional Controls"
+  },
+  {
+   "fieldname": "sb_residual",
+   "fieldtype": "Section Break",
+   "label": "Residual risk"
+  },
+  {
+   "fieldname": "residual_likelihood",
+   "fieldtype": "Select",
+   "options": "\n1\n2\n3\n4\n5",
+   "label": "Residual Likelihood"
+  },
+  {
+   "fieldname": "residual_severity",
+   "fieldtype": "Select",
+   "options": "\n1\n2\n3\n4\n5",
+   "label": "Residual Severity"
+  },
+  {
+   "fieldname": "cb3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "residual_score",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "label": "Residual Score"
+  },
+  {
+   "fieldname": "residual_rating",
+   "fieldtype": "Select",
+   "options": "\nLow\nMedium\nHigh\nExtreme",
+   "read_only": 1,
+   "in_list_view": 1,
+   "label": "Residual Rating"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS HSE",
+ "name": "HSE Risk Register",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "HSE User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "HSE Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "activity,hazard,aspect_type",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "hazard",
+ "track_changes": 1
+}

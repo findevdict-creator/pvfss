@@ -1,0 +1,163 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Legal and other requirements with compliance status (HSE-03).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "law",
+  "authority",
+  "requirement",
+  "compliance_method",
+  "cb1",
+  "evidence",
+  "responsible",
+  "review_date",
+  "compliance_status",
+  "review_alerted_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "HSE-LEG-.YY.-.###",
+   "default": "HSE-LEG-.YY.-.###",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "law",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Law / Regulation / Permit"
+  },
+  {
+   "fieldname": "authority",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Issuing Authority"
+  },
+  {
+   "fieldname": "requirement",
+   "fieldtype": "Small Text",
+   "label": "Applicable Requirement"
+  },
+  {
+   "fieldname": "compliance_method",
+   "fieldtype": "Small Text",
+   "label": "How PVFSS Complies"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "evidence",
+   "fieldtype": "Attach",
+   "label": "Evidence"
+  },
+  {
+   "fieldname": "responsible",
+   "fieldtype": "Link",
+   "options": "User",
+   "in_list_view": 1,
+   "label": "Responsible"
+  },
+  {
+   "fieldname": "review_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Review Date"
+  },
+  {
+   "fieldname": "compliance_status",
+   "fieldtype": "Select",
+   "options": "Not assessed\nCompliant\nPartially\nNon-compliant",
+   "default": "Not assessed",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Compliance Status"
+  },
+  {
+   "fieldname": "review_alerted_on",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Review Alert Sent"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS HSE",
+ "name": "Legal Register",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "HSE User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "HSE Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "law",
+ "track_changes": 1
+}

@@ -1,0 +1,151 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "HSE management review (HSE-50).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "review_date",
+  "attendees",
+  "sb_inputs",
+  "kpi_from",
+  "kpi_to",
+  "kpi_snapshot",
+  "audit_results",
+  "incidents_summary",
+  "objectives_status",
+  "sb_out",
+  "decisions",
+  "actions"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "HSE-MR-.YY.-.###",
+   "default": "HSE-MR-.YY.-.###",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "review_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "attendees",
+   "fieldtype": "Table MultiSelect",
+   "options": "Management Review Attendee",
+   "label": "Attendees"
+  },
+  {
+   "fieldname": "sb_inputs",
+   "fieldtype": "Section Break",
+   "label": "Inputs"
+  },
+  {
+   "fieldname": "kpi_from",
+   "fieldtype": "Date",
+   "label": "KPI Period From"
+  },
+  {
+   "fieldname": "kpi_to",
+   "fieldtype": "Date",
+   "label": "KPI Period To"
+  },
+  {
+   "fieldname": "kpi_snapshot",
+   "fieldtype": "Code",
+   "options": "JSON",
+   "read_only": 1,
+   "label": "KPI Snapshot"
+  },
+  {
+   "fieldname": "audit_results",
+   "fieldtype": "Small Text",
+   "label": "Audit Results"
+  },
+  {
+   "fieldname": "incidents_summary",
+   "fieldtype": "Small Text",
+   "label": "Incidents"
+  },
+  {
+   "fieldname": "objectives_status",
+   "fieldtype": "Small Text",
+   "label": "Objectives Status"
+  },
+  {
+   "fieldname": "sb_out",
+   "fieldtype": "Section Break",
+   "label": "Outputs"
+  },
+  {
+   "fieldname": "decisions",
+   "fieldtype": "Text",
+   "label": "Decisions"
+  },
+  {
+   "fieldname": "actions",
+   "fieldtype": "Table",
+   "options": "HSE CAPA Link",
+   "label": "Actions"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS HSE",
+ "name": "Management Review",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "HSE Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "review_date",
+ "track_changes": 1
+}

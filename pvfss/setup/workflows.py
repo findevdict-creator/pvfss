@@ -19,9 +19,14 @@ UNDER = "Under Review"
 LOG = "Logistics User"
 FU = "Finance User"
 FM = "Finance Manager"
+HSEU = "HSE User"
+HSEM = "HSE Manager"
 
 STATE_STYLES = {
 	"Pending Finance Manager": "Warning",
+	"Reported": "Warning",
+	"Under investigation": "Warning",
+	"Actions open": "Warning",
 	"Pending Director": "Warning",
 	"Documents complete": "Primary",
 	"Approved for dispatch": "Warning",
@@ -410,6 +415,28 @@ WORKFLOWS = {
 			("Pending Director", "Approve", "Submitted", DIR, None),
 			("Pending Director", "Reject", "Draft", DIR, None),
 			("Submitted", "Cancel", "Cancelled", FM, None),
+		],
+	},
+	# HSE-30: incident report to closure
+	"PVFSS HSE Incident": {
+		"document_type": "HSE Incident",
+		"states": [
+			("Reported", 0, "Desk User"),
+			("Reported", 0, HSEU),
+			("Reported", 0, HSEM),
+			("Under investigation", 0, HSEU),
+			("Under investigation", 0, HSEM),
+			("Actions open", 0, HSEU),
+			("Actions open", 0, HSEM),
+			("Closed", 0, HSEM),
+		],
+		"transitions": [
+			("Reported", "Start Investigation", "Under investigation", HSEU, None),
+			("Reported", "Start Investigation", "Under investigation", HSEM, None),
+			("Under investigation", "Open Actions", "Actions open", HSEU, None),
+			("Under investigation", "Open Actions", "Actions open", HSEM, None),
+			("Actions open", "Close", "Closed", HSEM, None),
+			("Actions open", "Return", "Under investigation", HSEM, None),
 		],
 	},
 }
