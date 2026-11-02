@@ -16,8 +16,12 @@ POM = "Post-Bidding Manager"
 QU = "Quality User"
 QM = "Quality Manager"
 UNDER = "Under Review"
+LOG = "Logistics User"
 
 STATE_STYLES = {
+	"Documents complete": "Primary",
+	"Approved for dispatch": "Warning",
+	"Delivered": "Success",
 	"Customer Approval": "Warning",
 	"Pending Quality Manager": "Warning",
 	"Accepted with re-test": "Info",
@@ -342,6 +346,40 @@ WORKFLOWS = {
 			("Pending Quality Manager", "Issue", "Issued", QM, None),
 			("Pending Quality Manager", "Return", "Draft", QM, None),
 			("Issued", "Cancel", "Cancelled", QM, None),
+		],
+	},
+	# DSP-04 / G7: dispatch approval on the Delivery Note
+	"PVFSS Dispatch": {
+		"document_type": "Delivery Note",
+		"states": [
+			("Draft", 0, LOG),
+			("Draft", 0, POU),
+			("Draft", 0, POM),
+			("Documents complete", 0, LOG),
+			("Documents complete", 0, POU),
+			("Documents complete", 0, POM),
+			("Approved for dispatch", 0, LOG),
+			("Approved for dispatch", 0, POU),
+			("Approved for dispatch", 0, POM),
+			("Submitted", 1, LOG),
+			("Submitted", 1, POU),
+			("Submitted", 1, POM),
+			("Delivered", 1, LOG),
+			("Delivered", 1, POU),
+			("Cancelled", 2, POM),
+		],
+		"transitions": [
+			("Draft", "Mark Documents Complete", "Documents complete", LOG, None),
+			("Draft", "Mark Documents Complete", "Documents complete", POU, None),
+			("Draft", "Mark Documents Complete", "Documents complete", POM, None),
+			("Documents complete", "Approve Dispatch", "Approved for dispatch", POM, None),
+			("Documents complete", "Return to Draft", "Draft", LOG, None),
+			("Documents complete", "Return to Draft", "Draft", POU, None),
+			("Documents complete", "Return to Draft", "Draft", POM, None),
+			("Approved for dispatch", "Submit", "Submitted", LOG, None),
+			("Approved for dispatch", "Submit", "Submitted", POU, None),
+			("Approved for dispatch", "Submit", "Submitted", POM, None),
+			("Submitted", "Cancel", "Cancelled", POM, None),
 		],
 	},
 }
