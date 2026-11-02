@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "party",
+  "employee",
+  "inspection_agency",
+  "inspector_name",
+  "inspector_user",
+  "notified_on",
+  "confirmed"
+ ],
+ "fields": [
+  {
+   "fieldname": "party",
+   "fieldtype": "Select",
+   "options": "PVFSS\nTPI\nCustomer\nADNOC",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Party"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "options": "Employee",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Inspector (Employee)"
+  },
+  {
+   "fieldname": "inspection_agency",
+   "fieldtype": "Link",
+   "options": "Inspection Agency",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Inspection Agency"
+  },
+  {
+   "fieldname": "inspector_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Inspector Name"
+  },
+  {
+   "fieldname": "inspector_user",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Inspector User"
+  },
+  {
+   "fieldname": "notified_on",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Notified"
+  },
+  {
+   "fieldname": "confirmed",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Confirmed"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "RFI Party",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

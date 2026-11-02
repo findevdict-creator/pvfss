@@ -282,7 +282,10 @@ class TestSMR(IntegrationTestCase):
 		_po, _mtc, _ts, doc = self.ready(issue_date=add_months(nowdate(), -25))
 		doc = apply_workflow(doc.as_dict(), "Start Review")
 		doc = frappe.get_doc("SMR", doc.name)
-		doc.items[0].retest_report = "IR-RETEST-1"
+		ir = frappe.new_doc("Inspection Report")
+		ir.update({"name": "IR-RETEST-1", "rfi": "-", "inspection_date": nowdate(), "is_retest": 1})
+		ir.db_insert()  # the full RFI -> report flow is covered in test_quality
+		doc.items[0].retest_report = ir.name
 		doc.save()
 		self.assertEqual(decide(doc).docstatus, 1)
 

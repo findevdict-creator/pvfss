@@ -241,9 +241,19 @@ class SMR(Document):
 			missing = sum(1 for m in heats if m.result == "Heat not on MTC")
 			total += len(heats)
 			on_mtc += len(heats) - missing
-			item.mtc_status = (
-				_("{0} heats without MTC").format(missing) if missing else (_("On MTC") if heats else None)
+			mtcs = {m.mtc for m in heats if m.mtc}
+			pending = sum(
+				1
+				for name in mtcs
+				if frappe.db.get_value("MTC", name, "review_result")
+				not in ("Accepted", "Accepted with re-test")
 			)
+			if missing:
+				item.mtc_status = _("{0} heats without MTC").format(missing)
+			elif pending:
+				item.mtc_status = _("{0} MTC pending review").format(pending)
+			else:
+				item.mtc_status = _("All accepted") if heats else None
 			worst = max(rows, key=lambda r: (r["over"], r["age"]), default=None)
 			item.mtc_age = worst and worst.get("display")
 			item.over_age = int(bool(worst and worst["over"]))

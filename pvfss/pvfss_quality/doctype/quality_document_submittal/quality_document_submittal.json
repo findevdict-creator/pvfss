@@ -1,0 +1,244 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Supplier quality documents and customer approval (QA-01, QA-02).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "supplier_po",
+  "supplier",
+  "document_type",
+  "document_no",
+  "revision",
+  "cb1",
+  "supplier_submission_date",
+  "attachment",
+  "customer_approval_required",
+  "sb_customer",
+  "sent_to_customer_date",
+  "transmittal_no",
+  "customer_response",
+  "cb2",
+  "response_date",
+  "comments",
+  "comments_file",
+  "days_waiting"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "QDS-.YY.-.#####",
+   "default": "QDS-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "supplier_po",
+   "fieldtype": "Link",
+   "options": "Purchase Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier PO"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "options": "Supplier",
+   "fetch_from": "supplier_po.supplier",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "label": "Supplier"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Select",
+   "options": "ITP\nQuality Plan\nWPS/PQR\nData sheet\nDrawing\nProcedure\nMDR index\nOther",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Document Type"
+  },
+  {
+   "fieldname": "document_no",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Document No"
+  },
+  {
+   "fieldname": "revision",
+   "fieldtype": "Int",
+   "reqd": 1,
+   "default": "0",
+   "in_list_view": 1,
+   "label": "Revision"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "supplier_submission_date",
+   "fieldtype": "Date",
+   "label": "Supplier Submission Date"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "reqd": 1,
+   "label": "Attachment"
+  },
+  {
+   "fieldname": "customer_approval_required",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Customer Approval Required"
+  },
+  {
+   "fieldname": "sb_customer",
+   "fieldtype": "Section Break",
+   "depends_on": "customer_approval_required",
+   "label": "Customer"
+  },
+  {
+   "fieldname": "sent_to_customer_date",
+   "fieldtype": "Date",
+   "label": "Sent to Customer"
+  },
+  {
+   "fieldname": "transmittal_no",
+   "fieldtype": "Data",
+   "label": "Transmittal No"
+  },
+  {
+   "fieldname": "customer_response",
+   "fieldtype": "Select",
+   "options": "Pending\nApproved\nApproved with comments\nRejected\nRevise and resubmit",
+   "default": "Pending",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer Response"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "response_date",
+   "fieldtype": "Date",
+   "label": "Response Date"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Small Text",
+   "label": "Comments"
+  },
+  {
+   "fieldname": "comments_file",
+   "fieldtype": "Attach",
+   "label": "Comments File"
+  },
+  {
+   "fieldname": "days_waiting",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "label": "Days Waiting"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "Quality Document Submittal",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "document_no,supplier_po,document_type",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "document_no",
+ "track_changes": 1
+}

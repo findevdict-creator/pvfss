@@ -1,0 +1,110 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "seq",
+  "activity",
+  "point_type",
+  "applicable_lines",
+  "check_type",
+  "reference_standard",
+  "acceptance_criteria",
+  "pvfss_point",
+  "tpi_point",
+  "customer_point",
+  "records_required"
+ ],
+ "fields": [
+  {
+   "fieldname": "seq",
+   "fieldtype": "Int",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Seq"
+  },
+  {
+   "fieldname": "activity",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Activity / Stage"
+  },
+  {
+   "fieldname": "point_type",
+   "fieldtype": "Select",
+   "options": "Inspection\nPIM\nDocument review",
+   "default": "Inspection",
+   "label": "Point Type"
+  },
+  {
+   "fieldname": "applicable_lines",
+   "fieldtype": "Data",
+   "description": "Comma separated line refs; blank = all lines.",
+   "label": "Applicable PO Lines"
+  },
+  {
+   "fieldname": "check_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Check / Test Type"
+  },
+  {
+   "fieldname": "reference_standard",
+   "fieldtype": "Data",
+   "label": "Reference Standard / Procedure"
+  },
+  {
+   "fieldname": "acceptance_criteria",
+   "fieldtype": "Small Text",
+   "label": "Acceptance Criteria"
+  },
+  {
+   "fieldname": "pvfss_point",
+   "fieldtype": "Select",
+   "options": "\nH\nW\nR\nI",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "PVFSS"
+  },
+  {
+   "fieldname": "tpi_point",
+   "fieldtype": "Select",
+   "options": "\nH\nW\nR\nI",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "TPI"
+  },
+  {
+   "fieldname": "customer_point",
+   "fieldtype": "Select",
+   "options": "\nH\nW\nR\nI",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Customer"
+  },
+  {
+   "fieldname": "records_required",
+   "fieldtype": "Small Text",
+   "label": "Records Required"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "ITP Template Point",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

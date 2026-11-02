@@ -31,6 +31,7 @@ doctype_js = {
 	"Purchase Order": "public/js/doctype/purchase_order.js",
 	"Project": "public/js/doctype/project.js",
 	"Batch": "public/js/doctype/batch.js",
+	"Non Conformance": "public/js/doctype/non_conformance.js",
 }
 doctype_list_js = {
 	"Opportunity": "public/js/doctype/opportunity_list.js",
@@ -111,6 +112,14 @@ doc_events = {
 	},
 	# Module 6: Project (PRJ-01 to PRJ-40)
 	"Project": {"validate": "pvfss.overrides.project.validate"},
+	# Module 8: Quality (QA-02, QA-30, TRC-04)
+	"Expediting Log": {
+		"validate": "pvfss.pvfss_quality.doctype.quality_document_submittal.quality_document_submittal.check_manufacturing_start"
+	},
+	"Non Conformance": {
+		"validate": "pvfss.overrides.non_conformance.validate",
+		"on_update": "pvfss.overrides.non_conformance.on_update",
+	},
 }
 
 # Scheduled tasks (GEN-61)

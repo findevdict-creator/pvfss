@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "party",
+  "inspector_name",
+  "signature"
+ ],
+ "fields": [
+  {
+   "fieldname": "party",
+   "fieldtype": "Select",
+   "options": "PVFSS\nTPI\nCustomer\nADNOC",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Party"
+  },
+  {
+   "fieldname": "inspector_name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3,
+   "label": "Name"
+  },
+  {
+   "fieldname": "signature",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Signature"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "Inspection Inspector",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -111,9 +111,9 @@
   },
   {
    "fieldname": "retest_report",
-   "fieldtype": "Data",
-   "description": "Becomes a link to Inspection Report in 12-quality.",
-   "label": "Re-test Inspection Report"
+   "fieldtype": "Link",
+   "label": "Re-test Inspection Report",
+   "options": "Inspection Report"
   },
   {
    "fieldname": "waiver_by",

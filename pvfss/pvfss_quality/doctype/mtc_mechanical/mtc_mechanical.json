@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "heat_no",
+  "test",
+  "value",
+  "unit",
+  "spec_min",
+  "spec_max",
+  "result"
+ ],
+ "fields": [
+  {
+   "fieldname": "heat_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Heat No"
+  },
+  {
+   "fieldname": "test",
+   "fieldtype": "Select",
+   "options": "Tensile\nYield\nElongation\nHardness\nImpact\nOther",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Test"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Value"
+  },
+  {
+   "fieldname": "unit",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Unit"
+  },
+  {
+   "fieldname": "spec_min",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Spec Min"
+  },
+  {
+   "fieldname": "spec_max",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Spec Max"
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "options": "\nPass\nFail",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Result"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "MTC Mechanical",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

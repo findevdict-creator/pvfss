@@ -4,15 +4,86 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
+from frappe.utils import nowdate
 
+from pvfss.gates.base import GateResult
 from pvfss.pvfss_quality import traceability
 from pvfss.pvfss_quality.doctype.heat_number.heat_number import clean_heat_no
 
+UNDER_REVIEW = "Under Review"
+DECISIONS = ("Accepted", "Rejected", "Accepted with re-test")
+ACCEPTED_RESULTS = ("Accepted", "Accepted with re-test")
+
 
 class MTC(Document):
-	"""Material Test Certificate (QA-20, SMR-10). Review and approval workflow: 12-quality."""
+	"""Material Test Certificate with review, authenticity and approval (QA-20 to QA-24, SCR-QA-14)."""
 
 	def validate(self):
+		self.validate_heats()
+		self.link_heats()
+		self.refresh_review()
+		before = self.get_doc_before_save()
+		state = self.get("workflow_state")
+		if state == UNDER_REVIEW and (before.get("workflow_state") if before else None) != UNDER_REVIEW:
+			self.reviewer = frappe.session.user
+			self.review_date = self.review_date or nowdate()
+
+	def refresh_review(self):
+		from pvfss.pvfss_quality.doctype.inspection_report.inspection_report import auto_result
+
+		for row in list(self.chemical) + list(self.mechanical):
+			row.result = auto_result(row)
+		verified = any(v.result == "Verified" for v in self.verifications)
+		self.authenticity = _("Verified") if verified else _("Not verified")
+		checks = self.age_checks()
+		over = [c for c in checks if c["over"]]
+		self.age_over = int(bool(over))
+		if over:
+			self.age_check = over[0]["message"]
+		elif checks:
+			c = checks[0]
+			rule = c["rule"]
+			self.age_check = (
+				_("Age {0} / {1} months ({2}, {3}), reference {4}").format(
+					c["age"], rule["months"], rule["label"], rule["source"], self.review_date or nowdate()
+				)
+				if rule and rule["months"]
+				else c["message"]
+			)
+
+	def age_checks(self):
+		from pvfss.utils import mtc_age
+
+		if not self.issue_date or self.is_new():
+			return []
+		project = self.supplier_po and frappe.db.get_value("Purchase Order", self.supplier_po, "project")
+		ref = mtc_age.reference_date(self.review_date)
+		seen, out = set(), []
+		for row in self.heats:
+			if row.item_code in seen or not row.item_code:
+				continue
+			seen.add(row.item_code)
+			out.append(mtc_age.check(self.name, row.heat_no, row.item_code, ref, project=project))
+		return out
+
+	def decision_checks(self, state):
+		result = GateResult(_("MTC cannot be {0}").format(_(state)), doc=self)
+		if state == "Accepted":
+			result.check(
+				any(v.result == "Verified" for v in self.verifications),
+				_("Add at least one verified authenticity check"),
+				rule="QA-22",
+			)
+			result.check(
+				not self.age_over,
+				(self.age_check or "") + " " + _("Use Accepted with re-test and link the re-test report."),
+				rule="SMR-20",
+			)
+		if state == "Accepted with re-test":
+			result.check(self.retest_report, _("Link the re-test Inspection Report"), rule="QA-21")
+		return result
+
+	def validate_heats(self):
 		if not self.heats:
 			frappe.throw(_("List the heat numbers this certificate covers."))
 		default_item = self.items[0].item_code if len(self.items or []) == 1 else None
@@ -33,12 +104,22 @@ class MTC(Document):
 					)
 				)
 
-	def before_submit(self):
+	def link_heats(self):
 		"""TRC-01: every heat on the certificate becomes (or links to) a Heat Number."""
 		for row in self.heats:
-			row.heat_number = traceability.get_or_create_heat(
-				row.heat_no, self.manufacturer, row.item_code, grade=self.grade, mtc=self.certificate_no
-			)
+			if row.heat_no and row.item_code and self.manufacturer:
+				row.heat_number = traceability.get_or_create_heat(
+					row.heat_no, self.manufacturer, row.item_code, grade=self.grade, mtc=self.certificate_no
+				)
+
+	def before_submit(self):
+		self.link_heats()
+		state = self.get("workflow_state")
+		if state in DECISIONS:
+			self.decision_checks(state).throw_if_failed()
+			self.review_result = state
+			self.reviewer = self.reviewer or frappe.session.user
+			self.review_date = self.review_date or nowdate()
 
 	def on_submit(self):
 		for row in self.heats:
@@ -66,7 +147,7 @@ def heats_for(heat_nos, supplier_po=None):
 		m.name: m
 		for m in frappe.get_all(
 			"MTC",
-			filters={"name": ["in", list({r.mtc for r in rows}) or [""]], "docstatus": 1},
+			filters={"name": ["in", list({r.mtc for r in rows}) or [""]], "docstatus": ["<", 2]},
 			fields=[
 				"name",
 				"certificate_no",

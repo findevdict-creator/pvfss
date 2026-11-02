@@ -18,6 +18,13 @@ QM = "Quality Manager"
 UNDER = "Under Review"
 
 STATE_STYLES = {
+	"Customer Approval": "Warning",
+	"Pending Quality Manager": "Warning",
+	"Accepted with re-test": "Info",
+	"Supplier action": "Warning",
+	"Verification": "Warning",
+	"Closed": "Success",
+	"Issued": "Success",
 	"Received": "Info",
 	"Partially accepted": "Warning",
 	"Deviation Approval": "Warning",
@@ -242,6 +249,99 @@ WORKFLOWS = {
 			("Accepted", "Cancel", "Cancelled", QM, None),
 			("Partially accepted", "Cancel", "Cancelled", QM, None),
 			("Rejected", "Cancel", "Cancelled", QM, None),
+		],
+	},
+	# QA-04: ITP approval; customer approval only when required
+	"PVFSS ITP": {
+		"document_type": "ITP",
+		"states": [
+			("Draft", 0, QU),
+			("Draft", 0, QM),
+			("Customer Approval", 0, QM),
+			("Approved", 1, QM),
+			("Cancelled", 2, QM),
+		],
+		"transitions": [
+			(
+				"Draft",
+				"Send for Customer Approval",
+				"Customer Approval",
+				QM,
+				"doc.customer_approval_required",
+			),
+			("Draft", "Approve", "Approved", QM, "not doc.customer_approval_required"),
+			("Customer Approval", "Approve", "Approved", QM, None),
+			("Customer Approval", "Reject", "Draft", QM, None),
+			("Approved", "Cancel", "Cancelled", QM, None),
+		],
+	},
+	# QA-23: Quality User reviews, Quality Manager decides
+	"PVFSS MTC": {
+		"document_type": "MTC",
+		"states": [
+			("Draft", 0, QU),
+			("Draft", 0, QM),
+			("Under Review", 0, QU),
+			("Under Review", 0, QM),
+			("Pending Quality Manager", 0, QM),
+			("Accepted", 1, QM),
+			("Rejected", 1, QM),
+			("Accepted with re-test", 1, QM),
+			("Cancelled", 2, QM),
+		],
+		"transitions": [
+			("Draft", "Submit for Review", "Under Review", QU, None),
+			("Draft", "Submit for Review", "Under Review", QM, None),
+			("Under Review", "Send to Quality Manager", "Pending Quality Manager", QU, None),
+			("Under Review", "Send to Quality Manager", "Pending Quality Manager", QM, None),
+			("Pending Quality Manager", "Accept", "Accepted", QM, None),
+			("Pending Quality Manager", "Accept with Re-test", "Accepted with re-test", QM, None),
+			("Pending Quality Manager", "Reject", "Rejected", QM, None),
+			("Pending Quality Manager", "Return", "Under Review", QM, None),
+			("Accepted", "Cancel", "Cancelled", QM, None),
+			("Rejected", "Cancel", "Cancelled", QM, None),
+			("Accepted with re-test", "Cancel", "Cancelled", QM, None),
+		],
+	},
+	# SCR-QA-16: NCR life cycle on the standard Non Conformance
+	"PVFSS NCR": {
+		"document_type": "Non Conformance",
+		"states": [
+			("Open", 0, QU),
+			("Open", 0, QM),
+			("Supplier action", 0, QU),
+			("Supplier action", 0, QM),
+			("Supplier action", 0, POU),
+			("Verification", 0, QU),
+			("Verification", 0, QM),
+			("Closed", 0, QM),
+		],
+		"transitions": [
+			("Open", "Send to Supplier", "Supplier action", QU, None),
+			("Open", "Send to Supplier", "Supplier action", QM, None),
+			("Supplier action", "Submit for Verification", "Verification", QU, None),
+			("Supplier action", "Submit for Verification", "Verification", QM, None),
+			("Supplier action", "Submit for Verification", "Verification", POU, None),
+			("Verification", "Close", "Closed", QM, None),
+			("Verification", "Return", "Supplier action", QM, None),
+		],
+	},
+	# QA-34: IRN issue by the Quality Manager
+	"PVFSS IRN": {
+		"document_type": "IRN",
+		"states": [
+			("Draft", 0, QU),
+			("Draft", 0, QM),
+			("Pending Quality Manager", 0, QM),
+			("Issued", 1, QM),
+			("Cancelled", 2, QM),
+		],
+		"transitions": [
+			("Draft", "Send for Approval", "Pending Quality Manager", QU, None),
+			("Draft", "Send for Approval", "Pending Quality Manager", QM, None),
+			("Pending Quality Manager", "Issue", "Issued", QM, None),
+			("Pending Quality Manager", "Return", "Draft", QM, None),
+			("Issued", "Cancel", "Cancelled", QM, None),
 		],
 	},
 }

@@ -92,6 +92,7 @@ WAREHOUSES = {
 def seed_global():
 	seed_item_groups()
 	seed_mtc_age_rules()
+	seed_quality_masters()
 	seed_item_attributes()
 	seed_uoms()
 	seed_lost_reasons()
@@ -141,6 +142,54 @@ def seed_mtc_age_rules():
 				"max_age_months": months,
 				"reference_basis": "Company default (requirements SMR-20)",
 				"active": 1,
+			}
+		).insert(ignore_permissions=True)
+
+
+# QA-14 / SCR-QA-12 and QA-36 / SCR-QA-03 seeds
+SAMPLING_RULES = [("Pipes", "1 sample of 350 mm per heat for mechanical / chemical tests", 1, 0, 350)]
+SMR_ITP_TEMPLATE = "SMR - document review + visual"
+SMR_ITP_POINTS = [
+	(10, "Document review (MTC, tally, certificates)", "Document review", "R", "R", "R"),
+	(20, "Visual and marking check", "Inspection", "H", "W", "W"),
+	(30, "Dimensional check", "Inspection", "W", "W", "R"),
+]
+
+
+def seed_quality_masters():
+	for category, text, per_heat, per_lot, length in SAMPLING_RULES:
+		if frappe.db.exists("Item Group", category) and not frappe.db.exists(
+			"Sampling Rule", {"product_category": category}
+		):
+			frappe.get_doc(
+				{
+					"doctype": "Sampling Rule",
+					"product_category": category,
+					"rule_text": text,
+					"samples_per_heat": per_heat,
+					"samples_per_lot": per_lot,
+					"sample_length_mm": length,
+					"active": 1,
+				}
+			).insert(ignore_permissions=True)
+	if not frappe.db.exists("ITP Template", SMR_ITP_TEMPLATE):
+		frappe.get_doc(
+			{
+				"doctype": "ITP Template",
+				"template_name": SMR_ITP_TEMPLATE,
+				"supply_route": "SMR",
+				"points": [
+					{
+						"seq": seq,
+						"activity": activity,
+						"point_type": kind,
+						"check_type": activity.split(" (")[0],
+						"pvfss_point": p,
+						"tpi_point": t,
+						"customer_point": c,
+					}
+					for seq, activity, kind, p, t, c in SMR_ITP_POINTS
+				],
 			}
 		).insert(ignore_permissions=True)
 
