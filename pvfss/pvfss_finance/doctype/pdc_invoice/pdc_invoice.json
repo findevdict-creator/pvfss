@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "invoice_type",
+  "invoice",
+  "allocated_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "invoice_type",
+   "fieldtype": "Select",
+   "options": "Sales Invoice\nPurchase Invoice",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Invoice Type"
+  },
+  {
+   "fieldname": "invoice",
+   "fieldtype": "Dynamic Link",
+   "options": "invoice_type",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3,
+   "label": "Invoice"
+  },
+  {
+   "fieldname": "allocated_amount",
+   "fieldtype": "Currency",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "non_negative": 1,
+   "label": "Allocated Amount"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Finance",
+ "name": "PDC Invoice",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

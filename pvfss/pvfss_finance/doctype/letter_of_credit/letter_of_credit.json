@@ -1,0 +1,547 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Import and export letters of credit (FIN-40 to FIN-42).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "direction",
+  "lc_no",
+  "company",
+  "party_type",
+  "party",
+  "status",
+  "cb1",
+  "transferable",
+  "revocable",
+  "tenor",
+  "usance_days",
+  "sb_banks",
+  "issuing_bank",
+  "advising_bank",
+  "cb2",
+  "applicant",
+  "beneficiary",
+  "sb_amount",
+  "currency",
+  "amount",
+  "tolerance_pct",
+  "issue_date",
+  "cb3",
+  "expiry_date",
+  "expiry_place",
+  "latest_shipment_date",
+  "presentation_days",
+  "partial_shipment",
+  "transhipment",
+  "tab_links",
+  "sales_order",
+  "purchase_order",
+  "proforma",
+  "cb4",
+  "transferred_to",
+  "transferred_amount",
+  "import_lc",
+  "tab_documents",
+  "documents",
+  "tab_amendments",
+  "amendments",
+  "tab_presentation",
+  "delivery_note",
+  "shipment_date",
+  "presentation_deadline",
+  "cb5",
+  "presented_on",
+  "discrepancy_notes",
+  "tab_charges",
+  "margin_amount",
+  "charges_amount",
+  "bank_account",
+  "charges_journal_entry",
+  "expiry_alerts_sent",
+  "shipment_alerted_on",
+  "presentation_alerted_on",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "LCR-.YY.-.#####",
+   "default": "LCR-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "direction",
+   "fieldtype": "Select",
+   "options": "Import\nExport",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Import: PVFSS opens it for a supplier. Export: a customer opens it in favour of PVFSS.",
+   "label": "Direction"
+  },
+  {
+   "fieldname": "lc_no",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "LC No"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "options": "Company",
+   "reqd": 1,
+   "remember_last_selected_value": 1,
+   "label": "Company"
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Select",
+   "options": "Customer\nSupplier",
+   "read_only": 1,
+   "label": "Party Type"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Dynamic Link",
+   "options": "party_type",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Party"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "options": "Draft\nIssued\nAmended\nDocuments presented\nAccepted\nPaid\nExpired\nCancelled",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1,
+   "allow_on_submit": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transferable",
+   "fieldtype": "Select",
+   "options": "Non-transferable\nTransferable",
+   "default": "Non-transferable",
+   "label": "Transferable"
+  },
+  {
+   "fieldname": "revocable",
+   "fieldtype": "Select",
+   "options": "Irrevocable\nRevocable",
+   "default": "Irrevocable",
+   "label": "Revocable"
+  },
+  {
+   "fieldname": "tenor",
+   "fieldtype": "Select",
+   "options": "Sight\nUsance",
+   "default": "Sight",
+   "label": "Sight / Usance"
+  },
+  {
+   "fieldname": "usance_days",
+   "fieldtype": "Int",
+   "depends_on": "eval:doc.tenor=='Usance'",
+   "mandatory_depends_on": "eval:doc.tenor=='Usance'",
+   "label": "Usance Days"
+  },
+  {
+   "fieldname": "sb_banks",
+   "fieldtype": "Section Break",
+   "label": "Banks and parties"
+  },
+  {
+   "fieldname": "issuing_bank",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "label": "Issuing Bank"
+  },
+  {
+   "fieldname": "advising_bank",
+   "fieldtype": "Data",
+   "label": "Advising / Confirming Bank"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "applicant",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "label": "Applicant"
+  },
+  {
+   "fieldname": "beneficiary",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "label": "Beneficiary"
+  },
+  {
+   "fieldname": "sb_amount",
+   "fieldtype": "Section Break",
+   "label": "Amount and dates"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "options": "Currency",
+   "reqd": 1,
+   "label": "Currency"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "reqd": 1,
+   "in_list_view": 1,
+   "non_negative": 1,
+   "label": "Amount"
+  },
+  {
+   "fieldname": "tolerance_pct",
+   "fieldtype": "Percent",
+   "label": "Tolerance %"
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "label": "Issue Date"
+  },
+  {
+   "fieldname": "cb3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "allow_on_submit": 1,
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "expiry_place",
+   "fieldtype": "Data",
+   "label": "Expiry Place"
+  },
+  {
+   "fieldname": "latest_shipment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "allow_on_submit": 1,
+   "label": "Latest Shipment Date"
+  },
+  {
+   "fieldname": "presentation_days",
+   "fieldtype": "Int",
+   "default": "21",
+   "label": "Presentation Period (days after shipment)"
+  },
+  {
+   "fieldname": "partial_shipment",
+   "fieldtype": "Check",
+   "label": "Partial Shipment Allowed"
+  },
+  {
+   "fieldname": "transhipment",
+   "fieldtype": "Check",
+   "label": "Transhipment Allowed"
+  },
+  {
+   "fieldname": "tab_links",
+   "fieldtype": "Tab Break",
+   "label": "Links"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "options": "Sales Order",
+   "in_standard_filter": 1,
+   "label": "Customer PO"
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "options": "Purchase Order",
+   "in_standard_filter": 1,
+   "label": "Supplier PO"
+  },
+  {
+   "fieldname": "proforma",
+   "fieldtype": "Attach",
+   "label": "Proforma"
+  },
+  {
+   "fieldname": "cb4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "transferred_to",
+   "fieldtype": "Link",
+   "options": "Supplier",
+   "depends_on": "eval:doc.transferable=='Transferable'",
+   "label": "Transferred to Supplier"
+  },
+  {
+   "fieldname": "transferred_amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "depends_on": "eval:doc.transferable=='Transferable'",
+   "label": "Transferred Amount"
+  },
+  {
+   "fieldname": "import_lc",
+   "fieldtype": "Link",
+   "options": "Letter of Credit",
+   "depends_on": "eval:doc.transferable=='Transferable'",
+   "label": "Linked Import LC"
+  },
+  {
+   "fieldname": "tab_documents",
+   "fieldtype": "Tab Break",
+   "label": "Documents Required"
+  },
+  {
+   "fieldname": "documents",
+   "fieldtype": "Table",
+   "options": "LC Document",
+   "allow_on_submit": 1,
+   "label": "Documents Required"
+  },
+  {
+   "fieldname": "tab_amendments",
+   "fieldtype": "Tab Break",
+   "label": "Amendments"
+  },
+  {
+   "fieldname": "amendments",
+   "fieldtype": "Table",
+   "options": "LC Amendment",
+   "allow_on_submit": 1,
+   "label": "Amendments"
+  },
+  {
+   "fieldname": "tab_presentation",
+   "fieldtype": "Tab Break",
+   "label": "Presentation"
+  },
+  {
+   "fieldname": "delivery_note",
+   "fieldtype": "Link",
+   "options": "Delivery Note",
+   "allow_on_submit": 1,
+   "label": "Delivery Note"
+  },
+  {
+   "fieldname": "shipment_date",
+   "fieldtype": "Date",
+   "description": "From the Delivery Note B/L date.",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Shipment Date"
+  },
+  {
+   "fieldname": "presentation_deadline",
+   "fieldtype": "Date",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Presentation Deadline"
+  },
+  {
+   "fieldname": "cb5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "presented_on",
+   "fieldtype": "Date",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Presented on"
+  },
+  {
+   "fieldname": "discrepancy_notes",
+   "fieldtype": "Small Text",
+   "allow_on_submit": 1,
+   "label": "Discrepancy Notes"
+  },
+  {
+   "fieldname": "tab_charges",
+   "fieldtype": "Tab Break",
+   "label": "Charges"
+  },
+  {
+   "fieldname": "margin_amount",
+   "fieldtype": "Currency",
+   "options": "Company:company:default_currency",
+   "allow_on_submit": 1,
+   "label": "Margin Amount"
+  },
+  {
+   "fieldname": "charges_amount",
+   "fieldtype": "Currency",
+   "options": "Company:company:default_currency",
+   "allow_on_submit": 1,
+   "label": "Charges Amount"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "options": "Account",
+   "allow_on_submit": 1,
+   "label": "Bank Account"
+  },
+  {
+   "fieldname": "charges_journal_entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Margin / Charges JE"
+  },
+  {
+   "fieldname": "expiry_alerts_sent",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Expiry Alerts Sent"
+  },
+  {
+   "fieldname": "shipment_alerted_on",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Shipment Alert Sent"
+  },
+  {
+   "fieldname": "presentation_alerted_on",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Presentation Alert Sent"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "options": "Letter of Credit",
+   "read_only": 1,
+   "no_copy": 1,
+   "hidden": 1,
+   "label": "Amended From"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Finance",
+ "name": "Letter of Credit",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Finance User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "lc_no,direction,party,status",
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "lc_no",
+ "track_changes": 1
+}

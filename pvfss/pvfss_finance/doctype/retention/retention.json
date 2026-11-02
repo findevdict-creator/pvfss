@@ -1,0 +1,273 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Retention held on customer and supplier invoices (FIN-50 to FIN-52).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "direction",
+  "company",
+  "party_type",
+  "party",
+  "project",
+  "source_doctype",
+  "source_invoice",
+  "cb1",
+  "currency",
+  "amount",
+  "base_amount",
+  "held_date",
+  "release_condition",
+  "release_due_date",
+  "status",
+  "sb_postings",
+  "hold_journal_entry",
+  "release_journal_entry",
+  "cb2",
+  "forfeit_reason",
+  "notes",
+  "alerted_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "RET-.YY.-.#####",
+   "default": "RET-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "direction",
+   "fieldtype": "Select",
+   "options": "Receivable\nPayable",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Direction"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "options": "Company",
+   "reqd": 1,
+   "read_only": 1,
+   "label": "Company"
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Select",
+   "options": "Customer\nSupplier",
+   "read_only": 1,
+   "label": "Party Type"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Dynamic Link",
+   "options": "party_type",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Party"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "options": "Project",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "label": "Project"
+  },
+  {
+   "fieldname": "source_doctype",
+   "fieldtype": "Select",
+   "options": "Sales Invoice\nPurchase Invoice\nProject",
+   "read_only": 1,
+   "label": "Source Type"
+  },
+  {
+   "fieldname": "source_invoice",
+   "fieldtype": "Dynamic Link",
+   "options": "source_doctype",
+   "read_only": 1,
+   "in_list_view": 1,
+   "label": "Source"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "options": "Currency",
+   "read_only": 1,
+   "label": "Currency"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "read_only": 1,
+   "in_list_view": 1,
+   "label": "Amount"
+  },
+  {
+   "fieldname": "base_amount",
+   "fieldtype": "Currency",
+   "options": "Company:company:default_currency",
+   "read_only": 1,
+   "label": "Amount (AED)"
+  },
+  {
+   "fieldname": "held_date",
+   "fieldtype": "Date",
+   "read_only": 1,
+   "label": "Held Date"
+  },
+  {
+   "fieldname": "release_condition",
+   "fieldtype": "Select",
+   "options": "Warranty end\nFinal acceptance\nOther",
+   "default": "Warranty end",
+   "label": "Release Condition"
+  },
+  {
+   "fieldname": "release_due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Release Due Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "options": "Held\nRelease requested\nReleased\nForfeited",
+   "default": "Held",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "sb_postings",
+   "fieldtype": "Section Break",
+   "label": "Postings"
+  },
+  {
+   "fieldname": "hold_journal_entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "read_only": 1,
+   "label": "Hold JE"
+  },
+  {
+   "fieldname": "release_journal_entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "read_only": 1,
+   "label": "Release JE"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "forfeit_reason",
+   "fieldtype": "Small Text",
+   "read_only": 1,
+   "label": "Forfeit Reason"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "alerted_on",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "read_only": 1,
+   "label": "Release Alert Sent"
+  }
+ ],
+ "in_create": 1,
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Finance",
+ "name": "Retention",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Finance User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "party,project,status",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -168,3 +168,54 @@ frappe.ui.form.on("Sales Order", {
 		}
 	},
 });
+
+// FIN-60 / SCR-FIN-17: settle a variable consideration row with its actual amount.
+frappe.ui.form.on("Sales Order", {
+	refresh(frm) {
+		const open = (frm.doc.pvfss_variable_consideration || []).filter(
+			(r) => !r.true_up_journal_entry
+		);
+		if (frm.doc.docstatus !== 1 || !open.length || !frappe.user.has_role("Finance Manager"))
+			return;
+		frm.add_custom_button(
+			__("Settle variable consideration"),
+			() => {
+				const d = new frappe.ui.Dialog({
+					title: __("Settle variable consideration"),
+					fields: [
+						{
+							fieldname: "row",
+							fieldtype: "Select",
+							label: __("Row"),
+							reqd: 1,
+							options: open.map((r) => ({
+								value: r.name,
+								label: `${r.idx}. ${__(r.vc_type)}`,
+							})),
+						},
+						{
+							fieldname: "actual_amount",
+							fieldtype: "Currency",
+							label: __("Actual Amount"),
+							reqd: 1,
+						},
+					],
+					primary_action_label: __("Settle"),
+					primary_action(values) {
+						frappe
+							.xcall("pvfss.pvfss_finance.vc.settle", {
+								sales_order: frm.doc.name,
+								...values,
+							})
+							.then(() => {
+								d.hide();
+								frm.reload_doc();
+							});
+					},
+				});
+				d.show();
+			},
+			__("Finance")
+		);
+	},
+});

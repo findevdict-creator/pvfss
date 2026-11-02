@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "amendment_date",
+  "change",
+  "amount_change",
+  "new_expiry_date",
+  "currency"
+ ],
+ "fields": [
+  {
+   "fieldname": "amendment_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "change",
+   "fieldtype": "Small Text",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Change"
+  },
+  {
+   "fieldname": "amount_change",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "in_list_view": 1,
+   "label": "Amount Change"
+  },
+  {
+   "fieldname": "new_expiry_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "New Expiry"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "options": "Currency",
+   "hidden": 1,
+   "label": "Currency"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Finance",
+ "name": "LC Amendment",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

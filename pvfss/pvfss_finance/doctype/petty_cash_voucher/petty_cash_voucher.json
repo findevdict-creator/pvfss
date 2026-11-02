@@ -1,0 +1,244 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Petty cash expenses posted per custodian (FIN-65).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "company",
+  "custodian",
+  "cash_account",
+  "posting_date",
+  "expense_account",
+  "project",
+  "cb1",
+  "description",
+  "amount",
+  "vat_input",
+  "vat_amount",
+  "supplier_trn",
+  "attachment",
+  "sb_post",
+  "approval_required",
+  "approved_by",
+  "cb2",
+  "journal_entry",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "PCV-.YY.-.#####",
+   "default": "PCV-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "options": "Company",
+   "reqd": 1,
+   "remember_last_selected_value": 1,
+   "label": "Company"
+  },
+  {
+   "fieldname": "custodian",
+   "fieldtype": "Link",
+   "options": "Employee",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Custodian"
+  },
+  {
+   "fieldname": "cash_account",
+   "fieldtype": "Link",
+   "options": "Account",
+   "reqd": 1,
+   "fetch_from": "custodian.pvfss_petty_cash_account",
+   "fetch_if_empty": 1,
+   "label": "Cash Account"
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "default": "Today",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "fieldname": "expense_account",
+   "fieldtype": "Link",
+   "options": "Account",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Expense Account"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "options": "Project",
+   "in_standard_filter": 1,
+   "label": "Project"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "label": "Description"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "options": "Company:company:default_currency",
+   "reqd": 1,
+   "in_list_view": 1,
+   "non_negative": 1,
+   "description": "Total paid, including VAT.",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "vat_input",
+   "fieldtype": "Check",
+   "label": "VAT Input (tax invoice held)"
+  },
+  {
+   "fieldname": "vat_amount",
+   "fieldtype": "Currency",
+   "options": "Company:company:default_currency",
+   "depends_on": "vat_input",
+   "mandatory_depends_on": "vat_input",
+   "label": "VAT Amount"
+  },
+  {
+   "fieldname": "supplier_trn",
+   "fieldtype": "Data",
+   "depends_on": "vat_input",
+   "label": "Supplier TRN"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "reqd": 1,
+   "label": "Receipt"
+  },
+  {
+   "fieldname": "sb_post",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "approval_required",
+   "fieldtype": "Check",
+   "read_only": 1,
+   "label": "Finance Manager Approval Required"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Approved by"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "journal_entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Journal Entry"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "options": "Petty Cash Voucher",
+   "read_only": 1,
+   "no_copy": 1,
+   "hidden": 1,
+   "label": "Amended From"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Finance",
+ "name": "Petty Cash Voucher",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Finance User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "custodian,project",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "description",
+ "track_changes": 1
+}

@@ -33,8 +33,11 @@ def before_validate(doc, method=None):
 
 
 def validate(doc, method=None):
+	from pvfss.pvfss_finance import vc
+
 	check_advance_billing(doc)
 	compare_with_quotation(doc)
+	vc.estimate(doc)  # FIN-60
 
 
 def prefill_review(doc):

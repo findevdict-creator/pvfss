@@ -98,6 +98,19 @@ def seed_global():
 	seed_lost_reasons()
 	seed_payment_terms()
 	seed_email_templates()
+	seed_modes_of_payment()
+
+
+# FIN-30
+MODES_OF_PAYMENT = (("TT", "Bank"), ("Cheque", "Bank"), ("PDC", "Bank"), ("LC", "Bank"), ("Cash", "Cash"))
+
+
+def seed_modes_of_payment():
+	for name, kind in MODES_OF_PAYMENT:
+		if not frappe.db.exists("Mode of Payment", name):
+			frappe.get_doc({"doctype": "Mode of Payment", "mode_of_payment": name, "type": kind}).insert(
+				ignore_permissions=True
+			)
 
 
 EMAIL_TEMPLATES = {
