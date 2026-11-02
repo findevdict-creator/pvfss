@@ -10,10 +10,22 @@ def execute(filters=None):
 	columns = [
 		{"fieldname": "posting_date", "label": _("Date"), "fieldtype": "Date", "width": 95},
 		{"fieldname": "voucher_type", "label": _("Type"), "fieldtype": "Data", "width": 110},
-		{"fieldname": "voucher_no", "label": _("Voucher"), "fieldtype": "Dynamic Link", "options": "voucher_type", "width": 140},
+		{
+			"fieldname": "voucher_no",
+			"label": _("Voucher"),
+			"fieldtype": "Dynamic Link",
+			"options": "voucher_type",
+			"width": 140,
+		},
 		{"fieldname": "description", "label": _("Description"), "fieldtype": "Data", "width": 220},
 		{"fieldname": "against", "label": _("Account"), "fieldtype": "Data", "width": 160},
-		{"fieldname": "project", "label": _("Project"), "fieldtype": "Link", "options": "Project", "width": 110},
+		{
+			"fieldname": "project",
+			"label": _("Project"),
+			"fieldtype": "Link",
+			"options": "Project",
+			"width": 110,
+		},
 		{"fieldname": "cash_in", "label": _("In"), "fieldtype": "Currency", "width": 110},
 		{"fieldname": "cash_out", "label": _("Out"), "fieldtype": "Currency", "width": 110},
 		{"fieldname": "balance", "label": _("Balance"), "fieldtype": "Currency", "width": 120},
@@ -35,7 +47,16 @@ def execute(filters=None):
 	for r in frappe.get_all(
 		"GL Entry",
 		filters={"account": account, "is_cancelled": 0, "posting_date": ["between", [from_date, to_date]]},
-		fields=["posting_date", "voucher_type", "voucher_no", "against", "debit", "credit", "project", "remarks"],
+		fields=[
+			"posting_date",
+			"voucher_type",
+			"voucher_no",
+			"against",
+			"debit",
+			"credit",
+			"project",
+			"remarks",
+		],
 		order_by="posting_date asc, creation asc",
 	):
 		balance += flt(r.debit) - flt(r.credit)

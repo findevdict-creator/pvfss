@@ -49,7 +49,16 @@ def _lcs(direction):
 		fields=["presentation_deadline", "expiry_date", "usance_days", "amount", "currency"],
 	):
 		date = add_days(r.presentation_deadline or r.expiry_date, r.usance_days or 0)
-		rate = 1 if r.currency == "AED" else flt(frappe.db.get_value("Currency Exchange", {"from_currency": r.currency, "to_currency": "AED"}, "exchange_rate")) or 1
+		rate = (
+			1
+			if r.currency == "AED"
+			else flt(
+				frappe.db.get_value(
+					"Currency Exchange", {"from_currency": r.currency, "to_currency": "AED"}, "exchange_rate"
+				)
+			)
+			or 1
+		)
 		out.append((date, flt(r.amount) * rate))
 	return out
 

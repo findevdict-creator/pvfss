@@ -27,7 +27,9 @@ class PettyCashVoucher(Document):
 		if self.approval_required and not self.approved_by:
 			frappe.throw(
 				_("Vouchers above {0} need Finance Manager approval.").format(
-					frappe.format_value(settings.get_float("petty_cash_approval_threshold"), {"fieldtype": "Currency"})
+					frappe.format_value(
+						settings.get_float("petty_cash_approval_threshold"), {"fieldtype": "Currency"}
+					)
 				)
 			)
 
@@ -39,7 +41,11 @@ class PettyCashVoucher(Document):
 			{"account": self.cash_account, "credit": flt(self.amount)},
 		]
 		je = accounts.post(
-			self.company, rows, _("Petty cash {0}: {1}").format(self.name, self.description), self.posting_date, self.project
+			self.company,
+			rows,
+			_("Petty cash {0}: {1}").format(self.name, self.description),
+			self.posting_date,
+			self.project,
 		)
 		self.db_set("journal_entry", je)
 

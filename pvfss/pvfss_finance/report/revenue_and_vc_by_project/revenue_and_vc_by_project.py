@@ -15,12 +15,20 @@ def execute(filters=None):
 		conditions["transaction_date"] = ["between", [filters.from_date, filters.to_date]]
 	data = []
 	for so in frappe.get_all(
-		"Sales Order", filters=conditions, fields=["name", "project", "customer", "base_net_total", "conversion_rate"]
+		"Sales Order",
+		filters=conditions,
+		fields=["name", "project", "customer", "base_net_total", "conversion_rate"],
 	):
 		rows = frappe.get_all(
 			"Variable Consideration",
 			filters={"parent": so.name, "parenttype": "Sales Order"},
-			fields=["maximum_amount", "constrained_amount", "recognised_amount", "settled_amount", "true_up_amount"],
+			fields=[
+				"maximum_amount",
+				"constrained_amount",
+				"recognised_amount",
+				"settled_amount",
+				"true_up_amount",
+			],
 		)
 		rate = flt(so.conversion_rate or 1)
 		total = {k: sum(flt(r[k]) for r in rows) * rate for k in rows[0]} if rows else {}
@@ -48,9 +56,27 @@ def execute(filters=None):
 		)
 	money = {"fieldtype": "Currency", "width": 120}
 	columns = [
-		{"fieldname": "project", "label": _("Project"), "fieldtype": "Link", "options": "Project", "width": 120},
-		{"fieldname": "sales_order", "label": _("Customer PO"), "fieldtype": "Link", "options": "Sales Order", "width": 130},
-		{"fieldname": "customer", "label": _("Customer"), "fieldtype": "Link", "options": "Customer", "width": 160},
+		{
+			"fieldname": "project",
+			"label": _("Project"),
+			"fieldtype": "Link",
+			"options": "Project",
+			"width": 120,
+		},
+		{
+			"fieldname": "sales_order",
+			"label": _("Customer PO"),
+			"fieldtype": "Link",
+			"options": "Sales Order",
+			"width": 130,
+		},
+		{
+			"fieldname": "customer",
+			"label": _("Customer"),
+			"fieldtype": "Link",
+			"options": "Customer",
+			"width": 160,
+		},
 		{"fieldname": "contract_value", "label": _("Contract Value"), **money},
 		{"fieldname": "vc_max", "label": _("VC Maximum"), **money},
 		{"fieldname": "vc_constrained", "label": _("VC Constrained"), **money},

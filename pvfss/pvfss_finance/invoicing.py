@@ -68,11 +68,20 @@ def purchase_invoice_validate(doc, method=None):
 		frappe.throw(_("Enter the supplier invoice no and date (FIN-20)."))
 	duplicate = frappe.db.get_value(
 		"Purchase Invoice",
-		{"supplier": doc.supplier, "bill_no": doc.bill_no, "docstatus": ["<", 2], "name": ["!=", doc.name or ""]},
+		{
+			"supplier": doc.supplier,
+			"bill_no": doc.bill_no,
+			"docstatus": ["<", 2],
+			"name": ["!=", doc.name or ""],
+		},
 		"name",
 	)
 	if duplicate:
-		frappe.throw(_("Supplier invoice {0} from {1} is already entered in {2}.").format(doc.bill_no, doc.supplier, duplicate))
+		frappe.throw(
+			_("Supplier invoice {0} from {1} is already entered in {2}.").format(
+				doc.bill_no, doc.supplier, duplicate
+			)
+		)
 	three_way_match(doc).throw_if_failed()
 	retention.preview_purchase(doc)
 
@@ -97,14 +106,18 @@ def three_way_match(doc):
 			continue
 		issues = []
 		if not row.get("pr_detail"):
-			result.fail(_("Line {0}: goods are invoiced from a Purchase Receipt.").format(line), rule="FIN-20")
+			result.fail(
+				_("Line {0}: goods are invoiced from a Purchase Receipt.").format(line), rule="FIN-20"
+			)
 			issues.append(_("no receipt"))
 		else:
 			received = flt(frappe.db.get_value("Purchase Receipt Item", row.pr_detail, "qty"))
 			available = received - _billed_elsewhere(row.pr_detail, doc.name)
 			if flt(row.qty) > available + QTY_TOLERANCE:
 				result.fail(
-					_("Line {0}: invoiced qty {1:g} exceeds received and unbilled qty {2:g}.").format(line, flt(row.qty), available),
+					_("Line {0}: invoiced qty {1:g} exceeds received and unbilled qty {2:g}.").format(
+						line, flt(row.qty), available
+					),
 					rule="FIN-20",
 				)
 				issues.append(_("qty"))
@@ -113,7 +126,9 @@ def three_way_match(doc):
 			if abs(flt(row.rate) - po_rate) > 0.0001:
 				result.fail(
 					_("Line {0}: invoice rate {1} differs from PO rate {2}.").format(
-						line, frappe.format_value(row.rate, {"fieldtype": "Currency"}), frappe.format_value(po_rate, {"fieldtype": "Currency"})
+						line,
+						frappe.format_value(row.rate, {"fieldtype": "Currency"}),
+						frappe.format_value(po_rate, {"fieldtype": "Currency"}),
 					),
 					rule="FIN-20",
 				)

@@ -26,7 +26,11 @@ class PostDatedCheque(Document):
 		party_field = "customer" if self.direction == RECEIVED else "supplier"
 		for row in self.invoices:
 			if row.invoice_type != invoice_type:
-				frappe.throw(_("Row {0}: a {1} cheque links to a {2}.").format(row.idx, _(self.direction), _(invoice_type)))
+				frappe.throw(
+					_("Row {0}: a {1} cheque links to a {2}.").format(
+						row.idx, _(self.direction), _(invoice_type)
+					)
+				)
 			if frappe.db.get_value(invoice_type, row.invoice, party_field) != self.party:
 				frappe.throw(_("Row {0}: {1} is not for {2}.").format(row.idx, row.invoice, self.party))
 		if sum(flt(r.allocated_amount) for r in self.invoices) > flt(self.amount) + 0.005:
@@ -61,7 +65,12 @@ class PostDatedCheque(Document):
 			)
 		if flt(self.amount) - allocated > 0.005:
 			rows.append(
-				{"account": main, side: self._base(flt(self.amount) - allocated), "exchange_rate": self.exchange_rate, **self._party()}
+				{
+					"account": main,
+					side: self._base(flt(self.amount) - allocated),
+					"exchange_rate": self.exchange_rate,
+					**self._party(),
+				}
 			)
 		pdc_key = "pdc_receivable" if self.direction == RECEIVED else "pdc_payable"
 		other = "debit" if side == "credit" else "credit"
@@ -71,7 +80,10 @@ class PostDatedCheque(Document):
 	def on_submit(self):
 		self.db_set("status", "In hand" if self.direction == RECEIVED else "Issued")
 		je = accounts.post(
-			self.company, self._hold_rows(), _("PDC {0} cheque {1}").format(self.name, self.cheque_no), posting_date=nowdate()
+			self.company,
+			self._hold_rows(),
+			_("PDC {0} cheque {1}").format(self.name, self.cheque_no),
+			posting_date=nowdate(),
 		)
 		self.db_set("hold_journal_entry", je)
 
@@ -156,7 +168,9 @@ def bounce(pdc: str, remarks: str | None = None):
 		doc.db_set("remarks", remarks)
 	alerts.send(
 		alerts.users_with_role("Finance User", "Finance Manager"),
-		_("Cheque {0} from {1} bounced ({2} {3}).").format(doc.cheque_no, doc.party, doc.currency, doc.amount),
+		_("Cheque {0} from {1} bounced ({2} {3}).").format(
+			doc.cheque_no, doc.party, doc.currency, doc.amount
+		),
 		"Post-Dated Cheque",
 		doc.name,
 	)

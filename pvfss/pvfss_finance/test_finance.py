@@ -46,7 +46,9 @@ def balance(account, party=None):
 
 
 def bank_account():
-	name = frappe.db.get_value("Account", {"company": f.TEST_COMPANY, "account_type": "Bank", "is_group": 0}, "name")
+	name = frappe.db.get_value(
+		"Account", {"company": f.TEST_COMPANY, "account_type": "Bank", "is_group": 0}, "name"
+	)
 	if name:
 		return name
 	parent = frappe.db.get_value(
@@ -78,7 +80,9 @@ def make_so(qty=10, rate=1000, **kw):
 			"delivery_date": f.delivery_date(),
 			"selling_price_list": f.price_list(),
 			"currency": "AED",
-			"items": [{"item_code": service_item(), "qty": qty, "rate": rate, "delivery_date": f.delivery_date()}],
+			"items": [
+				{"item_code": service_item(), "qty": qty, "rate": rate, "delivery_date": f.delivery_date()}
+			],
 			**kw,
 		}
 	)
@@ -167,7 +171,10 @@ class TestFinance(IntegrationTestCase):
 		account = accounts.get(f.TEST_COMPANY, "retention_receivable")
 		self.assertEqual(balance(account, si.customer), 1000)
 		ret = frappe.get_doc("Retention", si.pvfss_retention)
-		self.assertEqual((ret.status, ret.release_due_date), ("Held", frappe.utils.getdate(frappe.utils.add_months(si.posting_date, 12))))
+		self.assertEqual(
+			(ret.status, ret.release_due_date),
+			("Held", frappe.utils.getdate(frappe.utils.add_months(si.posting_date, 12))),
+		)
 
 		frappe.db.set_single_value("PVFSS Settings", "retention_release_alert_days", 400)
 		settings.clear_cache()
@@ -235,7 +242,9 @@ class TestFinance(IntegrationTestCase):
 					"cheque_date": add_days(nowdate(), 2),
 					"currency": "AED",
 					"amount": 4000,
-					"invoices": [{"invoice_type": "Sales Invoice", "invoice": si.name, "allocated_amount": 4000}],
+					"invoices": [
+						{"invoice_type": "Sales Invoice", "invoice": si.name, "allocated_amount": 4000}
+					],
 				}
 			).insert()
 
@@ -328,7 +337,9 @@ class TestFinance(IntegrationTestCase):
 		settings.clear_cache()
 		if not frappe.db.exists("Gender", "Male"):
 			frappe.get_doc({"doctype": "Gender", "gender": "Male"}).insert()
-		cash = frappe.db.get_value("Account", {"company": f.TEST_COMPANY, "account_type": "Cash", "is_group": 0}, "name")
+		cash = frappe.db.get_value(
+			"Account", {"company": f.TEST_COMPANY, "account_type": "Cash", "is_group": 0}, "name"
+		)
 		employee = frappe.get_doc(
 			{
 				"doctype": "Employee",

@@ -17,7 +17,9 @@ def estimate(so):
 			row.estimated_amount = flt(flt(row.maximum_amount) * flt(row.probability_pct) / 100, 2)
 		if abs(flt(row.constrained_amount)) > abs(flt(row.maximum_amount)) and row.maximum_amount:
 			frappe.throw(
-				_("Variable consideration row {0}: the constrained amount exceeds the maximum.").format(row.idx)
+				_("Variable consideration row {0}: the constrained amount exceeds the maximum.").format(
+					row.idx
+				)
 			)
 
 
@@ -70,7 +72,13 @@ def recognise(si):
 	if not total:
 		return
 	base = flt(total * flt(si.conversion_rate or 1), 2)
-	je = _entry(si.company, base, _("Variable consideration on {0}").format(si.name), si.get("project"), si.posting_date)
+	je = _entry(
+		si.company,
+		base,
+		_("Variable consideration on {0}").format(si.name),
+		si.get("project"),
+		si.posting_date,
+	)
 	si.db_set({"pvfss_vc_amount": total, "pvfss_vc_journal_entry": je})
 
 
@@ -85,7 +93,9 @@ def reverse(si):
 	share = min(flt(si.net_total) / so_total, 1) if so_total else 0
 	for row in rows:
 		amount = flt(flt(row.constrained_amount) * share, 2)
-		frappe.db.set_value("Variable Consideration", row.name, "recognised_amount", flt(row.recognised_amount) - amount)
+		frappe.db.set_value(
+			"Variable Consideration", row.name, "recognised_amount", flt(row.recognised_amount) - amount
+		)
 	si.db_set({"pvfss_vc_amount": 0, "pvfss_vc_journal_entry": None})
 
 
@@ -105,7 +115,9 @@ def settle(sales_order: str, row: str, actual_amount: float):
 	je = None
 	if true_up:
 		base = flt(true_up * flt(so.conversion_rate or 1), 2)
-		je = _entry(so.company, base, _("VC true-up on {0} ({1})").format(so.name, vc.vc_type), so.get("project"))
+		je = _entry(
+			so.company, base, _("VC true-up on {0} ({1})").format(so.name, vc.vc_type), so.get("project")
+		)
 	frappe.db.set_value(
 		"Variable Consideration",
 		vc.name,

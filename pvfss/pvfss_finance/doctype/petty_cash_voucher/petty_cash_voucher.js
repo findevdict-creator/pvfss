@@ -11,14 +11,25 @@ frappe.ui.form.on("Petty Cash Voucher", {
 		}));
 	},
 	refresh(frm) {
-		if (frm.doc.docstatus === 0 && !frm.is_new() && frm.doc.approval_required && !frm.doc.approved_by) {
-			frm.dashboard.set_headline_alert(__("Needs Finance Manager approval before submit."), "orange");
+		if (
+			frm.doc.docstatus === 0 &&
+			!frm.is_new() &&
+			frm.doc.approval_required &&
+			!frm.doc.approved_by
+		) {
+			frm.dashboard.set_headline_alert(
+				__("Needs Finance Manager approval before submit."),
+				"orange"
+			);
 			if (frappe.user.has_role("Finance Manager")) {
 				frm.add_custom_button(__("Approve"), () =>
 					frappe
-						.xcall("pvfss.pvfss_finance.doctype.petty_cash_voucher.petty_cash_voucher.approve", {
-							voucher: frm.doc.name,
-						})
+						.xcall(
+							"pvfss.pvfss_finance.doctype.petty_cash_voucher.petty_cash_voucher.approve",
+							{
+								voucher: frm.doc.name,
+							}
+						)
 						.then(() => frm.reload_doc())
 				);
 			}

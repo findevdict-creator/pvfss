@@ -37,14 +37,21 @@ frappe.ui.form.on("Post-Dated Cheque", {
 						label: __("Bank Account"),
 						reqd: 1,
 						default: frm.doc.bank_account,
-						get_query: () => ({ filters: { company: frm.doc.company, account_type: "Bank", is_group: 0 } }),
+						get_query: () => ({
+							filters: {
+								company: frm.doc.company,
+								account_type: "Bank",
+								is_group: 0,
+							},
+						}),
 					},
 				],
 				(v) => call(method, v),
 				label
 			);
 		const s = frm.doc.status;
-		if (s === "In hand") frm.add_custom_button(__("Deposit"), () => bank("deposit", __("Deposit")));
+		if (s === "In hand")
+			frm.add_custom_button(__("Deposit"), () => bank("deposit", __("Deposit")));
 		if (s === "Deposited") {
 			frm.add_custom_button(__("Mark cleared"), () => call("clear"));
 			frm.add_custom_button(__("Mark bounced"), () => call("bounce"));
