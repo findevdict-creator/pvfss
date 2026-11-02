@@ -18,16 +18,38 @@ def execute(filters=None):
 	for r in frappe.get_all(
 		"Retention",
 		filters=conditions,
-		fields=["name", "direction", "party", "project", "source_invoice", "base_amount", "held_date", "release_due_date", "status"],
+		fields=[
+			"name",
+			"direction",
+			"party",
+			"project",
+			"source_invoice",
+			"base_amount",
+			"held_date",
+			"release_due_date",
+			"status",
+		],
 		order_by="release_due_date asc",
 	):
 		r.days_to_due = date_diff(r.release_due_date, today) if r.release_due_date else None
 		data.append(r)
 	columns = [
-		{"fieldname": "name", "label": _("Retention"), "fieldtype": "Link", "options": "Retention", "width": 120},
+		{
+			"fieldname": "name",
+			"label": _("Retention"),
+			"fieldtype": "Link",
+			"options": "Retention",
+			"width": 120,
+		},
 		{"fieldname": "direction", "label": _("Direction"), "fieldtype": "Data", "width": 90},
 		{"fieldname": "party", "label": _("Party"), "fieldtype": "Data", "width": 170},
-		{"fieldname": "project", "label": _("Project"), "fieldtype": "Link", "options": "Project", "width": 120},
+		{
+			"fieldname": "project",
+			"label": _("Project"),
+			"fieldtype": "Link",
+			"options": "Project",
+			"width": 120,
+		},
 		{"fieldname": "source_invoice", "label": _("Source"), "fieldtype": "Data", "width": 130},
 		{"fieldname": "base_amount", "label": _("Amount (AED)"), "fieldtype": "Currency", "width": 120},
 		{"fieldname": "held_date", "label": _("Held"), "fieldtype": "Date", "width": 95},

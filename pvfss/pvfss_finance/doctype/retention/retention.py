@@ -29,7 +29,14 @@ def request_release(retention: str):
 	doc.status = "Release requested"
 	doc.save()
 	for user in alerts.users_with_role("Finance Manager")[:1]:
-		assign({"assign_to": [user], "doctype": "Retention", "name": doc.name, "description": _("Release retention")})
+		assign(
+			{
+				"assign_to": [user],
+				"doctype": "Retention",
+				"name": doc.name,
+				"description": _("Release retention"),
+			}
+		)
 	return doc.status
 
 

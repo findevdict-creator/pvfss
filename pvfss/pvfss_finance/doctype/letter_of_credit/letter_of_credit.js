@@ -14,31 +14,67 @@ frappe.ui.form.on("Letter of Credit", {
 	},
 	refresh(frm) {
 		if (!frm.doc.party_type && frm.doc.direction) frm.trigger("direction");
-		if (frm.doc.docstatus !== 1 || ["Paid", "Expired", "Cancelled"].includes(frm.doc.status)) return;
+		if (frm.doc.docstatus !== 1 || ["Paid", "Expired", "Cancelled"].includes(frm.doc.status))
+			return;
 		const call = (method, args) =>
-			frappe.xcall(`${LC}.${method}`, { lc: frm.doc.name, ...(args || {}) }).then(() => frm.reload_doc());
+			frappe
+				.xcall(`${LC}.${method}`, { lc: frm.doc.name, ...(args || {}) })
+				.then(() => frm.reload_doc());
 		frm.add_custom_button(
 			__("Amendment"),
 			() =>
 				frappe.prompt(
 					[
-						{ fieldname: "change", fieldtype: "Small Text", label: __("Change"), reqd: 1 },
-						{ fieldname: "amount_change", fieldtype: "Currency", label: __("Amount Change") },
-						{ fieldname: "new_expiry_date", fieldtype: "Date", label: __("New Expiry") },
+						{
+							fieldname: "change",
+							fieldtype: "Small Text",
+							label: __("Change"),
+							reqd: 1,
+						},
+						{
+							fieldname: "amount_change",
+							fieldtype: "Currency",
+							label: __("Amount Change"),
+						},
+						{
+							fieldname: "new_expiry_date",
+							fieldtype: "Date",
+							label: __("New Expiry"),
+						},
 					],
 					(v) => call("amend", v),
 					__("LC amendment")
 				),
 			__("Actions")
 		);
-		frm.add_custom_button(__("Presentation checklist"), () => checklist(frm, call), __("Actions"));
+		frm.add_custom_button(
+			__("Presentation checklist"),
+			() => checklist(frm, call),
+			__("Actions")
+		);
 		if (frm.doc.status === "Documents presented")
-			frm.add_custom_button(__("Accepted"), () => call("set_status", { status: "Accepted" }), __("Actions"));
+			frm.add_custom_button(
+				__("Accepted"),
+				() => call("set_status", { status: "Accepted" }),
+				__("Actions")
+			);
 		if (["Accepted", "Documents presented"].includes(frm.doc.status))
-			frm.add_custom_button(__("Paid"), () => call("set_status", { status: "Paid" }), __("Actions"));
-		frm.add_custom_button(__("Expired"), () => call("set_status", { status: "Expired" }), __("Actions"));
+			frm.add_custom_button(
+				__("Paid"),
+				() => call("set_status", { status: "Paid" }),
+				__("Actions")
+			);
+		frm.add_custom_button(
+			__("Expired"),
+			() => call("set_status", { status: "Expired" }),
+			__("Actions")
+		);
 		if (!frm.doc.charges_journal_entry)
-			frm.add_custom_button(__("Post margin / charges JE"), () => call("post_charges"), __("Actions"));
+			frm.add_custom_button(
+				__("Post margin / charges JE"),
+				() => call("post_charges"),
+				__("Actions")
+			);
 	},
 });
 
@@ -48,9 +84,9 @@ function checklist(frm, call) {
 		const body = rows
 			.map(
 				(r) =>
-					`<tr><td>${esc(r.document)}</td><td>${r.available ? "✓" : "✗"} ${esc(r.dn_status)}</td><td>${esc(
-						r.discrepancy || ""
-					)}</td></tr>`
+					`<tr><td>${esc(r.document)}</td><td>${r.available ? "✓" : "✗"} ${esc(
+						r.dn_status
+					)}</td><td>${esc(r.discrepancy || "")}</td></tr>`
 			)
 			.join("");
 		const d = new frappe.ui.Dialog({

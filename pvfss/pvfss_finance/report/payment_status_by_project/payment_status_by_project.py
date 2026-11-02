@@ -24,12 +24,24 @@ def execute(filters=None):
 		sales = frappe.get_all(
 			"Sales Invoice",
 			filters={"project": project.name, "docstatus": 1},
-			fields=["base_grand_total", "outstanding_amount", "conversion_rate", "pvfss_retention_amount", "pvfss_retention"],
+			fields=[
+				"base_grand_total",
+				"outstanding_amount",
+				"conversion_rate",
+				"pvfss_retention_amount",
+				"pvfss_retention",
+			],
 		)
 		purchases = frappe.get_all(
 			"Purchase Invoice",
 			filters={"project": project.name, "docstatus": 1},
-			fields=["base_grand_total", "outstanding_amount", "conversion_rate", "pvfss_retention_amount", "pvfss_retention"],
+			fields=[
+				"base_grand_total",
+				"outstanding_amount",
+				"conversion_rate",
+				"pvfss_retention_amount",
+				"pvfss_retention",
+			],
 		)
 		if not (orders or sales or purchases):
 			continue
@@ -37,7 +49,11 @@ def execute(filters=None):
 			flt(r)
 			for r in frappe.get_all(
 				"Retention",
-				filters={"project": project.name, "direction": "Receivable", "status": ["in", ("Held", "Release requested")]},
+				filters={
+					"project": project.name,
+					"direction": "Receivable",
+					"status": ["in", ("Held", "Release requested")],
+				},
 				pluck="base_amount",
 			)
 		)
@@ -46,7 +62,9 @@ def execute(filters=None):
 			total = _sum(invoices, "base_grand_total")
 			outstanding = sum(flt(r.outstanding_amount) * flt(r.conversion_rate or 1) for r in invoices)
 			retained = sum(
-				flt(r.pvfss_retention_amount) * flt(r.conversion_rate or 1) for r in invoices if r.pvfss_retention
+				flt(r.pvfss_retention_amount) * flt(r.conversion_rate or 1)
+				for r in invoices
+				if r.pvfss_retention
 			)
 			return total, total - outstanding - retained, outstanding
 
@@ -69,8 +87,20 @@ def execute(filters=None):
 		)
 	money = {"fieldtype": "Currency", "width": 120}
 	columns = [
-		{"fieldname": "project", "label": _("Project"), "fieldtype": "Link", "options": "Project", "width": 120},
-		{"fieldname": "customer", "label": _("Customer"), "fieldtype": "Link", "options": "Customer", "width": 160},
+		{
+			"fieldname": "project",
+			"label": _("Project"),
+			"fieldtype": "Link",
+			"options": "Project",
+			"width": 120,
+		},
+		{
+			"fieldname": "customer",
+			"label": _("Customer"),
+			"fieldtype": "Link",
+			"options": "Customer",
+			"width": 160,
+		},
 		{"fieldname": "contract_value", "label": _("Contract Value"), **money},
 		{"fieldname": "invoiced", "label": _("Invoiced"), **money},
 		{"fieldname": "received", "label": _("Received"), **money},

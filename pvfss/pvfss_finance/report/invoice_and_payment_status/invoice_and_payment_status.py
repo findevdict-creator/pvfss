@@ -10,17 +10,47 @@ def columns(side):
 	paid = _("Received") if side == "Receivable" else _("Paid")
 	dt = "Sales Invoice" if side == "Receivable" else "Purchase Invoice"
 	return [
-		{"fieldname": "project", "label": _("Project"), "fieldtype": "Link", "options": "Project", "width": 120},
+		{
+			"fieldname": "project",
+			"label": _("Project"),
+			"fieldtype": "Link",
+			"options": "Project",
+			"width": 120,
+		},
 		{"fieldname": "party", "label": party, "fieldtype": "Data", "width": 160},
 		{"fieldname": "invoice", "label": _("Invoice"), "fieldtype": "Link", "options": dt, "width": 140},
 		{"fieldname": "posting_date", "label": _("Date"), "fieldtype": "Date", "width": 95},
-		{"fieldname": "currency", "label": _("Currency"), "fieldtype": "Link", "options": "Currency", "width": 70},
-		{"fieldname": "amount", "label": _("Amount"), "fieldtype": "Currency", "options": "currency", "width": 120},
+		{
+			"fieldname": "currency",
+			"label": _("Currency"),
+			"fieldtype": "Link",
+			"options": "Currency",
+			"width": 70,
+		},
+		{
+			"fieldname": "amount",
+			"label": _("Amount"),
+			"fieldtype": "Currency",
+			"options": "currency",
+			"width": 120,
+		},
 		{"fieldname": "vat", "label": _("VAT"), "fieldtype": "Currency", "options": "currency", "width": 100},
-		{"fieldname": "retention", "label": _("Retention Held"), "fieldtype": "Currency", "options": "currency", "width": 110},
+		{
+			"fieldname": "retention",
+			"label": _("Retention Held"),
+			"fieldtype": "Currency",
+			"options": "currency",
+			"width": 110,
+		},
 		{"fieldname": "due_date", "label": _("Due Date"), "fieldtype": "Date", "width": 95},
 		{"fieldname": "paid", "label": paid, "fieldtype": "Currency", "options": "currency", "width": 120},
-		{"fieldname": "balance", "label": _("Balance"), "fieldtype": "Currency", "options": "currency", "width": 120},
+		{
+			"fieldname": "balance",
+			"label": _("Balance"),
+			"fieldtype": "Currency",
+			"options": "currency",
+			"width": 120,
+		},
 		{"fieldname": "days_overdue", "label": _("Days Overdue"), "fieldtype": "Int", "width": 90},
 		{"fieldname": "payment_method", "label": _("Payment Method"), "fieldtype": "Data", "width": 90},
 		{"fieldname": "reference", "label": _("PDC / LC"), "fieldtype": "Data", "width": 140},
@@ -42,7 +72,9 @@ def _references(doctype, names):
 def execute(filters=None):
 	filters = frappe._dict(filters or {})
 	side = filters.side or "Receivable"
-	dt, party_field = ("Sales Invoice", "customer") if side == "Receivable" else ("Purchase Invoice", "supplier")
+	dt, party_field = (
+		("Sales Invoice", "customer") if side == "Receivable" else ("Purchase Invoice", "supplier")
+	)
 	conditions = {"docstatus": 1, "is_return": 0}
 	if filters.party:
 		conditions[party_field] = filters.party
@@ -55,8 +87,16 @@ def execute(filters=None):
 		dt,
 		filters=conditions,
 		fields=[
-			"name", party_field + " as party", "project", "posting_date", "currency", "grand_total",
-			"total_taxes_and_charges", "outstanding_amount", "due_date", "pvfss_retention_amount",
+			"name",
+			party_field + " as party",
+			"project",
+			"posting_date",
+			"currency",
+			"grand_total",
+			"total_taxes_and_charges",
+			"outstanding_amount",
+			"due_date",
+			"pvfss_retention_amount",
 			"pvfss_retention",
 		],
 		order_by="posting_date desc",

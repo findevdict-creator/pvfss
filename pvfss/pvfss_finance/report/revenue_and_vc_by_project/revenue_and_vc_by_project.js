@@ -11,7 +11,10 @@ frappe.query_reports["Revenue and VC by Project"] = {
 		report.page.add_inner_button(__("Settle VC"), () => {
 			const row = report.datatable && report.datatable.rowmanager.getCheckedRows()[0];
 			const so = row !== undefined ? report.data[row].sales_order : null;
-			if (!so) return frappe.msgprint(__("Open the Customer PO and use Finance ▸ Settle variable consideration."));
+			if (!so)
+				return frappe.msgprint(
+					__("Open the Customer PO and use Finance ▸ Settle variable consideration.")
+				);
 			frappe.set_route("Form", "Sales Order", so);
 		});
 	},

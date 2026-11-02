@@ -22,8 +22,16 @@ def lc_alerts():
 		"Letter of Credit",
 		filters={"docstatus": 1, "status": ["in", LIVE_LC]},
 		fields=[
-			"name", "lc_no", "expiry_date", "latest_shipment_date", "presentation_deadline", "sales_order",
-			"purchase_order", "expiry_alerts_sent", "shipment_alerted_on", "presentation_alerted_on",
+			"name",
+			"lc_no",
+			"expiry_date",
+			"latest_shipment_date",
+			"presentation_deadline",
+			"sales_order",
+			"purchase_order",
+			"expiry_alerts_sent",
+			"shipment_alerted_on",
+			"presentation_alerted_on",
 		],
 	):
 		done = {int(x) for x in (lc.expiry_alerts_sent or "").split(",") if x.strip().isdigit()}
@@ -38,7 +46,10 @@ def lc_alerts():
 			)
 			done.update(due)
 			frappe.db.set_value(
-				"Letter of Credit", lc.name, "expiry_alerts_sent", ",".join(str(d) for d in sorted(done, reverse=True)),
+				"Letter of Credit",
+				lc.name,
+				"expiry_alerts_sent",
+				",".join(str(d) for d in sorted(done, reverse=True)),
 				update_modified=False,
 			)
 			sent += 1
@@ -53,7 +64,9 @@ def lc_alerts():
 					"Letter of Credit",
 					lc.name,
 				)
-				frappe.db.set_value("Letter of Credit", lc.name, "shipment_alerted_on", today, update_modified=False)
+				frappe.db.set_value(
+					"Letter of Credit", lc.name, "shipment_alerted_on", today, update_modified=False
+				)
 				sent += 1
 		window = settings.get_int("lc_presentation_alert_days", 5)
 		if (
@@ -63,11 +76,15 @@ def lc_alerts():
 		):
 			alerts.send(
 				_finance(),
-				_("LC {0}: present the documents by {1}.").format(lc.lc_no, formatdate(lc.presentation_deadline)),
+				_("LC {0}: present the documents by {1}.").format(
+					lc.lc_no, formatdate(lc.presentation_deadline)
+				),
 				"Letter of Credit",
 				lc.name,
 			)
-			frappe.db.set_value("Letter of Credit", lc.name, "presentation_alerted_on", today, update_modified=False)
+			frappe.db.set_value(
+				"Letter of Credit", lc.name, "presentation_alerted_on", today, update_modified=False
+			)
 			sent += 1
 	return sent
 
@@ -103,7 +120,12 @@ def pdc_alerts():
 		alerts.send(
 			_finance(),
 			_("{0} cheque {1} ({2}, {3} {4}) is dated {5}.").format(
-				_(row.direction), row.cheque_no, row.party, row.currency, row.amount, formatdate(row.cheque_date)
+				_(row.direction),
+				row.cheque_no,
+				row.party,
+				row.currency,
+				row.amount,
+				formatdate(row.cheque_date),
 			),
 			"Post-Dated Cheque",
 			row.name,

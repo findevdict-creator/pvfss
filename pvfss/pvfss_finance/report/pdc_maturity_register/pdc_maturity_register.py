@@ -16,19 +16,37 @@ def execute(filters=None):
 	rows = frappe.get_all(
 		"Post-Dated Cheque",
 		filters=conditions,
-		fields=["name", "cheque_date", "direction", "party", "bank", "cheque_no", "amount", "exchange_rate", "status"],
+		fields=[
+			"name",
+			"cheque_date",
+			"direction",
+			"party",
+			"bank",
+			"cheque_no",
+			"amount",
+			"exchange_rate",
+			"status",
+		],
 		order_by="cheque_date asc",
 	)
 	links = {}
 	for row in frappe.get_all(
-		"PDC Invoice", filters={"parent": ["in", [r.name for r in rows] or [""]]}, fields=["parent", "invoice"]
+		"PDC Invoice",
+		filters={"parent": ["in", [r.name for r in rows] or [""]]},
+		fields=["parent", "invoice"],
 	):
 		links.setdefault(row.parent, []).append(row.invoice)
 	data, week, subtotal = [], None, 0.0
 	for r in rows:
 		start = get_first_day_of_week(r.cheque_date)
 		if week and start != week:
-			data.append({"party": _("Week of {0}").format(frappe.utils.formatdate(week)), "amount_aed": subtotal, "bold": 1})
+			data.append(
+				{
+					"party": _("Week of {0}").format(frappe.utils.formatdate(week)),
+					"amount_aed": subtotal,
+					"bold": 1,
+				}
+			)
 			subtotal = 0.0
 		week = start
 		amount = flt(r.amount) * flt(r.exchange_rate or 1)
@@ -47,10 +65,22 @@ def execute(filters=None):
 			}
 		)
 	if week:
-		data.append({"party": _("Week of {0}").format(frappe.utils.formatdate(week)), "amount_aed": subtotal, "bold": 1})
+		data.append(
+			{
+				"party": _("Week of {0}").format(frappe.utils.formatdate(week)),
+				"amount_aed": subtotal,
+				"bold": 1,
+			}
+		)
 	columns = [
 		{"fieldname": "cheque_date", "label": _("Cheque Date"), "fieldtype": "Date", "width": 100},
-		{"fieldname": "pdc", "label": _("PDC"), "fieldtype": "Link", "options": "Post-Dated Cheque", "width": 130},
+		{
+			"fieldname": "pdc",
+			"label": _("PDC"),
+			"fieldtype": "Link",
+			"options": "Post-Dated Cheque",
+			"width": 130,
+		},
 		{"fieldname": "direction", "label": _("Direction"), "fieldtype": "Data", "width": 90},
 		{"fieldname": "party", "label": _("Party"), "fieldtype": "Data", "width": 180},
 		{"fieldname": "bank", "label": _("Bank"), "fieldtype": "Data", "width": 120},

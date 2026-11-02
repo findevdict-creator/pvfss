@@ -113,7 +113,9 @@ def hold_purchase(pi):
 	"""FIN-51: Creditors -> Retention Payable for the same supplier, on submit."""
 	if pi.is_return or not flt(pi.get("pvfss_retention_amount")):
 		return
-	months = cint(frappe.db.get_value("Project", pi.project, "pvfss_warranty_months")) if pi.get("project") else 0
+	months = (
+		cint(frappe.db.get_value("Project", pi.project, "pvfss_warranty_months")) if pi.get("project") else 0
+	)
 	ret = _record(pi, PAYABLE, pi.pvfss_retention_amount, months)
 	base = ret.base_amount
 	party = {"party_type": "Supplier", "party": pi.supplier}
@@ -173,7 +175,9 @@ def hold_project_retention(project: str):
 	doc = frappe.get_doc("Project", project)
 	if frappe.db.exists("Retention", {"source_doctype": "Project", "source_invoice": project}):
 		frappe.throw(_("Retention for {0} is already recorded.").format(project))
-	so = doc.get("sales_order") or frappe.db.get_value("Sales Order", {"project": project, "docstatus": 1}, "name")
+	so = doc.get("sales_order") or frappe.db.get_value(
+		"Sales Order", {"project": project, "docstatus": 1}, "name"
+	)
 	if not so:
 		frappe.throw(_("Project {0} has no Customer PO.").format(project))
 	so_doc = frappe.get_doc("Sales Order", so)
@@ -202,7 +206,11 @@ def hold_project_retention(project: str):
 		so_doc.company,
 		[
 			{"account": accounts.get(so_doc.company, "retention_receivable"), "debit": amount, **party},
-			{"account": accounts.party_account("Customer", so_doc.customer, so_doc.company), "credit": amount, **party},
+			{
+				"account": accounts.party_account("Customer", so_doc.customer, so_doc.company),
+				"credit": amount,
+				**party,
+			},
 		],
 		_("Retention held on project {0}").format(project),
 		project=project,

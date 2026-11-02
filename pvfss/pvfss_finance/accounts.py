@@ -17,7 +17,12 @@ ACCOUNTS = {
 	"pdc_receivable": ("PDC Receivable", ("Accounts Receivable",), "Asset", "Receivable"),
 	"pdc_payable": ("PDC Payable", ("Accounts Payable",), "Liability", "Payable"),
 	"lc_margin": ("LC Margin", ("Loans and Advances (Assets)", "Current Assets"), "Asset", ""),
-	"vc_accrual": ("Variable Consideration Accrual", ("Loans and Advances (Assets)", "Current Assets"), "Asset", ""),
+	"vc_accrual": (
+		"Variable Consideration Accrual",
+		("Loans and Advances (Assets)", "Current Assets"),
+		"Asset",
+		"",
+	),
 	"lc_charges": ("LC Charges", ("Indirect Expenses", "Expenses"), "Expense", ""),
 	"vat_input": ("VAT Input", ("Tax Assets", "Current Assets"), "Asset", "Tax"),
 }
@@ -42,7 +47,9 @@ def get(company, key):
 	if account:
 		return account
 	name, candidates, root_type, account_type = ACCOUNTS[key]
-	account = frappe.db.get_value("Account", {"company": company, "account_name": name, "is_group": 0}, "name")
+	account = frappe.db.get_value(
+		"Account", {"company": company, "account_name": name, "is_group": 0}, "name"
+	)
 	if not account:
 		doc = frappe.get_doc(
 			{
