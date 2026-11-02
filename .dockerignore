@@ -1,0 +1,10 @@
+.git
+.github
+.ruff_cache
+**/__pycache__
+**/*.pyc
+**/node_modules
+venv
+.venv
+pvfss/_shot
+pvfss/public/dist

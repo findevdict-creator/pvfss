@@ -15,6 +15,11 @@ Every customisation lives in this app (GEN-01, GEN-02): no core edits and no UI-
 
 Change these together in `.github/workflows/ci.yml` and here. Never deploy the `develop` branch.
 
+## Run in Docker
+
+`docker compose up --build`, then open http://localhost:8000 (Administrator / admin).
+Details in [docker/README.md](docker/README.md). This is the easiest route on Windows.
+
 ## Install (developer bench)
 
 ```bash
@@ -53,6 +58,7 @@ merged to `main` at the end after review.
 | `16-icv` | Module 13: ICV |
 | `17-dms` | Module 14: project documents |
 | `18-reports` | Module 15: workspaces, dashboards, reports |
+| `19-docker` | Dockerfile and docker compose setup for running the whole system locally |
 
 ## Conventions
 
