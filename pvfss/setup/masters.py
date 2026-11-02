@@ -99,6 +99,13 @@ def seed_global():
 	seed_payment_terms()
 	seed_email_templates()
 	seed_modes_of_payment()
+	seed_risk_matrix()
+
+
+def seed_risk_matrix():
+	from pvfss.pvfss_hse import risk
+
+	risk.seed()  # HSE-02 default bands
 
 
 # FIN-30

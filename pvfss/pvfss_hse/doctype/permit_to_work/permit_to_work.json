@@ -1,0 +1,272 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Permit to work: requested, issued, closed (HSE-10).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "permit_type",
+  "location",
+  "work_description",
+  "status",
+  "cb1",
+  "requested_by",
+  "issuer",
+  "valid_from",
+  "valid_to",
+  "sb_prec",
+  "precautions",
+  "sb_sign",
+  "issued_by",
+  "issued_on",
+  "receiver",
+  "cb2",
+  "closed_by",
+  "closed_on",
+  "area_safe",
+  "closure_remarks",
+  "alerted_on",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "PTW-.YY.-.####",
+   "default": "PTW-.YY.-.####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "permit_type",
+   "fieldtype": "Select",
+   "options": "Hot work\nWork at height\nConfined space\nElectrical\nGeneral",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Permit Type"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Location"
+  },
+  {
+   "fieldname": "work_description",
+   "fieldtype": "Small Text",
+   "reqd": 1,
+   "label": "Work Description"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "options": "Requested\nIssued\nClosed\nExpired\nCancelled",
+   "default": "Requested",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1,
+   "allow_on_submit": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "default": "__user",
+   "label": "Requested by"
+  },
+  {
+   "fieldname": "issuer",
+   "fieldtype": "Link",
+   "options": "User",
+   "label": "Issuer"
+  },
+  {
+   "fieldname": "valid_from",
+   "fieldtype": "Datetime",
+   "reqd": 1,
+   "label": "Valid From"
+  },
+  {
+   "fieldname": "valid_to",
+   "fieldtype": "Datetime",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Valid To"
+  },
+  {
+   "fieldname": "sb_prec",
+   "fieldtype": "Section Break",
+   "label": "Hazards and precautions"
+  },
+  {
+   "fieldname": "precautions",
+   "fieldtype": "Table",
+   "options": "PTW Precaution",
+   "allow_on_submit": 1,
+   "label": "Precautions"
+  },
+  {
+   "fieldname": "sb_sign",
+   "fieldtype": "Section Break",
+   "label": "Sign-off"
+  },
+  {
+   "fieldname": "issued_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Issued by"
+  },
+  {
+   "fieldname": "issued_on",
+   "fieldtype": "Datetime",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Issued on"
+  },
+  {
+   "fieldname": "receiver",
+   "fieldtype": "Data",
+   "label": "Receiver (performing authority)"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "closed_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Closed by"
+  },
+  {
+   "fieldname": "closed_on",
+   "fieldtype": "Datetime",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Closed on"
+  },
+  {
+   "fieldname": "area_safe",
+   "fieldtype": "Check",
+   "allow_on_submit": 1,
+   "label": "Area left safe"
+  },
+  {
+   "fieldname": "closure_remarks",
+   "fieldtype": "Small Text",
+   "allow_on_submit": 1,
+   "label": "Closure Remarks"
+  },
+  {
+   "fieldname": "alerted_on",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Expiry Alert Sent"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "options": "Permit to Work",
+   "read_only": 1,
+   "no_copy": 1,
+   "hidden": 1,
+   "label": "Amended From"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS HSE",
+ "name": "Permit to Work",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "HSE User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "HSE Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Desk User",
+   "read": 1,
+   "print": 1,
+   "write": 1,
+   "create": 1,
+   "if_owner": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "permit_type,location,status",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "work_description",
+ "track_changes": 1
+}

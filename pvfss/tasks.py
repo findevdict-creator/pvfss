@@ -16,10 +16,14 @@ DAILY = [
 	"pvfss.pvfss_finance.alerts.lc_alerts",  # FIN-41
 	"pvfss.pvfss_finance.alerts.pdc_alerts",  # FIN-45
 	"pvfss.pvfss_finance.alerts.retention_alerts",  # FIN-52
+	"pvfss.pvfss_hse.alerts.training_expiry",  # HSE-31
+	"pvfss.pvfss_hse.alerts.capa_overdue",  # HSE-31
+	"pvfss.pvfss_hse.alerts.risk_review",  # HSE-02, HSE-03
 ]
 
 HOURLY = [
-	# "pvfss.pvfss_hse.alerts.investigation_overdue",  # HSE-31 (15-hse)
+	"pvfss.pvfss_hse.alerts.investigation_overdue",  # HSE-31
+	"pvfss.pvfss_hse.alerts.permit_expiry",  # HSE-10
 ]
 
 

@@ -1,0 +1,71 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "capa",
+  "action_type",
+  "action_owner",
+  "due_date",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "capa",
+   "fieldtype": "Link",
+   "options": "CAPA",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "CAPA"
+  },
+  {
+   "fieldname": "action_type",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Type"
+  },
+  {
+   "fieldname": "action_owner",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Owner"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Due"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Status"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS HSE",
+ "name": "HSE CAPA Link",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

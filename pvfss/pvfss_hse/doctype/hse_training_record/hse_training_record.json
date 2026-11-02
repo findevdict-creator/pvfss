@@ -1,0 +1,171 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Training attended, with certificate and expiry (HSE-20).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "employee",
+  "employee_name",
+  "course",
+  "provider",
+  "cb1",
+  "training_date",
+  "certificate",
+  "expiry_date",
+  "status",
+  "alerted_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "HSE-TRN-.YY.-.#####",
+   "default": "HSE-TRN-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "options": "Employee",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee"
+  },
+  {
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "fetch_from": "employee.employee_name",
+   "read_only": 1,
+   "label": "Employee Name"
+  },
+  {
+   "fieldname": "course",
+   "fieldtype": "Link",
+   "options": "HSE Course",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Course"
+  },
+  {
+   "fieldname": "provider",
+   "fieldtype": "Data",
+   "label": "Provider"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "training_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Training Date"
+  },
+  {
+   "fieldname": "certificate",
+   "fieldtype": "Attach",
+   "label": "Certificate"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "options": "Valid\nExpiring\nExpired",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "alerted_on",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Expiry Alert Sent"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS HSE",
+ "name": "HSE Training Record",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "HSE User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "HSE Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "employee,course",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "employee_name",
+ "track_changes": 1
+}

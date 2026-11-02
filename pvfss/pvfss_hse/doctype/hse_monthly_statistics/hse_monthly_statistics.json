@@ -1,0 +1,112 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:HSE-STAT-{month_label}",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Headcount and hours worked per month, for LTIFR (HSE-41).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "month",
+  "month_label",
+  "headcount",
+  "hours_worked",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "month",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Any day in the month.",
+   "label": "Month"
+  },
+  {
+   "fieldname": "month_label",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "unique": 1,
+   "label": "Month Label"
+  },
+  {
+   "fieldname": "headcount",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "non_negative": 1,
+   "label": "Headcount"
+  },
+  {
+   "fieldname": "hours_worked",
+   "fieldtype": "Float",
+   "reqd": 1,
+   "in_list_view": 1,
+   "non_negative": 1,
+   "label": "Hours Worked"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS HSE",
+ "name": "HSE Monthly Statistics",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "HSE User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "HSE Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "month_label",
+ "track_changes": 1
+}

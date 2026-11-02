@@ -1,0 +1,157 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "HSE audits and site inspections (HSE-40).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "audit_type",
+  "planned_date",
+  "actual_date",
+  "cb1",
+  "auditor",
+  "status",
+  "scope",
+  "sb_findings",
+  "findings"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "HSE-AUD-.YY.-.###",
+   "default": "HSE-AUD-.YY.-.###",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "audit_type",
+   "fieldtype": "Select",
+   "options": "Internal audit\nExternal audit\nSite inspection",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Type"
+  },
+  {
+   "fieldname": "planned_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Planned Date"
+  },
+  {
+   "fieldname": "actual_date",
+   "fieldtype": "Date",
+   "label": "Actual Date"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "auditor",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Auditor"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "options": "Planned\nDone\nClosed",
+   "default": "Planned",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "scope",
+   "fieldtype": "Small Text",
+   "reqd": 1,
+   "label": "Scope"
+  },
+  {
+   "fieldname": "sb_findings",
+   "fieldtype": "Section Break",
+   "label": "Findings"
+  },
+  {
+   "fieldname": "findings",
+   "fieldtype": "Table",
+   "options": "HSE Audit Finding",
+   "label": "Findings"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS HSE",
+ "name": "HSE Audit",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "HSE User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "HSE Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "scope",
+ "track_changes": 1
+}
