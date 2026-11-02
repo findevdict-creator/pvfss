@@ -1,0 +1,178 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:certificate_no",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "PVFSS ICV certificate (ICV-02); valid 14 months.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "certificate_no",
+  "certifying_body",
+  "issue_date",
+  "expiry_date",
+  "cb1",
+  "score_pct",
+  "financial_year",
+  "attachment",
+  "status",
+  "expiry_alerts_sent"
+ ],
+ "fields": [
+  {
+   "fieldname": "certificate_no",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "label": "Certificate No"
+  },
+  {
+   "fieldname": "certifying_body",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "label": "Certifying Body"
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Issue Date"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "read_only": 1,
+   "in_list_view": 1,
+   "label": "Expiry Date"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "score_pct",
+   "fieldtype": "Percent",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "ICV Score %"
+  },
+  {
+   "fieldname": "financial_year",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "label": "Basis Financial Year"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "reqd": 1,
+   "label": "Certificate"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "options": "Active\nExpired\nSuperseded",
+   "default": "Active",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "expiry_alerts_sent",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Expiry Alerts Sent"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS ICV",
+ "name": "ICV Certificate",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ICV User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Pre-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Pre-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Finance User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "certificate_no",
+ "track_changes": 1
+}

@@ -149,6 +149,8 @@ MATRIX = {
 	"Employee": {FU: "r", FM: "r", HSEU: "r", HSEM: "r"},
 	# ---- Module 12: HSE (screens §21) - masters linked from HSE forms
 	"Department": everyone(),
+	# ---- Module 13: ICV
+	"Fiscal Year": everyone(),
 	"Designation": everyone(),
 	# ---- Module 9: Traceability (screens §21: Heat Number, Batch, Purchase Receipt rows)
 	"Manufacturer": everyone(**{QU: "rwc", QM: "rwc", PBU: "rwc", POU: "rwc", POM: "rwc"}),
