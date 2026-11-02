@@ -1,0 +1,162 @@
+{
+ "app": "pvfss",
+ "charts": [
+  {
+   "chart_name": "PVFSS Dispatches per week",
+   "label": "Dispatches per week"
+  },
+  {
+   "chart_name": "PVFSS Delivery Notes by transport mode",
+   "label": "Delivery Notes by transport mode"
+  }
+ ],
+ "content": "[{\"id\": \"4aa1cf37d4\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Logistics</b></span>\", \"col\": 12}}, {\"id\": \"2e2b677874\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"Needs your action\", \"col\": 12}}, {\"id\": \"a39a2ee551\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Ready to dispatch (qty)\", \"col\": 4}}, {\"id\": \"528dcec90b\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"DNs in transit\", \"col\": 4}}, {\"id\": \"f3021f7009\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"ETA this week\", \"col\": 4}}, {\"id\": \"1a76d92833\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"POD missing\", \"col\": 4}}, {\"id\": \"0c931c5bb2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Dispatches per week\", \"col\": 12}}, {\"id\": \"215bd78ddf\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Delivery Notes by transport mode\", \"col\": 6}}, {\"id\": \"34f1c02491\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"2f89a89a73\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Delivery Note\", \"col\": 3}}, {\"id\": \"60b9b1fe1f\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Delivery Notes\", \"col\": 3}}, {\"id\": \"78cbcff264\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"IRNs\", \"col\": 3}}, {\"id\": \"3058ee0ba0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Stock Balance\", \"col\": 3}}, {\"id\": \"5861b4c478\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Heat Numbers\", \"col\": 3}}, {\"id\": \"8595955562\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Reports &amp; settings</b></span>\", \"col\": 12}}, {\"id\": \"68758fc021\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
+ "creation": "2026-11-02 10:45:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "PVFSS Needs Your Action",
+   "label": "Needs your action"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "truck",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PVFSS Logistics",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Stock Balance",
+   "link_count": 0,
+   "link_to": "Stock Balance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Batch-Wise Balance History",
+   "link_count": 0,
+   "link_to": "Batch-Wise Balance History",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Heat Number Register",
+   "link_count": 0,
+   "link_to": "Heat Number Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Heat Stock Balance",
+   "link_count": 0,
+   "link_to": "Heat Stock Balance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-02 10:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Reports",
+ "name": "PVFSS Logistics",
+ "number_cards": [
+  {
+   "label": "Ready to dispatch (qty)",
+   "number_card_name": "PVFSS Ready to dispatch (qty)"
+  },
+  {
+   "label": "DNs in transit",
+   "number_card_name": "PVFSS DNs in transit"
+  },
+  {
+   "label": "ETA this week",
+   "number_card_name": "PVFSS ETA this week"
+  },
+  {
+   "label": "POD missing",
+   "number_card_name": "PVFSS POD missing"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "Logistics User"
+  },
+  {
+   "role": "Post-Bidding Manager"
+  },
+  {
+   "role": "PVFSS Director"
+  }
+ ],
+ "sequence_id": 5.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "format": "",
+   "label": "New Delivery Note",
+   "link_to": "Delivery Note",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Delivery Notes",
+   "link_to": "Delivery Note",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "IRNs",
+   "link_to": "IRN",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Stock Balance",
+   "link_to": "Stock Balance",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Heat Numbers",
+   "link_to": "Heat Number",
+   "type": "DocType"
+  }
+ ],
+ "standard": 1,
+ "title": "Logistics",
+ "type": "Workspace"
+}

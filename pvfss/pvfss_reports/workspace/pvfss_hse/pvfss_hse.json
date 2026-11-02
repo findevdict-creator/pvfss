@@ -1,0 +1,211 @@
+{
+ "app": "pvfss",
+ "charts": [
+  {
+   "chart_name": "PVFSS Incidents by type per month",
+   "label": "Incidents by type per month"
+  },
+  {
+   "chart_name": "PVFSS LTIFR rolling 12 months",
+   "label": "LTIFR rolling 12 months"
+  },
+  {
+   "chart_name": "PVFSS Risks by residual rating",
+   "label": "Risks by residual rating"
+  }
+ ],
+ "content": "[{\"id\": \"0924cc0991\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>HSE</b></span>\", \"col\": 12}}, {\"id\": \"4fff5b2a8b\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"Needs your action\", \"col\": 12}}, {\"id\": \"d21a50c320\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Trainings completed YTD\", \"col\": 4}}, {\"id\": \"75aa43c33d\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Inspections done YTD\", \"col\": 4}}, {\"id\": \"db9aa754aa\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Near misses YTD\", \"col\": 4}}, {\"id\": \"5564461dee\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"CAPA closure rate\", \"col\": 4}}, {\"id\": \"14b34fdcb0\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"LTIs YTD\", \"col\": 4}}, {\"id\": \"3a69efd6e3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"LTIFR YTD\", \"col\": 4}}, {\"id\": \"1a44b39318\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Incidents by type per month\", \"col\": 12}}, {\"id\": \"3120a55016\", \"type\": \"chart\", \"data\": {\"chart_name\": \"LTIFR rolling 12 months\", \"col\": 6}}, {\"id\": \"b81116324c\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Risks by residual rating\", \"col\": 6}}, {\"id\": \"c23bb5584f\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"7b59cfc1f5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Report incident\", \"col\": 3}}, {\"id\": \"5ac1e35a3e\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Incidents\", \"col\": 3}}, {\"id\": \"894fcfc246\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"CAPAs\", \"col\": 3}}, {\"id\": \"8a880e1516\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Risk Register\", \"col\": 3}}, {\"id\": \"0a3fb5425b\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Legal Register\", \"col\": 3}}, {\"id\": \"d9ebd0ce6c\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Permits\", \"col\": 3}}, {\"id\": \"c57ed6b25b\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Training Records\", \"col\": 3}}, {\"id\": \"b688b41845\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Audits\", \"col\": 3}}, {\"id\": \"e27842f209\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Monthly Statistics\", \"col\": 3}}, {\"id\": \"25b9ad591d\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Management Reviews\", \"col\": 3}}, {\"id\": \"4517fb4288\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Policy\", \"col\": 3}}, {\"id\": \"5415a845cd\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Risk Matrix\", \"col\": 3}}, {\"id\": \"53f406c239\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Reports &amp; settings</b></span>\", \"col\": 12}}, {\"id\": \"d8170ab993\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
+ "creation": "2026-11-02 10:45:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "PVFSS Needs Your Action",
+   "label": "Needs your action"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "hse",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PVFSS HSE",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "HSE Training Matrix",
+   "link_count": 0,
+   "link_to": "HSE Training Matrix",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "HSE KPI Summary",
+   "link_count": 0,
+   "link_to": "HSE KPI Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-02 10:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Reports",
+ "name": "PVFSS HSE",
+ "number_cards": [
+  {
+   "label": "Trainings completed YTD",
+   "number_card_name": "PVFSS Trainings completed YTD"
+  },
+  {
+   "label": "Inspections done YTD",
+   "number_card_name": "PVFSS Inspections done YTD"
+  },
+  {
+   "label": "Near misses YTD",
+   "number_card_name": "PVFSS Near misses YTD"
+  },
+  {
+   "label": "CAPA closure rate",
+   "number_card_name": "PVFSS CAPA closure rate"
+  },
+  {
+   "label": "LTIs YTD",
+   "number_card_name": "PVFSS LTIs YTD"
+  },
+  {
+   "label": "LTIFR YTD",
+   "number_card_name": "PVFSS LTIFR YTD"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "HSE User"
+  },
+  {
+   "role": "HSE Manager"
+  },
+  {
+   "role": "PVFSS Director"
+  }
+ ],
+ "sequence_id": 7.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "format": "",
+   "label": "Report incident",
+   "link_to": "HSE Incident",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Incidents",
+   "link_to": "HSE Incident",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "CAPAs",
+   "link_to": "CAPA",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Risk Register",
+   "link_to": "HSE Risk Register",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Legal Register",
+   "link_to": "Legal Register",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Permits",
+   "link_to": "Permit to Work",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Training Records",
+   "link_to": "HSE Training Record",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Audits",
+   "link_to": "HSE Audit",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Monthly Statistics",
+   "link_to": "HSE Monthly Statistics",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Management Reviews",
+   "link_to": "Management Review",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Policy",
+   "link_to": "HSE Policy and Objective",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Risk Matrix",
+   "link_to": "Risk Matrix",
+   "type": "DocType"
+  }
+ ],
+ "standard": 1,
+ "title": "HSE",
+ "type": "Workspace"
+}

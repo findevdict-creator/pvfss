@@ -1,0 +1,260 @@
+{
+ "app": "pvfss",
+ "charts": [
+  {
+   "chart_name": "PVFSS Open NCRs by severity and age",
+   "label": "Open NCRs by severity and age"
+  },
+  {
+   "chart_name": "PVFSS RFIs by status this month",
+   "label": "RFIs by status this month"
+  },
+  {
+   "chart_name": "PVFSS IRN quantity released per month",
+   "label": "IRN quantity released per month"
+  }
+ ],
+ "content": "[{\"id\": \"354730cded\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quality</b></span>\", \"col\": 12}}, {\"id\": \"4704de8786\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"Needs your action\", \"col\": 12}}, {\"id\": \"43e91d7d1f\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"RFIs this week\", \"col\": 4}}, {\"id\": \"74c24f8e8c\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Overdue RFIs\", \"col\": 4}}, {\"id\": \"fcee6200fc\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open NCRs\", \"col\": 4}}, {\"id\": \"cf7ab80b26\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"IRNs issued this month\", \"col\": 4}}, {\"id\": \"7efb316793\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"MTCs approaching age limit\", \"col\": 4}}, {\"id\": \"23b75556c1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"MTCs pending review\", \"col\": 4}}, {\"id\": \"6e82b87a70\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Open NCRs by severity and age\", \"col\": 12}}, {\"id\": \"ae6223b868\", \"type\": \"chart\", \"data\": {\"chart_name\": \"RFIs by status this month\", \"col\": 6}}, {\"id\": \"13ae12b201\", \"type\": \"chart\", \"data\": {\"chart_name\": \"IRN quantity released per month\", \"col\": 6}}, {\"id\": \"3782066a35\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"4a105bd51d\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"SMRs\", \"col\": 3}}, {\"id\": \"91471a6f95\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Tally Sheets\", \"col\": 3}}, {\"id\": \"461e2dd914\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"MTCs\", \"col\": 3}}, {\"id\": \"b55524c1ae\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Quality Document Submittals\", \"col\": 3}}, {\"id\": \"d42b81ab72\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"ITPs\", \"col\": 3}}, {\"id\": \"36df2b28a1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"RFIs\", \"col\": 3}}, {\"id\": \"e12fe103f6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inspection Reports\", \"col\": 3}}, {\"id\": \"d3f09f782a\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"NCRs\", \"col\": 3}}, {\"id\": \"05f7f2481a\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"IRNs\", \"col\": 3}}, {\"id\": \"ff27dedc1c\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Heat Numbers\", \"col\": 3}}, {\"id\": \"6b802b5d3b\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Heat Trace\", \"col\": 3}}, {\"id\": \"bc2b43f465\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Reports &amp; settings</b></span>\", \"col\": 12}}, {\"id\": \"187b5b0eab\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}, {\"id\": \"032c191c3e\", \"type\": \"card\", \"data\": {\"card_name\": \"Settings\", \"col\": 4}}]",
+ "creation": "2026-11-02 10:45:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "PVFSS Needs Your Action",
+   "label": "Needs your action"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "quality",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PVFSS Quality",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 3,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Inspection / IRN Release Tracker",
+   "link_count": 0,
+   "link_to": "Inspection Release Tracker",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Heat Number Register",
+   "link_count": 0,
+   "link_to": "Heat Number Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Submittal Register",
+   "link_count": 0,
+   "link_to": "Submittal Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "MTC Age Rules",
+   "link_count": 0,
+   "link_to": "MTC Age Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sampling Rules",
+   "link_count": 0,
+   "link_to": "Sampling Rule",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "ITP Templates",
+   "link_count": 0,
+   "link_to": "ITP Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inspection Agencies",
+   "link_count": 0,
+   "link_to": "Inspection Agency",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-02 10:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Reports",
+ "name": "PVFSS Quality",
+ "number_cards": [
+  {
+   "label": "RFIs this week",
+   "number_card_name": "PVFSS RFIs this week"
+  },
+  {
+   "label": "Overdue RFIs",
+   "number_card_name": "PVFSS Overdue RFIs"
+  },
+  {
+   "label": "Open NCRs",
+   "number_card_name": "PVFSS Open NCRs"
+  },
+  {
+   "label": "IRNs issued this month",
+   "number_card_name": "PVFSS IRNs issued this month"
+  },
+  {
+   "label": "MTCs approaching age limit",
+   "number_card_name": "PVFSS MTCs approaching age limit"
+  },
+  {
+   "label": "MTCs pending review",
+   "number_card_name": "PVFSS MTCs pending review"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "Quality User"
+  },
+  {
+   "role": "Quality Manager"
+  },
+  {
+   "role": "PVFSS Director"
+  }
+ ],
+ "sequence_id": 4.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "SMRs",
+   "link_to": "SMR",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Tally Sheets",
+   "link_to": "Tally Sheet",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "MTCs",
+   "link_to": "MTC",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Quality Document Submittals",
+   "link_to": "Quality Document Submittal",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "ITPs",
+   "link_to": "ITP",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "Calendar",
+   "format": "",
+   "label": "RFIs",
+   "link_to": "RFI",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Inspection Reports",
+   "link_to": "Inspection Report",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "NCRs",
+   "link_to": "Non Conformance",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "IRNs",
+   "link_to": "IRN",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Heat Numbers",
+   "link_to": "Heat Number",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Heat Trace",
+   "link_to": "heat-trace",
+   "type": "Page"
+  }
+ ],
+ "standard": 1,
+ "title": "Quality",
+ "type": "Workspace"
+}

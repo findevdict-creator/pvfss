@@ -50,7 +50,10 @@ setup_wizard_complete = "pvfss.setup.masters.setup_wizard_complete"  # company d
 # Every handler for a standard DocType lives in pvfss/overrides/<doctype>.py.
 # Each module branch adds its own entries here.
 doc_events = {
-	"User": {"before_validate": "pvfss.overrides.user.before_validate"},  # NFR-04 password length
+	"User": {
+		"before_validate": "pvfss.overrides.user.before_validate",  # NFR-04 password length
+		"validate": "pvfss.overrides.user.validate",  # RPT-01 landing workspace
+	},
 	"Item": {"validate": "pvfss.overrides.item.validate"},  # MD-12 / SCR-MD-05
 	# Module 1: CRM (CRM-01 to CRM-09)
 	"Opportunity": {

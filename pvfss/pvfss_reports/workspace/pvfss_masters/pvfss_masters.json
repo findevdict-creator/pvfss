@@ -1,0 +1,209 @@
+{
+ "app": "pvfss",
+ "charts": [],
+ "content": "[{\"id\": \"47a7d2f4d5\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Masters</b></span>\", \"col\": 12}}, {\"id\": \"7cf5d94bd2\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"Needs your action\", \"col\": 12}}, {\"id\": \"67b3cf99d6\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"35196c04c8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Contractors & Clients\", \"col\": 3}}, {\"id\": \"fe0a7b7bcb\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Client Projects\", \"col\": 3}}, {\"id\": \"f27a407954\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Suppliers\", \"col\": 3}}, {\"id\": \"ce5cfd3616\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Approved Vendor Entries\", \"col\": 3}}, {\"id\": \"69a339c45a\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Items\", \"col\": 3}}, {\"id\": \"8b626c995e\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Item Groups\", \"col\": 3}}, {\"id\": \"cd7f380540\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Item Attributes\", \"col\": 3}}, {\"id\": \"db61cd187f\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Warehouses\", \"col\": 3}}, {\"id\": \"8aecfcc1e5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"UOM\", \"col\": 3}}, {\"id\": \"cced6451dd\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Payment Terms\", \"col\": 3}}, {\"id\": \"ecb07119a7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Incoterms\", \"col\": 3}}, {\"id\": \"604d54dce6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inspection Agencies\", \"col\": 3}}, {\"id\": \"7268289dd3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Lost Reasons\", \"col\": 3}}, {\"id\": \"e18587d903\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Employees\", \"col\": 3}}, {\"id\": \"406c564c96\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Data Import\", \"col\": 3}}, {\"id\": \"551100c7fb\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"PVFSS Settings\", \"col\": 3}}]",
+ "creation": "2026-11-02 10:45:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "PVFSS Needs Your Action",
+   "label": "Needs your action"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "list",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PVFSS Masters",
+ "links": [],
+ "modified": "2026-11-02 10:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Reports",
+ "name": "PVFSS Masters",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "PVFSS Director"
+  },
+  {
+   "role": "Pre-Bidding User"
+  },
+  {
+   "role": "Pre-Bidding Manager"
+  },
+  {
+   "role": "Post-Bidding User"
+  },
+  {
+   "role": "Post-Bidding Manager"
+  },
+  {
+   "role": "Quality User"
+  },
+  {
+   "role": "Quality Manager"
+  },
+  {
+   "role": "Logistics User"
+  },
+  {
+   "role": "Finance User"
+  },
+  {
+   "role": "Finance Manager"
+  },
+  {
+   "role": "HSE User"
+  },
+  {
+   "role": "HSE Manager"
+  },
+  {
+   "role": "ICV User"
+  },
+  {
+   "role": "PVFSS Read Only"
+  }
+ ],
+ "sequence_id": 10.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Contractors & Clients",
+   "link_to": "Customer",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Client Projects",
+   "link_to": "Client Project",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Suppliers",
+   "link_to": "Supplier",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Approved Vendor Entries",
+   "link_to": "Approved Vendor Entry",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Items",
+   "link_to": "Item",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Item Groups",
+   "link_to": "Item Group",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Item Attributes",
+   "link_to": "Item Attribute",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Warehouses",
+   "link_to": "Warehouse",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "UOM",
+   "link_to": "UOM",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Payment Terms",
+   "link_to": "Payment Terms Template",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Incoterms",
+   "link_to": "Incoterm",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Inspection Agencies",
+   "link_to": "Inspection Agency",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Lost Reasons",
+   "link_to": "Opportunity Lost Reason",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Employees",
+   "link_to": "Employee",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Data Import",
+   "link_to": "Data Import",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "PVFSS Settings",
+   "link_to": "PVFSS Settings",
+   "type": "DocType"
+  }
+ ],
+ "standard": 1,
+ "title": "Masters",
+ "type": "Workspace"
+}

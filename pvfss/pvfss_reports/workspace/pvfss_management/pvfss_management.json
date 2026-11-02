@@ -1,0 +1,243 @@
+{
+ "app": "pvfss",
+ "charts": [
+  {
+   "chart_name": "PVFSS Pipeline by stage",
+   "label": "Pipeline by stage"
+  },
+  {
+   "chart_name": "PVFSS Revenue by month vs last year",
+   "label": "Revenue by month vs last year"
+  },
+  {
+   "chart_name": "PVFSS Overdue receivables by customer",
+   "label": "Overdue receivables by customer"
+  },
+  {
+   "chart_name": "PVFSS Cash-flow forecast 13 weeks",
+   "label": "Cash-flow forecast 13 weeks"
+  }
+ ],
+ "content": "[{\"id\": \"ff095f2254\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Management</b></span>\", \"col\": 12}}, {\"id\": \"6c6b4537b1\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"Needs your action\", \"col\": 12}}, {\"id\": \"b16829294d\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Pipeline value\", \"col\": 4}}, {\"id\": \"9777d97006\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Win rate 90 days\", \"col\": 4}}, {\"id\": \"7c5db0c7c5\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Win rate YTD\", \"col\": 4}}, {\"id\": \"0dd9bcb5fd\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Revenue MTD\", \"col\": 4}}, {\"id\": \"45e6b3273e\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Revenue YTD\", \"col\": 4}}, {\"id\": \"da5d93630b\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Gross margin %\", \"col\": 4}}, {\"id\": \"481066d274\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Cash position\", \"col\": 4}}, {\"id\": \"562660f808\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Overdue receivables\", \"col\": 4}}, {\"id\": \"ecae56fc4e\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Projects at risk\", \"col\": 4}}, {\"id\": \"6baafb05a5\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"ICV score\", \"col\": 4}}, {\"id\": \"31f840dcaa\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"ICV certificate days left\", \"col\": 4}}, {\"id\": \"03a9f8613f\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Pipeline by stage\", \"col\": 12}}, {\"id\": \"31f2cad55c\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Revenue by month vs last year\", \"col\": 6}}, {\"id\": \"8f1e3ed288\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Overdue receivables by customer\", \"col\": 6}}, {\"id\": \"506e3d5f91\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Cash-flow forecast 13 weeks\", \"col\": 6}}, {\"id\": \"cb94a8e28d\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"ed9031e4d1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inquiries\", \"col\": 3}}, {\"id\": \"d5434faab0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Quotations\", \"col\": 3}}, {\"id\": \"cbfd25bd4e\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customer POs\", \"col\": 3}}, {\"id\": \"9a8370f9af\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Projects\", \"col\": 3}}, {\"id\": \"71750d9e63\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Supplier POs\", \"col\": 3}}, {\"id\": \"00ffd5bb54\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Heat Trace\", \"col\": 3}}, {\"id\": \"845b909e98\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Reports &amp; settings</b></span>\", \"col\": 12}}, {\"id\": \"4ce8f78c53\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
+ "creation": "2026-11-02 10:45:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "PVFSS Needs Your Action",
+   "label": "Needs your action"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "dashboard",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PVFSS Management",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 8,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Win / Loss Analysis",
+   "link_count": 0,
+   "link_to": "Win Loss Analysis",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Project Cost Sheet",
+   "link_count": 0,
+   "link_to": "Project Cost Sheet",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Payment Status by Project",
+   "link_count": 0,
+   "link_to": "Payment Status by Project",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Cash-flow Forecast",
+   "link_count": 0,
+   "link_to": "Cash-flow Forecast",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Invoice & Payment Status",
+   "link_count": 0,
+   "link_to": "Invoice and Payment Status",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Inspection / IRN Release Tracker",
+   "link_count": 0,
+   "link_to": "Inspection Release Tracker",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Supplier Performance",
+   "link_count": 0,
+   "link_to": "Supplier Performance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Management KPI Summary",
+   "link_count": 0,
+   "link_to": "Management KPI Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-02 10:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Reports",
+ "name": "PVFSS Management",
+ "number_cards": [
+  {
+   "label": "Pipeline value",
+   "number_card_name": "PVFSS Pipeline value"
+  },
+  {
+   "label": "Win rate 90 days",
+   "number_card_name": "PVFSS Win rate 90 days"
+  },
+  {
+   "label": "Win rate YTD",
+   "number_card_name": "PVFSS Win rate YTD"
+  },
+  {
+   "label": "Revenue MTD",
+   "number_card_name": "PVFSS Revenue MTD"
+  },
+  {
+   "label": "Revenue YTD",
+   "number_card_name": "PVFSS Revenue YTD"
+  },
+  {
+   "label": "Gross margin %",
+   "number_card_name": "PVFSS Gross margin %"
+  },
+  {
+   "label": "Cash position",
+   "number_card_name": "PVFSS Cash position"
+  },
+  {
+   "label": "Overdue receivables",
+   "number_card_name": "PVFSS Overdue receivables"
+  },
+  {
+   "label": "Projects at risk",
+   "number_card_name": "PVFSS Projects at risk"
+  },
+  {
+   "label": "ICV score",
+   "number_card_name": "PVFSS ICV score"
+  },
+  {
+   "label": "ICV certificate days left",
+   "number_card_name": "PVFSS ICV certificate days left"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "PVFSS Director"
+  },
+  {
+   "role": "PVFSS Read Only"
+  }
+ ],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Inquiries",
+   "link_to": "Opportunity",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Quotations",
+   "link_to": "Quotation",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Customer POs",
+   "link_to": "Sales Order",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Projects",
+   "link_to": "Project",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Supplier POs",
+   "link_to": "Purchase Order",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Heat Trace",
+   "link_to": "heat-trace",
+   "type": "Page"
+  }
+ ],
+ "standard": 1,
+ "title": "Management",
+ "type": "Workspace"
+}
