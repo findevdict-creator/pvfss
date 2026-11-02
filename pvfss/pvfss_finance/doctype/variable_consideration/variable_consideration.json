@@ -1,0 +1,147 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "vc_type",
+  "maximum_amount",
+  "estimation_method",
+  "probability_pct",
+  "likely_amount",
+  "estimated_amount",
+  "constrained_amount",
+  "basis_note",
+  "recognised_amount",
+  "settled_amount",
+  "true_up_amount",
+  "true_up_journal_entry",
+  "currency"
+ ],
+ "fields": [
+  {
+   "fieldname": "vc_type",
+   "fieldtype": "Select",
+   "options": "Delivery bonus\nEarly delivery incentive\nLD / penalty",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Type"
+  },
+  {
+   "fieldname": "maximum_amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Negative for LD / penalty.",
+   "label": "Maximum Amount"
+  },
+  {
+   "fieldname": "estimation_method",
+   "fieldtype": "Select",
+   "options": "Expected value\nMost likely amount",
+   "default": "Expected value",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Estimation Method"
+  },
+  {
+   "fieldname": "probability_pct",
+   "fieldtype": "Percent",
+   "depends_on": "eval:doc.estimation_method=='Expected value'",
+   "label": "Probability %"
+  },
+  {
+   "fieldname": "likely_amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "depends_on": "eval:doc.estimation_method=='Most likely amount'",
+   "label": "Most Likely Amount"
+  },
+  {
+   "fieldname": "estimated_amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "read_only": 1,
+   "label": "Estimated Amount"
+  },
+  {
+   "fieldname": "constrained_amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "in_list_view": 1,
+   "columns": 1,
+   "allow_on_submit": 1,
+   "description": "Highly probable portion, entered by Finance.",
+   "label": "Constrained Amount"
+  },
+  {
+   "fieldname": "basis_note",
+   "fieldtype": "Small Text",
+   "allow_on_submit": 1,
+   "label": "Basis"
+  },
+  {
+   "fieldname": "recognised_amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "in_list_view": 1,
+   "columns": 1,
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Recognised"
+  },
+  {
+   "fieldname": "settled_amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "in_list_view": 1,
+   "columns": 1,
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Settled"
+  },
+  {
+   "fieldname": "true_up_amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "True-up"
+  },
+  {
+   "fieldname": "true_up_journal_entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "True-up JE"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "options": "Currency",
+   "hidden": 1,
+   "label": "Currency"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Finance",
+ "name": "Variable Consideration",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -114,6 +114,18 @@ doc_events = {
 		"on_update_after_submit": "pvfss.overrides.delivery_note.on_update_after_submit",
 		"on_cancel": "pvfss.overrides.delivery_note.on_cancel",
 	},
+	# Module 11: Finance (FIN-10, FIN-20, FIN-31, FIN-50, FIN-51, FIN-60)
+	"Sales Invoice": {
+		"validate": "pvfss.pvfss_finance.invoicing.sales_invoice_validate",
+		"on_submit": "pvfss.pvfss_finance.invoicing.sales_invoice_on_submit",
+		"before_cancel": "pvfss.pvfss_finance.invoicing.sales_invoice_before_cancel",
+	},
+	"Purchase Invoice": {
+		"validate": "pvfss.pvfss_finance.invoicing.purchase_invoice_validate",
+		"on_submit": "pvfss.pvfss_finance.invoicing.purchase_invoice_on_submit",
+		"before_cancel": "pvfss.pvfss_finance.invoicing.purchase_invoice_before_cancel",
+	},
+	"Payment Entry": {"validate": "pvfss.pvfss_finance.invoicing.payment_entry_validate"},
 	# Module 6: Project (PRJ-01 to PRJ-40)
 	"Project": {"validate": "pvfss.overrides.project.validate"},
 	# Module 8: Quality (QA-02, QA-30, TRC-04)

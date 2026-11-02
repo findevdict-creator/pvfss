@@ -17,8 +17,12 @@ QU = "Quality User"
 QM = "Quality Manager"
 UNDER = "Under Review"
 LOG = "Logistics User"
+FU = "Finance User"
+FM = "Finance Manager"
 
 STATE_STYLES = {
+	"Pending Finance Manager": "Warning",
+	"Pending Director": "Warning",
 	"Documents complete": "Primary",
 	"Approved for dispatch": "Warning",
 	"Delivered": "Success",
@@ -380,6 +384,32 @@ WORKFLOWS = {
 			("Approved for dispatch", "Submit", "Submitted", POU, None),
 			("Approved for dispatch", "Submit", "Submitted", POM, None),
 			("Submitted", "Cancel", "Cancelled", POM, None),
+		],
+	},
+	# FIN-31: supplier payment approval (Pay only; Receive submits directly)
+	"PVFSS Payment": {
+		"document_type": "Payment Entry",
+		"states": [
+			("Draft", 0, FU),
+			("Draft", 0, FM),
+			("Pending Finance Manager", 0, FM),
+			("Pending Director", 0, DIR),
+			("Submitted", 1, FU),
+			("Submitted", 1, FM),
+			("Submitted", 1, DIR),
+			("Cancelled", 2, FM),
+		],
+		"transitions": [
+			("Draft", "Submit", "Submitted", FU, "doc.payment_type != 'Pay'"),
+			("Draft", "Submit", "Submitted", FM, "doc.payment_type != 'Pay'"),
+			("Draft", "Send for Approval", "Pending Finance Manager", FU, "doc.payment_type == 'Pay'"),
+			("Draft", "Send for Approval", "Pending Finance Manager", FM, "doc.payment_type == 'Pay'"),
+			("Pending Finance Manager", "Approve", "Submitted", FM, "not doc.pvfss_needs_director"),
+			("Pending Finance Manager", "Approve", "Pending Director", FM, "doc.pvfss_needs_director"),
+			("Pending Finance Manager", "Reject", "Draft", FM, None),
+			("Pending Director", "Approve", "Submitted", DIR, None),
+			("Pending Director", "Reject", "Draft", DIR, None),
+			("Submitted", "Cancel", "Cancelled", FM, None),
 		],
 	},
 }

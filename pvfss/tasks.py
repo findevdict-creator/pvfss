@@ -13,6 +13,9 @@ DAILY = [
 	"pvfss.utils.mtc_age.age_alerts",  # SMR-21
 	"pvfss.overrides.non_conformance.overdue_alerts",  # QA-31
 	"pvfss.pvfss_logistics.dispatch.pod_alerts",  # DSP-10
+	"pvfss.pvfss_finance.alerts.lc_alerts",  # FIN-41
+	"pvfss.pvfss_finance.alerts.pdc_alerts",  # FIN-45
+	"pvfss.pvfss_finance.alerts.retention_alerts",  # FIN-52
 ]
 
 HOURLY = [

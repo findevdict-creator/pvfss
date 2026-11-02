@@ -109,8 +109,9 @@ ICV_EXPIRY_ALERT_DAYS = [90, 30]  # ICV-11
 # PUR-12 / FIN-20: Purchase Order and Receipt before Invoice, no over-billing or over-receipt
 # (the 3-way match). Applied on install only, so later changes on the site are kept.
 OPERATING_SETTINGS = {
-	"Buying Settings": {"po_required": "Yes", "pr_required": "Yes"},
-	"Accounts Settings": {"over_billing_allowance": 0},
+	"Buying Settings": {"po_required": "Yes", "pr_required": "Yes", "maintain_same_rate": 1},
+	# FIN-20: tolerance 0 and duplicate supplier invoice no blocked
+	"Accounts Settings": {"over_billing_allowance": 0, "check_supplier_invoice_uniqueness": 1},
 	# TRC-01 / TRC-02: heat traceability runs on batches
 	"Stock Settings": {"over_delivery_receipt_allowance": 0, "enable_serial_and_batch_no_for_item": 1},
 }

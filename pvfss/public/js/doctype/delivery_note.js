@@ -58,7 +58,13 @@ function record_pod(frm) {
 	const d = new frappe.ui.Dialog({
 		title: __("Record POD"),
 		fields: [
-			{ fieldname: "pod_date", fieldtype: "Date", label: __("POD Date"), reqd: 1, default: frappe.datetime.get_today() },
+			{
+				fieldname: "pod_date",
+				fieldtype: "Date",
+				label: __("POD Date"),
+				reqd: 1,
+				default: frappe.datetime.get_today(),
+			},
 			{ fieldname: "received_by", fieldtype: "Data", label: __("Received by"), reqd: 1 },
 			{ fieldname: "pod_attachment", fieldtype: "Attach", label: __("Signed POD"), reqd: 1 },
 			{ fieldname: "remarks", fieldtype: "Small Text", label: __("Remarks") },
@@ -70,7 +76,11 @@ function record_pod(frm) {
 				.then((si) => {
 					d.hide();
 					frm.reload_doc();
-					if (si) frappe.show_alert({ message: __("Draft invoice {0} created", [si]), indicator: "green" });
+					if (si)
+						frappe.show_alert({
+							message: __("Draft invoice {0} created", [si]),
+							indicator: "green",
+						});
 				});
 		},
 	});

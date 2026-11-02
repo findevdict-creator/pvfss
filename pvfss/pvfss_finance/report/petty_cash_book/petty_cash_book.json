@@ -1,0 +1,29 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2026-11-01 20:00:00.000000",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "",
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Finance",
+ "name": "Petty Cash Book",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Petty Cash Voucher",
+ "report_name": "Petty Cash Book",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Finance User"
+  },
+  {
+   "role": "Finance Manager"
+  }
+ ]
+}

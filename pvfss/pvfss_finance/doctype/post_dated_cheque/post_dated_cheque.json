@@ -1,0 +1,335 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Post-dated cheques received and issued (FIN-45).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "direction",
+  "company",
+  "party_type",
+  "party",
+  "status",
+  "cb1",
+  "cheque_no",
+  "bank",
+  "cheque_date",
+  "currency",
+  "amount",
+  "exchange_rate",
+  "sb_invoices",
+  "invoices",
+  "sb_bank",
+  "bank_account",
+  "deposit_date",
+  "cleared_date",
+  "cb2",
+  "hold_journal_entry",
+  "clear_journal_entry",
+  "reversal_journal_entry",
+  "sb_other",
+  "replaces",
+  "replacement_pdc",
+  "remarks",
+  "alerted_on",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "PDC-.YY.-.#####",
+   "default": "PDC-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "direction",
+   "fieldtype": "Select",
+   "options": "Received\nIssued",
+   "reqd": 1,
+   "default": "Received",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Direction"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "options": "Company",
+   "reqd": 1,
+   "remember_last_selected_value": 1,
+   "label": "Company"
+  },
+  {
+   "fieldname": "party_type",
+   "fieldtype": "Select",
+   "options": "Customer\nSupplier",
+   "read_only": 1,
+   "label": "Party Type"
+  },
+  {
+   "fieldname": "party",
+   "fieldtype": "Dynamic Link",
+   "options": "party_type",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Party"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "options": "Draft\nIn hand\nDeposited\nCleared\nBounced\nReplaced\nCancelled\nIssued\nPresented\nStopped",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1,
+   "allow_on_submit": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cheque_no",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Cheque No"
+  },
+  {
+   "fieldname": "bank",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "label": "Bank"
+  },
+  {
+   "fieldname": "cheque_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Cheque Date"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "options": "Currency",
+   "reqd": 1,
+   "label": "Currency"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "options": "currency",
+   "reqd": 1,
+   "in_list_view": 1,
+   "non_negative": 1,
+   "label": "Amount"
+  },
+  {
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "default": "1",
+   "precision": "9",
+   "label": "Exchange Rate"
+  },
+  {
+   "fieldname": "sb_invoices",
+   "fieldtype": "Section Break",
+   "label": "Linked invoices"
+  },
+  {
+   "fieldname": "invoices",
+   "fieldtype": "Table",
+   "options": "PDC Invoice",
+   "label": "Invoices"
+  },
+  {
+   "fieldname": "sb_bank",
+   "fieldtype": "Section Break",
+   "label": "Bank and postings"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "options": "Account",
+   "allow_on_submit": 1,
+   "label": "Deposit / Paying Bank Account"
+  },
+  {
+   "fieldname": "deposit_date",
+   "fieldtype": "Date",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Deposit / Presented Date"
+  },
+  {
+   "fieldname": "cleared_date",
+   "fieldtype": "Date",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Cleared Date"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hold_journal_entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "PDC Journal Entry"
+  },
+  {
+   "fieldname": "clear_journal_entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Clearing Journal Entry"
+  },
+  {
+   "fieldname": "reversal_journal_entry",
+   "fieldtype": "Link",
+   "options": "Journal Entry",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Bounce / Stop Journal Entry"
+  },
+  {
+   "fieldname": "sb_other",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "replaces",
+   "fieldtype": "Link",
+   "options": "Post-Dated Cheque",
+   "read_only": 1,
+   "label": "Replaces PDC"
+  },
+  {
+   "fieldname": "replacement_pdc",
+   "fieldtype": "Link",
+   "options": "Post-Dated Cheque",
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Replacement PDC"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "allow_on_submit": 1,
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "alerted_on",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "allow_on_submit": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Maturity Alert Sent"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "options": "Post-Dated Cheque",
+   "read_only": 1,
+   "no_copy": 1,
+   "hidden": 1,
+   "label": "Amended From"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Finance",
+ "name": "Post-Dated Cheque",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "Finance User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "cheque_no,party,status",
+ "sort_field": "cheque_date",
+ "sort_order": "ASC",
+ "states": [],
+ "title_field": "cheque_no",
+ "track_changes": 1
+}

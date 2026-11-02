@@ -140,6 +140,13 @@ MATRIX = {
 		DIR: "r",
 		RO: "r",
 	},
+	# ---- Module 11: Finance (screens §21: Sales / Purchase Invoice, Payment Entry, LC, PDC, Retention)
+	"Mode of Payment": everyone(),
+	"Sales Invoice": {FU: "rwcs", FM: "rwcsxa", DIR: "r", POM: "r", RO: "r"},
+	"Purchase Invoice": {FU: "rwcs", FM: "rwcsxa", DIR: "r", POU: "r", POM: "r", RO: "r"},
+	"Payment Entry": {FU: "rwcs", FM: "rwcsxa", DIR: "rws", RO: "r"},
+	"Journal Entry": {FU: "rwcs", FM: "rwcsxa", DIR: "r"},
+	"Employee": {FU: "r", FM: "r"},
 	# ---- Module 9: Traceability (screens §21: Heat Number, Batch, Purchase Receipt rows)
 	"Manufacturer": everyone(**{QU: "rwc", QM: "rwc", PBU: "rwc", POU: "rwc", POM: "rwc"}),
 	"Batch": everyone(**{QU: "rwc", QM: "rwc", POU: "rwc", POM: "rwc", LOG: "rwc"}),

@@ -64,13 +64,15 @@ def gate(doc):
 			before = shipped_before(batch, doc.name)
 			row.pvfss_irn, row.pvfss_irn_qty, row.pvfss_shipped_before = irn, released, before
 			if not irn:
-				result.fail(_("Line {0}, batch {1}: not on any issued IRN.").format(line, batch), rule="DSP-02")
+				result.fail(
+					_("Line {0}, batch {1}: not on any issued IRN.").format(line, batch), rule="DSP-02"
+				)
 				status.append(_("no IRN"))
 			elif before + flt(qty) > released + QTY_TOLERANCE:
 				result.fail(
-					_("Line {0}, batch {1}: shipping {2:g}, {3} released {4:g}, already shipped {5:g}.").format(
-						line, batch, flt(qty), irn, released, before
-					),
+					_(
+						"Line {0}, batch {1}: shipping {2:g}, {3} released {4:g}, already shipped {5:g}."
+					).format(line, batch, flt(qty), irn, released, before),
 					rule="DSP-02",
 				)
 				status.append(_("over IRN qty"))
@@ -113,7 +115,9 @@ def fill_documents(doc):
 
 def shipped_heats(doc):
 	batches = [b for row in doc.items for b, _q in traceability.row_batches(row)]
-	return batches, {r.pvfss_heat_number for r in traceability.batch_heats(batches).values() if r.pvfss_heat_number}
+	return batches, {
+		r.pvfss_heat_number for r in traceability.batch_heats(batches).values() if r.pvfss_heat_number
+	}
 
 
 def auto_fill(doc):
@@ -136,7 +140,9 @@ def auto_fill(doc):
 		if row.document == "MTCs" and mtcs and heats:
 			covered = set(
 				frappe.get_all(
-					"MTC Heat", filters={"parent": ["in", mtcs], "heat_number": ["in", list(heats)]}, pluck="heat_number"
+					"MTC Heat",
+					filters={"parent": ["in", mtcs], "heat_number": ["in", list(heats)]},
+					pluck="heat_number",
 				)
 			)
 			row.update({"reference_doctype": "MTC", "reference_name": mtcs[0], "source": "Auto"})
@@ -193,7 +199,9 @@ def validate(doc, method=None):
 		pending = pending_documents(doc)
 		if pending:
 			frappe.throw(
-				_("Cannot mark documents complete. Pending required documents: {0}.").format("; ".join(pending)),
+				_("Cannot mark documents complete. Pending required documents: {0}.").format(
+					"; ".join(pending)
+				),
 				title=_("Dispatch documents not ready"),
 			)
 	if state != previous and state == APPROVED:
@@ -225,13 +233,27 @@ def make_invoice(doc):
 	for user in finance[:1]:
 		from frappe.desk.form.assign_to import add as assign
 
-		assign({"assign_to": [user], "doctype": "Sales Invoice", "name": si.name, "description": _("Draft invoice ready")})
-	alerts.send(finance, _("Draft invoice {0} ready for {1} (POD {2}).").format(si.name, doc.name, doc.pvfss_pod_date), "Sales Invoice", si.name)
+		assign(
+			{
+				"assign_to": [user],
+				"doctype": "Sales Invoice",
+				"name": si.name,
+				"description": _("Draft invoice ready"),
+			}
+		)
+	alerts.send(
+		finance,
+		_("Draft invoice {0} ready for {1} (POD {2}).").format(si.name, doc.name, doc.pvfss_pod_date),
+		"Sales Invoice",
+		si.name,
+	)
 	return si.name
 
 
 @frappe.whitelist()
-def record_pod(delivery_note: str, pod_date: str, received_by: str, pod_attachment: str, remarks: str | None = None):
+def record_pod(
+	delivery_note: str, pod_date: str, received_by: str, pod_attachment: str, remarks: str | None = None
+):
 	"""SCR-DSP-05 Record POD."""
 	doc = frappe.get_doc("Delivery Note", delivery_note)
 	doc.check_permission("submit")
@@ -272,10 +294,14 @@ def pod_alerts():
 		fields=["name", "pvfss_eta", "pvfss_project", "owner"],
 	)
 	for row in rows:
-		owner = row.pvfss_project and frappe.db.get_value("Project", row.pvfss_project, "pvfss_post_bidding_owner")
+		owner = row.pvfss_project and frappe.db.get_value(
+			"Project", row.pvfss_project, "pvfss_post_bidding_owner"
+		)
 		subject = _("{0} - ETA {1} passed {2} days ago with no POD.").format(
 			row.name, frappe.utils.formatdate(row.pvfss_eta), date_diff(nowdate(), row.pvfss_eta)
 		)
 		alerts.send([owner or row.owner], subject, "Delivery Note", row.name)
-		frappe.db.set_value("Delivery Note", row.name, "pvfss_pod_alerted_on", getdate(nowdate()), update_modified=False)
+		frappe.db.set_value(
+			"Delivery Note", row.name, "pvfss_pod_alerted_on", getdate(nowdate()), update_modified=False
+		)
 	return len(rows)

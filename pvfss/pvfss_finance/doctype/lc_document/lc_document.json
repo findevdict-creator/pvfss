@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "document",
+  "originals",
+  "copies",
+  "notes",
+  "available_on_dn",
+  "discrepancy"
+ ],
+ "fields": [
+  {
+   "fieldname": "document",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3,
+   "label": "Document"
+  },
+  {
+   "fieldname": "originals",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Originals"
+  },
+  {
+   "fieldname": "copies",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Copies"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Notes"
+  },
+  {
+   "fieldname": "available_on_dn",
+   "fieldtype": "Check",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "allow_on_submit": 1,
+   "label": "Available on DN"
+  },
+  {
+   "fieldname": "discrepancy",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "columns": 2,
+   "allow_on_submit": 1,
+   "label": "Discrepancy"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Finance",
+ "name": "LC Document",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
