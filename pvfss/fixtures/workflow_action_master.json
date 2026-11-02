@@ -82,5 +82,19 @@
   "modified": "2026-11-02 01:27:04.866905",
   "name": "Submit Handover",
   "workflow_action_name": "Submit Handover"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-11-02 03:26:06.950113",
+  "name": "Partially Accept",
+  "workflow_action_name": "Partially Accept"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-11-02 03:26:06.958015",
+  "name": "Start Review",
+  "workflow_action_name": "Start Review"
  }
 ]

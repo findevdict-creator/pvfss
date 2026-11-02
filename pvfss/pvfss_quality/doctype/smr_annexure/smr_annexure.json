@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "annexure_type",
+  "reference_doctype",
+  "reference_name",
+  "reference_text",
+  "attachment",
+  "received"
+ ],
+ "fields": [
+  {
+   "fieldname": "annexure_type",
+   "fieldtype": "Select",
+   "options": "MTC\nTally Sheet\nHeat Number list\nCertificate references\nITP / inspection documents\nOther",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Annexure Type"
+  },
+  {
+   "fieldname": "reference_doctype",
+   "fieldtype": "Link",
+   "options": "DocType",
+   "label": "Reference Type"
+  },
+  {
+   "fieldname": "reference_name",
+   "fieldtype": "Dynamic Link",
+   "options": "reference_doctype",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Reference"
+  },
+  {
+   "fieldname": "reference_text",
+   "fieldtype": "Data",
+   "label": "Reference (text)"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Attachment"
+  },
+  {
+   "fieldname": "received",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Received"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "SMR Annexure",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

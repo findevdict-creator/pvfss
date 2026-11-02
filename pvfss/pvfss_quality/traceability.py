@@ -13,7 +13,9 @@ BLOCKED = ("On hold", "Rejected")
 
 # Extra trace stages added by later modules: dotted path -> fn(heats: list[str], batches: list[str])
 # returning a list of node dicts {"stage", "doctype", "name", "status", "facts", "heat", "batch"}.
-STAGES = []
+STAGES = [
+	"pvfss.pvfss_quality.doctype.mtc.mtc.trace_nodes",  # 11-smr: MTC and Tally Sheet stages
+]
 
 
 # ----------------------------------------------------------------------------- TRC-01
@@ -294,7 +296,7 @@ def trace(search_type: str, key: str, direction: str | None = None):
 				{"Mill": h.manufacturer, "Item": h.item_code, "Grade": h.grade},
 			)
 		)
-		if h.primary_mtc:
+		if h.primary_mtc and not frappe.db.exists("MTC Heat", {"heat_number": h.name, "docstatus": 1}):
 			add(
 				_node(
 					"MTC",

@@ -1,0 +1,143 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "po_item",
+  "line_ref",
+  "item_code",
+  "specification",
+  "qty_offered",
+  "tally_qty",
+  "mtc_status",
+  "mtc_age",
+  "over_age",
+  "line_result",
+  "accepted_qty",
+  "remark",
+  "retest_report",
+  "waiver_by",
+  "waiver_customer_ref"
+ ],
+ "fields": [
+  {
+   "fieldname": "po_item",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "PO Item Row"
+  },
+  {
+   "fieldname": "line_ref",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "PO Line"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "options": "Item",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Item"
+  },
+  {
+   "fieldname": "specification",
+   "fieldtype": "Small Text",
+   "read_only": 1,
+   "label": "Specification"
+  },
+  {
+   "fieldname": "qty_offered",
+   "fieldtype": "Float",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Qty Offered"
+  },
+  {
+   "fieldname": "tally_qty",
+   "fieldtype": "Float",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Tally Qty"
+  },
+  {
+   "fieldname": "mtc_status",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "label": "MTC Status"
+  },
+  {
+   "fieldname": "mtc_age",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "MTC Age / Limit"
+  },
+  {
+   "fieldname": "over_age",
+   "fieldtype": "Check",
+   "read_only": 1,
+   "label": "Over Age"
+  },
+  {
+   "fieldname": "line_result",
+   "fieldtype": "Select",
+   "options": "Pending\nAccepted\nRejected\nAccepted with remark",
+   "default": "Pending",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Line Result"
+  },
+  {
+   "fieldname": "accepted_qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Accepted Qty"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "label": "Remark"
+  },
+  {
+   "fieldname": "retest_report",
+   "fieldtype": "Data",
+   "description": "Becomes a link to Inspection Report in 12-quality.",
+   "label": "Re-test Inspection Report"
+  },
+  {
+   "fieldname": "waiver_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1,
+   "label": "Age Waiver by (Director)"
+  },
+  {
+   "fieldname": "waiver_customer_ref",
+   "fieldtype": "Data",
+   "label": "Customer Approval Ref (waiver)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "SMR Item",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

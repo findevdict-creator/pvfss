@@ -61,10 +61,11 @@ def custom_fields():
 			),
 			_f(
 				"pvfss_tally_sheet",
-				"Data",
+				"Link",
 				"Tally Sheet",
 				"pvfss_supplier_po",
-				description="Becomes a link to Tally Sheet in 11-smr.",
+				options="Tally Sheet",
+				read_only=1,
 			),
 		],
 	}

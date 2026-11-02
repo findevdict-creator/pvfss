@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "line_ref",
+  "heat_number",
+  "tally_qty",
+  "mtc",
+  "mtc_qty",
+  "grade",
+  "result",
+  "remark",
+  "accepted_by",
+  "key"
+ ],
+ "fields": [
+  {
+   "fieldname": "line_ref",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "PO Line"
+  },
+  {
+   "fieldname": "heat_number",
+   "fieldtype": "Link",
+   "options": "Heat Number",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Heat Number"
+  },
+  {
+   "fieldname": "tally_qty",
+   "fieldtype": "Float",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Tally Qty"
+  },
+  {
+   "fieldname": "mtc",
+   "fieldtype": "Link",
+   "options": "MTC",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "MTC"
+  },
+  {
+   "fieldname": "mtc_qty",
+   "fieldtype": "Float",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "MTC Qty for Heat"
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Data",
+   "read_only": 1,
+   "label": "Grade (tally / MTC)"
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "options": "Match\nHeat not on MTC\nGrade mismatch\nQty mismatch",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Result"
+  },
+  {
+   "fieldname": "remark",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Resolution Remark"
+  },
+  {
+   "fieldname": "accepted_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1,
+   "label": "Accepted by"
+  },
+  {
+   "fieldname": "key",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Key"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Quality",
+ "name": "SMR Match",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
