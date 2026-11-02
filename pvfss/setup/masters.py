@@ -101,6 +101,59 @@ def seed_global():
 	seed_modes_of_payment()
 	seed_risk_matrix()
 	seed_icv_settings()
+	seed_document_types()
+	seed_global_search()
+
+
+# DMS-03 seed types: (name, subfolder, customer submittal, [(label, fieldtype, options, required)])
+DOCUMENT_TYPES = [
+	(
+		"MTC",
+		"04 Quality",
+		0,
+		[("Heat No", "Data", None, 1), ("Grade", "Data", None, 1), ("Issue Date", "Date", None, 1)],
+	),
+	("ITP", "04 Quality", 1, [("Supplier PO", "Link", "Purchase Order", 1), ("Revision", "Data", None, 1)]),
+	("Drawing", "04 Quality", 1, [("Drawing No", "Data", None, 1)]),
+	("Data sheet", "04 Quality", 1, []),
+	("Procedure", "04 Quality", 1, [("Procedure No", "Data", None, 1)]),
+	("MDR", "08 Final dossier", 1, []),
+	("Final dossier index", "08 Final dossier", 0, []),
+]
+
+# DMS-08: DocTypes searched from the awesome bar
+GLOBAL_SEARCH = ("Project Document", "MTC", "Heat Number", "Opportunity", "Sales Order", "Purchase Order")
+
+
+def seed_document_types():
+	for name, subfolder, submittal, fields in DOCUMENT_TYPES:
+		if frappe.db.exists("Project Document Type", name):
+			continue
+		frappe.get_doc(
+			{
+				"doctype": "Project Document Type",
+				"type_name": name,
+				"default_subfolder": subfolder,
+				"customer_submittal": submittal,
+				"metadata_fields": [
+					{"label": label, "fieldtype": ftype, "options": options, "required": required}
+					for label, ftype, options, required in fields
+				],
+			}
+		).insert(ignore_permissions=True)
+
+
+def seed_global_search():
+	if not frappe.db.exists("DocType", "Global Search Settings"):
+		return
+	doc = frappe.get_single("Global Search Settings")
+	present = {r.document_type for r in doc.allowed_in_global_search}
+	added = [dt for dt in GLOBAL_SEARCH if dt not in present and frappe.db.exists("DocType", dt)]
+	for dt in added:
+		doc.append("allowed_in_global_search", {"document_type": dt})
+	if added:
+		doc.flags.ignore_permissions = True
+		doc.save()
 
 
 def seed_icv_settings():

@@ -1,0 +1,177 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:type_name",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Controlled document types and their metadata (DMS-03).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "type_name",
+  "default_subfolder",
+  "customer_submittal",
+  "metadata_fields"
+ ],
+ "fields": [
+  {
+   "fieldname": "type_name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "label": "Type Name"
+  },
+  {
+   "fieldname": "default_subfolder",
+   "fieldtype": "Select",
+   "options": "01 Inquiry & RFQ\n02 Quotation & Customer PO\n03 Supplier PO\n04 Quality\n05 Dispatch\n06 Finance\n07 Correspondence\n08 Final dossier",
+   "default": "04 Quality",
+   "in_list_view": 1,
+   "label": "Default Subfolder"
+  },
+  {
+   "fieldname": "customer_submittal",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Customer Submittal Needed"
+  },
+  {
+   "fieldname": "metadata_fields",
+   "fieldtype": "Table",
+   "options": "Project Document Metadata Field",
+   "label": "Mandatory Metadata"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS DMS",
+ "name": "Project Document Type",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Logistics User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Pre-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Pre-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Finance User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "type_name",
+ "track_changes": 1
+}

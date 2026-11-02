@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "transmittal_no",
+  "revision",
+  "submitted_date",
+  "response",
+  "response_date",
+  "comments_file",
+  "days_waiting"
+ ],
+ "fields": [
+  {
+   "fieldname": "transmittal_no",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Transmittal No"
+  },
+  {
+   "fieldname": "revision",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Rev"
+  },
+  {
+   "fieldname": "submitted_date",
+   "fieldtype": "Date",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Submitted"
+  },
+  {
+   "fieldname": "response",
+   "fieldtype": "Select",
+   "options": "Pending\nApproved\nApproved with comments\nRejected\nRevise and resubmit",
+   "default": "Pending",
+   "in_list_view": 1,
+   "columns": 2,
+   "label": "Customer Response"
+  },
+  {
+   "fieldname": "response_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Response Date"
+  },
+  {
+   "fieldname": "comments_file",
+   "fieldtype": "Attach",
+   "columns": 2,
+   "label": "Comments File"
+  },
+  {
+   "fieldname": "days_waiting",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Days Waiting"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS DMS",
+ "name": "Project Document Submittal",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

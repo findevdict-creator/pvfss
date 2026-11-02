@@ -105,3 +105,75 @@ pvfss.project.render_dashboard = function (frm, data) {
 			}</tbody>
 		</table></div>`;
 };
+
+// DMS-01 / SCR-DMS-01: open the project's document folders
+frappe.ui.form.on("Project", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		frm.add_custom_button(
+			__("Open project folder"),
+			() =>
+				frappe
+					.xcall("pvfss.pvfss_dms.filing.project_folder", {
+						doctype: frm.doctype,
+						name: frm.doc.name,
+					})
+					.then((folder) =>
+						folder
+							? frappe.set_route(["List", "File", ...folder.split("/")])
+							: frappe.msgprint(__("This document is not linked to a project yet."))
+					),
+			__("View")
+		);
+	},
+});
+
+// DMS-10 / SCR-DMS-07: final dossier ZIP with an index PDF
+frappe.ui.form.on("Project", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		const roles = ["Post-Bidding Manager", "Quality Manager", "System Manager"];
+		if (!roles.some((r) => frappe.user.has_role(r))) return;
+		frm.add_custom_button(__("Final dossier export"), () => {
+			frappe.db
+				.get_list("Project Document Type", { pluck: "name", limit: 0 })
+				.then((types) => {
+					const d = new frappe.ui.Dialog({
+						title: __("Final dossier export"),
+						fields: [
+							{
+								fieldname: "types",
+								fieldtype: "MultiCheck",
+								label: __("Include types"),
+								options: types.map((t) => ({
+									label: __(t),
+									value: t,
+									checked: 1,
+								})),
+							},
+							{
+								fieldname: "include_superseded",
+								fieldtype: "Check",
+								label: __("Include superseded revisions"),
+							},
+						],
+						primary_action_label: __("Download ZIP"),
+						primary_action(values) {
+							const chosen = values.types || [];
+							const params = new URLSearchParams({
+								project: frm.doc.name,
+								include_superseded: values.include_superseded ? 1 : 0,
+							});
+							if (chosen.length && chosen.length < types.length)
+								params.set("types", JSON.stringify(chosen));
+							window.open(
+								`/api/method/pvfss.pvfss_dms.dossier.export?${params.toString()}`
+							);
+							d.hide();
+						},
+					});
+					d.show();
+				});
+		});
+	},
+});

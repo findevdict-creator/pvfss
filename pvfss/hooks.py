@@ -126,6 +126,8 @@ doc_events = {
 		"before_cancel": "pvfss.pvfss_finance.invoicing.purchase_invoice_before_cancel",
 	},
 	"Payment Entry": {"validate": "pvfss.pvfss_finance.invoicing.payment_entry_validate"},
+	# Module 14: Document management (DMS-02)
+	"File": {"after_insert": "pvfss.pvfss_dms.filing.file_attachment"},
 	# Module 6: Project (PRJ-01 to PRJ-40)
 	"Project": {"validate": "pvfss.overrides.project.validate"},
 	# Module 8: Quality (QA-02, QA-30, TRC-04)

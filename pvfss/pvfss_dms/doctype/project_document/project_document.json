@@ -1,0 +1,357 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "naming_series:",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Controlled project document with revisions and customer submittals (DMS-03 to DMS-06).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "project",
+  "document_type",
+  "document_no",
+  "title",
+  "cb1",
+  "current_revision",
+  "current_file",
+  "issue_date",
+  "issued_by",
+  "status",
+  "customer_response",
+  "sb_link",
+  "linked_doctype",
+  "linked_name",
+  "cb2",
+  "locked_by",
+  "locked_on",
+  "tab_meta",
+  "metadata",
+  "metadata_text",
+  "tab_rev",
+  "revisions",
+  "tab_sub",
+  "submittals"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "options": "PDOC-.YY.-.#####",
+   "default": "PDOC-.YY.-.#####",
+   "hidden": 1,
+   "reqd": 1,
+   "label": "Series"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "options": "Project",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Project"
+  },
+  {
+   "fieldname": "document_type",
+   "fieldtype": "Link",
+   "options": "Project Document Type",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Document Type"
+  },
+  {
+   "fieldname": "document_no",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_global_search": 1,
+   "label": "Document No"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_global_search": 1,
+   "label": "Title"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "current_revision",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Current Revision"
+  },
+  {
+   "fieldname": "current_file",
+   "fieldtype": "Attach",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Current File"
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "label": "Issue Date"
+  },
+  {
+   "fieldname": "issued_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Issued by"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "options": "Draft\nIssued\nSuperseded",
+   "default": "Draft",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "customer_response",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Customer Response"
+  },
+  {
+   "fieldname": "sb_link",
+   "fieldtype": "Section Break",
+   "label": "Linked document"
+  },
+  {
+   "fieldname": "linked_doctype",
+   "fieldtype": "Link",
+   "options": "DocType",
+   "label": "Linked DocType"
+  },
+  {
+   "fieldname": "linked_name",
+   "fieldtype": "Dynamic Link",
+   "options": "linked_doctype",
+   "label": "Linked Document"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "locked_by",
+   "fieldtype": "Link",
+   "options": "User",
+   "in_standard_filter": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Checked out by"
+  },
+  {
+   "fieldname": "locked_on",
+   "fieldtype": "Datetime",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Checked out on"
+  },
+  {
+   "fieldname": "tab_meta",
+   "fieldtype": "Tab Break",
+   "label": "Metadata"
+  },
+  {
+   "fieldname": "metadata",
+   "fieldtype": "Table",
+   "options": "Project Document Metadata",
+   "label": "Metadata"
+  },
+  {
+   "fieldname": "metadata_text",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "in_global_search": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Metadata (search)"
+  },
+  {
+   "fieldname": "tab_rev",
+   "fieldtype": "Tab Break",
+   "label": "Revisions"
+  },
+  {
+   "fieldname": "revisions",
+   "fieldtype": "Table",
+   "options": "Project Document Revision",
+   "read_only": 1,
+   "label": "Revision History"
+  },
+  {
+   "fieldname": "tab_sub",
+   "fieldtype": "Tab Break",
+   "label": "Submittals"
+  },
+  {
+   "fieldname": "submittals",
+   "fieldtype": "Table",
+   "options": "Project Document Submittal",
+   "label": "Submittals"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS DMS",
+ "name": "Project Document",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Post-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Post-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Quality User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Logistics User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Pre-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Pre-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Finance User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "PVFSS Read Only",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "document_no,title,project",
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}
