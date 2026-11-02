@@ -29,7 +29,9 @@ def make_employee(name):
 
 def make_user(email):
 	if not frappe.db.exists("User", email):
-		frappe.get_doc({"doctype": "User", "email": email, "first_name": email.split("@")[0], "send_welcome_email": 0}).insert()
+		frappe.get_doc(
+			{"doctype": "User", "email": email, "first_name": email.split("@")[0], "send_welcome_email": 0}
+		).insert()
 	return email
 
 
@@ -68,7 +70,9 @@ class TestHSE(IntegrationTestCase):
 
 	# ------------------------------------------------------------------ HSE-30 / HSE-32
 	def test_hse30_incident_investigation_capa_closure(self):
-		name = incident_module.report_incident("Injury", "Yard", "Hand caught while slinging", people="A. Worker")
+		name = incident_module.report_incident(
+			"Injury", "Yard", "Hand caught while slinging", people="A. Worker"
+		)
 		doc = frappe.get_doc("HSE Incident", name)
 		self.assertEqual((doc.workflow_state, doc.reported_by), ("Reported", "Administrator"))
 		doc.lost_days = 2
@@ -82,7 +86,9 @@ class TestHSE(IntegrationTestCase):
 		doc.append("five_whys", {"answer": "Load swung"})
 		doc.save()
 		owner = make_user("_pvfss.capa.owner@example.com")
-		capa = incident_module.make_capa(name, "Corrective", "Use tag lines on every lift", owner, add_days(nowdate(), 7))
+		capa = incident_module.make_capa(
+			name, "Corrective", "Use tag lines on every lift", owner, add_days(nowdate(), 7)
+		)
 		doc = apply_workflow(frappe.get_doc("HSE Incident", name).as_dict(), "Open Actions")
 		self.assertEqual(doc.capas[0].capa, capa)
 		with self.assertRaises(frappe.ValidationError) as ctx:
@@ -90,10 +96,18 @@ class TestHSE(IntegrationTestCase):
 		self.assertIn(capa, str(ctx.exception))
 
 		capa_doc = frappe.get_doc("CAPA", capa)
-		capa_doc.update({"status": "Verified-Closed", "evidence_note": "Toolbox talk held", "verified_by": owner})
+		capa_doc.update(
+			{"status": "Verified-Closed", "evidence_note": "Toolbox talk held", "verified_by": owner}
+		)
 		self.assertRaises(frappe.ValidationError, capa_doc.save)  # owner cannot verify
 		capa_doc.reload()
-		capa_doc.update({"status": "Verified-Closed", "evidence_note": "Toolbox talk held", "verified_by": "Administrator"})
+		capa_doc.update(
+			{
+				"status": "Verified-Closed",
+				"evidence_note": "Toolbox talk held",
+				"verified_by": "Administrator",
+			}
+		)
 		capa_doc.save()
 		doc = apply_workflow(frappe.get_doc("HSE Incident", name).as_dict(), "Close")
 		self.assertEqual((doc.workflow_state, doc.capas[0].status), ("Closed", "Verified-Closed"))
@@ -133,16 +147,31 @@ class TestHSE(IntegrationTestCase):
 	# ------------------------------------------------------------------ HSE-20
 	def test_hse20_training_matrix_shows_expiring_and_missing(self):
 		course = frappe.get_doc(
-			{"doctype": "HSE Course", "course_name": "_PVFSS Forklift", "validity_months": 12, "required_for_all": 1}
+			{
+				"doctype": "HSE Course",
+				"course_name": "_PVFSS Forklift",
+				"validity_months": 12,
+				"required_for_all": 1,
+			}
 		).insert()
 		trained = make_employee("_PVFSS Trained")
 		expired = make_employee("_PVFSS Lapsed")
 		missing = make_employee("_PVFSS New")
 		frappe.get_doc(
-			{"doctype": "HSE Training Record", "employee": trained.name, "course": course.name, "training_date": add_days(add_months(nowdate(), -12), 10)}
+			{
+				"doctype": "HSE Training Record",
+				"employee": trained.name,
+				"course": course.name,
+				"training_date": add_days(add_months(nowdate(), -12), 10),
+			}
 		).insert()
 		lapsed = frappe.get_doc(
-			{"doctype": "HSE Training Record", "employee": expired.name, "course": course.name, "training_date": add_months(nowdate(), -14)}
+			{
+				"doctype": "HSE Training Record",
+				"employee": expired.name,
+				"course": course.name,
+				"training_date": add_months(nowdate(), -14),
+			}
 		).insert()
 		self.assertEqual(lapsed.status, "Expired")
 		_cols, rows = hse_training_matrix.execute({"course": course.name})
@@ -154,10 +183,18 @@ class TestHSE(IntegrationTestCase):
 
 	# ------------------------------------------------------------------ HSE-41
 	def test_hse41_ltifr_from_monthly_hours(self):
-		frappe.get_doc({"doctype": "HSE Monthly Statistics", "month": nowdate(), "headcount": 60, "hours_worked": 100000}).insert()
+		frappe.get_doc(
+			{"doctype": "HSE Monthly Statistics", "month": nowdate(), "headcount": 60, "hours_worked": 100000}
+		).insert()
 		self.assertRaises(
 			frappe.exceptions.DuplicateEntryError,
-			frappe.get_doc({"doctype": "HSE Monthly Statistics", "month": add_days(get_first_day(nowdate()), 1), "hours_worked": 1}).insert,
+			frappe.get_doc(
+				{
+					"doctype": "HSE Monthly Statistics",
+					"month": add_days(get_first_day(nowdate()), 1),
+					"hours_worked": 1,
+				}
+			).insert,
 		)
 		name = incident_module.report_incident("Injury", "Yard", "Twisted ankle")
 		frappe.db.set_value("HSE Incident", name, {"lost_days": 3, "is_lti": 1})

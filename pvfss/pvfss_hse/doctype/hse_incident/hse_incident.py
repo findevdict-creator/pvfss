@@ -34,7 +34,9 @@ class HSEIncident(Document):
 			if state == CLOSED:
 				pending = open_capas(r.capa for r in self.capas)
 				if pending:
-					frappe.throw(_("CAPAs still open: {0}.").format(", ".join(pending)), title=_("Cannot close"))
+					frappe.throw(
+						_("CAPAs still open: {0}.").format(", ".join(pending)), title=_("Cannot close")
+					)
 				self.closed_by = frappe.session.user
 				self.closure_date = now_datetime().date()
 			if state == INVESTIGATING and not self.investigator:

@@ -41,7 +41,12 @@ def execute(filters=None):
 		"type": "bar",
 	}
 	summary = [
-		{"label": _("LTIFR"), "value": values["ltifr"], "datatype": "Float", "indicator": "red" if values["ltifr"] else "green"},
+		{
+			"label": _("LTIFR"),
+			"value": values["ltifr"],
+			"datatype": "Float",
+			"indicator": "red" if values["ltifr"] else "green",
+		},
 		{"label": _("CAPA closure %"), "value": values["capa_closure_rate"], "datatype": "Float"},
 		{"label": _("Near misses"), "value": values["near_misses"], "datatype": "Int"},
 	]

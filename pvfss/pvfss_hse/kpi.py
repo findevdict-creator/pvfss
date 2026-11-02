@@ -20,7 +20,9 @@ def kpis(from_date, to_date):
 	hours = sum(
 		flt(h)
 		for h in frappe.get_all(
-			"HSE Monthly Statistics", filters={"month": ["between", [get_first_day(from_date), to_date]]}, pluck="hours_worked"
+			"HSE Monthly Statistics",
+			filters={"month": ["between", [get_first_day(from_date), to_date]]},
+			pluck="hours_worked",
 		)
 	)
 	lti = sum(1 for r in incidents if r.is_lti)
@@ -31,9 +33,12 @@ def kpis(from_date, to_date):
 		"to_date": to_date,
 		"trainings_completed": frappe.db.count("HSE Training Record", {"training_date": period}),
 		"inspections_done": frappe.db.count(
-			"HSE Audit", {"audit_type": "Site inspection", "status": ["in", ("Done", "Closed")], "actual_date": period}
+			"HSE Audit",
+			{"audit_type": "Site inspection", "status": ["in", ("Done", "Closed")], "actual_date": period},
 		),
-		"audits_done": frappe.db.count("HSE Audit", {"status": ["in", ("Done", "Closed")], "actual_date": period}),
+		"audits_done": frappe.db.count(
+			"HSE Audit", {"status": ["in", ("Done", "Closed")], "actual_date": period}
+		),
 		"near_misses": by_type.get("Near miss", 0),
 		"capa_total": len(capas),
 		"capa_closed": closed,

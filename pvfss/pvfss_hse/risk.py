@@ -3,7 +3,12 @@
 import frappe
 from frappe.utils import cint
 
-DEFAULT_BANDS = [(1, 4, "Low", "#22c55e"), (5, 9, "Medium", "#eab308"), (10, 16, "High", "#f97316"), (17, 25, "Extreme", "#ef4444")]
+DEFAULT_BANDS = [
+	(1, 4, "Low", "#22c55e"),
+	(5, 9, "Medium", "#eab308"),
+	(10, 16, "High", "#f97316"),
+	(17, 25, "Extreme", "#ef4444"),
+]
 
 
 def bands():

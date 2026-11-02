@@ -9,12 +9,18 @@ from pvfss.pvfss_hse.doctype.hse_training_record.hse_training_record import trai
 def execute(filters=None):
 	filters = frappe._dict(filters or {})
 	course_filters = {"name": filters.course} if filters.course else {}
-	courses = [frappe.get_doc("HSE Course", c) for c in frappe.get_all("HSE Course", filters=course_filters, pluck="name", order_by="name")]
+	courses = [
+		frappe.get_doc("HSE Course", c)
+		for c in frappe.get_all("HSE Course", filters=course_filters, pluck="name", order_by="name")
+	]
 	emp_filters = {"status": "Active"}
 	if filters.department:
 		emp_filters["department"] = filters.department
 	employees = frappe.get_all(
-		"Employee", filters=emp_filters, fields=["name", "employee_name", "department", "designation"], order_by="employee_name"
+		"Employee",
+		filters=emp_filters,
+		fields=["name", "employee_name", "department", "designation"],
+		order_by="employee_name",
 	)
 	latest = {}
 	for row in frappe.get_all(
@@ -25,7 +31,13 @@ def execute(filters=None):
 	):
 		latest[(row.employee, row.course)] = row
 	columns = [
-		{"fieldname": "employee", "label": _("Employee"), "fieldtype": "Link", "options": "Employee", "width": 110},
+		{
+			"fieldname": "employee",
+			"label": _("Employee"),
+			"fieldtype": "Link",
+			"options": "Employee",
+			"width": 110,
+		},
 		{"fieldname": "employee_name", "label": _("Name"), "fieldtype": "Data", "width": 160},
 		{"fieldname": "department", "label": _("Department"), "fieldtype": "Data", "width": 120},
 	]
@@ -41,7 +53,9 @@ def execute(filters=None):
 			record = latest.get((emp.name, course.name))
 			if record:
 				status = training_status(record.expiry_date)
-				label = _(status) + (f" ({frappe.utils.formatdate(record.expiry_date)})" if record.expiry_date else "")
+				label = _(status) + (
+					f" ({frappe.utils.formatdate(record.expiry_date)})" if record.expiry_date else ""
+				)
 			elif course.required_for(emp):
 				status, label = "Missing", _("Missing")
 			else:

@@ -13,15 +13,22 @@ frappe.ui.form.on("Risk Matrix Band", {
 });
 
 function pvfss_draw_matrix(frm) {
-	const band = (score) => (frm.doc.bands || []).find((b) => score >= b.from_score && score <= b.to_score) || {};
-	let html = `<table class="table table-bordered" style="width:auto;text-align:center"><tr><th>${__("L × S")}</th>`;
+	const band = (score) =>
+		(frm.doc.bands || []).find((b) => score >= b.from_score && score <= b.to_score) || {};
+	let html = `<table class="table table-bordered" style="width:auto;text-align:center"><tr><th>${__(
+		"L × S"
+	)}</th>`;
 	for (let s = 1; s <= 5; s++) html += `<th>${s}</th>`;
 	html += "</tr>";
 	for (let l = 5; l >= 1; l--) {
 		html += `<tr><th>${l}</th>`;
 		for (let s = 1; s <= 5; s++) {
 			const b = band(l * s);
-			html += `<td style="background:${b.colour || "#eee"};min-width:48px" title="${frappe.utils.escape_html(__(b.rating || ""))}">${l * s}</td>`;
+			html += `<td style="background:${
+				b.colour || "#eee"
+			};min-width:48px" title="${frappe.utils.escape_html(__(b.rating || ""))}">${
+				l * s
+			}</td>`;
 		}
 		html += "</tr>";
 	}

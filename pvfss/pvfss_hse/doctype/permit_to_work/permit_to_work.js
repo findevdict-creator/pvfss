@@ -7,18 +7,27 @@ frappe.ui.form.on("Permit to Work", {
 			frm.add_custom_button(__("Close permit"), () =>
 				frappe.prompt(
 					[
-						{ fieldname: "area_safe", fieldtype: "Check", label: __("Area left safe"), reqd: 1 },
+						{
+							fieldname: "area_safe",
+							fieldtype: "Check",
+							label: __("Area left safe"),
+							reqd: 1,
+						},
 						{ fieldname: "remarks", fieldtype: "Small Text", label: __("Remarks") },
 					],
 					(v) => {
-						if (!v.area_safe) return frappe.msgprint(__("Confirm that the area is left safe."));
+						if (!v.area_safe)
+							return frappe.msgprint(__("Confirm that the area is left safe."));
 						frm.set_value("area_safe", 1);
 						frm.save("Update").then(() =>
 							frappe
-								.xcall("pvfss.pvfss_hse.doctype.permit_to_work.permit_to_work.close", {
-									permit: frm.doc.name,
-									remarks: v.remarks,
-								})
+								.xcall(
+									"pvfss.pvfss_hse.doctype.permit_to_work.permit_to_work.close",
+									{
+										permit: frm.doc.name,
+										remarks: v.remarks,
+									}
+								)
 								.then(() => frm.reload_doc())
 						);
 					},

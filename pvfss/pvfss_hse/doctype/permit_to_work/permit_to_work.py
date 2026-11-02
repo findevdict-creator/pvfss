@@ -10,9 +10,19 @@ HSE_MANAGERS = {"HSE Manager", "System Manager"}
 
 # HSE-10: default precautions per permit type
 PRECAUTIONS = {
-	"Hot work": ["Fire extinguisher at the work point", "Combustibles removed or covered", "Fire watch assigned", "Gas test done"],
+	"Hot work": [
+		"Fire extinguisher at the work point",
+		"Combustibles removed or covered",
+		"Fire watch assigned",
+		"Gas test done",
+	],
 	"Work at height": ["Harness and lanyard inspected", "Scaffold tagged safe", "Area below barricaded"],
-	"Confined space": ["Atmosphere tested", "Standby person assigned", "Rescue plan in place", "Ventilation running"],
+	"Confined space": [
+		"Atmosphere tested",
+		"Standby person assigned",
+		"Rescue plan in place",
+		"Ventilation running",
+	],
 	"Electrical": ["Isolation and lock-out applied", "Voltage absence tested", "Insulated tools"],
 	"General": ["Toolbox talk held", "PPE checked"],
 }

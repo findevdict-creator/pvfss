@@ -57,6 +57,8 @@ def sync_rows(capa):
 def open_capas(names):
 	return [
 		r.name
-		for r in frappe.get_all("CAPA", filters={"name": ["in", list(names) or [""]]}, fields=["name", "status"])
+		for r in frappe.get_all(
+			"CAPA", filters={"name": ["in", list(names) or [""]]}, fields=["name", "status"]
+		)
 		if r.status != CLOSED
 	]

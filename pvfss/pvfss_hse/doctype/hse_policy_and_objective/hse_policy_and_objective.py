@@ -18,6 +18,8 @@ class HSEPolicyandObjective(Document):
 	def on_update(self):
 		if self.status == "Active":
 			for name in frappe.get_all(
-				"HSE Policy and Objective", filters={"status": "Active", "name": ["!=", self.name]}, pluck="name"
+				"HSE Policy and Objective",
+				filters={"status": "Active", "name": ["!=", self.name]},
+				pluck="name",
 			):
 				frappe.db.set_value("HSE Policy and Objective", name, "status", "Superseded")

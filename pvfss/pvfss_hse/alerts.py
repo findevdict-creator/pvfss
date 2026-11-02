@@ -29,11 +29,15 @@ def training_expiry():
 		if not row.alerted_on and getdate(row.expiry_date) <= getdate(add_days(nowdate(), days)):
 			alerts.send(
 				_hse(),
-				_("{0}: {1} expires on {2}.").format(row.employee_name, row.course, formatdate(row.expiry_date)),
+				_("{0}: {1} expires on {2}.").format(
+					row.employee_name, row.course, formatdate(row.expiry_date)
+				),
 				"HSE Training Record",
 				row.name,
 			)
-			frappe.db.set_value("HSE Training Record", row.name, "alerted_on", nowdate(), update_modified=False)
+			frappe.db.set_value(
+				"HSE Training Record", row.name, "alerted_on", nowdate(), update_modified=False
+			)
 			sent += 1
 	return sent
 
@@ -50,14 +54,22 @@ def permit_expiry():
 		if row.valid_to <= now:
 			frappe.db.set_value("Permit to Work", row.name, "status", "Expired", update_modified=False)
 			alerts.send(
-				_hse(row.owner), _("Permit {0} ({1}, {2}) has expired and is not closed.").format(row.name, _(row.permit_type), row.location),
-				"Permit to Work", row.name,
+				_hse(row.owner),
+				_("Permit {0} ({1}, {2}) has expired and is not closed.").format(
+					row.name, _(row.permit_type), row.location
+				),
+				"Permit to Work",
+				row.name,
 			)
 			sent += 1
 		elif not row.alerted_on and row.valid_to <= add_to_date(now, hours=4):
 			alerts.send(
-				_hse(row.owner), _("Permit {0} ({1}) expires at {2}.").format(row.name, row.location, frappe.utils.format_datetime(row.valid_to)),
-				"Permit to Work", row.name,
+				_hse(row.owner),
+				_("Permit {0} ({1}) expires at {2}.").format(
+					row.name, row.location, frappe.utils.format_datetime(row.valid_to)
+				),
+				"Permit to Work",
+				row.name,
 			)
 			frappe.db.set_value("Permit to Work", row.name, "alerted_on", nowdate(), update_modified=False)
 			sent += 1
@@ -103,11 +115,15 @@ def investigation_overdue():
 	for row in rows:
 		alerts.send(
 			alerts.users_with_role("HSE Manager"),
-			_("{0} ({1}, {2}) is not under investigation after 48 hours.").format(row.name, _(row.incident_type), row.location),
+			_("{0} ({1}, {2}) is not under investigation after 48 hours.").format(
+				row.name, _(row.incident_type), row.location
+			),
 			"HSE Incident",
 			row.name,
 		)
-		frappe.db.set_value("HSE Incident", row.name, "investigation_alerted_on", now_datetime(), update_modified=False)
+		frappe.db.set_value(
+			"HSE Incident", row.name, "investigation_alerted_on", now_datetime(), update_modified=False
+		)
 	return len(rows)
 
 
@@ -124,7 +140,9 @@ def risk_review():
 		):
 			alerts.send(
 				[row.get(owner_field), *alerts.users_with_role("HSE Manager")],
-				_("{0} {1} is due for review ({2}).").format(_(doctype), row.get(title), formatdate(row.review_date)),
+				_("{0} {1} is due for review ({2}).").format(
+					_(doctype), row.get(title), formatdate(row.review_date)
+				),
 				doctype,
 				row.name,
 			)
