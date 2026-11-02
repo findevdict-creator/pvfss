@@ -48,3 +48,89 @@ frappe.ui.form.on("Quotation", {
 		frm.set_value("pvfss_evaluated_price", (frm.doc.grand_total || 0) * (1 - s * w));
 	},
 });
+
+// SCR-ICV-07: evaluated price comparison with a competitor.
+frappe.ui.form.on("Quotation", {
+	refresh(frm) {
+		if (frm.is_new()) return;
+		frm.add_custom_button(
+			__("Compare with competitor"),
+			() =>
+				window.pvfss_icv_compare({
+					bid_price: frm.doc.grand_total,
+					icv_score: frm.doc.pvfss_icv_score_used,
+					weightage: frm.doc.pvfss_icv_weightage_pct,
+				}),
+			__("ICV")
+		);
+	},
+});
+
+window.pvfss_icv_compare = function (values) {
+	const d = new frappe.ui.Dialog({
+		title: __("Evaluated price comparison"),
+		fields: [
+			{
+				fieldname: "bid_price",
+				fieldtype: "Currency",
+				label: __("PVFSS bid price"),
+				reqd: 1,
+			},
+			{ fieldname: "icv_score", fieldtype: "Percent", label: __("PVFSS ICV score %") },
+			{ fieldname: "weightage", fieldtype: "Percent", label: __("Tender ICV weightage %") },
+			{ fieldtype: "Column Break" },
+			{ fieldname: "competitor", fieldtype: "Data", label: __("Competitor") },
+			{
+				fieldname: "competitor_bid",
+				fieldtype: "Currency",
+				label: __("Competitor bid price"),
+			},
+			{
+				fieldname: "competitor_score",
+				fieldtype: "Percent",
+				label: __("Competitor ICV score %"),
+			},
+			{ fieldtype: "Section Break" },
+			{ fieldname: "result", fieldtype: "HTML" },
+		],
+	});
+	const update = () => {
+		const v = d.get_values(true);
+		if (!v.bid_price) return;
+		frappe.xcall("pvfss.pvfss_icv.icv.compare", v).then((r) => {
+			const money = (x) => format_currency(x, "AED");
+			let text = `<p>${__("PVFSS evaluated price")}: <b>${money(r.pvfss_evaluated)}</b></p>`;
+			if (r.competitor_evaluated) {
+				text += `<p>${__("Competitor evaluated price")}: <b>${money(
+					r.competitor_evaluated
+				)}</b></p>`;
+				text +=
+					r.difference <= 0
+						? `<p class="text-success">${__("PVFSS is lower by {0}", [
+								money(-r.difference),
+						  ])}</p>`
+						: `<p class="text-danger">${__("PVFSS is higher by {0}", [
+								money(r.difference),
+						  ])}</p>`;
+				text += `<p>${__(
+					"Bid price to match the competitor's evaluated price"
+				)}: <b>${money(r.matching_bid)}</b></p>`;
+			}
+			d.fields_dict.result.$wrapper.html(text);
+		});
+	};
+	d.fields.forEach(
+		(f) =>
+			f.fieldname &&
+			f.fieldname !== "result" &&
+			(d.fields_dict[f.fieldname].df.onchange = update)
+	);
+	d.show();
+	const fill = (v) => {
+		d.set_values(v);
+		update();
+	};
+	if (values.icv_score === undefined)
+		frappe.xcall("pvfss.pvfss_icv.icv.defaults").then((r) => fill({ ...r, ...values }));
+	else fill(values);
+};

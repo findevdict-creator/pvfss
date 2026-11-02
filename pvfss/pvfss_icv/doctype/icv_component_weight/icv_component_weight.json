@@ -1,0 +1,50 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "component",
+  "weight_pct",
+  "formula_note"
+ ],
+ "fields": [
+  {
+   "fieldname": "component",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3,
+   "label": "Component"
+  },
+  {
+   "fieldname": "weight_pct",
+   "fieldtype": "Percent",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "label": "Weight %"
+  },
+  {
+   "fieldname": "formula_note",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "columns": 4,
+   "label": "Formula Note"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS ICV",
+ "name": "ICV Component Weight",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

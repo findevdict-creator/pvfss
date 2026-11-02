@@ -1,0 +1,491 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:ICV-{financial_year}",
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "Inputs for the ICV estimate of one financial year (ICV-10).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "estimate_html",
+  "sb_period",
+  "financial_year",
+  "company",
+  "from_date",
+  "to_date",
+  "cb_p",
+  "basis",
+  "status",
+  "last_refreshed",
+  "sb_proc",
+  "procurement_spend_auto",
+  "procurement_spend_override",
+  "procurement_spend_note",
+  "procurement_spend",
+  "cb_proc",
+  "uae_spend_auto",
+  "uae_spend_override",
+  "uae_spend_note",
+  "uae_spend",
+  "sb_proc2",
+  "icv_weighted_spend_auto",
+  "icv_weighted_spend_override",
+  "icv_weighted_spend_note",
+  "icv_weighted_spend",
+  "sb_rev",
+  "revenue_auto",
+  "revenue_override",
+  "revenue_note",
+  "revenue",
+  "cb_rev",
+  "fixed_assets_auto",
+  "fixed_assets_override",
+  "fixed_assets_note",
+  "fixed_assets",
+  "sb_people",
+  "headcount_auto",
+  "headcount_override",
+  "headcount_note",
+  "headcount",
+  "cb_people",
+  "uae_nationals_auto",
+  "uae_nationals_override",
+  "uae_nationals_note",
+  "uae_nationals",
+  "sb_payroll",
+  "payroll_total",
+  "cb_pay",
+  "emirati_payroll",
+  "sb_bonus",
+  "bonus_factors",
+  "other_score_pct",
+  "sb_result",
+  "component_scores",
+  "estimated_icv_pct"
+ ],
+ "fields": [
+  {
+   "fieldname": "estimate_html",
+   "fieldtype": "HTML",
+   "label": "Estimate"
+  },
+  {
+   "fieldname": "sb_period",
+   "fieldtype": "Section Break",
+   "label": "Period"
+  },
+  {
+   "fieldname": "financial_year",
+   "fieldtype": "Link",
+   "options": "Fiscal Year",
+   "reqd": 1,
+   "in_list_view": 1,
+   "label": "Financial Year"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "options": "Company",
+   "reqd": 1,
+   "remember_last_selected_value": 1,
+   "label": "Company"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "fetch_from": "financial_year.year_start_date",
+   "fetch_if_empty": 1,
+   "reqd": 1,
+   "label": "From"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "fetch_from": "financial_year.year_end_date",
+   "fetch_if_empty": 1,
+   "reqd": 1,
+   "label": "To"
+  },
+  {
+   "fieldname": "cb_p",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "basis",
+   "fieldtype": "Select",
+   "options": "Audited\nManagement",
+   "default": "Audited",
+   "label": "Basis"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "options": "Draft\nFinal",
+   "default": "Draft",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status"
+  },
+  {
+   "fieldname": "last_refreshed",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Last Refreshed"
+  },
+  {
+   "fieldname": "sb_proc",
+   "fieldtype": "Section Break",
+   "description": "Purchase Invoices net of VAT, posted in the period.",
+   "label": "Procurement"
+  },
+  {
+   "fieldname": "procurement_spend_auto",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "no_copy": 1,
+   "options": "AED",
+   "label": "Total Procurement Spend (auto)"
+  },
+  {
+   "fieldname": "procurement_spend_override",
+   "fieldtype": "Currency",
+   "description": "Leave blank to use the auto value.",
+   "options": "AED",
+   "label": "Total Procurement Spend override"
+  },
+  {
+   "fieldname": "procurement_spend_note",
+   "fieldtype": "Small Text",
+   "depends_on": "procurement_spend_override",
+   "mandatory_depends_on": "procurement_spend_override",
+   "label": "Override note"
+  },
+  {
+   "fieldname": "procurement_spend",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1,
+   "options": "AED",
+   "label": "Total Procurement Spend"
+  },
+  {
+   "fieldname": "cb_proc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "uae_spend_auto",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "no_copy": 1,
+   "options": "AED",
+   "label": "Spend with UAE Suppliers (auto)"
+  },
+  {
+   "fieldname": "uae_spend_override",
+   "fieldtype": "Currency",
+   "description": "Leave blank to use the auto value.",
+   "options": "AED",
+   "label": "Spend with UAE Suppliers override"
+  },
+  {
+   "fieldname": "uae_spend_note",
+   "fieldtype": "Small Text",
+   "depends_on": "uae_spend_override",
+   "mandatory_depends_on": "uae_spend_override",
+   "label": "Override note"
+  },
+  {
+   "fieldname": "uae_spend",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1,
+   "options": "AED",
+   "label": "Spend with UAE Suppliers"
+  },
+  {
+   "fieldname": "sb_proc2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "icv_weighted_spend_auto",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "no_copy": 1,
+   "options": "AED",
+   "label": "ICV-weighted Supplier Spend (auto)"
+  },
+  {
+   "fieldname": "icv_weighted_spend_override",
+   "fieldtype": "Currency",
+   "description": "Leave blank to use the auto value.",
+   "options": "AED",
+   "label": "ICV-weighted Supplier Spend override"
+  },
+  {
+   "fieldname": "icv_weighted_spend_note",
+   "fieldtype": "Small Text",
+   "depends_on": "icv_weighted_spend_override",
+   "mandatory_depends_on": "icv_weighted_spend_override",
+   "label": "Override note"
+  },
+  {
+   "fieldname": "icv_weighted_spend",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1,
+   "options": "AED",
+   "label": "ICV-weighted Supplier Spend"
+  },
+  {
+   "fieldname": "sb_rev",
+   "fieldtype": "Section Break",
+   "label": "Revenue and assets"
+  },
+  {
+   "fieldname": "revenue_auto",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "no_copy": 1,
+   "options": "AED",
+   "label": "Total Revenue (auto)"
+  },
+  {
+   "fieldname": "revenue_override",
+   "fieldtype": "Currency",
+   "description": "Leave blank to use the auto value.",
+   "options": "AED",
+   "label": "Total Revenue override"
+  },
+  {
+   "fieldname": "revenue_note",
+   "fieldtype": "Small Text",
+   "depends_on": "revenue_override",
+   "mandatory_depends_on": "revenue_override",
+   "label": "Override note"
+  },
+  {
+   "fieldname": "revenue",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1,
+   "options": "AED",
+   "label": "Total Revenue"
+  },
+  {
+   "fieldname": "cb_rev",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "fixed_assets_auto",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "no_copy": 1,
+   "options": "AED",
+   "label": "UAE Fixed Assets (auto)"
+  },
+  {
+   "fieldname": "fixed_assets_override",
+   "fieldtype": "Currency",
+   "description": "Leave blank to use the auto value.",
+   "options": "AED",
+   "label": "UAE Fixed Assets override"
+  },
+  {
+   "fieldname": "fixed_assets_note",
+   "fieldtype": "Small Text",
+   "depends_on": "fixed_assets_override",
+   "mandatory_depends_on": "fixed_assets_override",
+   "label": "Override note"
+  },
+  {
+   "fieldname": "fixed_assets",
+   "fieldtype": "Currency",
+   "read_only": 1,
+   "bold": 1,
+   "options": "AED",
+   "label": "UAE Fixed Assets"
+  },
+  {
+   "fieldname": "sb_people",
+   "fieldtype": "Section Break",
+   "label": "People"
+  },
+  {
+   "fieldname": "headcount_auto",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "Headcount at Period End (auto)"
+  },
+  {
+   "fieldname": "headcount_override",
+   "fieldtype": "Int",
+   "description": "Leave blank to use the auto value.",
+   "label": "Headcount at Period End override"
+  },
+  {
+   "fieldname": "headcount_note",
+   "fieldtype": "Small Text",
+   "depends_on": "headcount_override",
+   "mandatory_depends_on": "headcount_override",
+   "label": "Override note"
+  },
+  {
+   "fieldname": "headcount",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "bold": 1,
+   "label": "Headcount at Period End"
+  },
+  {
+   "fieldname": "cb_people",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "uae_nationals_auto",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "no_copy": 1,
+   "label": "UAE Nationals at Period End (auto)"
+  },
+  {
+   "fieldname": "uae_nationals_override",
+   "fieldtype": "Int",
+   "description": "Leave blank to use the auto value.",
+   "label": "UAE Nationals at Period End override"
+  },
+  {
+   "fieldname": "uae_nationals_note",
+   "fieldtype": "Small Text",
+   "depends_on": "uae_nationals_override",
+   "mandatory_depends_on": "uae_nationals_override",
+   "label": "Override note"
+  },
+  {
+   "fieldname": "uae_nationals",
+   "fieldtype": "Int",
+   "read_only": 1,
+   "bold": 1,
+   "label": "UAE Nationals at Period End"
+  },
+  {
+   "fieldname": "sb_payroll",
+   "fieldtype": "Section Break",
+   "label": "Payroll (manual)"
+  },
+  {
+   "fieldname": "payroll_total",
+   "fieldtype": "Currency",
+   "options": "AED",
+   "label": "Payroll Total"
+  },
+  {
+   "fieldname": "cb_pay",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "emirati_payroll",
+   "fieldtype": "Currency",
+   "options": "AED",
+   "label": "Emirati Payroll"
+  },
+  {
+   "fieldname": "sb_bonus",
+   "fieldtype": "Section Break",
+   "label": "Bonus and other"
+  },
+  {
+   "fieldname": "bonus_factors",
+   "fieldtype": "Table",
+   "options": "ICV Bonus Factor",
+   "label": "Bonus Factors"
+  },
+  {
+   "fieldname": "other_score_pct",
+   "fieldtype": "Percent",
+   "label": "Other Component Score %"
+  },
+  {
+   "fieldname": "sb_result",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "component_scores",
+   "fieldtype": "Table",
+   "options": "ICV Component Score",
+   "read_only": 1,
+   "label": "Component Scores"
+  },
+  {
+   "fieldname": "estimated_icv_pct",
+   "fieldtype": "Percent",
+   "read_only": 1,
+   "in_list_view": 1,
+   "bold": 1,
+   "label": "Estimated ICV %"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS ICV",
+ "name": "ICV Period Data",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "ICV User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "financial_year",
+ "track_changes": 1
+}

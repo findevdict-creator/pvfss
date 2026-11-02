@@ -100,6 +100,13 @@ def seed_global():
 	seed_email_templates()
 	seed_modes_of_payment()
 	seed_risk_matrix()
+	seed_icv_settings()
+
+
+def seed_icv_settings():
+	from pvfss.pvfss_icv import icv
+
+	icv.seed_settings()  # ICV-01 working weightages
 
 
 def seed_risk_matrix():

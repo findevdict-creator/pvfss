@@ -19,6 +19,7 @@ DAILY = [
 	"pvfss.pvfss_hse.alerts.training_expiry",  # HSE-31
 	"pvfss.pvfss_hse.alerts.capa_overdue",  # HSE-31
 	"pvfss.pvfss_hse.alerts.risk_review",  # HSE-02, HSE-03
+	"pvfss.pvfss_icv.icv.daily",  # ICV-03, ICV-11
 ]
 
 HOURLY = [

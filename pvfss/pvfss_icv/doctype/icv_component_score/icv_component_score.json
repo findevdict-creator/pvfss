@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "component",
+  "score_pct",
+  "weight_pct",
+  "contribution_pct"
+ ],
+ "fields": [
+  {
+   "fieldname": "component",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "read_only": 1,
+   "columns": 3,
+   "label": "Component"
+  },
+  {
+   "fieldname": "score_pct",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "read_only": 1,
+   "columns": 2,
+   "label": "Score %"
+  },
+  {
+   "fieldname": "weight_pct",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "read_only": 1,
+   "columns": 2,
+   "label": "Weight %"
+  },
+  {
+   "fieldname": "contribution_pct",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "read_only": 1,
+   "columns": 2,
+   "label": "Contribution %"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS ICV",
+ "name": "ICV Component Score",
+ "owner": "Administrator",
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

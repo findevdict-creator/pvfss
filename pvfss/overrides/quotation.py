@@ -14,6 +14,10 @@ APPROVED = "Approved"
 
 def validate(doc, method=None):
 	qtn.calculate_margin(doc)
+	if not doc.get("pvfss_icv_score_used") and doc.docstatus == 0:
+		from pvfss.pvfss_icv.icv import current_score
+
+		doc.pvfss_icv_score_used = current_score()  # ICV-20 default
 	qtn.calculate_icv(doc)
 	if doc.get("pvfss_costing_sheet") and doc.docstatus == 0:
 		# RFQ-12 [RULE]: a quotation cannot stand on a non-compliant selection

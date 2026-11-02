@@ -1,0 +1,107 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-01 20:00:00.000000",
+ "description": "ICV component weightages (ICV-01).",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "notice",
+  "template_version",
+  "components"
+ ],
+ "fields": [
+  {
+   "fieldname": "notice",
+   "fieldtype": "HTML",
+   "options": "<div class=\"alert alert-warning\">Estimates only. The official score comes from the certifying body.</div>",
+   "label": "Notice"
+  },
+  {
+   "fieldname": "template_version",
+   "fieldtype": "Data",
+   "label": "MoIAT Template Version"
+  },
+  {
+   "fieldname": "components",
+   "fieldtype": "Table",
+   "options": "ICV Component Weight",
+   "reqd": 1,
+   "label": "Component Weightages"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-01 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS ICV",
+ "name": "ICV Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Finance Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "role": "ICV User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "role": "PVFSS Director",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Pre-Bidding Manager",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  },
+  {
+   "role": "Pre-Bidding User",
+   "read": 1,
+   "print": 1,
+   "email": 1,
+   "export": 1,
+   "report": 1,
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
