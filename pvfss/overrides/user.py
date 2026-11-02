@@ -3,6 +3,7 @@
 import frappe
 from frappe import _
 
+from pvfss.setup import workspaces
 from pvfss.setup.defaults import MIN_PASSWORD_LENGTH
 
 
@@ -14,3 +15,7 @@ def before_validate(doc, method=None):
 			_("Password must be at least {0} characters long.").format(MIN_PASSWORD_LENGTH),
 			title=_("Password policy"),
 		)
+
+
+def validate(doc, method=None):
+	workspaces.set_default_workspace(doc)  # RPT-01

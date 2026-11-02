@@ -9,7 +9,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": "",
- "modified": "2026-11-01 20:00:00.000000",
+ "modified": "2026-11-02 10:45:00.000000",
  "modified_by": "Administrator",
  "module": "PVFSS Quality",
  "name": "Inspection Release Tracker",
@@ -39,6 +39,9 @@
   },
   {
    "role": "System Manager"
+  },
+  {
+   "role": "Logistics User"
   }
  ]
 }

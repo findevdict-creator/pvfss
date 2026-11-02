@@ -1,0 +1,199 @@
+{
+ "app": "pvfss",
+ "charts": [
+  {
+   "chart_name": "PVFSS Deliveries due by week",
+   "label": "Deliveries due by week"
+  },
+  {
+   "chart_name": "PVFSS Supplier PO status",
+   "label": "Supplier PO status"
+  },
+  {
+   "chart_name": "PVFSS Late milestones by supplier",
+   "label": "Late milestones by supplier"
+  }
+ ],
+ "content": "[{\"id\": \"ef2db6223a\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Post-Bidding</b></span>\", \"col\": 12}}, {\"id\": \"d32be1227c\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"Needs your action\", \"col\": 12}}, {\"id\": \"af230e2006\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Deliveries due in 30 days\", \"col\": 4}}, {\"id\": \"184c94899e\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Delayed POs\", \"col\": 4}}, {\"id\": \"5f3649bada\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open handovers\", \"col\": 4}}, {\"id\": \"6ebe8a3c97\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open project changes\", \"col\": 4}}, {\"id\": \"e2e7f57437\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"POs awaiting approval\", \"col\": 4}}, {\"id\": \"c79d7fa1d9\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Projects at risk\", \"col\": 4}}, {\"id\": \"e48fd3cf3e\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Deliveries due by week\", \"col\": 12}}, {\"id\": \"81f251a162\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Supplier PO status\", \"col\": 6}}, {\"id\": \"1ed452b68f\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Late milestones by supplier\", \"col\": 6}}, {\"id\": \"7548581dda\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"817619f113\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Customer POs\", \"col\": 3}}, {\"id\": \"b419ab4707\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Supplier POs\", \"col\": 3}}, {\"id\": \"6aa0eec119\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Project Handovers\", \"col\": 3}}, {\"id\": \"0bce67b8ff\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Projects\", \"col\": 3}}, {\"id\": \"739a6094c8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Expediting Logs\", \"col\": 3}}, {\"id\": \"048b0c11f2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Project Changes\", \"col\": 3}}, {\"id\": \"6a526ffb66\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Purchase Receipts\", \"col\": 3}}, {\"id\": \"36fbb7a485\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Delivery Notes\", \"col\": 3}}, {\"id\": \"0e9ae246f7\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Reports &amp; settings</b></span>\", \"col\": 12}}, {\"id\": \"f4e46628ef\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
+ "creation": "2026-11-02 10:45:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "PVFSS Needs Your Action",
+   "label": "Needs your action"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "project",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PVFSS Post-Bidding",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Project Cost Sheet",
+   "link_count": 0,
+   "link_to": "Project Cost Sheet",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Inspection / IRN Release Tracker",
+   "link_count": 0,
+   "link_to": "Inspection Release Tracker",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Payment Status by Project",
+   "link_count": 0,
+   "link_to": "Payment Status by Project",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Supplier Performance",
+   "link_count": 0,
+   "link_to": "Supplier Performance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-02 10:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Reports",
+ "name": "PVFSS Post-Bidding",
+ "number_cards": [
+  {
+   "label": "Deliveries due in 30 days",
+   "number_card_name": "PVFSS Deliveries due in 30 days"
+  },
+  {
+   "label": "Delayed POs",
+   "number_card_name": "PVFSS Delayed POs"
+  },
+  {
+   "label": "Open handovers",
+   "number_card_name": "PVFSS Open handovers"
+  },
+  {
+   "label": "Open project changes",
+   "number_card_name": "PVFSS Open project changes"
+  },
+  {
+   "label": "POs awaiting approval",
+   "number_card_name": "PVFSS POs awaiting approval"
+  },
+  {
+   "label": "Projects at risk",
+   "number_card_name": "PVFSS Projects at risk"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "Post-Bidding User"
+  },
+  {
+   "role": "Post-Bidding Manager"
+  },
+  {
+   "role": "PVFSS Director"
+  }
+ ],
+ "sequence_id": 3.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Customer POs",
+   "link_to": "Sales Order",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Supplier POs",
+   "link_to": "Purchase Order",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Project Handovers",
+   "link_to": "Project Handover",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Projects",
+   "link_to": "Project",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Expediting Logs",
+   "link_to": "Expediting Log",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Project Changes",
+   "link_to": "Project Change",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Purchase Receipts",
+   "link_to": "Purchase Receipt",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Delivery Notes",
+   "link_to": "Delivery Note",
+   "type": "DocType"
+  }
+ ],
+ "standard": 1,
+ "title": "Post-Bidding",
+ "type": "Workspace"
+}

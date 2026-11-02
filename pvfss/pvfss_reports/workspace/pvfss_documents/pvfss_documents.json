@@ -1,0 +1,133 @@
+{
+ "app": "pvfss",
+ "charts": [],
+ "content": "[{\"id\": \"05f21e2498\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Documents</b></span>\", \"col\": 12}}, {\"id\": \"628da37e38\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"Needs your action\", \"col\": 12}}, {\"id\": \"2e87b913da\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Awaiting customer response\", \"col\": 4}}, {\"id\": \"233483305f\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Overdue submittals\", \"col\": 4}}, {\"id\": \"47ca4b4348\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Checked out by me\", \"col\": 4}}, {\"id\": \"c1f337f7c2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"5803b2f3b1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Project folders\", \"col\": 3}}, {\"id\": \"803b2a46b4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Project Documents\", \"col\": 3}}, {\"id\": \"dbe7ad15bc\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Project Document Types\", \"col\": 3}}, {\"id\": \"10c774b812\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Submittal Register\", \"col\": 3}}, {\"id\": \"4374885cba\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Projects (final dossier)\", \"col\": 3}}]",
+ "creation": "2026-11-02 10:45:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "PVFSS Needs Your Action",
+   "label": "Needs your action"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "folder-normal",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PVFSS Documents",
+ "links": [],
+ "modified": "2026-11-02 10:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Reports",
+ "name": "PVFSS Documents",
+ "number_cards": [
+  {
+   "label": "Awaiting customer response",
+   "number_card_name": "PVFSS Awaiting customer response"
+  },
+  {
+   "label": "Overdue submittals",
+   "number_card_name": "PVFSS Overdue submittals"
+  },
+  {
+   "label": "Checked out by me",
+   "number_card_name": "PVFSS Checked out by me"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "PVFSS Director"
+  },
+  {
+   "role": "Pre-Bidding User"
+  },
+  {
+   "role": "Pre-Bidding Manager"
+  },
+  {
+   "role": "Post-Bidding User"
+  },
+  {
+   "role": "Post-Bidding Manager"
+  },
+  {
+   "role": "Quality User"
+  },
+  {
+   "role": "Quality Manager"
+  },
+  {
+   "role": "Logistics User"
+  },
+  {
+   "role": "Finance User"
+  },
+  {
+   "role": "Finance Manager"
+  },
+  {
+   "role": "HSE User"
+  },
+  {
+   "role": "HSE Manager"
+  },
+  {
+   "role": "ICV User"
+  },
+  {
+   "role": "PVFSS Read Only"
+  }
+ ],
+ "sequence_id": 9.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Project folders",
+   "link_to": "File",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Project Documents",
+   "link_to": "Project Document",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Project Document Types",
+   "link_to": "Project Document Type",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "",
+   "label": "Submittal Register",
+   "link_to": "Submittal Register",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Projects (final dossier)",
+   "link_to": "Project",
+   "type": "DocType"
+  }
+ ],
+ "standard": 1,
+ "title": "Documents",
+ "type": "Workspace"
+}

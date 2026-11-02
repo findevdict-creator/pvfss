@@ -1,0 +1,6 @@
+.pvfss-actions { padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--border-radius-md); background: var(--card-bg); }
+.pvfss-actions-title { font-weight: 600; margin-bottom: 8px; }
+.pvfss-actions-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.pvfss-action { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 12px; background: var(--bg-orange); color: var(--text-on-orange); cursor: pointer; }
+.pvfss-action .count { font-weight: 700; }
+.pvfss-actions-empty { color: var(--text-muted); }

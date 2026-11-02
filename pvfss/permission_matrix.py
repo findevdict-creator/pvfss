@@ -146,7 +146,7 @@ MATRIX = {
 	"Purchase Invoice": {FU: "rwcs", FM: "rwcsxa", DIR: "r", POU: "r", POM: "r", RO: "r"},
 	"Payment Entry": {FU: "rwcs", FM: "rwcsxa", DIR: "rws", RO: "r"},
 	"Journal Entry": {FU: "rwcs", FM: "rwcsxa", DIR: "r"},
-	"Employee": {FU: "r", FM: "r", HSEU: "r", HSEM: "r"},
+	"Employee": {FU: "r", FM: "r", HSEU: "r", HSEM: "r", ICV: "r"},  # ICV: Emirati headcount (ICV-10)
 	# ---- Module 12: HSE (screens §21) - masters linked from HSE forms
 	"Department": everyone(),
 	# ---- Module 13: ICV

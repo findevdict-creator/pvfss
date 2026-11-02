@@ -1,0 +1,319 @@
+{
+ "app": "pvfss",
+ "charts": [
+  {
+   "chart_name": "PVFSS Receivables ageing",
+   "label": "Receivables ageing"
+  },
+  {
+   "chart_name": "PVFSS Cash-flow forecast 13 weeks",
+   "label": "Cash-flow forecast 13 weeks"
+  },
+  {
+   "chart_name": "PVFSS Payables due by week",
+   "label": "Payables due by week"
+  }
+ ],
+ "content": "[{\"id\": \"c45b3f10ea\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Finance</b></span>\", \"col\": 12}}, {\"id\": \"158f831d59\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"Needs your action\", \"col\": 12}}, {\"id\": \"cb1905dec7\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Receivables outstanding\", \"col\": 4}}, {\"id\": \"8d3d61f5fb\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Overdue receivables\", \"col\": 4}}, {\"id\": \"0451e52447\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Payables due in 30 days\", \"col\": 4}}, {\"id\": \"d00a09506a\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Retention due in 90 days\", \"col\": 4}}, {\"id\": \"bc4f9db93f\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"LCs expiring in 30 days\", \"col\": 4}}, {\"id\": \"090bc8daa0\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PDCs maturing in 14 days\", \"col\": 4}}, {\"id\": \"1b091efd48\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"VAT payable this quarter\", \"col\": 4}}, {\"id\": \"5e808b66c5\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Receivables ageing\", \"col\": 12}}, {\"id\": \"d15b09fbb2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Cash-flow forecast 13 weeks\", \"col\": 6}}, {\"id\": \"49e8cce9c1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Payables due by week\", \"col\": 6}}, {\"id\": \"65c7c806da\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"2ab7aef84a\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sales Invoices\", \"col\": 3}}, {\"id\": \"b76f19aadd\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Purchase Invoices\", \"col\": 3}}, {\"id\": \"e739ae90da\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Payment Entries\", \"col\": 3}}, {\"id\": \"be07ccb576\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Journal Entries\", \"col\": 3}}, {\"id\": \"a4bf00456a\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Letters of Credit\", \"col\": 3}}, {\"id\": \"5a2fe0d5a7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"PDCs\", \"col\": 3}}, {\"id\": \"787dcabc31\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Retentions\", \"col\": 3}}, {\"id\": \"93b1b35f15\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Petty Cash Vouchers\", \"col\": 3}}, {\"id\": \"b31b3a63d7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Bank Reconciliation\", \"col\": 3}}, {\"id\": \"f44ff21dd6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Exchange Rate Revaluation\", \"col\": 3}}, {\"id\": \"672d3d4532\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Reports &amp; settings</b></span>\", \"col\": 12}}, {\"id\": \"55b864401e\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
+ "creation": "2026-11-02 10:45:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "PVFSS Needs Your Action",
+   "label": "Needs your action"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "accounting",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PVFSS Finance",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 14,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Invoice & Payment Status",
+   "link_count": 0,
+   "link_to": "Invoice and Payment Status",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "PDC Maturity Register",
+   "link_count": 0,
+   "link_to": "PDC Maturity Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Retention Register",
+   "link_count": 0,
+   "link_to": "Retention Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Revenue and VC by Project",
+   "link_count": 0,
+   "link_to": "Revenue and VC by Project",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Cash-flow Forecast",
+   "link_count": 0,
+   "link_to": "Cash-flow Forecast",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Payment Status by Project",
+   "link_count": 0,
+   "link_to": "Payment Status by Project",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "UAE VAT 201",
+   "link_count": 0,
+   "link_to": "UAE VAT 201",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Accounts Receivable",
+   "link_count": 0,
+   "link_to": "Accounts Receivable",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Accounts Payable",
+   "link_count": 0,
+   "link_to": "Accounts Payable",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "General Ledger",
+   "link_count": 0,
+   "link_to": "General Ledger",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Trial Balance",
+   "link_count": 0,
+   "link_to": "Trial Balance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Profit and Loss Statement",
+   "link_count": 0,
+   "link_to": "Profit and Loss Statement",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Balance Sheet",
+   "link_count": 0,
+   "link_to": "Balance Sheet",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Petty Cash Book",
+   "link_count": 0,
+   "link_to": "Petty Cash Book",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-02 10:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Reports",
+ "name": "PVFSS Finance",
+ "number_cards": [
+  {
+   "label": "Receivables outstanding",
+   "number_card_name": "PVFSS Receivables outstanding"
+  },
+  {
+   "label": "Overdue receivables",
+   "number_card_name": "PVFSS Overdue receivables"
+  },
+  {
+   "label": "Payables due in 30 days",
+   "number_card_name": "PVFSS Payables due in 30 days"
+  },
+  {
+   "label": "Retention due in 90 days",
+   "number_card_name": "PVFSS Retention due in 90 days"
+  },
+  {
+   "label": "LCs expiring in 30 days",
+   "number_card_name": "PVFSS LCs expiring in 30 days"
+  },
+  {
+   "label": "PDCs maturing in 14 days",
+   "number_card_name": "PVFSS PDCs maturing in 14 days"
+  },
+  {
+   "label": "VAT payable this quarter",
+   "number_card_name": "PVFSS VAT payable this quarter"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "Finance User"
+  },
+  {
+   "role": "Finance Manager"
+  },
+  {
+   "role": "PVFSS Director"
+  }
+ ],
+ "sequence_id": 6.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Sales Invoices",
+   "link_to": "Sales Invoice",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Purchase Invoices",
+   "link_to": "Purchase Invoice",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Payment Entries",
+   "link_to": "Payment Entry",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Journal Entries",
+   "link_to": "Journal Entry",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Letters of Credit",
+   "link_to": "Letter of Credit",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "PDCs",
+   "link_to": "Post-Dated Cheque",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Retentions",
+   "link_to": "Retention",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Petty Cash Vouchers",
+   "link_to": "Petty Cash Voucher",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Bank Reconciliation",
+   "link_to": "Bank Reconciliation Tool",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Exchange Rate Revaluation",
+   "link_to": "Exchange Rate Revaluation",
+   "type": "DocType"
+  }
+ ],
+ "standard": 1,
+ "title": "Finance",
+ "type": "Workspace"
+}

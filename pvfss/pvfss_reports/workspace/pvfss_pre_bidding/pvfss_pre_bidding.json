@@ -1,0 +1,203 @@
+{
+ "app": "pvfss",
+ "charts": [
+  {
+   "chart_name": "PVFSS Open inquiries by due week",
+   "label": "Open inquiries by due week"
+  },
+  {
+   "chart_name": "PVFSS Win / loss by contractor",
+   "label": "Win / loss by contractor"
+  },
+  {
+   "chart_name": "PVFSS Inquiries per owner",
+   "label": "Inquiries per owner"
+  }
+ ],
+ "content": "[{\"id\": \"2f0cc5e09f\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Pre-Bidding</b></span>\", \"col\": 12}}, {\"id\": \"70fde753e4\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"Needs your action\", \"col\": 12}}, {\"id\": \"13ba88bcfe\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open inquiries\", \"col\": 4}}, {\"id\": \"c78ad1e8aa\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Inquiries due this week\", \"col\": 4}}, {\"id\": \"fcd3d22442\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Quoted this month\", \"col\": 4}}, {\"id\": \"cebf1565d3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Avg quotation turnaround (days)\", \"col\": 4}}, {\"id\": \"9c018ed7bf\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Win rate YTD\", \"col\": 4}}, {\"id\": \"dc086a7c17\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Open inquiries by due week\", \"col\": 12}}, {\"id\": \"60179f34cd\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Win / loss by contractor\", \"col\": 6}}, {\"id\": \"c5c5ece63a\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Inquiries per owner\", \"col\": 6}}, {\"id\": \"b475377e15\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"57c1dfd2b0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"New Inquiry\", \"col\": 3}}, {\"id\": \"4eaa5cfa24\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inquiries\", \"col\": 3}}, {\"id\": \"1fa5d71083\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"RFQs\", \"col\": 3}}, {\"id\": \"94124baf5c\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Supplier Quotations\", \"col\": 3}}, {\"id\": \"264d43c939\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Costing Sheets\", \"col\": 3}}, {\"id\": \"05ded77273\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Technical Evaluations\", \"col\": 3}}, {\"id\": \"38b2484caf\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Quotations\", \"col\": 3}}, {\"id\": \"7234731544\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Suppliers\", \"col\": 3}}, {\"id\": \"47cf865a1e\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Client Projects\", \"col\": 3}}, {\"id\": \"9df2952925\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Reports &amp; settings</b></span>\", \"col\": 12}}, {\"id\": \"1e774dc4c8\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
+ "creation": "2026-11-02 10:45:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "PVFSS Needs Your Action",
+   "label": "Needs your action"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "search",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PVFSS Pre-Bidding",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Inquiry Register",
+   "link_count": 0,
+   "link_to": "Inquiry Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Win / Loss Analysis",
+   "link_count": 0,
+   "link_to": "Win Loss Analysis",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Competitive Statement",
+   "link_count": 0,
+   "link_to": "Competitive Statement",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Supplier Performance",
+   "link_count": 0,
+   "link_to": "Supplier Performance",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-02 10:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Reports",
+ "name": "PVFSS Pre-Bidding",
+ "number_cards": [
+  {
+   "label": "Open inquiries",
+   "number_card_name": "PVFSS Open inquiries"
+  },
+  {
+   "label": "Inquiries due this week",
+   "number_card_name": "PVFSS Inquiries due this week"
+  },
+  {
+   "label": "Quoted this month",
+   "number_card_name": "PVFSS Quoted this month"
+  },
+  {
+   "label": "Avg quotation turnaround (days)",
+   "number_card_name": "PVFSS Avg quotation turnaround (days)"
+  },
+  {
+   "label": "Win rate YTD",
+   "number_card_name": "PVFSS Win rate YTD"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "Pre-Bidding User"
+  },
+  {
+   "role": "Pre-Bidding Manager"
+  },
+  {
+   "role": "PVFSS Director"
+  }
+ ],
+ "sequence_id": 2.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "New",
+   "format": "",
+   "label": "New Inquiry",
+   "link_to": "Opportunity",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "Kanban",
+   "format": "",
+   "label": "Inquiries",
+   "link_to": "Opportunity",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "RFQs",
+   "link_to": "Request for Quotation",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Supplier Quotations",
+   "link_to": "Supplier Quotation",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Costing Sheets",
+   "link_to": "Costing Sheet",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Technical Evaluations",
+   "link_to": "Technical Evaluation",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Quotations",
+   "link_to": "Quotation",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Suppliers",
+   "link_to": "Supplier",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Client Projects",
+   "link_to": "Client Project",
+   "type": "DocType"
+  }
+ ],
+ "standard": 1,
+ "title": "Pre-Bidding",
+ "type": "Workspace"
+}

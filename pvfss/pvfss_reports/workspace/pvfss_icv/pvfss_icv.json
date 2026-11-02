@@ -1,0 +1,105 @@
+{
+ "app": "pvfss",
+ "charts": [],
+ "content": "[{\"id\": \"8abdbb00d8\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>ICV</b></span>\", \"col\": 12}}, {\"id\": \"6fa8595d54\", \"type\": \"custom_block\", \"data\": {\"custom_block_name\": \"Needs your action\", \"col\": 12}}, {\"id\": \"e9c35cb0e1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"ICV score\", \"col\": 4}}, {\"id\": \"ce85d76d55\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"ICV certificate days left\", \"col\": 4}}, {\"id\": \"83c6cd452b\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"UAE supplier spend YTD\", \"col\": 4}}, {\"id\": \"6a9202d16f\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Emirati headcount\", \"col\": 4}}, {\"id\": \"3d13a712d1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"960b292e93\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"ICV Certificates\", \"col\": 3}}, {\"id\": \"1ba431a137\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"ICV Period Data\", \"col\": 3}}, {\"id\": \"2345d06701\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"ICV Settings\", \"col\": 3}}, {\"id\": \"7e9d97afdd\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Quotations (evaluated price)\", \"col\": 3}}, {\"id\": \"29419c6938\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Suppliers\", \"col\": 3}}]",
+ "creation": "2026-11-02 10:45:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "PVFSS Needs Your Action",
+   "label": "Needs your action"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "organization",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "PVFSS ICV",
+ "links": [],
+ "modified": "2026-11-02 10:45:00.000000",
+ "modified_by": "Administrator",
+ "module": "PVFSS Reports",
+ "name": "PVFSS ICV",
+ "number_cards": [
+  {
+   "label": "ICV score",
+   "number_card_name": "PVFSS ICV score"
+  },
+  {
+   "label": "ICV certificate days left",
+   "number_card_name": "PVFSS ICV certificate days left"
+  },
+  {
+   "label": "UAE supplier spend YTD",
+   "number_card_name": "PVFSS UAE supplier spend YTD"
+  },
+  {
+   "label": "Emirati headcount",
+   "number_card_name": "PVFSS Emirati headcount"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "ICV User"
+  },
+  {
+   "role": "Finance Manager"
+  },
+  {
+   "role": "PVFSS Director"
+  }
+ ],
+ "sequence_id": 8.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "ICV Certificates",
+   "link_to": "ICV Certificate",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "ICV Period Data",
+   "link_to": "ICV Period Data",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "ICV Settings",
+   "link_to": "ICV Settings",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Quotations (evaluated price)",
+   "link_to": "Quotation",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Open",
+   "label": "Suppliers",
+   "link_to": "Supplier",
+   "type": "DocType"
+  }
+ ],
+ "standard": 1,
+ "title": "ICV",
+ "type": "Workspace"
+}
