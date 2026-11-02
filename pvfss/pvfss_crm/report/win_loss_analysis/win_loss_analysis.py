@@ -165,5 +165,6 @@ def execute(filters=None):
 		},
 		"type": "bar",
 		"barOptions": {"stacked": 1},
+		"colors": ["green", "red"],
 	}
 	return columns, data, None, chart, summary

@@ -122,10 +122,10 @@ def projects_at_risk():
 
 
 def icv_score():
-	from pvfss.pvfss_icv.icv import active_certificate
+	"""Active certificate score, else the latest period estimate."""
+	from pvfss.pvfss_icv.icv import current_score
 
-	cert = active_certificate()
-	return flt(cert.score) if cert else 0
+	return current_score()
 
 
 def icv_days_left():

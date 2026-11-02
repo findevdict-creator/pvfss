@@ -93,6 +93,13 @@ class TestReports(IntegrationTestCase):
 		self.assertRaises(frappe.ValidationError, kpi.card, {"card": "nope"})
 		self.assertEqual(set(charts.CHART_DOCTYPES), set(charts.CHARTS))
 
+	def test_rpt01_icv_cards_read_the_active_certificate(self):
+		from pvfss.pvfss_icv.test_icv import certificate
+
+		certificate("ICV-RPT-1", nowdate(), score=38.5)
+		self.assertEqual(kpi.card({"card": "icv_score"})["value"], 38.5)
+		self.assertGreater(kpi.card({"card": "icv_days_left"})["value"], 300)
+
 	def test_rpt01_figures_follow_permissions(self):
 		hse = make_user("rpt.hseu@pvfss.test", "HSE User")
 		frappe.set_user(hse)

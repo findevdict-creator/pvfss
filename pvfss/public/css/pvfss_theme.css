@@ -137,6 +137,7 @@
 	--surface-gray-2: var(--pvfss-sidebar-hover);
 	--surface-gray-3: var(--pvfss-sidebar-hover);
 	--sidebar-select-color: var(--pvfss-sidebar-hover);
+	--surface-elevation-3: var(--pvfss-sidebar-hover); /* the active item's pill */
 	--outline-gray-1: transparent;
 }
 
